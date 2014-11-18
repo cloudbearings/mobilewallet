@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="blue">#045cc6</color>
+    <color name="white">#ffffff</color>
+    <color name="red">#ffb50303</color>
+    <color name="black">#ff3d3d3d</color>
+    <color name="bg_color">#fff2f2f5</color>
+    <color name="bringal_color">#ff646f88</color>
+    <color name="actionbar_bg">#ff323c52</color>
+    <color name="actionbar_tab_text_color">#ff7586b2</color>
+    <color name="line_color">#ffe8eaee</color>
+    <color name="more_fragment_bg_color">#fff9f9fa</color>
+    <color name="more_view_bg_color">#fff4f5f6</color>
+
+</resources>
