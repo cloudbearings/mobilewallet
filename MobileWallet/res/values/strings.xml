@@ -55,6 +55,7 @@
     <string name="title_activity_more_fragment">More</string>
     <string name="wallet">Wallet</string>
     <string name="about">About</string>
+    <string name="profile">Profile</string>
     <string name="daily_credits">Daily Credits</string>
     <string name="notifications">Notifications</string>
     <string name="rate">Rate</string>
@@ -79,5 +80,6 @@
     <string name="title_activity_balance">Balance</string>
     <string name="title_activity_credit_history">Credit History</string>
     <string name="title_activity_debit_history">Debit History</string>
+    <string name="title_activity_splash_screen">Splash Screen</string>
 
 </resources>
