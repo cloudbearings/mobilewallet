@@ -28,7 +28,7 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/NoTitleBar" >
             <intent-filter>
@@ -58,14 +58,27 @@
             android:name=".About"
             android:label="@string/title_activity_about" />
         <activity
-            android:name="com.mobilewallet.users.Balance"
+            android:name=".users.Balance"
             android:label="@string/title_activity_balance" />
         <activity
-            android:name="com.mobilewallet.users.CreditHistory"
+            android:name=".users.CreditHistory"
             android:label="@string/title_activity_credit_history" />
         <activity
-            android:name="com.mobilewallet.users.DebitHistory"
+            android:name=".users.DebitHistory"
             android:label="@string/title_activity_debit_history" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_splash_screen"
+            android:theme="@style/NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".BalanceActivity"
+            android:label="@string/title_activity_balance" >
+        </activity>
+        <activity
+            android:name=".DailyCredits"
+            android:label="@string/title_activity_daily_credits" >
+        </activity>
     </application>
 
 </manifest>
