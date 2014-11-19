@@ -48,18 +48,6 @@
             android:name=".TabsActivity"
             android:label="@string/title_activity_tabs" />
         <activity
-            android:name=".LearnGkFragment"
-            android:label="@string/title_activity_learn_gk_fragment" />
-        <activity
-            android:name=".users.InviteFragment"
-            android:label="@string/title_activity_invite_fragment" />
-        <activity
-            android:name=".MoreFragment"
-            android:label="@string/title_activity_more_fragment" />
-        <activity
-            android:name=".RechargeFragment"
-            android:label="@string/title_activity_recharge_fragment" />
-        <activity
             android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
             android:theme="@style/Dialog" />
