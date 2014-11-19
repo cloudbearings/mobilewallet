@@ -4,6 +4,8 @@
     <string name="app_name">MobileWallet</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- Global strings -->
     <string name="click_back_agiain_to_exit">Please click BACK again to exit</string>
     <string name="title_loading">Loading…</string>
     <string name="title_processing">Processing…</string>
@@ -11,10 +13,14 @@
     <string name="load_offers_msg">load</string>
     <string name="please_wait">Please wait</string>
     <string name="facebook_app_id">Mobile Wallet</string>
+
+    <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
     <string name="arial">fonts/arial.otf</string>
     <string name="Bebas">fonts/BEBAS.otf</string>
     <string name="GothamRnd">fonts/GothamRnd.otf</string>
+
+    <!-- main_activity.xml -->
     <string name="main_heading">Mobile Wallet</string>
     <string name="register_button_name">Register</string>
     <string name="login_button_name">Login</string>
@@ -22,6 +28,8 @@
     <string name="dont_have_an_account_button_name">"Don't have an account? Register"</string>
     <string name="forgot_pwd">Forgot Password?</string>
     <string name="login_with_fb_button_name">Login With Facebook</string>
+
+    <!-- register_activity.xml -->
     <string name="title_activity_register">Registration</string>
     <string name="email_edittext_hint">Email</string>
     <string name="fullname_edittext_hint">Full Name</string>
@@ -33,16 +41,17 @@
     <string name="signup_with_fb_button_name">Signup With Facebook</string>
     <string name="title_activity_tabs">Mobile Wallet</string>
     <string name="title_activity_learn_gk_fragment">LearnGk</string>
+
+    <!-- invite_fragment.xml -->
     <string name="title_activity_invite_fragment">Invite</string>
     <string name="refer_earn">Refer &amp; Earn</string>
     <string name="invite_and_earn">Get Rs 5 when you refer any new friend to Mobile Wallet.</string>
     <string name="how_it_works">HOW IT WORKS</string>
-    <string name="refer_instructions">"1. Share your unique link to your friends
-2. When your friends click on the link, install and sign up, you get your referral
-
-Note: Your friend must bea new user of Mobile Wallet"</string>
+    <string name="refer_instructions">"1. Share your unique link to your friends\n2. When your friends click on the link, install and sign up, you get your referral\n\nNote: Your friend must bea new user of Mobile Wallet"</string>
     <string name="referral_link_des">YOUR UNIQUE REFERRAL LINK</string>
     <string name="referral_link">http://mobilewalletapp.in/HJD76DF9S</string>
+
+    <!-- more_fragment.xml -->
     <string name="title_activity_more_fragment">More</string>
     <string name="wallet">Wallet</string>
     <string name="about">About</string>
@@ -56,9 +65,10 @@ Note: Your friend must bea new user of Mobile Wallet"</string>
     <string name="learnGK">Learn G.K</string>
     <string name="change_mobile_number">Change Mobile Number</string>
     <string name="title_activity_recharge_fragment">Recharge</string>
+
+    <!-- forgot_password.xml -->
     <string name="title_activity_forgot_password">Forgot Your Password?</string>
-    <string name="forgot_password_des">"To reser your password, please enter your registered email address.
-An email will be sent to that email address."</string>
+    <string name="forgot_password_des">"To reser your password, please enter your registered email address. An email will be sent to that email address."</string>
     <string name="ok">OK</string>
     <string name="cancel">CANCEL</string>
     <string name="email_error">Inavalid email.</string>
