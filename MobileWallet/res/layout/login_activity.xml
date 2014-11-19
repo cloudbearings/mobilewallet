@@ -1,12 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/white" android:paddingLeft="@dimen/activity_horizontal_margin" android:paddingTop="@dimen/activity_vertical_margin" android:paddingRight="@dimen/activity_horizontal_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:facebook="http://schemas.android.com/apk/res-auto">
-    <EditText android:id="@id/email" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:hint="@string/email_edittext_hint" android:ems="10" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:inputType="textEmailAddress" style="@style/register_edittext_text_style">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin" >
+
+    <EditText
+        android:id="@+id/email"
+        style="@style/register_edittext_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="@string/email_edittext_hint"
+        android:inputType="textEmailAddress" >
+
         <requestFocus />
     </EditText>
-    <EditText android:id="@id/pwd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:hint="@string/pwd_edittext_hint" android:ems="10" android:layout_below="@id/email" android:layout_alignLeft="@id/email" android:inputType="textPassword" style="@style/register_edittext_text_style" />
-    <Button android:id="@id/login" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/login_button_name" android:layout_below="@id/pwd" android:layout_centerHorizontal="true" style="@style/register_button_style" />
-    <Button android:id="@id/dont_have_an_account" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/dont_have_an_account_button_name" android:layout_below="@id/login" android:layout_alignLeft="@id/login" style="@style/already_have_an_account_button_style" />
-    <TextView android:id="@id/forgot_pwd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/forgot_pwd" android:layout_below="@id/dont_have_an_account" android:layout_alignLeft="@id/dont_have_an_account" />
-    <com.facebook.widget.LoginButton android:id="@id/fb_login" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/login_with_fb_button_name" android:layout_below="@id/forgot_pwd" android:layout_centerHorizontal="true" style="@style/signup_with_fb_button_style" />
+
+    <EditText
+        android:id="@+id/pwd"
+        style="@style/register_edittext_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/email"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/pwd_edittext_hint"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login"
+        style="@style/register_button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/login_button_name" />
+
+    <Button
+        android:id="@+id/dont_have_an_account"
+        style="@style/already_have_an_account_button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="5dp"
+        android:text="@string/dont_have_an_account_button_name" />
+
+    <TextView
+        android:id="@+id/forgot_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dont_have_an_account"
+        android:layout_below="@+id/dont_have_an_account"
+        android:layout_marginTop="20dp"
+        android:text="@string/forgot_pwd" />
+
+    <com.facebook.widget.LoginButton
+        android:id="@+id/fb_login"
+        style="@style/signup_with_fb_button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgot_pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/login_with_fb_button_name" />
+
 </RelativeLayout>
