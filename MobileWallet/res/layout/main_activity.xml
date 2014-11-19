@@ -9,17 +9,17 @@
     android:paddingTop="@dimen/activity_vertical_margin" >
 
     <ImageView
-        android:id="@id/mobile_wallet_heading"
+        android:id="@+id/mobile_wallet_heading"
         style="@style/main_heading_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/register"
-        android:layout_alignRight="@id/register"
-        android:layout_below="@id/mobile_wallet_icon"
+        android:layout_alignLeft="@+id/register"
+        android:layout_alignRight="@+id/register"
+        android:layout_below="@+id/mobile_wallet_icon"
         android:src="@drawable/mobile_wallet_logo" />
 
     <ImageView
-        android:id="@id/mobile_wallet_icon"
+        android:id="@+id/mobile_wallet_icon"
         android:layout_width="fill_parent"
         android:layout_height="240.0dip"
         android:layout_alignParentLeft="true"
@@ -28,22 +28,22 @@
         android:src="@drawable/mobile_wallet" />
 
     <Button
-        android:id="@id/register"
+        android:id="@+id/register"
         style="@style/main_button_style"
         android:layout_width="250.0dip"
         android:layout_height="wrap_content"
-        android:layout_below="@id/mobile_wallet_heading"
+        android:layout_below="@+id/mobile_wallet_heading"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50.0dip"
         android:text="@string/register_button_name" />
 
     <Button
-        android:id="@id/login"
+        android:id="@+id/login"
         style="@style/main_button_style"
         android:layout_width="250.0dip"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/register"
-        android:layout_below="@id/register"
+        android:layout_alignLeft="@+id/register"
+        android:layout_below="@+id/register"
         android:layout_marginTop="5.0dip"
         android:text="@string/login_button_name" />
 
