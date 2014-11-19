@@ -10,5 +10,4 @@ public class RegisterActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_activity);
 	}
-
 }

@@ -14,5 +14,4 @@ public class MoreFragment extends Fragment {
 		View view = inflater.inflate(R.layout.more_fragment, container, false);
 		return view;
 	}
-
 }
