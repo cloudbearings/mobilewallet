@@ -11,14 +11,17 @@ import android.widget.TextView;
 import com.mobilewallet.utils.Utils;
 
 public class LoginActivity extends ActionBarActivity {
+
+	private EditText email, pwd;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_activity);
 		try {
-			EditText email = (EditText) findViewById(R.id.email);
-			EditText pwd = (EditText) findViewById(R.id.pwd);
+			email = (EditText) findViewById(R.id.email);
+			pwd = (EditText) findViewById(R.id.pwd);
 
 			Button login = (Button) findViewById(R.id.login);
 			// Adding Helvetica custom font to button text
@@ -28,10 +31,14 @@ public class LoginActivity extends ActionBarActivity {
 
 				@Override
 				public void onClick(View v) {
-					// Opening Registration activity
-					startActivity(new Intent(LoginActivity.this,
-							TabsActivity.class)
-							.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+					if (email.getText().toString().equals("gopi")
+							&& pwd.getText().toString().equals("gopi")) {
+						// Opening Registration activity
+						startActivity(new Intent(LoginActivity.this,
+								TabsActivity.class)
+								.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+					}
 				}
 			});
 
@@ -45,7 +52,7 @@ public class LoginActivity extends ActionBarActivity {
 				public void onClick(View v) {
 					// Opening Login activity
 					startActivity(new Intent(LoginActivity.this,
-							LoginActivity.class)
+							RegisterActivity.class)
 							.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				}
 			});
