@@ -1,5 +1,5 @@
 package com.mobilewallet;
 
-public class MainActivity {
+public class About {
 
 }
