@@ -160,7 +160,7 @@
             android:layout_alignBaseline="@+id/textView4"
             android:layout_alignBottom="@+id/textView4"
             android:layout_centerHorizontal="true"
-            android:text="@string/share" />
+            android:text="@string/daily_credits" />
 
         <TextView
             android:id="@+id/textView6"
@@ -239,7 +239,7 @@
             android:layout_alignRight="@+id/imageView8"
             android:layout_marginBottom="@dimen/more_logo_textview_margin_bottom"
             android:layout_marginRight="@dimen/about_margin_right"
-            android:text="@string/about" />
+            android:text="@string/profile" />
 
         <TextView
             android:id="@+id/textView8"
