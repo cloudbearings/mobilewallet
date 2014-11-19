@@ -81,5 +81,6 @@
     <string name="title_activity_credit_history">Credit History</string>
     <string name="title_activity_debit_history">Debit History</string>
     <string name="title_activity_splash_screen">Splash Screen</string>
+    <string name="title_activity_daily_credits">Daily Credits</string>
 
 </resources>
