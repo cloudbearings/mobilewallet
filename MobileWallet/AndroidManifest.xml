@@ -72,12 +72,20 @@
             android:theme="@style/NoTitleBar" >
         </activity>
         <activity
-            android:name=".BalanceActivity"
+            android:name=".users.BalanceActivity"
             android:label="@string/title_activity_balance" >
         </activity>
         <activity
             android:name=".DailyCredits"
             android:label="@string/title_activity_daily_credits" >
+        </activity>
+        <activity
+            android:name=".Notifications"
+            android:label="@string/title_activity_notifications" >
+        </activity>
+        <activity
+            android:name="com.mobilewallet.users.MyProfile"
+            android:label="@string/title_activity_my_profile" >
         </activity>
     </application>
 
