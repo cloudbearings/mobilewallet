@@ -1,60 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="com_facebook_picker_place_image_size">64.0dip</dimen>
-    <dimen name="com_facebook_usersettingsfragment_profile_picture_width">64.0dip</dimen>
-    <dimen name="com_facebook_usersettingsfragment_profile_picture_height">64.0dip</dimen>
-    <dimen name="com_facebook_loginview_padding_left">12.0dip</dimen>
-    <dimen name="com_facebook_loginview_padding_right">16.0dip</dimen>
-    <dimen name="com_facebook_loginview_padding_top">12.0dip</dimen>
-    <dimen name="com_facebook_loginview_padding_bottom">12.0dip</dimen>
-    <dimen name="com_facebook_loginview_compound_drawable_padding">12.0dip</dimen>
-    <dimen name="com_facebook_loginview_text_size">16.0sp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_small">50.0dip</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_normal">100.0dip</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_large">180.0dip</dimen>
-    <dimen name="com_facebook_tooltip_horizontal_padding">10.0dip</dimen>
-    <dimen name="abc_config_prefDialogWidth">320.0dip</dimen>
-    <dimen name="abc_action_bar_stacked_tab_max_width">180.0dip</dimen>
-    <dimen name="abc_action_bar_default_height">48.0dip</dimen>
-    <dimen name="abc_action_bar_icon_vertical_padding">8.0dip</dimen>
-    <dimen name="abc_action_bar_title_text_size">18.0dip</dimen>
-    <dimen name="abc_action_bar_subtitle_text_size">14.0dip</dimen>
-    <dimen name="abc_action_bar_subtitle_top_margin">-3.0dip</dimen>
-    <dimen name="abc_action_bar_subtitle_bottom_margin">5.0dip</dimen>
-    <dimen name="abc_action_button_min_width">56.0dip</dimen>
-    <dimen name="abc_action_bar_stacked_max_height">48.0dip</dimen>
-    <dimen name="abc_action_bar_progress_bar_size">40.0dip</dimen>
-    <dimen name="abc_panel_menu_list_width">296.0dip</dimen>
-    <dimen name="abc_search_view_text_min_width">160.0dip</dimen>
-    <dimen name="abc_search_view_preferred_width">320.0dip</dimen>
-    <dimen name="abc_dropdownitem_text_padding_left">8.0dip</dimen>
-    <dimen name="abc_dropdownitem_text_padding_right">8.0dip</dimen>
-    <dimen name="abc_dropdownitem_icon_width">32.0dip</dimen>
-    <dimen name="dialog_fixed_width_major">320.0dip</dimen>
-    <dimen name="dialog_fixed_width_minor">320.0dip</dimen>
-    <item type="dimen" name="dialog_fixed_height_major">79.99999%</item>
-    <item type="dimen" name="dialog_fixed_height_minor">100.0%</item>
-    <dimen name="activity_horizontal_margin">16.0dip</dimen>
-    <dimen name="activity_vertical_margin">16.0dip</dimen>
-    <dimen name="custom_actionbar_text_size">16.0dip</dimen>
-    <dimen name="main_heading_text_size">27.0dip</dimen>
-    <dimen name="main_button_text_size">20.0dip</dimen>
-    <dimen name="register_edittext_padding">15.0dip</dimen>
-    <dimen name="register_edittext_text_size">14.0sp</dimen>
-    <dimen name="register_button_text_size">16.0dip</dimen>
-    <dimen name="foregot_password_text_size">16.0sp</dimen>
-    <dimen name="more_logo_padding_bottom">20.0dip</dimen>
-    <dimen name="more_logo_padding_left">21.0dip</dimen>
-    <dimen name="more_logo_padding_right">21.0dip</dimen>
-    <dimen name="more_relative_layout_height">90.0dip</dimen>
-    <dimen name="more_logo_textview_margin_bottom">17.0dip</dimen>
-    <dimen name="more_logo_textview_margin_right">32.0dip</dimen>
-    <dimen name="profile_margin_right">33.0dip</dimen>
-    <dimen name="about_margin_right">34.0dip</dimen>
-    <dimen name="notifications_margin_right">12.0dip</dimen>
-    <dimen name="rate_margin_right">38.0dip</dimen>
-    <dimen name="recharge_margin_right">22.0dip</dimen>
-    <dimen name="learnGK_margin_right">22.0dip</dimen>
-    <dimen name="feedback_margin_right">23.0dip</dimen>
-    <dimen name="invite_heading_text_size">22.0sp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <!-- custom_actionbar.xml -->
+    <dimen name="custom_actionbar_text_size">16dp</dimen>
+    
+    <!-- main_activity.xml -->
+    <dimen name="main_heading_text_size">27dp</dimen>
+    <dimen name="main_button_text_size">20dp</dimen>
+    
+    <!-- register_activity.xml -->
+    <dimen name="register_edittext_padding">15dp</dimen>
+    <dimen name="register_edittext_text_size">14sp</dimen>
+    <dimen name="register_button_text_size">16dp</dimen>
+    <dimen name="foregot_password_text_size">16sp</dimen>
+    
+    <!-- more_fragment.xml -->
+    <dimen name="more_logo_padding_bottom">20dp</dimen>
+    <dimen name="more_logo_padding_left">21dp</dimen>
+    <dimen name="more_logo_padding_right">21dp</dimen>
+    <dimen name="more_relative_layout_height">90dp</dimen>
+    <dimen name="more_logo_textview_margin_bottom">17dp</dimen>
+    <dimen name="more_logo_textview_margin_right">32dp</dimen>
+    <dimen name="profile_margin_right">33dp</dimen>
+    <dimen name="about_margin_right">34dp</dimen>
+    <dimen name="notifications_margin_right">12dp</dimen>
+    <dimen name="rate_margin_right">38dp</dimen>
+    <dimen name="recharge_margin_right">22dp</dimen>
+    <dimen name="learnGK_margin_right">22dp</dimen>
+    <dimen name="feedback_margin_right">23dp</dimen>
+    <dimen name="invite_heading_text_size">22sp</dimen>
+
 </resources>
