@@ -9,7 +9,7 @@ import retrofit.converter.Converter;
 import retrofit.mime.TypedInput;
 import retrofit.mime.TypedOutput;
 
-public class StringConverter implements Converter  {
+public class StringConverter implements Converter {
 	public Object fromBody(TypedInput typedInput, Type arg1)
 			throws ConversionException {
 		InputStreamReader input = null;
@@ -51,9 +51,4 @@ public class StringConverter implements Converter  {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 }
-
-
-
