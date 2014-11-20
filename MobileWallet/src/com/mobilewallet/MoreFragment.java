@@ -4,6 +4,7 @@ import com.mobilewallet.users.BalanceActivity;
 import com.mobilewallet.users.MyProfile;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -70,6 +71,15 @@ public class MoreFragment extends Fragment {
 			@Override
 			public void onClick(View v) {
 
+				Intent sendIntent = new Intent();
+				sendIntent.setAction(Intent.ACTION_SEND);
+				sendIntent
+						.putExtra(
+								Intent.EXTRA_TEXT,
+								"Just discovered MobileWallet app which offers free mobile recharge.Install it and give it a try... http://mobilewalletapp.in");
+				sendIntent.setType("text/plain");
+				startActivity(sendIntent);
+
 			}
 		});
 
@@ -78,7 +88,9 @@ public class MoreFragment extends Fragment {
 
 			@Override
 			public void onClick(View v) {
-
+				Intent rateIntent = new Intent(
+						Intent.ACTION_VIEW,
+						Uri.parse("https://play.google.com/store/apps/details?id=com.mobilewallet"));
 			}
 		});
 
