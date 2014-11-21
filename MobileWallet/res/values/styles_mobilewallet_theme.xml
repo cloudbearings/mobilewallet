@@ -38,6 +38,7 @@
         <item name="backgroundStacked">@drawable/ab_stacked_solid_mobilewallet_theme</item>
         <item name="backgroundSplit">@drawable/ab_bottom_solid_mobilewallet_theme</item>
         <item name="progressBarStyle">@style/ProgressBar.Mobilewallet_theme</item>
+        <item name="icon">@android:color/transparent</item>
     </style>
 
     <style name="ActionBar.Transparent.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionBar">
