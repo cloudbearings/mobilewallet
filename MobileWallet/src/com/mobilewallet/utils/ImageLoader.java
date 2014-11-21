@@ -20,7 +20,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
-import com.appfeed.R;
+import com.mobilewallet.R;
  
 public class ImageLoader {
  
