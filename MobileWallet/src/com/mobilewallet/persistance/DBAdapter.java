@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBAdapter extends SQLiteOpenHelper {
 
-	private static final String DB_NAME = "walletplus.db";
+	private static final String DB_NAME = "mobilewallet.db";
 	// Current app version 1.0.7
 	private static final int DB_VERSION = 1;
 
