@@ -1,6 +1,8 @@
 package com.mobilewallet.service;
 
-public class RestAdapter {
+import retrofit.RestAdapter;
+
+public class BuildService {
 
 	String URL = "http://www.mobilewalletapp.com";
 
