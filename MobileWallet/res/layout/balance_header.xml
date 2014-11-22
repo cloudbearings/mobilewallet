@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/balance_title_margin_bottom"
+        android:layout_marginLeft="@dimen/balance_title_margin_left"
+        android:layout_marginTop="@dimen/balance_title_margin_top"
+        android:text="@string/bal_heading"
+        android:textColor="@color/balance_header_text_color"
+        android:textSize="@dimen/balance_title_text_size"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/balnce_amt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="@dimen/balance_amt_margin_left"
+        android:layout_toRightOf="@+id/textView1"
+        android:textColor="@color/balance_header_amt_color"
+        android:textSize="@dimen/balance_title_text_size"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:background="@color/balance_view_color" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/wallet_icon_margin_left"
+        android:layout_marginTop="@dimen/wallet_icon_margin_top"
+        android:src="@drawable/rupee_icon" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="1dp"
+        android:layout_height="@dimen/balance_vertical_view_height"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_marginLeft="@dimen/balance_vertical_margin_left"
+        android:layout_marginTop="@dimen/balance_vertical_margin_top"
+        android:layout_toRightOf="@+id/imageView1"
+        android:background="@color/balance_view_color" />
+
+</RelativeLayout>

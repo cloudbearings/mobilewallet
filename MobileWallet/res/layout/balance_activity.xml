@@ -1,16 +1,176 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/balanceFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mobilewallet.users.BalanceActivity" >
+    android:background="@color/white"
+    tools:context=".BalanceActivity" >
 
-    <TextView
+    <include
+        android:id="@+id/balance_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        layout="@layout/balance_header" />
+
+    <RelativeLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/balance_header"
+        android:padding="@dimen/balance_layout_padding" >
+
+        <TextView
+            android:id="@+id/creditAmount"
+            style="@style/balance_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/rechargeMyMobile"
+            android:layout_marginBottom="@dimen/balance_textview_margin_bottom"
+            android:layout_marginTop="@dimen/balance_credt_amt_margin_top"
+            android:text="@string/credit_history_msg" />
+
+        <TextView
+            android:id="@+id/debitAmount"
+            style="@style/balance_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/creditAmount"
+            android:layout_below="@+id/creditAmount"
+            android:layout_marginBottom="@dimen/balance_textview_margin_bottom"
+            android:layout_marginTop="@dimen/balance_textview_margin_top"
+            android:text="@string/debit_history_msg" />
+
+        <TextView
+            android:id="@+id/currentBal"
+            style="@style/balance_text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/debitAmount"
+            android:layout_below="@+id/debitAmount"
+            android:layout_marginBottom="@dimen/balance_textview_margin_bottom"
+            android:layout_marginTop="@dimen/balance_textview_margin_top"
+            android:text="@string/current_balance" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerHorizontal="true"
+            android:background="@color/line_color" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/view1"
+            android:layout_below="@+id/debitAmount"
+            android:background="@color/line_color" />
+
+        <TextView
+            android:id="@+id/creditAmt"
+            style="@style/balance_amt_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/debitAmount"
+            android:layout_alignRight="@+id/view1"
+            android:layout_marginBottom="@dimen/balance_textview_margin_bottom"
+            android:layout_marginRight="@dimen/balance_credt_amt_margin_right"
+            android:text="$10" />
+
+        <TextView
+            android:id="@+id/debitAmt"
+            style="@style/balance_amt_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/currentBal"
+            android:layout_alignLeft="@+id/creditAmt"
+            android:layout_marginBottom="@dimen/balance_textview_margin_bottom"
+            android:text="$5.0" />
+
+        <TextView
+            android:id="@+id/balance"
+            style="@style/balance_amt_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/currentBal"
+            android:layout_alignBottom="@+id/currentBal"
+            android:layout_alignLeft="@+id/debitAmt"
+            android:text="$5.0" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignLeft="@+id/view2"
+            android:layout_below="@+id/currentBal"
+            android:background="@color/line_color" />
+
+        <Button
+            android:id="@+id/rechargeMyMobile"
+            style="@style/recharge_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/balance_red_button_height"
+            android:layout_below="@+id/view3"
+            android:layout_marginTop="@dimen/balance_red_button_margin_bottom"
+            android:text="@string/recharge"
+            android:textSize="@dimen/balance_red_button_text_size"
+            android:textStyle="normal" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/fakeView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+
+    <View
+        android:id="@+id/View02"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/line_color" />
+
+    <Button
+        android:id="@+id/creditHistory"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/balance_credit_debit_image_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/fakeView"
+        android:background="@drawable/textlines"
+        android:paddingTop="60dp"
+        android:text="@string/wallet_history"
+        android:textColor="@color/bringal_color" />
+
+    <Button
+        android:id="@+id/debitHistory"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/balance_credit_debit_image_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/fakeView"
+        android:background="@drawable/textlines"
+        android:paddingTop="60dp"
+        android:text="@string/recharge_history"
+        android:textColor="@color/bringal_color" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/debitHistory"
+        android:layout_alignTop="@+id/debitHistory"
+        android:layout_marginLeft="69dp"
+        android:layout_marginTop="33dp"
+        android:src="@drawable/wallet_new" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="69dp"
+        android:src="@drawable/recharge_history" />
 
 </RelativeLayout>
