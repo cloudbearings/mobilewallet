@@ -10,6 +10,8 @@ import java.util.Locale;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 public class Utils {
 
@@ -78,6 +80,7 @@ public class Utils {
 		editor.putString("userId", s);
 		editor.commit();
 	}
+
 	public static void CopyStream(InputStream is, OutputStream os) {
 		final int buffer_size = 1024;
 		try {
@@ -90,5 +93,14 @@ public class Utils {
 			}
 		} catch (Exception ex) {
 		}
+	}
+
+	// Method to check internet connection
+	public static boolean isNetworkAvailable(Context context) {
+
+		NetworkInfo activeNetwork = ((ConnectivityManager) context
+				.getSystemService(Context.CONNECTIVITY_SERVICE))
+				.getActiveNetworkInfo();
+		return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 	}
 }
