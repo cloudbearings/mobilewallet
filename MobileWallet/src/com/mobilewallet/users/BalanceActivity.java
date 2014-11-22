@@ -1,14 +1,11 @@
 package com.mobilewallet.users;
 
-import com.mobilewallet.R;
-import com.mobilewallet.R.id;
-import com.mobilewallet.R.layout;
-import com.mobilewallet.R.menu;
-
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.mobilewallet.R;
 
 public class BalanceActivity extends ActionBarActivity {
 
