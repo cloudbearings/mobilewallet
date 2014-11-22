@@ -100,6 +100,9 @@
     <string name="credit_history_msg">Total Credited Amount</string>
     <string name="debit_history_msg">Total Debited Amount</string>
     <string name="bal_heading">Your Wallet Balance :</string>
+    
+    <string name="title_activity_credit_history">Credit History</string>
+    <string name="title_activity_debit_history">Debit History</string>
     <string name="title_activity_splash_screen">Splash Screen</string>
     <string name="title_activity_daily_credits">Daily Credits</string>
     <string name="title_activity_notifications">Notifications</string>
