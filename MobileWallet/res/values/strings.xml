@@ -12,7 +12,7 @@
     <string name="no_internet">No network connection enabled.</string>
     <string name="load_offers_msg">load</string>
     <string name="please_wait">Please wait</string>
-    <string name="facebook_app_id">Mobile Wallet</string>
+    <string name="facebook_app_id">288571111343597</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -24,10 +24,23 @@
     <string name="main_heading">Mobile Wallet</string>
     <string name="register_button_name">Register</string>
     <string name="login_button_name">Login</string>
+
+    <!-- login_activity.xml -->
     <string name="title_activity_login">Login</string>
     <string name="dont_have_an_account_button_name">"Don't have an account? Register"</string>
     <string name="forgot_pwd">Forgot Password?</string>
     <string name="login_with_fb_button_name">Login With Facebook</string>
+
+    <!-- login_activity.xml error messages -->
+    <string name="pwd_error">Enter your password.</string>
+    <string name="rtpwd_error">Enter your retype password.</string>
+    <string name="invalid_email">Invalid email.</string>
+    <string name="invalid_pwd">Invalid password. Min 8 and max 20 characters and no spaces in between password.</string>
+    <string name="fullname_error">Enter your fullname.</string>
+    
+    <!-- login_activity.xml fb messages -->
+    <string name="session_status">Session state changed.</string>
+    <string name="failed_to_get_details">Failed to get details from facebook.</string>
 
     <!-- register_activity.xml -->
     <string name="title_activity_register">Registration</string>
