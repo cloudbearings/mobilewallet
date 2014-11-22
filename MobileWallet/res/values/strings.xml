@@ -37,7 +37,7 @@
     <string name="invalid_email">Invalid email.</string>
     <string name="invalid_pwd">Invalid password. Min 8 and max 20 characters and no spaces in between password.</string>
     <string name="fullname_error">Enter your fullname.</string>
-    
+
     <!-- login_activity.xml fb messages -->
     <string name="session_status">Session state changed.</string>
     <string name="failed_to_get_details">Failed to get details from facebook.</string>
@@ -90,9 +90,16 @@
     <string name="forgot_pwd_success_msg">Password sent successfully to your email address.</string>
     <string name="title_activity_feedback">Feedback</string>
     <string name="title_activity_about">About</string>
+
+    <!-- balance_activity.xml -->
     <string name="title_activity_balance">Balance</string>
-    <string name="title_activity_credit_history">Credit History</string>
-    <string name="title_activity_debit_history">Debit History</string>
+    <string name="current_bal">Current balance</string>
+    <string name="wallet_history">Wallet History</string>
+    <string name="recharge_history">Recharge History</string>
+    <string name="current_balance">Balance Amount</string>
+    <string name="credit_history_msg">Total Credited Amount</string>
+    <string name="debit_history_msg">Total Debited Amount</string>
+    <string name="bal_heading">Your Wallet Balance :</string>
     <string name="title_activity_splash_screen">Splash Screen</string>
     <string name="title_activity_daily_credits">Daily Credits</string>
     <string name="title_activity_notifications">Notifications</string>

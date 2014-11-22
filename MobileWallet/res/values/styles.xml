@@ -16,7 +16,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-    
+
     <!-- custom_actionbar.xml -->
     <style name="actionbar_text_style">
         <item name="android:textSize">@dimen/custom_actionbar_text_size</item>
@@ -66,6 +66,26 @@
     <style name="forgot_pwd_text_style">
         <item name="android:textSize">@dimen/foregot_password_text_size</item>
         <item name="android:textColorHint">@color/bringal_color</item>
+    </style>
+
+    <!-- balance_activity XML styles -->
+    <style name="balance_text_style">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/balance_textview_size</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <style name="balance_amt_style">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/balance_textview_size</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+    
+     <style name="recharge_button_style">
+        <item name="android:textSize">@dimen/balance_redeem_button_text_size</item>
+        <item name="android:background">@drawable/bringal_color_button</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>
