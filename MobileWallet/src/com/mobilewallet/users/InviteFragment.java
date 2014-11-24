@@ -17,5 +17,4 @@ public class InviteFragment extends Fragment {
 				.inflate(R.layout.invite_fragment, container, false);
 		return view;
 	}
-
 }
