@@ -13,6 +13,8 @@
     <string name="load_offers_msg">load</string>
     <string name="please_wait">Please wait</string>
     <string name="facebook_app_id">288571111343597</string>
+    <string name="recharge_tab">showRechargeTab</string>
+    <string name="show_true">true</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -100,12 +102,13 @@
     <string name="credit_history_msg">Total Credited Amount</string>
     <string name="debit_history_msg">Total Debited Amount</string>
     <string name="bal_heading">Your Wallet Balance :</string>
-    
     <string name="title_activity_credit_history">Credit History</string>
     <string name="title_activity_debit_history">Debit History</string>
     <string name="title_activity_splash_screen">Splash Screen</string>
     <string name="title_activity_daily_credits">Daily Credits</string>
     <string name="title_activity_notifications">Notifications</string>
     <string name="title_activity_my_profile">MyProfile</string>
+    <string name="title_activity_wallet_histoy">Wallet Histoy</string>
+    <string name="title_activity_recharge_history">Recharge History</string>
 
 </resources>

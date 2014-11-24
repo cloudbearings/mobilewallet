@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar.Tab;
-import android.view.MenuItem;
+import android.support.v7.app.ActionBarActivity;
+
 import com.mobilewallet.adapters.TabsAdapter;
 
 public class TabsActivity extends ActionBarActivity implements
@@ -16,9 +16,6 @@ public class TabsActivity extends ActionBarActivity implements
 	private TabsAdapter mAdapter;
 	private String tabs[] = { "LEARN GK", "INVITE", "RECHARGE", "MORE" };
 	private ViewPager viewPager;
-
-	public TabsActivity() {
-	}
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,11 +58,17 @@ public class TabsActivity extends ActionBarActivity implements
 			}
 		});
 
+		if (getIntent().getStringExtra(getString(R.string.recharge_tab))
+				.equals(getString(R.string.show_true))) {
+			// showRechargeTab string from Balance Activity
+			changetab(1);
+			getIntent().removeExtra(getString(R.string.recharge_tab));
+		}
+
 	}
 
 	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
-
 	}
 
 	@Override
@@ -75,7 +78,9 @@ public class TabsActivity extends ActionBarActivity implements
 
 	@Override
 	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
-
 	}
 
+	public void changetab(int tabIndex) {
+		viewPager.setCurrentItem(tabIndex);
+	}
 }

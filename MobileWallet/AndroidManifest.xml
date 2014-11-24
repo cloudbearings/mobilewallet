@@ -84,8 +84,16 @@
             android:label="@string/title_activity_notifications" >
         </activity>
         <activity
-            android:name="com.mobilewallet.users.MyProfile"
+            android:name=".users.MyProfile"
             android:label="@string/title_activity_my_profile" >
+        </activity>
+        <activity
+            android:name=".WalletHistoy"
+            android:label="@string/title_activity_wallet_histoy" >
+        </activity>
+        <activity
+            android:name=".RechargeHistory"
+            android:label="@string/title_activity_recharge_history" >
         </activity>
     </application>
 
