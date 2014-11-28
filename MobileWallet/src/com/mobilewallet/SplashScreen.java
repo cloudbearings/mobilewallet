@@ -15,6 +15,7 @@ public class SplashScreen extends ActionBarActivity {
 			// Opening MainActivity
 			startActivity(new Intent(SplashScreen.this, MainActivity.class)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+			finish();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
