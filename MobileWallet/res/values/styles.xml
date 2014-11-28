@@ -86,19 +86,20 @@
     <!-- forgot_password XML styles -->
 
     <style name="forgot_pwd_heading_style">
+        <item name="android:background">@drawable/ash_bg_textlines</item>
         <item name="android:padding">@dimen/forgot_pwd_heading_padding</item>
         <item name="android:textColor">@color/bringal_color</item>
     </style>
 
     <style name="forgot_pwd_text_style">
         <item name="android:textSize">@dimen/forgot_password_text_size</item>
-        <item name="android:textColor">@color/bringal_color</item>
+        <item name="android:textColor">@color/forgot_pwd_text_color</item>
     </style>
 
     <style name="forgot_pwd_edittext_text_style">
         <item name="android:textSize">@dimen/forgot_pwd_edittext_textsize</item>
         <item name="android:textColorHint">@color/bringal_color</item>
-        <item name="android:background">@drawable/bringal_border_textlines</item>
+        <item name="android:background">@drawable/forgot_pwd_edittext_textlines</item>
         <item name="android:padding">@dimen/forgot_pwd_edittext_padding</item>
     </style>
 

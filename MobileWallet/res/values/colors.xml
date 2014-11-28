@@ -14,10 +14,14 @@
     <color name="more_fragment_bg_color">#fff9f9fa</color>
     <color name="more_view_bg_color">#fff4f5f6</color>
     <color name="horizental_line_color">#6e7992</color>
+    <color name="ash_color">#ededed</color>
+    <color name="ash_border_color">#dddddd</color>
     
     <!-- balance_header xml colors -->
     <color name="balance_view_color">#ededed</color>
     <color name="balance_header_text_color">#727272</color>
     <color name="balance_header_amt_color">#6ebb3b</color>
+    
+    <color name="forgot_pwd_text_color">#979797</color>
 
 </resources>

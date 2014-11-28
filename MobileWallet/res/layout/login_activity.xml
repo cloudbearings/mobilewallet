@@ -59,11 +59,12 @@
 
     <TextView
         android:id="@+id/forgot_pwd"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/dont_have_an_account"
         android:layout_below="@+id/dont_have_an_account"
         android:layout_marginTop="20dp"
+        android:paddingLeft="19dp"
         android:text="@string/forgot_pwd" />
 
     <com.mobilewallet.widget.LoginButton
@@ -76,5 +77,14 @@
         android:text="@string/login_with_fb_button_name"
         facebook:confirm_logout="false"
         facebook:fetch_user_info="true" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fb_login"
+        android:paddingBottom="2dp"
+        android:layout_alignLeft="@+id/forgot_pwd"
+        android:src="@drawable/forgot_pwd_icon" />
 
 </RelativeLayout>
