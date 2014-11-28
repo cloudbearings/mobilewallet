@@ -2,7 +2,7 @@ package com.mobilewallet.service;
 
 import retrofit.RestAdapter;
 
-public class BuildService {
+public interface BuildService {
 
 	String URL = "http://www.mobilewalletapp.com";
 
