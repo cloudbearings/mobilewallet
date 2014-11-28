@@ -21,6 +21,7 @@
     <string name="arial">fonts/arial.otf</string>
     <string name="Bebas">fonts/BEBAS.otf</string>
     <string name="GothamRnd">fonts/GothamRnd.otf</string>
+    <string name="DroidSerif">fonts/DroidSerif-Italic.otf</string>
 
     <!-- main_activity.xml -->
     <string name="main_heading">Mobile Wallet</string>
