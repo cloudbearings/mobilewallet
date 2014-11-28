@@ -85,6 +85,7 @@
     <!-- forgot_password.xml -->
     <string name="title_activity_forgot_password">Forgot Your Password?</string>
     <string name="forgot_password_des">"To reser your password, please enter your registered email address. An email will be sent to that email address."</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="ok">OK</string>
     <string name="cancel">CANCEL</string>
     <string name="email_error">Inavalid email.</string>

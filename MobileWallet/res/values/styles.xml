@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -63,11 +63,6 @@
         <item name="android:background">@drawable/bringal_border_button</item>
     </style>
 
-    <style name="forgot_pwd_text_style">
-        <item name="android:textSize">@dimen/foregot_password_text_size</item>
-        <item name="android:textColorHint">@color/bringal_color</item>
-    </style>
-
     <!-- balance_activity XML styles -->
     <style name="balance_text_style">
         <item name="android:textStyle">normal</item>
@@ -80,12 +75,31 @@
         <item name="android:textSize">@dimen/balance_textview_size</item>
         <item name="android:textColor">@color/bringal_color</item>
     </style>
-    
-     <style name="recharge_button_style">
+
+    <style name="recharge_button_style">
         <item name="android:textSize">@dimen/balance_redeem_button_text_size</item>
         <item name="android:background">@drawable/bringal_color_button</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- forgot_password XML styles -->
+
+    <style name="forgot_pwd_heading_style">
+        <item name="android:padding">@dimen/forgot_pwd_heading_padding</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <style name="forgot_pwd_text_style">
+        <item name="android:textSize">@dimen/forgot_password_text_size</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <style name="forgot_pwd_edittext_text_style">
+        <item name="android:textSize">@dimen/forgot_pwd_edittext_textsize</item>
+        <item name="android:textColorHint">@color/bringal_color</item>
+        <item name="android:background">@drawable/bringal_border_textlines</item>
+        <item name="android:padding">@dimen/forgot_pwd_edittext_padding</item>
     </style>
 
 </resources>
