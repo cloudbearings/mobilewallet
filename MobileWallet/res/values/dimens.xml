@@ -15,7 +15,6 @@
     <dimen name="register_edittext_padding">15dp</dimen>
     <dimen name="register_edittext_text_size">14sp</dimen>
     <dimen name="register_button_text_size">16dp</dimen>
-    <dimen name="foregot_password_text_size">16sp</dimen>
 
     <!-- more_fragment.xml -->
     <dimen name="more_logo_padding_bottom">20dp</dimen>
@@ -58,5 +57,12 @@
     <dimen name="balance_credit_debit_image_height">140sp</dimen>
     <dimen name="balance_textview_size">14sp</dimen>
     <dimen name="balance_redeem_button_text_size">17sp</dimen>
+
+    <!-- forgot_password.xml -->
+    <dimen name="forgot_pwd_edittext_padding">12dp</dimen>
+    <dimen name="forgot_pwd_edittext_textsize">14dp</dimen>
+    <dimen name="forgot_password_text_size">15sp</dimen>
+    <dimen name="forgot_pwd_heading_padding">12dp</dimen>
+    <dimen name="forgot_pwd_layout_padding">15dp</dimen>
 
 </resources>

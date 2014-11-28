@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -65,14 +66,15 @@
         android:layout_marginTop="20dp"
         android:text="@string/forgot_pwd" />
 
-    <com.facebook.widget.LoginButton
+    <com.mobilewallet.widget.LoginButton
         android:id="@+id/fb_login"
-        style="@style/signup_with_fb_button_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/forgot_pwd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="@string/login_with_fb_button_name" />
+        android:text="@string/login_with_fb_button_name"
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true" />
 
 </RelativeLayout>
