@@ -1,13 +1,17 @@
 package com.mobilewallet;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
+import android.view.View;
+import android.widget.TextView;
 
 import com.mobilewallet.adapters.TabsAdapter;
+import com.mobilewallet.utils.Utils;
 
 public class TabsActivity extends ActionBarActivity implements
 		android.support.v7.app.ActionBar.TabListener {
@@ -21,12 +25,32 @@ public class TabsActivity extends ActionBarActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tabs);
 
-		// Specifying actionbar display options
-		getSupportActionBar().setDisplayOptions(
-				ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_HOME_AS_UP
-						| ActionBar.DISPLAY_SHOW_HOME);
+		if (android.os.Build.VERSION.SDK_INT > 10) {
+			// Adding custom action bar
+			getSupportActionBar().setDisplayOptions(
+					ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+			getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+
+			try {
+				View homeIcon = findViewById(android.R.id.home);
+				((View) homeIcon.getParent()).setVisibility(View.GONE);
+			} catch (Exception e) {
+
+			}
+		} else {
+			getSupportActionBar().setDisplayOptions(
+					ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
+			getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+		}
+
 		// Adding custom actionbar
 		getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+
+		TextView activity_title = (TextView) findViewById(R.id.actionbar_title);
+		activity_title.setTypeface(Utils.getFont(TabsActivity.this, getString(R.string.Helvetica)),
+				Typeface.BOLD);
+		activity_title.setText(getString(R.string.app_name));
+
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getSupportActionBar();
 		mAdapter = new TabsAdapter(getSupportFragmentManager());
@@ -35,8 +59,7 @@ public class TabsActivity extends ActionBarActivity implements
 
 		// Adding Tabs
 		for (String tab_name : tabs) {
-			actionBar.addTab(actionBar.newTab().setText(tab_name)
-					.setTabListener(this));
+			actionBar.addTab(actionBar.newTab().setText(tab_name).setTabListener(this));
 		}
 
 		/**
@@ -58,8 +81,9 @@ public class TabsActivity extends ActionBarActivity implements
 			}
 		});
 
-		if (getIntent().getStringExtra(getString(R.string.recharge_tab))
-				.equals(getString(R.string.show_true))) {
+		if (getIntent().getStringExtra(getString(R.string.recharge_tab)) != null
+				&& getIntent().getStringExtra(getString(R.string.recharge_tab)).equals(
+						getString(R.string.show_true))) {
 			// showRechargeTab string from Balance Activity
 			changetab(1);
 			getIntent().removeExtra(getString(R.string.recharge_tab));
