@@ -8,6 +8,7 @@
     <color name="black">#ff3d3d3d</color>
     <color name="bg_color">#fff2f2f5</color>
     <color name="bringal_color">#ff646f88</color>
+    <color name="bringal_selected">#232c48</color>
     <color name="actionbar_bg">#ff323c52</color>
     <color name="actionbar_tab_text_color">#ff7586b2</color>
     <color name="line_color">#ffe8eaee</color>
@@ -16,6 +17,9 @@
     <color name="horizental_line_color">#6e7992</color>
     <color name="ash_color">#ededed</color>
     <color name="ash_border_color">#dddddd</color>
+
+    <!-- custom_actionbar xml colors -->
+    <color name="tab_text_color">#7586b2</color>
 
     <!-- balance_header xml colors -->
     <color name="balance_view_color">#ededed</color>
@@ -51,5 +55,9 @@
     <color name="history_tid_color">#a3a3a3</color>
     <color name="history_date_color">#a3a3a3</color>
     <color name="history_listitem_text_color">#373636</color>
+
+    <!-- recharge_fragment xml colors -->
+    <color name="recharge_edittext_border_color">#e6e6e6</color>
+    <color name="recharge_view_color">#79bd8c</color>
 
 </resources>

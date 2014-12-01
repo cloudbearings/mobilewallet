@@ -30,6 +30,7 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_mobilewallet_theme</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_mobilewallet_theme</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Mobilewallet_theme</item>
+        <item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>
     </style>
 
     <style name="ActionBar.Solid.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -49,6 +50,13 @@
     <style name="Theme.Mobilewallet_theme.Widget" parent="@style/Theme.AppCompat">
         <item name="android:popupMenuStyle">@style/PopupMenu.Mobilewallet_theme</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Mobilewallet_theme</item>
+    </style>
+
+    <!-- ActionBar tabs text styles -->
+    <style name="MyActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText">
+        <item name="android:textSize">@dimen/tabtext_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/tab_text_color</item>
     </style>
 
     <!-- this style is used to hide activity title and action bar -->
