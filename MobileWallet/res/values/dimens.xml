@@ -16,6 +16,12 @@
     <dimen name="register_edittext_text_size">14sp</dimen>
     <dimen name="register_button_text_size">16dp</dimen>
 
+    <!-- spinner_item xml dimes -->
+    <dimen name="spinner_text_size">14sp</dimen>
+    <dimen name="spinner_textview_height">35dp</dimen>
+    <dimen name="spinner_textview_padding_top">8dp</dimen>
+    <dimen name="spinner_textview_padding_left">15dp</dimen>
+
     <!-- more_fragment.xml -->
     <dimen name="more_logo_padding_bottom">20dp</dimen>
     <dimen name="more_logo_padding_left">21dp</dimen>
@@ -64,10 +70,29 @@
     <dimen name="forgot_password_text_size">14sp</dimen>
     <dimen name="forgot_pwd_heading_padding">12dp</dimen>
     <dimen name="forgot_pwd_layout_padding">15dp</dimen>
-    
+
     <!-- daily_credits.xml -->
     <dimen name="daily_credits_heading_textsize">18sp</dimen>
     <dimen name="daily_credits_des_textsize">15sp</dimen>
     <dimen name="daily_credits_button_textsize">16sp</dimen>
+
+    <!-- my_profile.xml -->
+    <dimen name="my_profile_layout_padding">40dp</dimen>
+    <dimen name="my_profile_textview_margin_top">20dp</dimen>
+    <dimen name="my_profile_image_margin_top">15dp</dimen>
+    <dimen name="my_profile_button_margin_top">45dp</dimen>
+    <dimen name="my_profile_mobile_margin_left">20dp</dimen>
+    <dimen name="my_profile_button_text_size">15dp</dimen>
+    <dimen name="my_profile_textview_text_size">14dp</dimen>
+
+    <!-- edit_profile.xml -->
+    <dimen name="edit_profile_layout_padding">30dp</dimen>
+    <dimen name="edit_profile_button_text_size">15dp</dimen>
+    <dimen name="edit_profile_button_margin_top">30dp</dimen>
+    <dimen name="edit_profile_edittext_text_size">14dp</dimen>
+    <dimen name="edit_profile_edittext_padding_left">18dp</dimen>
+    <dimen name="edit_profile_mb_no_margin_top">15dp</dimen>
+    <dimen name="edit_profile_dob_margin_top">25dp</dimen>
+    <dimen name="edit_profile_spinner_margin_top">15dp</dimen>
 
 </resources>

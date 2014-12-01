@@ -28,4 +28,11 @@
     <!-- daily_credits.xml -->
     <color name="daily_credits_des_color">#868686</color>
 
+    <!-- my_profile.xml -->
+    <color name="my_profile_text_color">#a9a9a9</color>
+    
+    <!-- edit_profile.xml -->
+    <color name="edit_profile_edittext_text_color">#767676</color>
+    <color name="edit_profile_spinner_item_color">#767676</color>
+
 </resources>

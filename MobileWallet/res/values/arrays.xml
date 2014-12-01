@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- my_profile.xml -->
+    <string-array name="occupation_array_items">
+        <item>Occupation</item>
+        <item>Artist</item>
+        <item>Business / Self employed</item>
+        <item>Consultant</item>
+        <item>Director / Senior Management</item>
+        <item>Doctor</item>
+        <item>Engineer</item>
+        <item>Executive / Middle level</item>
+        <item>Housewife</item>
+        <item>Manager</item>
+        <item>Retired</item>
+        <item>Social worker</item>
+        <item>Student</item>
+        <item>Teacher / Administrator</item>
+        <item>Unemployed / Between jobs</item>
+        <item>Other / None</item>
+    </string-array>
+    <string-array name="income_array_items">
+        <item>Income</item>
+        <item>Less than Rs 6250</item>
+        <item>Rs 6250 - Rs 12500</item>
+        <item>Rs 12500 - Rs 25000</item>
+        <item>Rs 25000 - Rs 40000</item>
+        <item>Rs 40000 - Rs 80000</item>
+        <item>Rs 80000- Rs 100,000</item>
+        <item>More than 100,000</item>
+        <item>No Income</item>
+    </string-array>
+
+    <!-- recharge_activity circle array -->
+    <string-array name="circles_array">
+        <item>Andhra &amp; Telangana</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chattisgarh</item>
+        <item>Chennai</item>
+        <item>Delhi &amp; NCR</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Kolkata</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra &amp; Goa</item>
+        <item>Mumbai</item>
+        <item>North East</item>
+        <item>Orrisa</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Tamilnadu</item>
+        <item>Uttar Pradesh East</item>
+        <item>Uttar Pradesh West</item>
+        <item>West Bengal</item>
+    </string-array>
+
+    <!-- recharge_activity mobile operator array -->
+    <string-array name="mobile_operators_array">
+        <item>Airtel</item>
+        <item>Airtel PostPaid</item>
+        <item>AirCel</item>
+        <item>BSNL</item>
+        <item>Idea</item>
+        <item>Idea PostPaid</item>
+        <item>LOOP(BPL)Mumbai</item>
+        <item>MTS</item>
+        <item>MTNL</item>
+        <item>Reliance(CDMA)</item>
+        <item>Reliance(CDMA) PostPaid</item>
+        <item>Reliance(GSM)</item>
+        <item>Reliance(GSM) PostPaid</item>
+        <item>T24</item>
+        <item>Tata Indicom</item>
+        <item>Tata Docomo</item>
+        <item>Uninor</item>
+        <item>Vodafone</item>
+        <item>Vodafone PostPaid</item>
+        <item>Videocon</item>
+        <item>Virgin CDMA</item>
+        <item>Virgin GSM</item>
+    </string-array>
+
+    <!-- recharge_activity plan type array -->
+    <string-array name="plan_type_array">
+        <item>Topup Plans</item>
+        <item>Special Offer</item>
+        <item>3G Plans</item>
+        <item>Unlimited Talktime</item>
+        <item>Local SMS Pack</item>
+        <item>Local Call Plans</item>
+        <item>Full Talktime Plans</item>
+        <item>Rate Cutter</item>
+        <item>Data Plans</item>
+        <item>STD Plans</item>
+        <item>Validity Recharge</item>
+        <item>Lifetime Validity</item>
+        <item>ISD Plans</item>
+        <item>National SMS Pack</item>
+        <item>Night Packs</item>
+        <item>General SMS Pack</item>
+    </string-array>
+    
+    <string-array name="gender_array_items">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+</resources>

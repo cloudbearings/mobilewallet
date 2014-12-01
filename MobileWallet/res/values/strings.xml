@@ -19,6 +19,8 @@
     <!-- Google analytics strings -->
     <string name="daily_credits_screen_name">Daily Credits</string>
     <string name="daily_credits_success_screen_name">Daily Credits Success</string>
+    <string name="forgot_pwd_screen_name">Forgot Password</string>
+    <string name="my_profile_screen_name">My Profile</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -118,6 +120,18 @@
     <string name="title_activity_splash_screen">Splash Screen</string>
     <string name="title_activity_daily_credits">Daily Credits</string>
     <string name="title_activity_notifications">Notifications</string>
+
+    <!-- my_profile.xml -->
+    <string name="colon">:</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="date_of_birth">Date of birth </string>
+    <string name="gender">Gender</string>
+    <string name="ocupation">Ocupation</string>
+    <string name="income">Income</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="not_mentioned">Not Mentioned</string>
     <string name="title_activity_my_profile">MyProfile</string>
     <string name="title_activity_wallet_histoy">Wallet Histoy</string>
     <string name="title_activity_recharge_history">Recharge History</string>
@@ -127,5 +141,14 @@
     <string name="view_offers">View Offers</string>
     <string name="view_credit_history">View Balance</string>
     <string name="title_activity_daily_credits_success">Daily Credits Success</string>
+
+    <!-- edit_profile.xml -->
+    <string name="update">UPDATE PROFILE</string>
+    <string name="mobile_no">Mobile number</string>
+    <string name="dob">Date of birth</string>
+    <string name="prompt_gender">Select Gender</string>
+    <string name="prompt_ocupation">Select Ocupation</string>
+    <string name="prompt_income">Select Income</string>
+    <string name="title_activity_edit_profile">Edit Profile</string>
 
 </resources>
