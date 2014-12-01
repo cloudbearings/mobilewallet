@@ -2,15 +2,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="@dimen/w_r_history_layout_padding"
     tools:context="com.mobilewallet.WalletHistoy" >
 
     <TextView
+        android:id="@+id/textView1"
+        style="@style/wallet_history_heading_text_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_marginLeft="@dimen/w_r_history_margin_left"
+        android:text="@string/wallet_hstry" />
+
+    <ListView
+        android:id="@+id/creditList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/crdtProgressBar"
+        android:layout_marginTop="@dimen/w_r_history_listview_margin_top"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollbars="none" >
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/crdtProgressBar"
+        android:layout_width="@dimen/w_r_history_progressbar_width"
+        android:layout_height="@dimen/w_r_history_progressbar_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/debitDateText"
+        style="@style/history_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/w_r_history_date_margin_left"
+        android:layout_marginTop="@dimen/w_r_history_date_margin_top"
+        android:text="@string/w_r_date"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/debitCoinsText"
+        style="@style/history_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/w_r_history_coins_margin_right"
+        android:layout_marginTop="@dimen/w_r_history_coins_margin_top"
+        android:text="@string/w_r_coins"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/View01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/w_r_history_view01_margin_top"
+        android:background="@color/line_color"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/View02"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/View01"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="@dimen/w_r_history_view02_margin_top"
+        android:background="@color/line_color"
+        android:visibility="visible" />
 
 </RelativeLayout>

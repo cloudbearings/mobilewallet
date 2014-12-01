@@ -211,4 +211,42 @@
         <item name="android:textColor">@color/bringal_color</item>
     </style>
 
+    <!-- wallet_history xml styles -->
+    <style name="wallet_history_heading_text_style">
+        <item name="android:textSize">@dimen/w_r_history_heading_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <style name="history_text_style">
+        <item name="android:textSize">@dimen/history_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/history_text_color</item>
+    </style>
+
+    <!-- recharge_history xml styles -->
+    <style name="recharge_history_heading_text_style">
+        <item name="android:textSize">@dimen/w_r_history_heading_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <style name="history_listitem_text_style">
+        <item name="android:textSize">@dimen/history_listitem_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/history_listitem_text_color</item>
+    </style>
+
+    <style name="history_tid_text_style">
+        <item name="android:textSize">@dimen/history_tid_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/history_tid_color</item>
+    </style>
+
+    <style name="history_date_text_style">
+        <item name="android:textSize">@dimen/history_date_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/history_date_color</item>
+    </style>
+
 </resources>

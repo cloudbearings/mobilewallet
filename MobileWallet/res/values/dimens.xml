@@ -110,7 +110,7 @@
     <dimen name="feedback_layout_margin_left">10dp</dimen>
     <dimen name="feedback_layout_margin_right">10dp</dimen>
     <dimen name="feedback_title_margin_top">10dp</dimen>
-    
+
     <!-- change_mobile_number.xml -->
     <dimen name="cmn_heading_text_size">18sp</dimen>
     <dimen name="cmn_edittext_padding">10dp</dimen>
@@ -119,7 +119,7 @@
     <dimen name="cmn_button_margin_top">20dp</dimen>
     <dimen name="cmn_button_text_size">16sp</dimen>
     <dimen name="cmn_heading_margin_bottom">5dp</dimen>
-    
+
     <!-- cmn_verification.xml -->
     <dimen name="verify_mobile_edittext_margin_left">30dp</dimen>
     <dimen name="verify_mobile_edittext_margin_right">30dp</dimen>
@@ -133,5 +133,44 @@
     <dimen name="verify_mobile_edit_text_size">16sp</dimen>
     <dimen name="verify_mobile_heading_padding">15dp</dimen>
     <dimen name="verify_mobile_heading_text_size">18sp</dimen>
+
+    <!-- wallet_history & reachrge_history xml dimes -->
+    <dimen name="w_r_history_layout_padding">25dp</dimen>
+    <dimen name="w_r_history_heading_text_size">17sp</dimen>
+    <dimen name="w_r_history_margin_left">15dp</dimen>
+    <dimen name="history_text_size">15sp</dimen>
+    <dimen name="w_r_history_date_margin_left">15dp</dimen>
+    <dimen name="w_r_history_date_margin_top">39dp</dimen>
+    <dimen name="w_r_history_coins_margin_right">15dp</dimen>
+    <dimen name="w_r_history_coins_margin_top">39dp</dimen>
+    <dimen name="w_r_history_listview_margin_top">71dp</dimen>
+    <dimen name="w_r_history_progressbar_width">40dp</dimen>
+    <dimen name="w_r_history_progressbar_height">40dp</dimen>
+    <dimen name="w_r_history_view01_margin_top">70dp</dimen>
+    <dimen name="w_r_history_view02_margin_top">5dp</dimen>
+
+    <!-- wallet_history_list_item & reachrge_history_list_item xml dimes -->
+    <dimen name="history_listitem_text_size">14sp</dimen>
+    <dimen name="history_des_margin_bottom">5dp</dimen>
+    <dimen name="history_des_margin_left">15dp</dimen>
+    <dimen name="history_des_margin_top">5dp</dimen>
+    <dimen name="history_des_margin_right">5dp</dimen>
+    <dimen name="history_listitem_coins_right">45dp</dimen>
+    <dimen name="history_tid_text_size">12sp</dimen>
+    <dimen name="history_date_text_size">12sp</dimen>
+    <dimen name="history_date_margin_top">50dp</dimen>
+    <dimen name="history_vertical_line_height">65dp</dimen>
+    <dimen name="history_view1_margin_top">76dp</dimen>
+    <dimen name="history_coins_image_margin_left">8dp</dimen>
+    <dimen name="history_coins_image_margin_bottom">10dp</dimen>
+    <dimen name="history_coins_image_margin_top">25dp</dimen>
+    <dimen name="history_coins_image_padding_top">1.5dp</dimen>
+    <dimen name="history_coins_margin_right">15dp</dimen>
+    <dimen name="history_coins_margin_top">0dp</dimen>
+    <dimen name="history_tid_margin_right">18dp</dimen>
+    <dimen name="history_tid_margin_top">50dp</dimen>
+    <dimen name="history_rupee_image_width">20dp</dimen>
+    <dimen name="history_rupee_image_height">22dp</dimen>
+    <dimen name="dbt_history_view1_margin_top">96dp</dimen>
 
 </resources>
