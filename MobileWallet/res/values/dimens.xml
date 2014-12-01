@@ -95,4 +95,20 @@
     <dimen name="edit_profile_dob_margin_top">25dp</dimen>
     <dimen name="edit_profile_spinner_margin_top">15dp</dimen>
 
+    <!-- feedbak_activity.xml -->
+    <dimen name="spinner_margin_top">20dp</dimen>
+    <dimen name="feedbak_edittext_margin_bottom">20dp</dimen>
+    <dimen name="feedbak_edittext_height">100dp</dimen>
+    <dimen name="feedbak_edittext_padding_top">8dp</dimen>
+    <dimen name="feedbak_edittext_padding_left">15dp</dimen>
+    <dimen name="feedback_des_text_size">12sp</dimen>
+    <dimen name="feedback_view_margin_top">10dp</dimen>
+    <dimen name="feedback_spinner_text_size">16sp</dimen>
+    <dimen name="feedback_edittext_text_size">14sp</dimen>
+    <dimen name="feedback_edittext_margin_top">15dp</dimen>
+    <dimen name="feedback_text_size">16sp</dimen>
+    <dimen name="feedback_layout_margin_left">10dp</dimen>
+    <dimen name="feedback_layout_margin_right">10dp</dimen>
+    <dimen name="feedback_title_margin_top">10dp</dimen>
+
 </resources>
