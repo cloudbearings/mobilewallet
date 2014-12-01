@@ -14,6 +14,8 @@ import android.content.pm.PackageInfo;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.Settings.Secure;
+import android.telephony.TelephonyManager;
 
 import com.mobilewallet.gcm.Config;
 
@@ -138,5 +140,14 @@ public class Utils {
 
 			throw new RuntimeException(e);
 		}
+	}
+
+	public static String getDeviceId(Context context) {
+		return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE))
+				.getDeviceId();
+	}
+
+	public static String getAndroidId(Context context) {
+		return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
 	}
 }
