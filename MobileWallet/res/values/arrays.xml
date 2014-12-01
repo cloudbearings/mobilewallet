@@ -105,11 +105,20 @@
         <item>Night Packs</item>
         <item>General SMS Pack</item>
     </string-array>
-    
     <string-array name="gender_array_items">
         <item>Gender</item>
         <item>Male</item>
         <item>Female</item>
+    </string-array>
+
+    <!-- feedback_activity arrays -->
+    <string-array name="feedback_arrays">
+        <item>Offer Credits</item>
+        <item>Application Performance</item>
+        <item>Recharge Problem</item>
+        <item>Suggestion</item>
+        <item>Advertise with us</item>
+        <item>Others</item>
     </string-array>
 
 </resources>

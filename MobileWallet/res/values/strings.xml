@@ -21,6 +21,7 @@
     <string name="daily_credits_success_screen_name">Daily Credits Success</string>
     <string name="forgot_pwd_screen_name">Forgot Password</string>
     <string name="my_profile_screen_name">My Profile</string>
+    <string name="feedback_screen_name">Feedback</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -103,6 +104,12 @@
     <string name="email_error">Inavalid email.</string>
     <string name="forgot_pwd_fail">Invalid email address, check you email address.</string>
     <string name="forgot_pwd_success_msg">Password sent successfully to your email address.</string>
+
+    <!-- feedback.xml -->
+    <string name="prompt_feedback">Select</string>
+    <string name="feedback_edittext_hint">Write your feedback here.</string>
+    <string name="feedback_button_text">SEND</string>
+    <string name="feedback_heading">We would love to here from you</string>
     <string name="title_activity_feedback">Feedback</string>
     <string name="title_activity_about">About</string>
 

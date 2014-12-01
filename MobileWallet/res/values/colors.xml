@@ -34,5 +34,8 @@
     <!-- edit_profile.xml -->
     <color name="edit_profile_edittext_text_color">#767676</color>
     <color name="edit_profile_spinner_item_color">#767676</color>
+    
+    <!-- feedback.xml -->
+    <color name="feedback_text_color">#767676</color>
 
 </resources>

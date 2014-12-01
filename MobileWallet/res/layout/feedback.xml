@@ -1,8 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rec_con_page_id"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:background="@color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mobilewallet.Feedback" >
 
-</LinearLayout>
+    <Spinner
+        android:id="@+id/feedbackTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/feedback_layout_margin_left"
+        android:layout_marginRight="@dimen/feedback_layout_margin_right"
+        android:layout_marginTop="@dimen/spinner_margin_top"
+        android:entries="@array/feedback_arrays"
+        android:prompt="@string/prompt_feedback"
+        android:spinnerMode="dialog"
+        android:textSize="@dimen/feedback_spinner_text_size" />
+
+    <EditText
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/feedbak_edittext_height"
+        android:layout_alignLeft="@+id/feedbackTypeSpinner"
+        android:layout_alignRight="@+id/feedbackTypeSpinner"
+        android:layout_below="@+id/feedbackTypeSpinner"
+        android:layout_marginBottom="@dimen/feedbak_edittext_margin_bottom"
+        android:layout_marginTop="@dimen/feedback_edittext_margin_top"
+        android:background="@drawable/textlines"
+        android:ems="10"
+        android:gravity="start"
+        android:hint="@string/feedback_edittext_hint"
+        android:inputType="textMultiLine"
+        android:paddingLeft="@dimen/feedbak_edittext_padding_left"
+        android:paddingTop="@dimen/feedbak_edittext_padding_top"
+        android:textColorHint="@color/feedback_text_color"
+        android:textSize="@dimen/feedback_edittext_text_size" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/sendFeedback"
+        style="@style/recharge_button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/feedback"
+        android:layout_alignRight="@+id/feedback"
+        android:layout_below="@+id/feedback"
+        android:text="@string/feedback_button_text" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/feedback_layout_margin_left"
+        android:layout_marginRight="@dimen/feedback_layout_margin_right"
+        android:layout_marginTop="@dimen/feedback_title_margin_top"
+        android:text="@string/feedback_heading"
+        android:textColor="@color/bringal_color"
+        android:textSize="@dimen/feedback_text_size"
+        android:textStyle="bold" />
+
+</RelativeLayout>
