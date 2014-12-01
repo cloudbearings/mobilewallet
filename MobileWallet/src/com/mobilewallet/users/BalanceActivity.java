@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.mobilewallet.R;
 import com.mobilewallet.RechargeHistory;
 import com.mobilewallet.TabsActivity;
-import com.mobilewallet.WalletHistoy;
+import com.mobilewallet.WalletHistory;
 
 public class BalanceActivity extends ActionBarActivity {
 
@@ -42,7 +42,7 @@ public class BalanceActivity extends ActionBarActivity {
 						public void onClick(View view) {
 
 							startActivity(new Intent(BalanceActivity.this,
-									WalletHistoy.class)
+									WalletHistory.class)
 									.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 						}
 					});

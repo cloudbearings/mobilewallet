@@ -35,10 +35,13 @@ public class Feedback extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		Tracker t = ((MobileWalletGoogleAnalytics) getApplication())
-				.getTracker(TrackerName.APP_TRACKER);
-		t.setScreenName(getString(R.string.feedback_screen_name));
-		t.send(new HitBuilders.AppViewBuilder().build());
+		try {
+			Tracker t = ((MobileWalletGoogleAnalytics) getApplication())
+					.getTracker(TrackerName.APP_TRACKER);
+			t.setScreenName(getString(R.string.feedback_screen_name));
+			t.send(new HitBuilders.AppViewBuilder().build());
+		} catch (Exception e) {
+		}
 	}
 
 	@Override

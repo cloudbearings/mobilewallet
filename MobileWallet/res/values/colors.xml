@@ -30,19 +30,26 @@
 
     <!-- my_profile.xml -->
     <color name="my_profile_text_color">#a9a9a9</color>
-    
+
     <!-- edit_profile.xml -->
     <color name="edit_profile_edittext_text_color">#767676</color>
     <color name="edit_profile_spinner_item_color">#767676</color>
-    
+
     <!-- feedback.xml -->
     <color name="feedback_text_color">#767676</color>
-    
+
     <!-- change_mobile_number.xml -->
     <color name="cmn_edittext_color">#979797</color>
-    
+
     <!-- cmn_verification.xml -->
     <color name="verify_mobile_text_color">#979797</color>
-    
+
+    <!-- wallet_history.xml -->
+    <color name="history_text_color">#000000</color>
+
+    <!-- history_list_item xml colors -->
+    <color name="history_tid_color">#a3a3a3</color>
+    <color name="history_date_color">#a3a3a3</color>
+    <color name="history_listitem_text_color">#373636</color>
 
 </resources>

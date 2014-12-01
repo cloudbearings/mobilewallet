@@ -22,6 +22,8 @@
     <string name="forgot_pwd_screen_name">Forgot Password</string>
     <string name="my_profile_screen_name">My Profile</string>
     <string name="feedback_screen_name">Feedback</string>
+    <string name="wallet_history_screen_name">Wallet History</string>
+    <string name="recharge_history_screen_name">Recharge History</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -116,8 +118,16 @@
     <!-- balance_activity.xml -->
     <string name="title_activity_balance">Balance</string>
     <string name="current_bal">Current balance</string>
+
+    <!-- wallet_history.xml -->
     <string name="wallet_history">Wallet History</string>
+    <string name="wallet_hstry">WALLET HISTORY</string>
+    <string name="w_r_date">DATE</string>
+    <string name="w_r_coins">AMOUNT</string>
+
+    <!-- recharge_history.xml -->
     <string name="recharge_history">Recharge History</string>
+    <string name="recharge_hstry">RECHARGE HISTORY</string>
     <string name="current_balance">Balance Amount</string>
     <string name="credit_history_msg">Total Credited Amount</string>
     <string name="debit_history_msg">Total Debited Amount</string>
@@ -163,7 +173,7 @@
     <string name="change_mb_heading">CHANGE MOBILE MUBMER</string>
     <string name="new_mobile_no">New Mobile No</string>
     <string name="change_mb_button_name">CHANGE</string>
-    
+
     <!-- cmn_verification.xml -->
     <string name="title_activity_cmn_verification">Mobile Verification</string>
     <string name="verify_mobile_no_edittext_hint">Verification Code</string>
