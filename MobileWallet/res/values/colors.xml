@@ -37,5 +37,12 @@
     
     <!-- feedback.xml -->
     <color name="feedback_text_color">#767676</color>
+    
+    <!-- change_mobile_number.xml -->
+    <color name="cmn_edittext_color">#979797</color>
+    
+    <!-- cmn_verification.xml -->
+    <color name="verify_mobile_text_color">#979797</color>
+    
 
 </resources>

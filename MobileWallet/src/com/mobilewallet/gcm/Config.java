@@ -5,4 +5,5 @@ public interface Config {
 	String APP_VERSION = "appVersion";
 	String GOOGLE_PROJECT_ID = "832193147482";
 	String MESSAGE_KEY = "message";
+	boolean IS_READ_SMS_PERMISSION_AVAILABLE = true;
 }

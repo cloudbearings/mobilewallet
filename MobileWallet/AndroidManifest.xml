@@ -129,6 +129,14 @@
             android:name=".EditProfile"
             android:label="@string/title_activity_edit_profile" >
         </activity>
+        <activity
+            android:name=".ChangeMobileNumber"
+            android:label="@string/title_activity_change_mobile_number" >
+        </activity>
+        <activity
+            android:name=".CMN_verification"
+            android:label="@string/title_activity_cmn_verification" >
+        </activity>
     </application>
 
 </manifest>
