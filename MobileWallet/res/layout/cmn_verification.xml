@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    tools:context="com.mobilewallet.CMN_verification" >
+
+    <EditText
+        android:id="@+id/verification_code"
+        style="@style/verify_mobile_edittext_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/verify_mobile_edittext_margin_left"
+        android:layout_marginRight="@dimen/verify_mobile_edittext_margin_right"
+        android:layout_marginTop="@dimen/verify_mobile_edittext_margin_top"
+        android:ems="10"
+        android:hint="@string/verify_mobile_no_edittext_hint"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/cnf_des"
+        style="@style/verify_mobile_text_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/verify"
+        android:layout_alignRight="@+id/verification_code"
+        android:layout_below="@+id/verification_code"
+        android:layout_marginTop="@dimen/verify_mobile_text_margin_top"
+        android:text="@string/verify_mobile_des" />
+
+    <Button
+        android:id="@+id/verify"
+        style="@style/verify_mobile_button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/verification_code"
+        android:layout_alignRight="@+id/verification_code"
+        android:layout_below="@+id/cnf_des"
+        android:layout_marginTop="@dimen/verify_mobile_button_margin_top"
+        android:text="@string/verify_mobile_no_button_name" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/verify_mobile_heading_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:text="@string/verify_mobile_no_heading" />
+
+    <TextView
+        android:id="@+id/resend_verification_code"
+        style="@style/verify_mobile_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/verify"
+        android:layout_below="@+id/verify"
+        android:layout_marginTop="@dimen/verify_mobile_resend_v_code_margin_top"
+        android:clickable="true"
+        android:text="@string/resend_verification_code"
+        android:textColor="@color/bringal_color" />
+
+    <ProgressBar
+        android:id="@+id/processing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/resend_verification_code"
+        android:layout_alignRight="@+id/verify"
+        android:layout_below="@+id/resend_verification_code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/verify_mobile_resend_processing_margin_top" />
+
+</RelativeLayout>

@@ -11,9 +11,11 @@ import java.util.Locale;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
@@ -149,5 +151,32 @@ public class Utils {
 
 	public static String getAndroidId(Context context) {
 		return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+	}
+
+	public static String readVerificationCode(Context context, long time) {
+		String verCode = null;
+		Cursor cur = null;
+		try {
+			cur = context.getContentResolver().query(Uri.parse("content://sms/inbox"),
+					new String[] { "body" }, "address like '%-FREEPS%' and date >=" + time, null,
+					"date desc limit 1");
+			if (cur.moveToNext() && cur.getCount() == 1) {
+				String body = cur.getString(0);
+
+				if (body != null && !"".equals(body.trim())) {
+
+					if (body.trim().contains("FreePlus verification code ")) {
+						verCode = body.split(" ")[3].trim();
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (cur != null)
+				cur.close();
+		}
+		return verCode;
 	}
 }

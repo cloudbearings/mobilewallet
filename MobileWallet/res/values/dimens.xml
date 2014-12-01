@@ -110,5 +110,28 @@
     <dimen name="feedback_layout_margin_left">10dp</dimen>
     <dimen name="feedback_layout_margin_right">10dp</dimen>
     <dimen name="feedback_title_margin_top">10dp</dimen>
+    
+    <!-- change_mobile_number.xml -->
+    <dimen name="cmn_heading_text_size">18sp</dimen>
+    <dimen name="cmn_edittext_padding">10dp</dimen>
+    <dimen name="cmn_edittext_text_size">14sp</dimen>
+    <dimen name="cmn_edittext_margin_top">10dp</dimen>
+    <dimen name="cmn_button_margin_top">20dp</dimen>
+    <dimen name="cmn_button_text_size">16sp</dimen>
+    <dimen name="cmn_heading_margin_bottom">5dp</dimen>
+    
+    <!-- cmn_verification.xml -->
+    <dimen name="verify_mobile_edittext_margin_left">30dp</dimen>
+    <dimen name="verify_mobile_edittext_margin_right">30dp</dimen>
+    <dimen name="verify_mobile_edittext_margin_top">21dp</dimen>
+    <dimen name="verify_mobile_text_margin_top">10dp</dimen>
+    <dimen name="verify_mobile_button_margin_top">16dp</dimen>
+    <dimen name="verify_mobile_resend_v_code_margin_top">20dp</dimen>
+    <dimen name="verify_mobile_resend_processing_margin_top">10dp</dimen>
+    <dimen name="verify_mobile_edittext_padding">13dp</dimen>
+    <dimen name="verify_mobile_text_size">14sp</dimen>
+    <dimen name="verify_mobile_edit_text_size">16sp</dimen>
+    <dimen name="verify_mobile_heading_padding">15dp</dimen>
+    <dimen name="verify_mobile_heading_text_size">18sp</dimen>
 
 </resources>

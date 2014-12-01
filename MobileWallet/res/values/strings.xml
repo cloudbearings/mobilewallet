@@ -158,4 +158,18 @@
     <string name="prompt_income">Select Income</string>
     <string name="title_activity_edit_profile">Edit Profile</string>
 
+    <!-- change_mobile_number.xml -->
+    <string name="title_activity_change_mobile_number">Change Mobile Number</string>
+    <string name="change_mb_heading">CHANGE MOBILE MUBMER</string>
+    <string name="new_mobile_no">New Mobile No</string>
+    <string name="change_mb_button_name">CHANGE</string>
+    
+    <!-- cmn_verification.xml -->
+    <string name="title_activity_cmn_verification">Mobile Verification</string>
+    <string name="verify_mobile_no_edittext_hint">Verification Code</string>
+    <string name="verify_mobile_des">Please enter your correct mobile number, Verification code will be sent to this number.</string>
+    <string name="verify_mobile_no_button_name">VERIFY</string>
+    <string name="verify_mobile_no_heading">VERIFY MOBILE NUMBER</string>
+    <string name="resend_verification_code">Receive verification code again</string>
+
 </resources>

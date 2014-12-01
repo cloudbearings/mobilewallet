@@ -130,22 +130,22 @@
         <item name="android:textSize">@dimen/daily_credits_button_textsize</item>
         <item name="android:background">@drawable/bringal_color_button</item>
     </style>
-    
+
     <!-- my_profile.xml -->
     <style name="my_profile_textview_style">
         <item name="android:textColor">@color/my_profile_text_color</item>
         <item name="android:textSize">@dimen/my_profile_textview_text_size</item>
     </style>
-    
-     <style name="my_profile_button_style">
+
+    <style name="my_profile_button_style">
         <item name="android:background">@drawable/bringal_color_button</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/my_profile_button_text_size</item>
         <item name="android:textColor">@color/white</item>
     </style>
-    
-     <!-- edit_profile.xml -->
-     <style name="edit_profile_button_style">
+
+    <!-- edit_profile.xml -->
+    <style name="edit_profile_button_style">
         <item name="android:background">@drawable/bringal_color_button</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">@dimen/edit_profile_button_text_size</item>
@@ -157,6 +157,58 @@
         <item name="android:textColor">@color/edit_profile_edittext_text_color</item>
         <item name="android:textSize">@dimen/edit_profile_edittext_text_size</item>
         <item name="android:textColorHint">@color/edit_profile_edittext_text_color</item>
+    </style>
+
+    <!-- change_mobile_number.xml -->
+    <style name="cmn_edittext_text_style">
+        <item name="android:padding">@dimen/cmn_edittext_padding</item>
+        <item name="android:background">@drawable/textlines</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/cmn_edittext_text_size</item>
+        <item name="android:textColorHint">@color/cmn_edittext_color</item>
+    </style>
+
+    <style name="cmn_button_text_style">
+        <item name="android:background">@drawable/bringal_color_button</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/cmn_button_text_size</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="cmn_heading_text_style">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/cmn_heading_text_size</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <!-- cmn_verification.xml -->
+    <style name="verify_mobile_edittext_text_style">
+        <item name="android:padding">@dimen/verify_mobile_edittext_padding</item>
+        <item name="android:background">@drawable/textlines</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/verify_mobile_text_size</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
+    <style name="verify_mobile_text_style">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/verify_mobile_text_size</item>
+        <item name="android:textColor">@color/verify_mobile_text_color</item>
+    </style>
+
+    <style name="verify_mobile_button_style">
+        <item name="android:background">@drawable/bringal_border_button</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/verify_mobile_edit_text_size</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
+
+    <style name="verify_mobile_heading_style">
+        <item name="android:padding">@dimen/verify_mobile_heading_padding</item>
+        <item name="android:background">@drawable/ash_bg_textlines</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/verify_mobile_heading_text_size</item>
+        <item name="android:textColor">@color/bringal_color</item>
     </style>
 
 </resources>
