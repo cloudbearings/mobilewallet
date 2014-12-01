@@ -16,6 +16,10 @@
     <string name="recharge_tab">showRechargeTab</string>
     <string name="show_true">true</string>
 
+    <!-- Google analytics strings -->
+    <string name="daily_credits_screen_name">Daily Credits</string>
+    <string name="daily_credits_success_screen_name">Daily Credits Success</string>
+
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
     <string name="arial">fonts/arial.otf</string>
@@ -72,7 +76,12 @@
     <string name="wallet">Wallet</string>
     <string name="about">About</string>
     <string name="profile">Profile</string>
+
+    <!-- daily_credits.xml -->
     <string name="daily_credits">Daily Credits</string>
+    <string name="daily_credits_des"><![CDATA[Everyday, you get <font color=\"#6ebb3b\">7 paise</font> for opening<br/>or logging into the app.]]></string>
+    <string name="cliam_button_name">Claim Today\'s 7 paise</string>
+    <string name="already_climed">Already Claimed</string>
     <string name="notifications">Notifications</string>
     <string name="rate">Rate</string>
     <string name="share">Share</string>
@@ -112,5 +121,11 @@
     <string name="title_activity_my_profile">MyProfile</string>
     <string name="title_activity_wallet_histoy">Wallet Histoy</string>
     <string name="title_activity_recharge_history">Recharge History</string>
+
+    <!-- daily_credits_success.xml -->
+    <string name="has_been_credited">has been credited.</string>
+    <string name="view_offers">View Offers</string>
+    <string name="view_credit_history">View Balance</string>
+    <string name="title_activity_daily_credits_success">Daily Credits Success</string>
 
 </resources>

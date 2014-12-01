@@ -16,12 +16,16 @@
     <color name="horizental_line_color">#6e7992</color>
     <color name="ash_color">#ededed</color>
     <color name="ash_border_color">#dddddd</color>
-    
+
     <!-- balance_header xml colors -->
     <color name="balance_view_color">#ededed</color>
     <color name="balance_header_text_color">#727272</color>
     <color name="balance_header_amt_color">#6ebb3b</color>
-    
+
+    <!-- forgot_password.xml -->
     <color name="forgot_pwd_text_color">#979797</color>
+
+    <!-- daily_credits.xml -->
+    <color name="daily_credits_des_color">#868686</color>
 
 </resources>

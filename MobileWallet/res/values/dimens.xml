@@ -64,5 +64,10 @@
     <dimen name="forgot_password_text_size">14sp</dimen>
     <dimen name="forgot_pwd_heading_padding">12dp</dimen>
     <dimen name="forgot_pwd_layout_padding">15dp</dimen>
+    
+    <!-- daily_credits.xml -->
+    <dimen name="daily_credits_heading_textsize">18sp</dimen>
+    <dimen name="daily_credits_des_textsize">15sp</dimen>
+    <dimen name="daily_credits_button_textsize">16sp</dimen>
 
 </resources>

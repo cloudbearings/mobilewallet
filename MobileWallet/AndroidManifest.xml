@@ -41,7 +41,7 @@
             android:value="@integer/google_play_services_version" />
 
         <receiver
-            android:name="com.mobilewallet.gcm.GcmBroadcastReceiver"
+            android:name=".gcm.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -50,7 +50,8 @@
                 <category android:name="com.mobilewallet" />
             </intent-filter>
         </receiver>
-        <service android:name="com.mobilewallet.gcm.GCMNotificationIntentService" />
+
+        <service android:name=".gcm.GCMNotificationIntentService" />
 
         <activity
             android:name=".SplashScreen"
@@ -119,6 +120,10 @@
         <activity
             android:name=".RechargeHistory"
             android:label="@string/title_activity_recharge_history" >
+        </activity>
+        <activity
+            android:name=".DailyCreditsSuccess"
+            android:label="@string/title_activity_daily_credits_success" >
         </activity>
     </application>
 
