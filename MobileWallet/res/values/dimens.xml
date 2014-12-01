@@ -6,6 +6,7 @@
 
     <!-- custom_actionbar.xml -->
     <dimen name="custom_actionbar_text_size">16dp</dimen>
+    <dimen name="tabtext_size">14dp</dimen>
 
     <!-- main_activity.xml -->
     <dimen name="main_heading_text_size">27dp</dimen>
@@ -172,5 +173,10 @@
     <dimen name="history_rupee_image_width">20dp</dimen>
     <dimen name="history_rupee_image_height">22dp</dimen>
     <dimen name="dbt_history_view1_margin_top">96dp</dimen>
+    
+    <!-- recharge_fragment.xml -->
+    <dimen name="recharge_edittext_text_size">14sp</dimen>
+    <dimen name="recharge_edittext_padding">12dp</dimen>
+	
 
 </resources>

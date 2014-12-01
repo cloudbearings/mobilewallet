@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<!--
+     File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -29,8 +30,7 @@
         <item name="actionModeBackground">@drawable/cab_background_top_mobilewallet_theme</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_mobilewallet_theme</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Mobilewallet_theme</item>
-
-        
+        <item name="actionBarTabTextStyle">@style/MyActionBarTabText</item>
     </style>
 
     <style name="ActionBar.Solid.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -45,11 +45,11 @@
         <item name="background">@drawable/ab_transparent_mobilewallet_theme</item>
         <item name="progressBarStyle">@style/ProgressBar.Mobilewallet_theme</item>
     </style>
-	
-    <style name="PopupMenu.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.PopupMenu">	
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_mobilewallet_theme</item>	
+
+    <style name="PopupMenu.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_mobilewallet_theme</item>
     </style>
-	
+
     <style name="DropDownListView.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_mobilewallet_theme</item>
     </style>
@@ -57,21 +57,21 @@
     <style name="ActionBarTabStyle.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_mobilewallet_theme</item>
     </style>
-	
+
     <style name="DropDownNav.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_mobilewallet_theme</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_mobilewallet_theme</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_mobilewallet_theme</item>
     </style>
-    
+
     <style name="ProgressBar.Mobilewallet_theme" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_mobilewallet_theme</item>
     </style>
-    
+
     <style name="ActionButton.CloseMode.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_mobilewallet_theme</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Mobilewallet_theme.Widget" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/PopupMenu.Mobilewallet_theme</item>

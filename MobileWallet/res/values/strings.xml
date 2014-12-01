@@ -95,7 +95,17 @@
     <string name="recharge">Recharge</string>
     <string name="learnGK">Learn G.K</string>
     <string name="change_mobile_number">Change Mobile Number</string>
+
+    <!-- recharge_fragment.xml -->
     <string name="title_activity_recharge_fragment">Recharge</string>
+    <string name="wallet_money">Wallet money</string>
+    <string name="min_recharge_amt">Minimum recharge amount is 20</string>
+    <string name="self">Self</string>
+    <string name="others">Others</string>
+    <string name="enter_details">Enter details to recharge</string>
+    <string name="moile_no_hint">Enter your mobile number</string>
+    <string name="operator_circle_hint">Operator and circle</string>
+    <string name="amount">Amount</string>
 
     <!-- forgot_password.xml -->
     <string name="title_activity_forgot_password">Forgot Your Password?</string>
