@@ -230,4 +230,16 @@
     <dimen name="rchg_success_view2_margin_top">11dp</dimen>
     <dimen name="rchg_success_view01_margin_top">10dp</dimen>
 
+    <!-- notifications.xml -->
+    <dimen name="notifis_des_text_size">14sp</dimen>
+    <dimen name="notifis_layout_padding">15dp</dimen>
+    <dimen name="notifis_view_margin_top">35dp</dimen>
+    <dimen name="notifis_des_margin_top">15dp</dimen>
+    <dimen name="notifis_des_line_spacing">1dp</dimen>
+    <dimen name="notif_layout_padding">25dp</dimen>
+    <dimen name="notif_checkbox_margin_top">10dp</dimen>
+    
+    <!-- notifications_checkbox.xml -->
+    <dimen name="notifis_checkboxt_textsize">15sp</dimen>
+
 </resources>
