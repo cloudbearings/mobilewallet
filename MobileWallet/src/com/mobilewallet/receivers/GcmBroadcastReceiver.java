@@ -1,4 +1,6 @@
-package com.mobilewallet.gcm;
+package com.mobilewallet.receivers;
+
+import com.mobilewallet.gcm.GCMNotificationIntentService;
 
 import android.app.Activity;
 import android.content.ComponentName;

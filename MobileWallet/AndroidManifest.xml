@@ -41,7 +41,7 @@
             android:value="@integer/google_play_services_version" />
 
         <receiver
-            android:name=".gcm.GcmBroadcastReceiver"
+            android:name="com.mobilewallet.receivers.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -52,6 +52,13 @@
         </receiver>
 
         <service android:name=".gcm.GCMNotificationIntentService" />
+
+        <!-- Receiver to receive Installation status -->
+        <receiver android:name=".gcm.ReferralReceiver" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".SplashScreen"
