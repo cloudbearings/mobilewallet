@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mobilewallet.R;
-import com.mobilewallet.RechargeHistory;
 import com.mobilewallet.TabsActivity;
 import com.mobilewallet.WalletHistory;
+import com.mobilewallet.recharge.RechargeHistory;
 
 public class BalanceActivity extends ActionBarActivity {
 

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/w_r_history_layout_padding"
-    tools:context="com.mobilewallet.RechargeHistory" >
+    tools:context="com.mobilewallet.recharge.RechargeHistory" >
 
     <TextView
         android:id="@+id/textView1"

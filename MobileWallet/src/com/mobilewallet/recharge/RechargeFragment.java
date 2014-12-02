@@ -1,4 +1,7 @@
-package com.mobilewallet;
+package com.mobilewallet.recharge;
+
+import com.mobilewallet.R;
+import com.mobilewallet.R.layout;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
