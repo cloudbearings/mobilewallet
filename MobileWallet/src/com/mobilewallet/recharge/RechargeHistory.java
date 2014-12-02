@@ -1,4 +1,4 @@
-package com.mobilewallet;
+package com.mobilewallet.recharge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +24,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.mobilewallet.R;
+import com.mobilewallet.R.id;
+import com.mobilewallet.R.layout;
+import com.mobilewallet.R.string;
 import com.mobilewallet.adapters.RechargeHistoryAdapter;
 import com.mobilewallet.beans.RechargeHistoryBean;
 import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics;

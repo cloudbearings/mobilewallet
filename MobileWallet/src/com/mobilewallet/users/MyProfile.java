@@ -18,7 +18,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.mobilewallet.EditProfile;
 import com.mobilewallet.R;
 import com.mobilewallet.TabsActivity;
 import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics;

@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import com.mobilewallet.LearnGkFragment;
 import com.mobilewallet.MoreFragment;
-import com.mobilewallet.RechargeFragment;
+import com.mobilewallet.recharge.RechargeFragment;
 import com.mobilewallet.users.InviteFragment;
 
 public class TabsAdapter extends FixedFragmentStatePagerAdapter {
