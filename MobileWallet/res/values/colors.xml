@@ -71,4 +71,7 @@
     <!-- recharge_success.xml -->
     <color name="recharge_success_end_des">#a3a3a3</color>
 
+    <!-- notifications.xml -->
+    <color name="notifications_button_text_color">#868686</color>
+
 </resources>

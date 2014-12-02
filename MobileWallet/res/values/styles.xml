@@ -291,5 +291,12 @@
         <item name="android:background">@drawable/bringal_border_button</item>
         <item name="android:textColor">@color/bringal_color</item>
     </style>
+    
+    <!-- notifications.xml -->
+    <style name="notifications_text_style">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/notifis_checkboxt_textsize</item>
+        <item name="android:textColor">@color/notifications_button_text_color</item>
+    </style>
 
 </resources>

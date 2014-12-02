@@ -27,6 +27,7 @@
     <string name="recharge_screen_name">Recharge</string>
     <string name="recharge_confirmation_screen_name">Recharge Confirmation</string>
     <string name="recharge_success_screen_name">Recharge Success</string>
+    <string name="notifications_screen_name">Notifications</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -90,7 +91,14 @@
     <string name="daily_credits_des"><![CDATA[Everyday, you get <font color=\"#6ebb3b\">7 paise</font> for opening<br/>or logging into the app.]]></string>
     <string name="cliam_button_name">Claim Today\'s 7 paise</string>
     <string name="already_climed">Already Claimed</string>
+    
+    <!-- notifications.xml -->
+    <string name="enable_notifications">Daily Credits</string>
+    <string name="notifications_des">Real time notifications for offers and credits are not often and they will help you get free recharge quickly Hence, customization option is not given for them.</string>
     <string name="notifications">Notifications</string>
+    <string name="notifc_failure_msg">Unable to update notification settings.</string>
+    <string name="offer">offer</string>
+    
     <string name="rate">Rate</string>
     <string name="share">Share</string>
     <string name="feedback">Feedback</string>
