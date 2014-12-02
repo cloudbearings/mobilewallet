@@ -31,6 +31,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,6 +64,9 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 	private Button rechargeButton;
 	private boolean clicked = false;
 
+	private RadioGroup recharge_type;
+	private RadioButton recharge_type_button;
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -71,11 +76,7 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		try {
-			mDrawerLayout.closeDrawer(Gravity.RIGHT);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 		try {
 
 			Tracker t = ((MobileWalletGoogleAnalytics) getActivity().getApplication())
@@ -114,7 +115,7 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		finalView = inflater.inflate(R.layout.recharge_fragment, container, false);
-		mobileNumberEditText = (EditText) finalView.findViewById(R.id.mobileNumber);
+		mobileNumberEditText = (EditText) finalView.findViewById(R.id.mobile_number);
 		mobileNumberEditText.setTypeface(Utils.getFont(getActivity(), getString(R.string.arial)));
 
 		operatorCircleEditText = (EditText) finalView.findViewById(R.id.operator_circle);
@@ -127,12 +128,26 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 		rechargeButton.setTypeface(Utils.getFont(getActivity(), getString(R.string.GothamRnd)),
 				Typeface.BOLD);
 
+		recharge_type = (RadioGroup) finalView.findViewById(R.id.recharge_type);
+		onRadioButtonClicked(recharge_type.getCheckedRadioButtonId());
+
 		initializeDrawerLayout();
 		addMobileNumberTextChangedListener();
 		addContactsClickListener();
 		addRechargeButtonClickListener();
 
 		return finalView;
+	}
+
+	public void onRadioButtonClicked(int selectedId) {
+		// Is the button now checked?
+		recharge_type_button = (RadioButton) finalView.findViewById(selectedId);
+
+		if (recharge_type_button.getText().equals("self")) {
+			((TextView) finalView.findViewById(R.id.contacts)).setVisibility(View.GONE);
+		} else {
+			((TextView) finalView.findViewById(R.id.contacts)).setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void initializeDrawerLayout() {
