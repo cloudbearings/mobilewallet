@@ -263,6 +263,15 @@
         <item name="android:background">@drawable/recharge_edittext_textlines</item>
     </style>
     
+     <style name="recg_operator_edittext_style">
+        <item name="android:textSize">@dimen/recharge_edittext_text_size</item>
+        <item name="android:paddingLeft">@dimen/recharge_operator_edittext_padding_left</item>
+        <item name="android:paddingRight">@dimen/recharge_operator_edittext_padding</item>
+        <item name="android:paddingTop">@dimen/recharge_operator_edittext_padding</item>
+        <item name="android:paddingBottom">@dimen/recharge_operator_edittext_padding</item>
+        <item name="android:background">@drawable/recharge_edittext_textlines</item>
+    </style>
+    
     <!-- recharge_conformation.xml -->
     <style name="rechg_confirmation_text_style">
         <item name="android:textStyle">normal</item>
