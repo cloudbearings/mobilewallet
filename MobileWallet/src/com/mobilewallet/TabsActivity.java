@@ -29,7 +29,7 @@ public class TabsActivity extends ActionBarActivity implements
 			// Adding custom action bar
 			getSupportActionBar().setDisplayOptions(
 					ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
-			getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+			getSupportActionBar().setCustomView(R.layout.tabs_actionbar);
 
 			try {
 				View homeIcon = findViewById(android.R.id.home);
