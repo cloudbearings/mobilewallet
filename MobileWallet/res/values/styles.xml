@@ -262,5 +262,34 @@
         <item name="android:padding">@dimen/recharge_edittext_padding</item>
         <item name="android:background">@drawable/recharge_edittext_textlines</item>
     </style>
+    
+    <!-- recharge_conformation.xml -->
+    <style name="rechg_confirmation_text_style">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/rchg_cof_textview_text_size</item>
+        <item name="android:textColor">@color/recharge_confirmation_text_color</item>
+    </style>
+
+    <style name="rechg_confirmation_button_style">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/rchg_cof_button_text_size</item>
+        <item name="android:background">@drawable/bringal_color_button</item>
+    </style>
+
+    <!-- recharge_success_activity styles -->
+    <style name="recharge_success_button_style">
+        <item name="android:textSize">@dimen/rchg_cof_button_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/bringal_color_button</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="rchg_success_show_offers_button_style">
+        <item name="android:textSize">@dimen/rchg_success_show_offers_button_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/bringal_border_button</item>
+        <item name="android:textColor">@color/bringal_color</item>
+    </style>
 
 </resources>

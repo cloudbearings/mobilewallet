@@ -60,4 +60,15 @@
     <color name="recharge_edittext_border_color">#e6e6e6</color>
     <color name="recharge_view_color">#79bd8c</color>
 
+    <!-- operator_list_view colors -->
+    <color name="list_divider">#152f31</color>
+    <color name="list_background">#11282a</color>
+    <color name="list_background_pressed">#6ebb3b</color>
+
+    <!-- recharge_confirmation.xml -->
+    <color name="recharge_confirmation_text_color">#717171</color>
+
+    <!-- recharge_success.xml -->
+    <color name="recharge_success_end_des">#a3a3a3</color>
+
 </resources>

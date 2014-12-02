@@ -41,7 +41,7 @@
             android:value="@integer/google_play_services_version" />
 
         <receiver
-            android:name="com.mobilewallet.receivers.GcmBroadcastReceiver"
+            android:name=".receivers.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -125,7 +125,7 @@
             android:label="@string/title_activity_wallet_histoy" >
         </activity>
         <activity
-            android:name="com.mobilewallet.recharge.RechargeHistory"
+            android:name=".recharge.RechargeHistory"
             android:label="@string/title_activity_recharge_history" >
         </activity>
         <activity
@@ -133,7 +133,7 @@
             android:label="@string/title_activity_daily_credits_success" >
         </activity>
         <activity
-            android:name="com.mobilewallet.users.EditProfile"
+            android:name=".users.EditProfile"
             android:label="@string/title_activity_edit_profile" >
         </activity>
         <activity
@@ -143,6 +143,14 @@
         <activity
             android:name=".CMN_verification"
             android:label="@string/title_activity_cmn_verification" >
+        </activity>
+        <activity
+            android:name=".RechargeConfirmation"
+            android:label="@string/title_activity_recharge_confirmation" >
+        </activity>
+        <activity
+            android:name=".RechargeSuccess"
+            android:label="@string/title_activity_recharge_success" >
         </activity>
     </application>
 
