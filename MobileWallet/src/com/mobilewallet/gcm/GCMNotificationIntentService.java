@@ -21,6 +21,7 @@ import android.util.Log;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mobilewallet.R;
 import com.mobilewallet.SplashScreen;
+import com.mobilewallet.receivers.GcmBroadcastReceiver;
 import com.mobilewallet.service.BuildService;
 import com.mobilewallet.users.MyProfile;
 import com.mobilewallet.utils.Utils;

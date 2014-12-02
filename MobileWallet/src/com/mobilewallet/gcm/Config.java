@@ -6,4 +6,5 @@ public interface Config {
 	String GOOGLE_PROJECT_ID = "832193147482";
 	String MESSAGE_KEY = "message";
 	boolean IS_READ_SMS_PERMISSION_AVAILABLE = true;
+	String REF_CODE = "ref_code";
 }

@@ -179,4 +179,20 @@ public class Utils {
 		}
 		return verCode;
 	}
+	
+	public static void storeRefCode(Context context, String referrerCode) {
+
+		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.REF_CODE,
+				Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.REF_CODE, referrerCode);
+		editor.commit();
+
+	}
+
+	public static String getRefCode(Context context) {
+
+		return (context.getSharedPreferences(Config.REF_CODE, Context.MODE_PRIVATE))
+				.getString(Config.REF_CODE, null);
+
+	}
 }
