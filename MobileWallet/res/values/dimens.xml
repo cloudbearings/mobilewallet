@@ -173,10 +173,61 @@
     <dimen name="history_rupee_image_width">20dp</dimen>
     <dimen name="history_rupee_image_height">22dp</dimen>
     <dimen name="dbt_history_view1_margin_top">96dp</dimen>
-    
+
     <!-- recharge_fragment.xml -->
     <dimen name="recharge_edittext_text_size">14sp</dimen>
     <dimen name="recharge_edittext_padding">12dp</dimen>
-	
+
+    <!-- operator_list_view -->
+    <dimen name="circle_slider_drawer_width">200dp</dimen>
+
+    <!-- operator_circle_listitem.xml -->
+    <dimen name="operator_circle_list_item_text_size">14sp</dimen>
+    <dimen name="operator_circle_list_item_height">46dp</dimen>
+    <dimen name="operator_circle_list_item_padding_left">10dp</dimen>
+
+    <!-- recharge_confirmation.xml -->
+    <dimen name="rchg_cof_layout_padding">20dp</dimen>
+    <dimen name="rchg_cof_logo_width">150dp</dimen>
+    <dimen name="rchg_cof_logo_height">30dp</dimen>
+    <dimen name="rchg_cof_logo_margin_bottom">33dp</dimen>
+    <dimen name="rchg_cof_logo_margin_top">25dp</dimen>
+    <dimen name="rchg_cof_headding_margin_top">22dp</dimen>
+    <dimen name="rchg_cof_headding_text_size">16sp</dimen>
+    <dimen name="rchg_cof_textview_text_size">14sp</dimen>
+    <dimen name="rchg_cof_textview_margin_top">10dp</dimen>
+    <dimen name="rchg_cof_textview_margin_left">3dp</dimen>
+    <dimen name="rchg_cof_button_text_size">16sp</dimen>
+    <dimen name="rchg_cof_button_margin_top">25dp</dimen>
+    <dimen name="rchg_cof_mobile_margin_top">50dp</dimen>
+    <dimen name="rchg_cof_mobile_margin_left">20dp</dimen>
+    <dimen name="rchg_cof_view01_margin_top">28dp</dimen>
+    <dimen name="rchg_cof_view2_margin_top">10dp</dimen>
+    <dimen name="rchg_cof_mobile_operator_margin_top">14dp</dimen>
+    <dimen name="rchg_cof_heading_margin_top">13dp</dimen>
+    <dimen name="rchg_cof_no_margin_left">18dp</dimen>
+    <dimen name="rchg_cof_no_margin_top">25dp</dimen>
+    <dimen name="rchg_cof_mobile_no_margin_right">37dp</dimen>
+
+    <!-- recharge_success.xml -->
+    <dimen name="rchg_success_layout_padding">15dp</dimen>
+    <dimen name="rchg_success_layout_margin_left">0dp</dimen>
+    <dimen name="rchg_success_layout_margin_right">0dp</dimen>
+    <dimen name="rchg_success_logo_height">30dp</dimen>
+    <dimen name="rchg_success_logo_margin_top">0dp</dimen>
+    <dimen name="rchg_success_layout_margin_top">0dp</dimen>
+    <dimen name="rchg_success_logo_margin_bottom">25dp</dimen>
+    <dimen name="rchg_success_like_button_margin_top">80dp</dimen>
+    <dimen name="rchg_success_like_button_margin_bottom">15dp</dimen>
+    <dimen name="rchg_success_like_button_text_size">14sp</dimen>
+    <dimen name="rchg_success_end_des_text_size">12sp</dimen>
+    <dimen name="rchg_success_msg_text_size">18sp</dimen>
+    <dimen name="rchg_success_msg_margin_top">15dp</dimen>
+    <dimen name="rchg_success_status_des_text_size">12sp</dimen>
+    <dimen name="rchg_success_status_des_margin_left">25dp</dimen>
+    <dimen name="rchg_success_play_lastpic_margin_top">40dp</dimen>
+    <dimen name="rchg_success_show_offers_button_text_size">16dp</dimen>
+    <dimen name="rchg_success_view2_margin_top">11dp</dimen>
+    <dimen name="rchg_success_view01_margin_top">10dp</dimen>
 
 </resources>

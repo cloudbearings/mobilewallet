@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rec_succ_id"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.mobilewallet.RechargeSuccess" >
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/recharge_success_button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/rchg_success_like_button_margin_bottom"
+        android:layout_marginTop="@dimen/rchg_success_like_button_margin_top"
+        android:text="@string/like_button"
+        android:textSize="@dimen/rchg_success_like_button_text_size"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:gravity="center_horizontal"
+        android:text="@string/contact_msg"
+        android:textColor="@color/recharge_success_end_des"
+        android:textSize="@dimen/rchg_success_end_des_text_size" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/rchg_success_show_offers_button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="@dimen/rchg_success_play_lastpic_margin_top"
+        android:text="@string/show_offers_button" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/rchg_success_msg_margin_top"
+        android:text="@string/success_msg"
+        android:textColor="@color/black"
+        android:textSize="@dimen/rchg_success_msg_text_size"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="@dimen/rchg_success_status_des_margin_left"
+        android:text="@string/status_des"
+        android:textColor="@color/black"
+        android:textSize="@dimen/rchg_success_status_des_text_size"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="@dimen/rchg_success_view2_margin_top"
+        android:background="@android:color/darker_gray" />
+
+    <View
+        android:id="@+id/view01"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="@dimen/rchg_success_view01_margin_top"
+        android:background="@android:color/darker_gray" />
+
+</RelativeLayout>

@@ -16,6 +16,7 @@ import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 
@@ -179,7 +180,7 @@ public class Utils {
 		}
 		return verCode;
 	}
-	
+
 	public static void storeRefCode(Context context, String referrerCode) {
 
 		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.REF_CODE,
@@ -191,8 +192,27 @@ public class Utils {
 
 	public static String getRefCode(Context context) {
 
-		return (context.getSharedPreferences(Config.REF_CODE, Context.MODE_PRIVATE))
-				.getString(Config.REF_CODE, null);
+		return (context.getSharedPreferences(Config.REF_CODE, Context.MODE_PRIVATE)).getString(
+				Config.REF_CODE, null);
 
+	}
+
+	public static boolean isEmulator() {
+
+		try {
+			String buildModel = Build.MODEL;
+			return buildModel == null || "".equals(buildModel.trim())
+					|| buildModel.toLowerCase(Locale.getDefault()).contains("android sdk")
+					|| buildModel.toLowerCase(Locale.getDefault()).contains("emulator")
+					|| buildModel.toLowerCase(Locale.getDefault()).contains("google_sdk")
+					|| Build.BRAND.toLowerCase(Locale.getDefault()).contains("generic")
+					|| Build.FINGERPRINT.toLowerCase(Locale.getDefault()).contains("unknown")
+					|| Build.FINGERPRINT.toLowerCase(Locale.getDefault()).contains("generic")
+					|| Build.HARDWARE.toLowerCase(Locale.getDefault()).contains("goldfish");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
 	}
 }
