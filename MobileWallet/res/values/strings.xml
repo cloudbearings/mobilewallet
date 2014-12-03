@@ -48,8 +48,9 @@
     <string name="login_with_fb_button_name">Login With Facebook</string>
 
     <!-- login_activity.xml error messages -->
+    <string name="mobile_error">Enter your mobile number.</string>
+    <string name="invalid_mobile">Invalid mobile number.</string>
     <string name="pwd_error">Enter your password.</string>
-    <string name="rtpwd_error">Enter your retype password.</string>
     <string name="invalid_email">Invalid email.</string>
     <string name="invalid_pwd">Invalid password. Min 8 and max 20 characters and no spaces in between password.</string>
     <string name="fullname_error">Enter your fullname.</string>
@@ -61,6 +62,7 @@
     <!-- register_activity.xml -->
     <string name="title_activity_register">Registration</string>
     <string name="email_edittext_hint">Email</string>
+    <string name="mobile_edittext_hint">Mobile</string>
     <string name="fullname_edittext_hint">Full Name</string>
     <string name="pwd_edittext_hint">Password</string>
     <string name="rt_pwd_edittext_hint">Retype Password</string>

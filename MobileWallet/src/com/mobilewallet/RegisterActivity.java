@@ -35,7 +35,7 @@ import com.mobilewallet.utils.Utils;
 
 public class RegisterActivity extends ActionBarActivity {
 
-	private EditText email, name, pwd, rpwd;
+	private EditText email, name, pwd, mobile;
 	private static final String TAG = "RegisterActivity";
 
 	private static final List<String> permissions = new ArrayList<String>();
@@ -141,10 +141,10 @@ public class RegisterActivity extends ActionBarActivity {
 				}
 			});
 
+			mobile = (EditText) findViewById(R.id.mobile_number);
 			email = (EditText) findViewById(R.id.email);
 			name = (EditText) findViewById(R.id.fullname);
 			pwd = (EditText) findViewById(R.id.pwd);
-			rpwd = (EditText) findViewById(R.id.rtPwd);
 
 			Button register = (Button) findViewById(R.id.register);
 			// Adding Helvetica custom font to button text
@@ -229,11 +229,35 @@ public class RegisterActivity extends ActionBarActivity {
 		}
 	}
 
+	private boolean isMobilevalid() {
+		if ("".equals(mobile.getText().toString().trim())) {
+			displayToad(getString(R.string.mobile_error));
+			return false;
+		}
+
+		if (mobile.getText().toString().trim().length() != 10) {
+			displayToad(getString(R.string.invalid_mobile));
+			return false;
+		}
+
+		char pos_0 = mobile.getText().toString().trim().charAt(0);
+		if (!(pos_0 == '9' || pos_0 == '8' || pos_0 == '7')) {
+			displayToad(getString(R.string.invalid_mobile));
+			return false;
+		}
+		return true;
+	}
+
 	private boolean isFormValid() {
 		if (!Utils.isNetworkAvailable(RegisterActivity.this)) {
 			displayToad(getString(R.string.no_internet));
 			return false;
 		}
+
+		if (!isMobilevalid()) {
+			return false;
+		}
+
 		if (!(Patterns.EMAIL_ADDRESS).matcher(email.getText().toString().trim()).matches()) {
 			displayToad(getString(R.string.invalid_email));
 			return false;
@@ -249,16 +273,6 @@ public class RegisterActivity extends ActionBarActivity {
 		}
 
 		if (!pwd.getText().toString().matches("((?=\\S+$).{8,20})")) {
-			displayToad(getString(R.string.invalid_pwd));
-			return false;
-		}
-
-		if ("".equals(rpwd.getText().toString().trim())) {
-			displayToad(getString(R.string.rtpwd_error));
-			return false;
-		}
-
-		if (!rpwd.getText().toString().matches("((?=\\S+$).{8,20})")) {
 			displayToad(getString(R.string.invalid_pwd));
 			return false;
 		}
