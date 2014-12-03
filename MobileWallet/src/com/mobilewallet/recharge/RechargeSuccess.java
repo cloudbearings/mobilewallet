@@ -1,4 +1,4 @@
-package com.mobilewallet;
+package com.mobilewallet.recharge;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +13,11 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.mobilewallet.R;
+import com.mobilewallet.TabsActivity;
+import com.mobilewallet.R.id;
+import com.mobilewallet.R.layout;
+import com.mobilewallet.R.string;
 import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics;
 import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics.TrackerName;
 

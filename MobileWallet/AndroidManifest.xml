@@ -145,11 +145,11 @@
             android:label="@string/title_activity_cmn_verification" >
         </activity>
         <activity
-            android:name=".RechargeConfirmation"
+            android:name="com.mobilewallet.recharge.RechargeConfirmation"
             android:label="@string/title_activity_recharge_confirmation" >
         </activity>
         <activity
-            android:name=".RechargeSuccess"
+            android:name="com.mobilewallet.recharge.RechargeSuccess"
             android:label="@string/title_activity_recharge_success" >
         </activity>
     </application>
