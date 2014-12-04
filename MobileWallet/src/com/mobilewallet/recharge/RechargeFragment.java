@@ -31,9 +31,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -128,10 +128,10 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 			@Override
 			public void onClick(View v) {
 				RadioButton rb = (RadioButton) v;
-				if (rb.getText().equals("self")) {
-					((TextView) finalView.findViewById(R.id.contacts)).setVisibility(View.GONE);
+				if (rb.getText().equals(getString(R.string.self))) {
+					((ImageView) finalView.findViewById(R.id.contacts)).setVisibility(View.GONE);
 				} else {
-					((TextView) finalView.findViewById(R.id.contacts)).setVisibility(View.VISIBLE);
+					((ImageView) finalView.findViewById(R.id.contacts)).setVisibility(View.VISIBLE);
 				}
 			}
 		};
@@ -328,7 +328,7 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 	}
 
 	private void addContactsClickListener() {
-		((TextView) finalView.findViewById(R.id.contacts))
+		((ImageView) finalView.findViewById(R.id.contacts))
 				.setOnClickListener(new View.OnClickListener() {
 
 					@Override
@@ -347,10 +347,11 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
+
 		try {
 			if (resultCode == Activity.RESULT_OK) {
 				if (requestCode == 1111) {
+					showMessage(data.toString());
 					setMobileNumber(data);
 
 				} else if (requestCode == 1112 && data != null) {
@@ -389,6 +390,7 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 			Cursor c = getActivity().getContentResolver().query(Phone.CONTENT_URI, null,
 					Phone._ID + "=?", new String[] { data.getData().getLastPathSegment() }, null);
 			int phoneIdx = c.getColumnIndex(Phone.NUMBER);
+
 			if (c.getCount() == 1) {
 				if (c.moveToFirst()) {
 

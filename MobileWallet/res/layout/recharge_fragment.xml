@@ -102,7 +102,7 @@
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="@string/amount"
-                android:inputType="numberPassword" />
+                android:inputType="number" />
 
             <Button
                 android:id="@+id/recharge"
@@ -146,15 +146,16 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/white" />
 
-            <TextView
+            <ImageView
                 android:id="@+id/contacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/mobile_number"
-                android:layout_alignBottom="@+id/mobile_number"
+                android:layout_alignLeft="@+id/textView4"
                 android:layout_alignRight="@+id/mobile_number"
-                android:paddingRight="5dp"
-                android:text="Contacts" />
+                android:layout_alignTop="@+id/mobile_number"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/contacts_icon"
+                android:visibility="gone" />
         </RelativeLayout>
 
         <ListView
