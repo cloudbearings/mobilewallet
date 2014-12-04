@@ -11,6 +11,8 @@ import java.util.Locale;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.Cursor;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
@@ -215,4 +217,42 @@ public class Utils {
 		}
 		return true;
 	}
+
+	public static void storeReferralAmount(String referralAmt, String referralEarningAmt,
+			Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.REFERRAL_AMOUNT,
+				Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.REFERRAL_AMOUNT, referralAmt);
+		editor.putString(Config.REFERRAL_EARNING_AMOUNT, referralEarningAmt);
+		editor.commit();
+	}
+
+	public static String[] getReferralAmount(Context context) {
+
+		String val[] = null;
+		// val[0] = referralAmt, val[1] = referralEarningAmt
+		try {
+			val = new String[2];
+			val[0] = (context.getSharedPreferences(Config.REFERRAL_AMOUNT, Context.MODE_PRIVATE))
+					.getString(Config.REFERRAL_AMOUNT, "0");
+			val[1] = (context.getSharedPreferences(Config.REFERRAL_AMOUNT, Context.MODE_PRIVATE))
+					.getString(Config.REFERRAL_EARNING_AMOUNT, "0.0");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return val;
+	}
+
+	public static boolean isPackageInstalled(String packagename, Context context) {
+		PackageManager pm = context.getPackageManager();
+		try {
+			pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+			return true;
+		} catch (NameNotFoundException e) {
+			return false;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
 }

@@ -28,6 +28,7 @@
     <string name="recharge_confirmation_screen_name">Recharge Confirmation</string>
     <string name="recharge_success_screen_name">Recharge Success</string>
     <string name="notifications_screen_name">Notifications</string>
+    <string name="invite_screen_name">Invite</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>

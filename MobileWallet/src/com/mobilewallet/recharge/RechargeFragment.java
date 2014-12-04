@@ -34,6 +34,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -109,8 +110,16 @@ public class RechargeFragment extends android.support.v4.app.Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
 		finalView = inflater.inflate(R.layout.recharge_fragment, container, false);
+
+		TextView minimum_recharge_amt = (TextView) finalView.findViewById(R.id.textView1);
+		minimum_recharge_amt.setTypeface(Utils
+				.getFont(getActivity(), getString(R.string.Helvetica)));
+
+		TextView wallet_money = (TextView) finalView.findViewById(R.id.textView2);
+		wallet_money.setTypeface(Utils.getFont(getActivity(), getString(R.string.Helvetica)),
+				Typeface.BOLD);
+
 		mobileNumberEditText = (EditText) finalView.findViewById(R.id.mobile_number);
 		mobileNumberEditText.setTypeface(Utils.getFont(getActivity(), getString(R.string.arial)));
 
