@@ -18,7 +18,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/inviteDes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
@@ -30,7 +30,7 @@
         android:id="@+id/refer_instructions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/inviteDes"
         android:layout_marginTop="15dp"
         android:background="@drawable/textlines" >
 
@@ -70,27 +70,27 @@
         android:padding="10dp" >
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/invite_via_whatsapp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/whats_app_icon" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/invite_via_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="7dp"
             android:src="@drawable/facebook_icon" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/invite_via_twitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="7dp"
             android:src="@drawable/twitter_icon" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/share_via_apps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="7dp"
