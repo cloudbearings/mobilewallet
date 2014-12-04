@@ -1,6 +1,5 @@
 package com.mobilewallet;
 
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -8,10 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.TextView;
 
 import com.mobilewallet.adapters.TabsAdapter;
-import com.mobilewallet.utils.Utils;
 
 public class TabsActivity extends ActionBarActivity implements
 		android.support.v7.app.ActionBar.TabListener {
@@ -40,16 +37,16 @@ public class TabsActivity extends ActionBarActivity implements
 		} else {
 			getSupportActionBar().setDisplayOptions(
 					ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_SHOW_HOME);
-			getSupportActionBar().setCustomView(R.layout.custom_actionbar);
+			getSupportActionBar().setCustomView(R.layout.tabs_actionbar);
 		}
 
-		// Adding custom actionbar
+		/*// Adding custom actionbar
 		getSupportActionBar().setCustomView(R.layout.custom_actionbar);
 
 		TextView activity_title = (TextView) findViewById(R.id.actionbar_title);
 		activity_title.setTypeface(Utils.getFont(TabsActivity.this, getString(R.string.Helvetica)),
 				Typeface.BOLD);
-		activity_title.setText(getString(R.string.app_name));
+		activity_title.setText(getString(R.string.app_name));*/
 
 		viewPager = (ViewPager) findViewById(R.id.pager);
 		actionBar = getSupportActionBar();

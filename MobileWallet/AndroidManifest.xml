@@ -27,6 +27,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.mobilewallet.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- Read contacts from phone -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
