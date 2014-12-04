@@ -1,5 +1,3 @@
-package com.mobilewallet.widget;
-
 /**
  * Copyright 2010-present Facebook.
  *
@@ -16,6 +14,8 @@ package com.mobilewallet.widget;
  * limitations under the License.
  */
 
+package com.mobilewallet.widget;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -23,6 +23,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.TypedArray;
@@ -265,7 +266,7 @@ public class LoginButton extends Button {
 				this.setBackgroundColor(getResources().getColor(R.color.com_facebook_blue));
 				// hardcoding in edit mode as getResources().getString() doesn't
 				// seem to work in IntelliJ
-				loginText = "Log in with Facebook";
+				loginText = "Register with Facebook";
 			} else {
 				this.setBackgroundResource(R.drawable.com_facebook_button_blue);
 				this.setCompoundDrawablesWithIntrinsicBounds(R.drawable.com_facebook_inverse_icon,
@@ -421,7 +422,7 @@ public class LoginButton extends Button {
 	 * of the LoginButton class altogether (by managing the session explicitly).
 	 * 
 	 * @param permissions
-	 *            the read permissions to use
+	 *            the publish permissions to use
 	 * 
 	 * @throws UnsupportedOperationException
 	 *             if setReadPermissions has been called
@@ -452,7 +453,7 @@ public class LoginButton extends Button {
 	 * of the LoginButton class altogether (by managing the session explicitly).
 	 * 
 	 * @param permissions
-	 *            the read permissions to use
+	 *            the publish permissions to use
 	 * 
 	 * @throws UnsupportedOperationException
 	 *             if setReadPermissions has been called
@@ -803,7 +804,7 @@ public class LoginButton extends Button {
 					R.string.com_facebook_loginview_log_out_button));
 		} else {
 			setText((loginText != null) ? loginText : getResources().getString(
-					R.string.com_facebook_loginview_log_in_button_2));
+					R.string.com_facebook_loginview_log_in_button));
 		}
 	}
 
@@ -920,6 +921,11 @@ public class LoginButton extends Button {
 						openRequest = new Session.OpenRequest(parentFragment);
 					} else if (context instanceof Activity) {
 						openRequest = new Session.OpenRequest((Activity) context);
+					} else if (context instanceof ContextWrapper) {
+						Context baseContext = ((ContextWrapper) context).getBaseContext();
+						if (baseContext instanceof Activity) {
+							openRequest = new Session.OpenRequest((Activity) baseContext);
+						}
 					}
 
 					if (openRequest != null) {
