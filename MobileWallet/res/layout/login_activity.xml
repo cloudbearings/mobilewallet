@@ -67,7 +67,7 @@
         android:paddingLeft="19dp"
         android:text="@string/forgot_pwd" />
 
-    <com.mobilewallet.widget.LoginButton
+    <com.facebook.widget.LoginButton
         android:id="@+id/fb_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

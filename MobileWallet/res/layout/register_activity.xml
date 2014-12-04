@@ -81,7 +81,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/registration_des" />
 
-    <com.facebook.widget.LoginButton
+    <com.mobilewallet.widget.LoginButton
         android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
