@@ -68,6 +68,7 @@
         android:text="@string/forgot_pwd" />
 
     <com.facebook.widget.LoginButton
+        xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/fb_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,15 +77,16 @@
         android:layout_marginTop="20dp"
         android:text="@string/login_with_fb_button_name"
         facebook:confirm_logout="false"
-        facebook:fetch_user_info="true" />
+        facebook:fetch_user_info="true"
+        fb:logout_text="@string/title_processing" />
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/fb_login"
-        android:paddingBottom="2dp"
         android:layout_alignLeft="@+id/forgot_pwd"
+        android:paddingBottom="2dp"
         android:src="@drawable/forgot_pwd_icon" />
 
 </RelativeLayout>

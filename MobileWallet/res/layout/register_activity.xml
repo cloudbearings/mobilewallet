@@ -81,7 +81,8 @@
         android:layout_marginTop="10dp"
         android:text="@string/registration_des" />
 
-    <com.mobilewallet.widget.LoginButton
+    <com.facebook.widget.LoginButton
+        xmlns:fb="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -90,6 +91,8 @@
         android:layout_marginTop="5dp"
         android:text="@string/signup_with_fb_button_name"
         facebook:confirm_logout="false"
-        facebook:fetch_user_info="true" />
+        facebook:fetch_user_info="true"
+        fb:login_text="@string/register_with_facebook"
+        fb:logout_text="@string/title_processing" />
 
 </RelativeLayout>

@@ -72,6 +72,7 @@
     <string name="registration_des">Email address will be used for identification purpose and to prevent misuse of the service. To use Mobile Wallet, please verify your email address.</string>
     <string name="signup_with_fb_button_name">Signup With Facebook</string>
     <string name="title_activity_tabs">Mobile Wallet</string>
+    <string name="register_with_facebook">Register with Facebook</string>
     <string name="title_activity_learn_gk_fragment">LearnGk</string>
 
     <!-- invite_fragment.xml -->
