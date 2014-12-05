@@ -121,6 +121,7 @@
     <string name="moile_no_hint">Enter your mobile number</string>
     <string name="operator_circle_hint">Operator and circle</string>
     <string name="amount">Amount</string>
+    <string name="country_code">+91-</string>
 
     <!-- forgot_password.xml -->
     <string name="title_activity_forgot_password">Forgot Your Password?</string>

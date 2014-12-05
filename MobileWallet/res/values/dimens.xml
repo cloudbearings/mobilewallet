@@ -23,6 +23,21 @@
     <dimen name="spinner_textview_padding_top">8dp</dimen>
     <dimen name="spinner_textview_padding_left">15dp</dimen>
 
+    <!-- custom actionbar dimes -->
+    <dimen name="actionbar_logo_height">55dp</dimen>
+    <dimen name="actionbar_logo_margin_left">90dp</dimen>
+    <dimen name="actionbar_linearlayout_height">25dp</dimen>
+    <dimen name="actionbar_linearlayout_margin_right">10dp</dimen>
+    <dimen name="actionbar_linearlayout_margin_top">10dp</dimen>
+    <dimen name="actionbar_amt_image_padding_left">5dp</dimen>
+    <dimen name="actionbar_amt_image_padding_right">3dp</dimen>
+    <dimen name="actionbar_amt_image_padding_top">7.5dp</dimen>
+    <dimen name="actionbar_amt_image_padding_bottom">5dp</dimen>
+    <dimen name="actionbar_amt_image_margin_bottom">1dp</dimen>
+    <dimen name="actionbar_amt_margin_top">2.5dp</dimen>
+    <dimen name="actionbar_amt_margin_right">5.5dp</dimen>
+    <dimen name="actionbar_amt_text_size">14sp</dimen>
+
     <!-- more_fragment.xml -->
     <dimen name="more_logo_padding_bottom">20dp</dimen>
     <dimen name="more_logo_padding_left">21dp</dimen>
@@ -177,6 +192,7 @@
     <!-- recharge_fragment.xml -->
     <dimen name="recharge_edittext_text_size">14sp</dimen>
     <dimen name="recharge_edittext_padding">12dp</dimen>
+    <dimen name="recharge_mobile_edittext_padding_left">42dp</dimen>
     <dimen name="recharge_operator_edittext_padding_left">12dp</dimen>
     <dimen name="recharge_operator_edittext_padding">6dp</dimen>
 
@@ -240,7 +256,7 @@
     <dimen name="notifis_des_line_spacing">1dp</dimen>
     <dimen name="notif_layout_padding">25dp</dimen>
     <dimen name="notif_checkbox_margin_top">10dp</dimen>
-    
+
     <!-- notifications_checkbox.xml -->
     <dimen name="notifis_checkboxt_textsize">15sp</dimen>
 
