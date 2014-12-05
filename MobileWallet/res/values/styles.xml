@@ -23,6 +23,12 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
+    
+    <style name="actionbar_amt_style">
+        <item name="android:textSize">@dimen/actionbar_amt_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 
     <!-- main_activity.xml -->
     <style name="main_heading_style">
@@ -260,6 +266,15 @@
     <style name="recg_edittext_style">
         <item name="android:textSize">@dimen/recharge_edittext_text_size</item>
         <item name="android:padding">@dimen/recharge_edittext_padding</item>
+        <item name="android:background">@drawable/recharge_edittext_textlines</item>
+    </style>
+    
+    <style name="recg_mobile_no_edittext_style">
+        <item name="android:textSize">@dimen/recharge_edittext_text_size</item>
+        <item name="android:paddingLeft">@dimen/recharge_mobile_edittext_padding_left</item>
+        <item name="android:paddingRight">@dimen/recharge_edittext_padding</item>
+        <item name="android:paddingTop">@dimen/recharge_edittext_padding</item>
+        <item name="android:paddingBottom">@dimen/recharge_edittext_padding</item>
         <item name="android:background">@drawable/recharge_edittext_textlines</item>
     </style>
     
