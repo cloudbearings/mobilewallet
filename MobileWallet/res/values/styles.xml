@@ -23,7 +23,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/white</item>
     </style>
-    
+
     <style name="actionbar_amt_style">
         <item name="android:textSize">@dimen/actionbar_amt_text_size</item>
         <item name="android:textStyle">normal</item>
@@ -268,7 +268,7 @@
         <item name="android:padding">@dimen/recharge_edittext_padding</item>
         <item name="android:background">@drawable/recharge_edittext_textlines</item>
     </style>
-    
+
     <style name="recg_mobile_no_edittext_style">
         <item name="android:textSize">@dimen/recharge_edittext_text_size</item>
         <item name="android:paddingLeft">@dimen/recharge_mobile_edittext_padding_left</item>
@@ -277,8 +277,8 @@
         <item name="android:paddingBottom">@dimen/recharge_edittext_padding</item>
         <item name="android:background">@drawable/recharge_edittext_textlines</item>
     </style>
-    
-     <style name="recg_operator_edittext_style">
+
+    <style name="recg_operator_edittext_style">
         <item name="android:textSize">@dimen/recharge_edittext_text_size</item>
         <item name="android:paddingLeft">@dimen/recharge_operator_edittext_padding_left</item>
         <item name="android:paddingRight">@dimen/recharge_operator_edittext_padding</item>
@@ -286,7 +286,7 @@
         <item name="android:paddingBottom">@dimen/recharge_operator_edittext_padding</item>
         <item name="android:background">@drawable/recharge_edittext_textlines</item>
     </style>
-    
+
     <!-- recharge_conformation.xml -->
     <style name="rechg_confirmation_text_style">
         <item name="android:textStyle">normal</item>
@@ -315,12 +315,40 @@
         <item name="android:background">@drawable/bringal_border_button</item>
         <item name="android:textColor">@color/bringal_color</item>
     </style>
-    
+
     <!-- notifications.xml -->
     <style name="notifications_text_style">
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">@dimen/notifis_checkboxt_textsize</item>
         <item name="android:textColor">@color/notifications_button_text_color</item>
+    </style>
+
+    <!-- earn_rewards.xml -->
+    <style name="earn_rewards_edittext_style">
+        <item name="android:textSize">@dimen/earn_rewards_edittext_size</item>
+        <item name="android:textColorHint">@color/bringal_color</item>
+        <item name="android:background">@drawable/bringal_border_textlines</item>
+        <item name="android:padding">@dimen/earn_rewards_edittext_padding</item>
+    </style>
+
+    <style name="earn_rewards_answer_edittext_style">
+        <item name="android:textSize">@dimen/earn_rewards_edittext_size</item>
+        <item name="android:textColorHint">@color/bringal_color</item>
+        <item name="android:background">@drawable/bringal_border_textlines</item>
+        <item name="android:padding">@dimen/earn_rewards_answer_edittext_padding</item>
+    </style>
+
+    <style name="earn_rewards_button_style">
+        <item name="android:textSize">@dimen/earn_rewards_button_text_size</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/bringal_color_button</item>
+    </style>
+
+    <!-- user_questions.xml -->
+    <style name="no_user_questions_text_style">
+        <item name="android:textSize">@dimen/history_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/bringal_color</item>
     </style>
 
 </resources>

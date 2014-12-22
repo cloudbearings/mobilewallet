@@ -148,12 +148,20 @@
             android:label="@string/title_activity_cmn_verification" >
         </activity>
         <activity
-            android:name="com.mobilewallet.recharge.RechargeConfirmation"
+            android:name=".recharge.RechargeConfirmation"
             android:label="@string/title_activity_recharge_confirmation" >
         </activity>
         <activity
-            android:name="com.mobilewallet.recharge.RechargeSuccess"
+            android:name=".recharge.RechargeSuccess"
             android:label="@string/title_activity_recharge_success" >
+        </activity>
+        <activity
+            android:name=".earnrewards.EarnRewards"
+            android:label="@string/title_activity_earn_rewards" >
+        </activity>
+        <activity
+            android:name="com.mobilewallet.earnrewards.UserQuestions"
+            android:label="@string/title_activity_user_questions" >
         </activity>
     </application>
 
