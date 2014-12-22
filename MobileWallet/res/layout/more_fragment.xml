@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/more_fragment_bg_color" >
 
     <RelativeLayout
         android:id="@+id/relativeLayout1"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/more_relative_layout_height"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
 
         <View
             android:id="@+id/view1"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/learnGK"
             android:background="@color/line_color" />
@@ -40,7 +40,7 @@
 
         <View
             android:id="@+id/view2"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/invite"
             android:background="@color/line_color" />
@@ -86,8 +86,8 @@
 
         <View
             android:id="@+id/view11"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@color/line_color" />
@@ -95,7 +95,7 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/more_relative_layout_height"
         android:layout_below="@+id/relativeLayout1"
         android:orientation="horizontal" >
@@ -111,7 +111,7 @@
 
         <View
             android:id="@+id/view3"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/wallet"
             android:background="@color/line_color" />
@@ -128,7 +128,7 @@
 
         <View
             android:id="@+id/view4"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/dailyCredits"
             android:background="@color/line_color" />
@@ -174,8 +174,8 @@
 
         <View
             android:id="@+id/view12"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@color/line_color" />
@@ -183,7 +183,7 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/more_relative_layout_height"
         android:layout_below="@+id/relativeLayout2"
         android:orientation="horizontal" >
@@ -199,7 +199,7 @@
 
         <View
             android:id="@+id/view5"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/profile"
             android:background="@color/line_color" />
@@ -216,7 +216,7 @@
 
         <View
             android:id="@+id/view6"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/share"
             android:background="@color/line_color" />
@@ -262,8 +262,8 @@
 
         <View
             android:id="@+id/view13"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@color/line_color" />
@@ -271,7 +271,7 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout4"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/more_relative_layout_height"
         android:layout_below="@+id/relativeLayout3"
         android:orientation="horizontal" >
@@ -287,7 +287,7 @@
 
         <View
             android:id="@+id/view7"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/feedBack"
             android:background="@color/line_color" />
@@ -304,7 +304,7 @@
 
         <View
             android:id="@+id/view8"
-            android:layout_width="1.0dip"
+            android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/about"
             android:background="@color/line_color" />
@@ -330,8 +330,8 @@
 
         <View
             android:id="@+id/view14"
-            android:layout_width="fill_parent"
-            android:layout_height="1.0dip"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:background="@color/line_color" />
@@ -339,7 +339,7 @@
 
     <View
         android:id="@+id/view9"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/relativeLayout4"
@@ -349,7 +349,6 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_below="@+id/relativeLayout4"
         android:layout_toLeftOf="@+id/textView12"
         android:src="@drawable/mobile_icon" />
@@ -360,7 +359,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/relativeLayout4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="42.0dip"
+        android:layout_marginTop="25dp"
         android:text="@string/change_mobile_number" />
 
     <ImageView
@@ -368,7 +367,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView12"
-        android:layout_marginLeft="35.0dip"
+        android:layout_marginLeft="35dp"
         android:layout_toRightOf="@+id/textView12"
         android:src="@drawable/tm_icon_more_nomal" />
 

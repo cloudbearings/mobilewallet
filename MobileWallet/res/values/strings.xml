@@ -15,6 +15,8 @@
     <string name="facebook_app_id">288571111343597</string>
     <string name="recharge_tab">showRechargeTab</string>
     <string name="show_true">true</string>
+    <string name="end">end</string>
+    <string name="count">count</string>
 
     <!-- Google analytics strings -->
     <string name="daily_credits_screen_name">Daily Credits</string>
@@ -29,6 +31,7 @@
     <string name="recharge_success_screen_name">Recharge Success</string>
     <string name="notifications_screen_name">Notifications</string>
     <string name="invite_screen_name">Invite</string>
+    <string name="user_questions_screen_name">User Questions</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -95,14 +98,13 @@
     <string name="daily_credits_des"><![CDATA[Everyday, you get <font color=\"#6ebb3b\">7 paise</font> for opening<br/>or logging into the app.]]></string>
     <string name="cliam_button_name">Claim Today\'s 7 paise</string>
     <string name="already_climed">Already Claimed</string>
-    
+
     <!-- notifications.xml -->
     <string name="enable_notifications">Daily Credits</string>
     <string name="notifications_des">Real time notifications for offers and credits are not often and they will help you get free recharge quickly Hence, customization option is not given for them.</string>
     <string name="notifications">Notifications</string>
     <string name="notifc_failure_msg">Unable to update notification settings.</string>
     <string name="offer">offer</string>
-    
     <string name="rate">Rate</string>
     <string name="share">Share</string>
     <string name="feedback">Feedback</string>
@@ -225,5 +227,25 @@
     <string name="success_msg">Successfully Recharged</string>
     <string name="status_des">Transaction id is xxxxxx</string>
     <string name="title_activity_recharge_success">Recharge Success</string>
+
+    <!-- earn_rewards.xml -->
+    <string name="title_activity_earn_rewards">Earn Rewards</string>
+    <string name="earn_rewards">Earn Rewards to submit a question?</string>
+    <string name="enter_ques_hint">Enter a question?</string>
+    <string name="submit">Submit</string>
+    <string name="a">A)</string>
+    <string name="b">B)</string>
+    <string name="c">C)</string>
+    <string name="d">D)</string>
+    <string name="your_answer">Your Answer :</string>
+    <string name="success_status_msg">Thank you for submitting a quwstion. You will receive rewards once we approve your question.</string>
+
+    <!-- user_questions.xml -->
+    <string name="no_user_questions">No Questions are submitted</string>
+    <string name="title_activity_user_questions">User Questions</string>
+    <string name="user_ques_server_error">Unable to get user questions</string>
+    <string name="question_error">Enter your question.</string>
+    <string name="answers_error">Enter your question answer.</string>
+    <string name="answer_error">Enter question answer.</string>
 
 </resources>

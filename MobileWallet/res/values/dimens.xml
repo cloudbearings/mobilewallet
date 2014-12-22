@@ -4,6 +4,9 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- global dimes -->
+    <dimen name="progress_bar_dimes">40dp</dimen>
+
     <!-- custom_actionbar.xml -->
     <dimen name="custom_actionbar_text_size">16dp</dimen>
     <dimen name="tabtext_size">14dp</dimen>
@@ -259,5 +262,11 @@
 
     <!-- notifications_checkbox.xml -->
     <dimen name="notifis_checkboxt_textsize">15sp</dimen>
+
+    <!-- earn_rewards.xml -->
+    <dimen name="earn_rewards_edittext_size">15sp</dimen>
+    <dimen name="earn_rewards_edittext_padding">15dp</dimen>
+    <dimen name="earn_rewards_answer_edittext_padding">10dp</dimen>
+    <dimen name="earn_rewards_button_text_size">16dp</dimen>
 
 </resources>
