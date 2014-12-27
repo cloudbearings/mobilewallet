@@ -28,12 +28,32 @@ public class DBAdapter extends SQLiteOpenHelper {
 	public static final String IMAGE_ID = "image_id";
 	public static final String APP_EXISTS = "app_exists";
 
-	private static final String STRING_CREATE = "CREATE TABLE " + TABLE_NAME + " (" + OFFER_ID
-			+ " TEXT PRIMARY KEY, " + TITLE + " TEXT, " + SUB_TITLE + " TEXT, " + DES + " TEXT, "
-			+ STEPS + " TEXT, " + URL + " TEXT, " + AMOUNT + " TEXT, " + "" + PACKAGE + " TEXT, "
-			+ TYPE + " TEXT, " + STATUS + " TEXT, " + CLICKED + " TEXT, " + APP_STATUS + " TEXT, "
-			+ CURRENT_MILLISECONDS + " TEXT, " + POSITION + " INTEGER , " + IMAGE_ID
-			+ " INTEGER , " + APP_EXISTS + " TEXT);";
+	// Questions table properties
+	public static final String QT_TABLE_NAME = "questions";
+	public static final String QT_NO = "qt_no";
+	public static final String QUESTION = "question";
+	public static final String ANSWERA = "answerA";
+	public static final String ANSWERB = "answerB";
+	public static final String ANSWERC = "answerC";
+	public static final String ANSWERD = "answerD";
+	public static final String ANSWER = "answer";
+	public static final String EXPLANATION = "explanation";
+	public static final String QT_TYPE = "qt_type";
+
+	private static final String CREATE_OFFERS_TABLE = "CREATE TABLE "
+			+ TABLE_NAME + " (" + OFFER_ID + " TEXT PRIMARY KEY, " + TITLE
+			+ " TEXT, " + SUB_TITLE + " TEXT, " + DES + " TEXT, " + STEPS
+			+ " TEXT, " + URL + " TEXT, " + AMOUNT + " TEXT, " + "" + PACKAGE
+			+ " TEXT, " + TYPE + " TEXT, " + STATUS + " TEXT, " + CLICKED
+			+ " TEXT, " + APP_STATUS + " TEXT, " + CURRENT_MILLISECONDS
+			+ " TEXT, " + POSITION + " INTEGER , " + IMAGE_ID + " INTEGER , "
+			+ APP_EXISTS + " TEXT);";
+
+	private static final String CREATE_QUESTIONS_TABLE = "CREAT TABLE"
+			+ QT_TABLE_NAME + "(" + QT_NO + " INTEGER PRIMARY KEY, " + QUESTION
+			+ " TEXT, " + ANSWERA + " TEXT," + ANSWERB + " TEXT, " + ANSWERC
+			+ " TEXT, " + ANSWERD + " TEXT, " + ANSWER + " TEXT," + EXPLANATION
+			+ " TEXT, " + QT_TYPE + " qt_type);";
 
 	public DBAdapter(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
@@ -41,14 +61,15 @@ public class DBAdapter extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(STRING_CREATE);
+		db.execSQL(CREATE_OFFERS_TABLE);
+		db.execSQL(CREATE_QUESTIONS_TABLE);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+		db.execSQL("DROP TABLE IF EXISTS " + CREATE_QUESTIONS_TABLE);
 		onCreate(db);
 	}
-
 
 }

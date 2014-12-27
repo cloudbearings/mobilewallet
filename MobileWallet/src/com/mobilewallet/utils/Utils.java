@@ -24,10 +24,8 @@ import android.telephony.TelephonyManager;
 
 import com.mobilewallet.gcm.Config;
 
-public class Utils {
 
-	public Utils() {
-	}
+public class Utils {
 
 	public static String formatAmount(String s) {
 		String s1;
