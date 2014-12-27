@@ -13,10 +13,23 @@
     </supports-screens>
 
     <uses-sdk
-        android:minSdkVersion="9"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <permission
+        android:name="com.mobilewallet.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="com.mobilewallet.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- Read contacts from phone -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -26,6 +39,29 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <receiver
+            android:name=".receivers.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.mobilewallet" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".gcm.GCMNotificationIntentService" />
+
+        <!-- Receiver to receive Installation status -->
+        <receiver android:name=".gcm.ReferralReceiver" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".SplashScreen"
@@ -84,8 +120,48 @@
             android:label="@string/title_activity_notifications" >
         </activity>
         <activity
-            android:name="com.mobilewallet.users.MyProfile"
+            android:name=".users.MyProfile"
             android:label="@string/title_activity_my_profile" >
+        </activity>
+        <activity
+            android:name=".WalletHistoy"
+            android:label="@string/title_activity_wallet_histoy" >
+        </activity>
+        <activity
+            android:name=".recharge.RechargeHistory"
+            android:label="@string/title_activity_recharge_history" >
+        </activity>
+        <activity
+            android:name=".DailyCreditsSuccess"
+            android:label="@string/title_activity_daily_credits_success" >
+        </activity>
+        <activity
+            android:name=".users.EditProfile"
+            android:label="@string/title_activity_edit_profile" >
+        </activity>
+        <activity
+            android:name=".ChangeMobileNumber"
+            android:label="@string/title_activity_change_mobile_number" >
+        </activity>
+        <activity
+            android:name=".CMN_verification"
+            android:label="@string/title_activity_cmn_verification" >
+        </activity>
+        <activity
+            android:name=".recharge.RechargeConfirmation"
+            android:label="@string/title_activity_recharge_confirmation" >
+        </activity>
+        <activity
+            android:name=".recharge.RechargeSuccess"
+            android:label="@string/title_activity_recharge_success" >
+        </activity>
+        <activity
+            android:name=".earnrewards.EarnRewards"
+            android:label="@string/title_activity_earn_rewards" >
+        </activity>
+        <activity
+            android:name="com.mobilewallet.earnrewards.UserQuestions"
+            android:label="@string/title_activity_user_questions" >
         </activity>
     </application>
 
