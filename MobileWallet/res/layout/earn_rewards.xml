@@ -14,17 +14,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/earn_rewards"
-        android:textSize="16sp" />
+        android:textSize="@dimen/earn_rewards_textView1_textView_textSize" />
 
     <EditText
         android:id="@+id/question"
         style="@style/earn_rewards_edittext_style"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="@dimen/earn_rewards_question_edittext_height"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:ems="10"
+        android:layout_marginTop="@dimen/earn_rewards_question_edittext_margin_top"
+        android:ems="@dimen/earn_rewards_question_edittext_ems"
         android:gravity="start"
         android:hint="@string/enter_ques_hint"
         android:inputType="textPostalAddress" >
@@ -40,7 +40,7 @@
         android:layout_alignLeft="@+id/question"
         android:layout_alignRight="@+id/question"
         android:layout_below="@+id/question"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/earn_rewards_answerA_edittext_margin_top"
         android:ems="10"
         android:hint="@string/a"
         android:inputType="textPersonName" />
@@ -54,7 +54,7 @@
         android:layout_alignRight="@+id/answerA"
         android:layout_below="@+id/answerA"
         android:layout_centerVertical="true"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/earn_rewards_answerB_edittext_margin_top"
         android:ems="10"
         android:hint="@string/b"
         android:inputType="textPersonName" />
@@ -67,7 +67,7 @@
         android:layout_alignLeft="@+id/answerB"
         android:layout_alignRight="@+id/answerB"
         android:layout_below="@+id/answerB"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/earn_rewards_answerC_edittext_margin_top"
         android:ems="10"
         android:hint="@string/c"
         android:inputType="textPersonName" />
@@ -80,7 +80,7 @@
         android:layout_alignLeft="@+id/answerC"
         android:layout_alignRight="@+id/answerC"
         android:layout_below="@+id/answerC"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="@dimen/earn_rewards_answerD_edittext_margin_top"
         android:ems="10"
         android:hint="@string/d"
         android:inputType="textPersonName" />
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/answerD"
         android:layout_below="@+id/answerD"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/earn_rewards_answer_edittext_margin_top"
         android:ems="10" />
 
     <TextView
@@ -103,7 +103,7 @@
         android:layout_alignBottom="@+id/answer"
         android:layout_alignLeft="@+id/answerD"
         android:text="@string/your_answer"
-        android:textSize="14sp" />
+        android:textSize="@dimen/earn_rewards_your_answer_textView_textSize" />
 
     <Button
         android:id="@+id/submit"
@@ -113,7 +113,7 @@
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignRight="@+id/answer"
         android:layout_below="@+id/answer"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/earn_rewards_submit_button_margin_top"
         android:text="@string/submit" />
 
 </RelativeLayout>

@@ -33,9 +33,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/user_questions_no_user_questions_textview_margintop"
         android:gravity="center_horizontal"
-        android:lineSpacingExtra="2dp"
+        android:lineSpacingExtra="@dimen/user_questions_no_user_questions_textview_lineSpacingExtra"
         android:text="@string/no_user_questions" />
 
 </RelativeLayout>

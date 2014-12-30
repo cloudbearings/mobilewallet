@@ -356,9 +356,24 @@
     <dimen name="recharge_fragment_wallet_money_textview_marginleft">17dp</dimen>
     <dimen name="recharge_fragment_wallet_bal_textview_marginright">15dp</dimen>
     <dimen name="recharge_fragment_contacts_imageview_margintop">10dp</dimen>
-    
-    <!-- register_activity.xml -->
-    
 
+    <!-- register_activity.xml -->
+    <dimen name="register_activity_mobile_number_edittext_margintop">5dp</dimen>
+    <dimen name="register_activity_email_edittext_margintop">5dp</dimen>
+    <dimen name="register_activity_pwd_edittext_margintop">10dp</dimen>
+    <dimen name="register_activity_fullname_edittext_margintop">10dp</dimen>
+    <dimen name="register_activity_register_button_margintop">20dp</dimen>
+    <dimen name="register_activity_registration_des_textview_margintop">10dp</dimen>
+
+    <!-- user_questions_list_item.xml -->
+    <dimen name="user_questions_list_item_question_textview_textsize">16sp</dimen>
+    <dimen name="user_questions_list_item_answer_textview_margintop">15dp</dimen>
+    <dimen name="user_questions_list_item_answer_textview_lineSpacingExtra">5dp</dimen>
+    <dimen name="user_questions_list_item_answer_textview_textsize">14sp</dimen>
+    <dimen name="user_questions_list_item_status_textview_margintop">15dp</dimen>
+
+    <!-- user_questions.xml -->
+    <dimen name="user_questions_no_user_questions_textview_margintop">25dp</dimen>
+    <dimen name="user_questions_no_user_questions_textview_lineSpacingExtra">2dp</dimen>
 
 </resources>

@@ -13,7 +13,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Who is hero in Agadu movie?"
-        android:textSize="16sp" />
+        android:textSize="@dimen/user_questions_list_item_question_textview_textsize" />
 
     <TextView
         android:id="@+id/answer"
@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/question"
         android:layout_below="@+id/question"
-        android:layout_marginTop="15dp"
-        android:lineSpacingExtra="5dp"
+        android:layout_marginTop="@dimen/user_questions_list_item_answer_textview_margintop"
+        android:lineSpacingExtra="@dimen/user_questions_list_item_answer_textview_lineSpacingExtra"
         android:text="A) Mahesh babu\nB) Naga Chaitanya\nC) Junior NTR\nD)Nitin"
-        android:textSize="14sp" />
+        android:textSize="@dimen/user_questions_list_item_answer_textview_textsize" />
 
     <TextView
         android:id="@+id/status"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/answer"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/user_questions_list_item_status_textview_margintop"
         android:text="Status : Approved" />
 
 </RelativeLayout>

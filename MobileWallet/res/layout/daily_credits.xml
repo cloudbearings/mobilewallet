@@ -20,11 +20,11 @@
     <Button
         android:id="@+id/claimLoginCredit"
         style="@style/daily_credits_button_style"
-        android:layout_width="210dp"
+        android:layout_width="@dimen/daily_credits_claimLoginCredit_button_width"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/daily_credits_claimLoginCredit_button_margin_top"
         android:text="@string/cliam_button_name" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/daily_credits_daily_credits_des_textView2_margin_top"
         android:gravity="center_horizontal"
         android:text="@string/daily_credits_des" />
 

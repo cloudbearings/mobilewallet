@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView2"
             android:layout_below="@+id/textView2"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/invite_fragment_inviteDes_textView_margin_top"
             android:text="@string/invite_and_earn" />
 
         <RelativeLayout
@@ -39,21 +39,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/inviteDes"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="@dimen/invite_fragment_refer_instructions_RelativeLayout_margin_top"
             android:background="@drawable/textlines" >
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
+                android:padding="@dimen/invite_fragment_how_it_works_textView_padding"
                 android:text="@string/how_it_works"
-                android:textSize="16sp" />
+                android:textSize="@dimen/invite_fragment_how_it_works_textView_textSize" />
 
             <View
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="@dimen/invite_fragment_inviteDes_View_height"
                 android:layout_below="@+id/textView3"
                 android:background="@color/line_color" />
 
@@ -62,8 +62,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view1"
-                android:lineSpacingExtra="2dp"
-                android:padding="10dp"
+                android:lineSpacingExtra="@dimen/invite_fragment_refer_instructions_textView_lineSpacingExtra"
+                android:padding="@dimen/invite_fragment_refer_instructions_textView_padding"
                 android:text="@string/refer_instructions" />
         </RelativeLayout>
 
@@ -75,7 +75,7 @@
             android:layout_alignRight="@+id/refer_instructions"
             android:layout_below="@+id/refer_instructions"
             android:orientation="horizontal"
-            android:padding="10dp" >
+            android:padding="@dimen/invite_fragment_refer_instructions_linearLayout_padding" >
 
             <ImageView
                 android:id="@+id/invite_via_whatsapp"
@@ -87,21 +87,21 @@
                 android:id="@+id/invite_via_facebook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="7dp"
+                android:padding="@dimen/invite_fragment_invite_via_facebook_imageView_padding"
                 android:src="@drawable/facebook_icon" />
 
             <ImageView
                 android:id="@+id/invite_via_twitter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="7dp"
+                android:padding="@dimen/invite_fragment_invite_via_twitter_imageView_padding"
                 android:src="@drawable/twitter_icon" />
 
             <ImageView
                 android:id="@+id/share_via_apps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="7dp"
+                android:padding="@dimen/invite_fragment_share_via_apps_imageView_padding"
                 android:src="@drawable/share_other_icon" />
         </LinearLayout>
 
@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/invite_fragment_referral_link_des_textView_margintop"
             android:text="@string/referral_link_des" />
 
         <TextView
@@ -120,10 +120,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView5"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/invite_fragment_referral_link_textView_margintop"
             android:background="@drawable/referral_link_textlines"
             android:gravity="center_horizontal"
-            android:padding="10dp"
+            android:padding="@dimen/invite_fragment_referral_link_textView_padding"
             android:text="@string/referral_link"
             android:textColor="@color/white"
             android:textStyle="bold" />
