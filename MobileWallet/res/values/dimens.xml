@@ -269,4 +269,96 @@
     <dimen name="earn_rewards_answer_edittext_padding">10dp</dimen>
     <dimen name="earn_rewards_button_text_size">16dp</dimen>
 
+    <!-- custom_actionbar.xml -->
+    <dimen name="actionbar_title_marginTop">12dp</dimen>
+
+    <!-- daily_credits_success.xml -->
+    <dimen name="daily_credits_success_view_offers_button_width">200dp</dimen>
+    <dimen name="daily_credits_success_view_offers_button_height">40dp</dimen>
+    <dimen name="daily_credits_success_view_offers_button_margin_top">30dp</dimen>
+    <dimen name="daily_credits_success_view_bal_button_height">40dp</dimen>
+    <dimen name="daily_credits_success_view_bal_button_margin_top">5dp</dimen>
+
+    <!-- daily_credits.xml -->
+    <dimen name="daily_credits_claimLoginCredit_button_width">210dp</dimen>
+    <dimen name="daily_credits_claimLoginCredit_button_margin_top">25dp</dimen>
+    <dimen name="daily_credits_daily_credits_des_textView2_margin_top">20dp</dimen>
+
+    <!-- earn_rewards.xml -->
+    <dimen name="earn_rewards_textView1_textView_textSize">16sp</dimen>
+    <dimen name="earn_rewards_question_edittext_height">100dp</dimen>
+    <dimen name="earn_rewards_question_edittext_margin_top">10dp</dimen>
+    <dimen name="earn_rewards_question_edittext_ems">16sp</dimen>
+    <dimen name="earn_rewards_answerA_edittext_margin_top">15dp</dimen>
+    <dimen name="earn_rewards_answerB_edittext_margin_top">6dp</dimen>
+    <dimen name="earn_rewards_answerC_edittext_margin_top">6dp</dimen>
+    <dimen name="earn_rewards_answerD_edittext_margin_top">6dp</dimen>
+    <dimen name="earn_rewards_answer_edittext_margin_top">15dp</dimen>
+    <dimen name="earn_rewards_your_answer_textView_textSize">14sp</dimen>
+    <dimen name="earn_rewards_submit_button_margin_top">15dp</dimen>
+
+    <!-- forgot_password -->
+    <dimen name="forgot_password_forgot_password_des_textView_margin_top">10dp</dimen>
+    <dimen name="forgot_password_forgot_password_des_textView_lineSpacingExtra">3dp</dimen>
+    <dimen name="forgot_password_forgot_password_des_edittext_margintop">5dp</dimen>
+    <dimen name="forgot_password_fakeView_View_width">0dp</dimen>
+    <dimen name="forgot_password_fakeView_View_height">0dp</dimen>
+    <dimen name="forgot_password_ok_button_width">125dp</dimen>
+    <dimen name="forgot_password_ok_button_margin_top">15dp</dimen>
+    <dimen name="forgot_password_cancel_textView_width">125dp</dimen>
+
+    <!-- invite_fragment -->
+    <dimen name="invite_fragment_inviteDes_textView_margin_top">15dp</dimen>
+    <dimen name="invite_fragment_refer_instructions_RelativeLayout_margin_top">15dp</dimen>
+    <dimen name="invite_fragment_how_it_works_textView_padding">10dp</dimen>
+    <dimen name="invite_fragment_how_it_works_textView_textSize">16sp</dimen>
+    <dimen name="invite_fragment_inviteDes_View_height">1dp</dimen>
+    <dimen name="invite_fragment_refer_instructions_textView_lineSpacingExtra">2dp</dimen>
+    <dimen name="invite_fragment_refer_instructions_textView_padding">10dp</dimen>
+    <dimen name="invite_fragment_refer_instructions_linearLayout_padding">10dp</dimen>
+    <dimen name="invite_fragment_invite_via_facebook_imageView_padding">7dp</dimen>
+    <dimen name="invite_fragment_invite_via_twitter_imageView_padding">7dp</dimen>
+    <dimen name="invite_fragment_share_via_apps_imageView_padding">7dp</dimen>
+    <dimen name="invite_fragment_referral_link_des_textView_margintop">10dp</dimen>
+    <dimen name="invite_fragment_referral_link_textView_margintop">10dp</dimen>
+    <dimen name="invite_fragment_referral_link_textView_padding">10dp</dimen>
+
+    <!-- login_activity.xml -->
+    <dimen name="login_activity_email_edittext_margintop">5dp</dimen>
+    <dimen name="login_activity_pwd_edittext_margintop">5dp</dimen>
+    <dimen name="login_activity_login_button_margintop">20dp</dimen>
+    <dimen name="login_activity_dont_have_an_account_button_margintop">5dp</dimen>
+    <dimen name="login_activity_forgot_pwd_textView_margintop">20dp</dimen>
+    <dimen name="login_activity_forgot_pwd_textView_paddingLeft">19dp</dimen>
+    <dimen name="login_activity_fb_login_com.facebook.widget.LoginButton_margintop">20dp</dimen>
+    <dimen name="login_activity_imageView1_imageview_paddingbottom">2dp</dimen> <!-- image name check -->
+
+
+    <!-- main_activity.xml -->
+    <dimen name="main_activity_mobile_wallet_icon_imageview_paddingRight">20.0dip</dimen>
+    <dimen name="main_activity_register_button_width">250.0dip</dimen>
+    <dimen name="main_activity_register_button_margintop">50.0dip</dimen>
+    <dimen name="main_activity_login_button_name_button_width">250.0dip</dimen>
+    <dimen name="main_activity_login_button_name_button_margintop">5.0dip</dimen>
+    <dimen name="main_activity_mobile_wallet_icon_imageview_height">240.0dip</dimen>
+
+    <!-- recharge_fragment.xml -->
+    <dimen name="recharge_fragment_recharge_type_radiogroup_margintop">12dp</dimen>
+    <dimen name="recharge_fragment_self_radiobutton_marginRight">70dp</dimen>
+    <dimen name="recharge_fragment_enter_details_textview_margintop">12dp</dimen>
+    <dimen name="recharge_fragment_mobile_number_edittext_margintop">15dp</dimen>
+    <dimen name="recharge_fragment_operator_circle_edittext_margintop">15dp</dimen>
+    <dimen name="recharge_fragment_recharge_amount_edittext_margintop">15dp</dimen>
+    <dimen name="recharge_fragment_recharge_button_margintop">25dp</dimen>
+    <dimen name="recharge_fragment_view1_view_height">50dp</dimen>
+    <dimen name="recharge_fragment_view1_view_margintop">10dp</dimen>
+    <dimen name="recharge_fragment_wallet_money_textview_marginbottom">14dp</dimen>
+    <dimen name="recharge_fragment_wallet_money_textview_marginleft">17dp</dimen>
+    <dimen name="recharge_fragment_wallet_bal_textview_marginright">15dp</dimen>
+    <dimen name="recharge_fragment_contacts_imageview_margintop">10dp</dimen>
+    
+    <!-- register_activity.xml -->
+    
+
+
 </resources>
