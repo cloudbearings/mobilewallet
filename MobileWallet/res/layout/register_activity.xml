@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/register_activity_mobile_number_edittext_margintop"
         android:ems="10"
         android:hint="@string/mobile_edittext_hint"
         android:inputType="number" >
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/mobile_number"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/register_activity_email_edittext_margintop"
         android:ems="10"
         android:hint="@string/email_edittext_hint"
         android:inputType="textEmailAddress" >
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/email"
         android:layout_below="@+id/fullname"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/register_activity_pwd_edittext_margintop"
         android:ems="10"
         android:hint="@string/pwd_edittext_hint"
         android:inputType="numberPassword" />
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/email"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/register_activity_fullname_edittext_margintop"
         android:ems="10"
         android:hint="@string/fullname_edittext_hint" />
 
@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/pwd"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/register_activity_register_button_margintop"
         android:text="@string/create_account_button_name" />
 
     <TextView
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/register"
         android:layout_below="@+id/sign_up"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/register_activity_registration_des_textview_margintop"
         android:text="@string/registration_des" />
 
     <com.facebook.widget.LoginButton

@@ -19,22 +19,22 @@
     <Button
         android:id="@+id/button1"
         style="@style/daily_credits_success_button_style"
-        android:layout_width="@dimen/daily_credits_view_offers_button_width"
-        android:layout_height="@dimen/daily_credits_view_offers_button_height"
+        android:layout_width="@dimen/daily_credits_success_view_offers_button_width"
+        android:layout_height="@dimen/daily_credits_success_view_offers_button_height"
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/daily_credits_view_offers_button_margin_top"
+        android:layout_marginTop="@dimen/daily_credits_success_view_offers_button_margin_top"
         android:text="@string/view_offers" />
 
     <Button
         android:id="@+id/button2"
         style="@style/daily_credits_success_button_style"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/daily_credits_view_bal_button_height"
+        android:layout_height="@dimen/daily_credits_success_view_bal_button_height"
         android:layout_alignLeft="@+id/button1"
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="@dimen/daily_credits_view_bal_button_margin_top"
+        android:layout_marginTop="@dimen/daily_credits_success_view_bal_button_margin_top"
         android:text="@string/view_credit_history" />
 
     <TextView
