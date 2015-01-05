@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <!-- drawer_list_item.xml colors -->
+    <color name="list_divider">#272727</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#bd3141</color>
+    
+    <!-- category_posts_list_item.xml -->
+    <color name="category_posts_heading_color">#505050</color>
+    <color name="category_posts_des_color">#a3a3a3</color>
+
+</resources>
