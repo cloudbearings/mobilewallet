@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TestingAndroidApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Global strings -->
+    <string name="task_error_msg">OOPS! No data found.</string>
+    <string name="error">error</string>
+    <string name="google_analytics_error">Google Analatics Exception</string>
+    <string name="click_back_agiain_to_exit">Please click BACK again to exit</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="processing">Processing&#8230;</string>
+    <string name="no_internet">No network connection enabled.</string>
+    <string name="please_wait">Please wait</string>
+
+    <!-- custom_fonts xml strings -->
+    <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
+    <string name="Arial">fonts/arial.ttf</string>
+    <string name="DroidSerif">fonts/DroidSerif-Italic.ttf</string>
+
+    <!-- Google analytics screen names -->
+    <string name="splash_screen_name">Splash Screen</string>
+    <string name="tabs_activity_screen_name">Tabs Activity</string>
+    <string name="title_activity_tabs">WordlyPost</string>
+
+    <!-- category_posts_fragment.xml -->
+    <string name="title_activity_category_posts_fragment">Category Posts</string>
+    <string name="no_posts_error_msg">No Posts are available.</string>
+
+</resources>

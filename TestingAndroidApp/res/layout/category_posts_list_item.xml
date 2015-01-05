@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ver_9_patch"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/category_posts_list_item_layout_padding_bottom"
+    android:paddingTop="@dimen/category_posts_list_item_layout_padding_top" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/post_image"
+        android:layout_alignRight="@+id/post_image"
+        android:layout_below="@+id/post_image"
+        android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textColor="@color/category_posts_heading_color"
+        android:textSize="@dimen/category_posts_list_item_appName_textsize" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/title"
+        android:layout_alignRight="@+id/title"
+        android:layout_below="@+id/title"
+        android:layout_marginTop="@dimen/category_posts_list_item_friend_count_margin_top"
+        android:textColor="@color/category_posts_des_color"
+        android:textSize="@dimen/category_posts_list_item_friend_count_textsize" />
+
+    <ImageView
+        android:id="@+id/post_image"
+        android:layout_width="@dimen/category_posts_icon_dimes"
+        android:layout_height="@dimen/category_posts_icon_dimes"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/app_default_icon" />
+
+</RelativeLayout>
