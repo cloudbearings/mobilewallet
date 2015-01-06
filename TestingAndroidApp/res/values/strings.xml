@@ -42,5 +42,6 @@
     <string name="email_hint">Email</string>
     <string name="post">Post</string>
     <string name="comment">Comment</string>
+    <string name="post_comment_success_msg">Your comment submitted.</string>
 
 </resources>

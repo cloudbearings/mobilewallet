@@ -5,8 +5,18 @@ import java.io.Serializable;
 public class CategoryPostsRowItem implements Serializable {
 
 	private static final long serialVersionUID = -3149280330134029311L;
+	private int post_id;
+
 	private String title, date, post_icon_url, author, content, post_banner, comment_count,
 			post_url;
+
+	public int getPost_id() {
+		return post_id;
+	}
+
+	public void setPost_id(int post_id) {
+		this.post_id = post_id;
+	}
 
 	public String getTitle() {
 		return title;

@@ -109,6 +109,8 @@ public class CategoryPostsFragment extends Fragment {
 																.getJSONObject(i);
 
 														CategoryPostsRowItem item = new CategoryPostsRowItem();
+
+														item.setPost_id(categotyPost.getInt("id"));
 														item.setTitle(categotyPost
 																.getString("title"));
 														item.setDate(categotyPost.getString("date"));

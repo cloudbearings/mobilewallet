@@ -65,7 +65,7 @@
         android:textSize="@dimen/post_comment_textsize" />
 
     <Button
-        android:id="@+id/uploadButton"
+        android:id="@+id/post"
         android:layout_width="match_parent"
         android:layout_height="@dimen/post_comment_button_height"
         android:layout_below="@+id/comment"
