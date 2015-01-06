@@ -13,6 +13,7 @@ public interface WordlyPostService {
 			@Query("page") long page, Callback<String> callback);
 
 	@GET("/submit_comment")
-	void postComment(@Query("name") String name, @Query("email") String email,
-			@Query("content") String content, Callback<String> callback);
+	void postComment(@Query("post_id") int post_id, @Query("name") String name,
+			@Query("email") String email, @Query("content") String content,
+			Callback<String> callback);
 }
