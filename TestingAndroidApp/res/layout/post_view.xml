@@ -1,0 +1,138 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.wordlypost.PostView" >
+
+        <TextView
+            android:id="@+id/post_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/post_view_title_lineSpacingExtra"
+            android:maxLines="3"
+            android:text="Software Engineer  stabs wife, hangs self in Dwaraka"
+            android:textSize="@dimen/post_view_title_textsize" />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/post_title"
+            android:layout_below="@+id/post_title"
+            android:layout_marginTop="@dimen/post_view_author_margin_top"
+            android:lineSpacingExtra="@dimen/post_view_author_lineSpacingExtra"
+            android:text="By Shubhomoy Sikdar\nJan 05, 2015 08:20AM"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/post_view_author_textsize" />
+
+        <View
+            android:id="@+id/view1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/author"
+            android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
+            android:background="@color/horizental_view_color" />
+
+        <ImageView
+            android:id="@+id/post_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/post_view_image_height"
+            android:layout_alignLeft="@+id/view1"
+            android:layout_alignRight="@+id/view1"
+            android:layout_below="@+id/view1"
+            android:layout_marginTop="@dimen/post_view_image_margin_top"
+            android:src="@drawable/loading" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/post_image"
+            android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
+            android:background="@color/horizental_view_color" />
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/view2"
+            android:layout_below="@+id/view2"
+            android:layout_marginTop="@dimen/post_view_content_margin_top"
+            android:text="Post content"
+            android:textSize="@dimen/post_view_content_textsize" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/content"
+            android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
+            android:background="@color/horizental_view_color" />
+
+        <Button
+            android:id="@+id/read_comments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/view3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/post_view_read_comments_button_margin_top"
+            android:background="@drawable/brown_border_button"
+            android:text="@string/read_comments"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/post_view_button_textsize" />
+
+        <Button
+            android:id="@+id/post_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/read_comments"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/post_view_post_comment_button_margin_top"
+            android:background="@drawable/brown_button"
+            android:text="@string/post_comments"
+            android:textColor="@color/white"
+            android:textSize="@dimen/post_view_button_textsize" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/post_comment"
+            android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
+            android:background="@color/horizental_view_color" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/view4"
+            android:layout_below="@+id/view4"
+            android:layout_marginTop="@dimen/post_view_related_articals_margin_top"
+            android:text="@string/related_articals"
+            android:textColor="@color/brown"
+            android:textSize="@dimen/post_view_related_articals_textsize" />
+
+        <TextView
+            android:id="@+id/related_articals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_below="@+id/textView4"
+            android:layout_marginTop="@dimen/post_view_related_articals_margin_top"
+            android:text="TextView" />
+    </RelativeLayout>
+
+</ScrollView>

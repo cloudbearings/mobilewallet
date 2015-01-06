@@ -3,10 +3,12 @@ package com.wordlypost.utils;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.view.Window;
 import android.widget.Toast;
 
 public class Utils {
@@ -45,4 +47,17 @@ public class Utils {
 		return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 	}
 
+	public static Dialog alertDailog(Context context, int layout) {
+		Dialog dialog = null;
+		try {
+			dialog = new Dialog(context);
+			dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			dialog.setCancelable(true);
+			dialog.setContentView(layout);
+			dialog.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dialog;
+	}
 }
