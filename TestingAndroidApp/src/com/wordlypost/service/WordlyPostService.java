@@ -11,4 +11,8 @@ public interface WordlyPostService {
 	@GET("/get_category_posts")
 	void getCategoriesPosts(@Query("id") String categoryId, @Query("slug") String slug,
 			@Query("page") long page, Callback<String> callback);
+
+	@GET("/submit_comment")
+	void postComment(@Query("name") String name, @Query("email") String email,
+			@Query("content") String content, Callback<String> callback);
 }

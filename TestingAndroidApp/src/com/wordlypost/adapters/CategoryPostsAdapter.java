@@ -1,9 +1,11 @@
 package com.wordlypost.adapters;
 
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.wordlypost.PostView;
 import com.wordlypost.R;
 import com.wordlypost.beans.CategoryPostsRowItem;
 import com.wordlypost.utils.ImageLoader;
@@ -68,8 +71,9 @@ public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
 				.setOnClickListener(new View.OnClickListener() {
 					public void onClick(View view) {
 						CategoryPostsRowItem item = getItem(position);
-						/*context.startActivity(new Intent(context, AppView.class).putExtra("appId",
-								item.getAPPID()).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));*/
+						context.startActivity(new Intent(context, PostView.class).putExtra(
+								"postDetails", (Serializable) item).addFlags(
+								Intent.FLAG_ACTIVITY_CLEAR_TOP));
 					}
 				});
 

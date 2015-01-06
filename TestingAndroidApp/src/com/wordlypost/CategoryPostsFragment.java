@@ -114,6 +114,18 @@ public class CategoryPostsFragment extends Fragment {
 														item.setDate(categotyPost.getString("date"));
 														item.setPost_icon_url(categotyPost
 																.getString("thumbnail"));
+														item.setAuthor(categotyPost.getJSONObject(
+																"author").getString("name"));
+														item.setContent(categotyPost
+																.getString("content"));
+														item.setPost_banner(categotyPost
+																.getJSONObject("thumbnail_images")
+																.getJSONObject("full")
+																.getString("url"));
+														item.setComment_count(categotyPost
+																.getString("comment_count"));
+														item.setPost_url(categotyPost
+																.getString("url"));
 
 														rowItems.add(item);
 													}

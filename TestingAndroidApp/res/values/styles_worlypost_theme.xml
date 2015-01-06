@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<!--
+     File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -29,8 +30,6 @@
         <item name="actionModeBackground">@drawable/cab_background_top_worlypost_theme</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_worlypost_theme</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Worlypost_theme</item>
-
-        
     </style>
 
     <style name="ActionBar.Solid.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -44,11 +43,11 @@
         <item name="background">@drawable/ab_transparent_worlypost_theme</item>
         <item name="progressBarStyle">@style/ProgressBar.Worlypost_theme</item>
     </style>
-	
-    <style name="PopupMenu.Worlypost_theme" parent="@style/Widget.AppCompat.Light.PopupMenu">	
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_worlypost_theme</item>	
+
+    <style name="PopupMenu.Worlypost_theme" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_worlypost_theme</item>
     </style>
-	
+
     <style name="DropDownListView.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_worlypost_theme</item>
     </style>
@@ -56,25 +55,31 @@
     <style name="ActionBarTabStyle.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_worlypost_theme</item>
     </style>
-	
+
     <style name="DropDownNav.Worlypost_theme" parent="@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_worlypost_theme</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_worlypost_theme</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_worlypost_theme</item>
     </style>
-    
+
     <style name="ProgressBar.Worlypost_theme" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_worlypost_theme</item>
     </style>
-    
+
     <style name="ActionButton.CloseMode.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_worlypost_theme</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Worlypost_theme.Widget" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/PopupMenu.Worlypost_theme</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Worlypost_theme</item>
+    </style>
+
+    <!-- this style is used to hide activity title and action bar -->
+    <style name="NoTitleBar" parent="@style/Theme.AppCompat">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
 
 </resources>

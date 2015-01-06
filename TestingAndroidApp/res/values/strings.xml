@@ -23,10 +23,24 @@
     <!-- Google analytics screen names -->
     <string name="splash_screen_name">Splash Screen</string>
     <string name="tabs_activity_screen_name">Tabs Activity</string>
-    <string name="title_activity_tabs">WordlyPost</string>
+    <string name="title_activity_tabs">TestingAndroidApp</string>
 
     <!-- category_posts_fragment.xml -->
     <string name="title_activity_category_posts_fragment">Category Posts</string>
     <string name="no_posts_error_msg">No Posts are available.</string>
+    
+    <!-- post_view.xml -->
+    <string name="title_activity_post_view">Post View</string>
+    <string name="read_comments">Read 3 comments</string>
+    <string name="post_comments">Post a comment</string>
+    <string name="related_articals">Related Articals</string>
+    <string name="share">Share</string>
+    
+    <!-- post_comment_popup.xml -->
+    <string name="post_comment_heading">Post Comment</string>
+    <string name="name_hint">Name</string>
+    <string name="email_hint">Email</string>
+    <string name="post">Post</string>
+    <string name="comment">Comment</string>
 
 </resources>
