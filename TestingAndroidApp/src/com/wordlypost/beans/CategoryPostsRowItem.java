@@ -5,10 +5,9 @@ import java.io.Serializable;
 public class CategoryPostsRowItem implements Serializable {
 
 	private static final long serialVersionUID = -3149280330134029311L;
-	private int post_id;
+	private int post_id, comment_count;
 
-	private String title, date, post_icon_url, author, content, post_banner, comment_count,
-			post_url;
+	private String title, date, post_icon_url, author, content, post_banner, post_url;
 
 	public int getPost_id() {
 		return post_id;
@@ -51,6 +50,18 @@ public class CategoryPostsRowItem implements Serializable {
 	}
 
 	public String getContent() {
+		if (content.contains("<img")) {
+			content = content.replace("<img", "<img1");
+		}
+		if (content.contains("<iframe")) {
+			content = content.replace("<iframe", "<iframe1");
+		}
+		if (content.contains("width")) {
+			content = content.replace("width", "with");
+		}
+		if (content.contains("height")) {
+			content = content.replace("height", "high");
+		}
 		return content;
 	}
 
@@ -66,11 +77,11 @@ public class CategoryPostsRowItem implements Serializable {
 		this.post_banner = post_banner;
 	}
 
-	public String getComment_count() {
+	public int getComment_count() {
 		return comment_count;
 	}
 
-	public void setComment_count(String comment_count) {
+	public void setComment_count(int comment_count) {
 		this.comment_count = comment_count;
 	}
 

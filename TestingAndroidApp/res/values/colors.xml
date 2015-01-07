@@ -19,5 +19,9 @@
     <!-- post_comment_popup.xml -->
     <color name="post_comment_text_color">#a7a7a7</color>
     
+    <!-- search_posts_list_item.xml -->
+    <color name="post_title_color">#000000</color>
+    <color name="post_subTitle_color">#717171</color>
+    
 
 </resources>
