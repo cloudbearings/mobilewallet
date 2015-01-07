@@ -58,9 +58,22 @@
     <dimen name="post_comment_margin_top">10dp</dimen>
     <dimen name="post_comment_padding_top">10dp</dimen>
     <dimen name="post_comment_padding_left">10dp</dimen>
-    <dimen name="post_comment_button_margin_top">30dp</dimen>
+    <dimen name="post_comment_button_margin_top">15dp</dimen>
     <dimen name="post_comment_button_height">40dp</dimen>
     <dimen name="post_comment_button_textsize">15sp</dimen>
     <dimen name="post_comment_status_textsize">12sp</dimen>
+
+    <!-- search_posts_list_item.xml -->
+    <dimen name="post_layout_padding">15dp</dimen>
+    <dimen name="post_icon_dimes">95dp</dimen>
+    <dimen name="post_title_margin_left">10dp</dimen>
+    <dimen name="post_title_text_size">14sp</dimen>
+    <dimen name="post_title_padding_top">0dp</dimen>
+    <dimen name="post_des_margin_top">10dp</dimen>
+    <dimen name="post_des_text_size">12sp</dimen>
+    <dimen name="post_comment_count_layout_height">25dp</dimen>
+    <dimen name="post_comment_count_text_size">14sp</dimen>
+    <dimen name="post_comment_count_margin_top">2.5dp</dimen>
+    <dimen name="post_comment_count_margin_right">5.5dp</dimen>
 
 </resources>

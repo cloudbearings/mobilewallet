@@ -1,7 +1,6 @@
 package com.wordlypost;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,7 +32,7 @@ import com.wordlypost.utils.Utils;
 public class CategoryPostsFragment extends Fragment {
 
 	private ListView feedList;
-	private List<CategoryPostsRowItem> rowItems;
+	private ArrayList<CategoryPostsRowItem> rowItems;
 	private boolean loadingMore = false;
 	private long page = 1;
 	private CategoryPostsAdapter adapter;
@@ -125,7 +124,7 @@ public class CategoryPostsFragment extends Fragment {
 																.getJSONObject("full")
 																.getString("url"));
 														item.setComment_count(categotyPost
-																.getString("comment_count"));
+																.getInt("comment_count"));
 														item.setPost_url(categotyPost
 																.getString("url"));
 

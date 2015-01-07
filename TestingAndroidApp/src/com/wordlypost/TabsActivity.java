@@ -4,14 +4,20 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -170,16 +176,53 @@ public class TabsActivity extends ActionBarActivity {
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.tabs, menu);
+
+		// Associate searchable configuration with the SearchView
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
 
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch (item.getItemId()) {
+		case R.id.action_search:
+			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
 			return true;
+		case R.id.share_this_app:
+			Intent sendIntent = new Intent();
+			sendIntent.setAction(Intent.ACTION_SEND);
+			sendIntent.putExtra(Intent.EXTRA_TEXT, "");
+			sendIntent.setType("text/plain");
+			startActivity(sendIntent);
+			return true;
+		case R.id.rate_this_app:
+			Intent rateIntent = new Intent(Intent.ACTION_VIEW,
+					Uri.parse("https://play.google.com/store/apps/details?id=com.wordlypost"));
+			startActivity(rateIntent);
+			return true;
+		case R.id.about_us:
+			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
+			return true;
+		case R.id.terms_of_use:
+			// startActivity(new Intent(TabsActivity.this,
+			// AllCommonAppsCount.class));
+			return true;
+		case R.id.privacy_policy:
+			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 }

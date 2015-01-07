@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.wordlypost.PostView" >
+        tools:context="com.wordlypost.PostViewFragment" >
 
         <TextView
             android:id="@+id/post_title"
@@ -92,7 +92,8 @@
             android:background="@drawable/brown_border_button"
             android:text="@string/read_comments"
             android:textColor="@color/brown"
-            android:textSize="@dimen/post_view_button_textsize" />
+            android:textSize="@dimen/post_view_button_textsize" 
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/post_comment"

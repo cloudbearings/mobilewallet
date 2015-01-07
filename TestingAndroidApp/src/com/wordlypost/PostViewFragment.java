@@ -5,16 +5,19 @@ import org.json.JSONObject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.util.Log;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,52 +29,70 @@ import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.ImageLoader;
 import com.wordlypost.utils.Utils;
 
-public class PostView extends ActionBarActivity {
+public class PostViewFragment extends Fragment {
 
 	private CategoryPostsRowItem postDetails;
 
+	@SuppressLint("SetJavaScriptEnabled")
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.post_view);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view;
+
+		view = inflater.inflate(R.layout.post_view, container, false);
 		try {
-			postDetails = (CategoryPostsRowItem) getIntent().getSerializableExtra("postDetails");
+			Bundle args = getArguments();
+			if (args.getSerializable("postView") != null) {
+				postDetails = (CategoryPostsRowItem) args.getSerializable("postView");
 
-			TextView postTitle = (TextView) findViewById(R.id.post_title);
-			postTitle.setText(Html.fromHtml(postDetails.getTitle()));
-			postTitle.setTypeface(Utils.getFont(PostView.this, getString(R.string.Helvetica)));
+				TextView postTitle = (TextView) view.findViewById(R.id.post_title);
+				postTitle.setText(Html.fromHtml(postDetails.getTitle()));
+				postTitle.setTypeface(Utils.getFont(getActivity(), getString(R.string.Helvetica)));
 
-			TextView author = (TextView) findViewById(R.id.author);
-			author.setText(Html.fromHtml("By " + postDetails.getAuthor() + "<br/>"
-					+ postDetails.getDate()));
-			author.setTypeface(Utils.getFont(PostView.this, getString(R.string.DroidSerif)));
+				TextView author = (TextView) view.findViewById(R.id.author);
+				author.setText(Html.fromHtml("By " + postDetails.getAuthor() + "<br/>"
+						+ postDetails.getDate()));
+				author.setTypeface(Utils.getFont(getActivity(), getString(R.string.DroidSerif)));
 
-			ImageView postImage = (ImageView) findViewById(R.id.post_image);
-			ImageLoader imageLoder = new ImageLoader(PostView.this);
-			imageLoder.DisplayImage(postDetails.getPost_banner(), R.drawable.loading, postImage);
+				ImageView postImage = (ImageView) view.findViewById(R.id.post_image);
+				ImageLoader imageLoder = new ImageLoader(getActivity());
+				imageLoder
+						.DisplayImage(postDetails.getPost_banner(), R.drawable.loading, postImage);
 
-			WebView webView = (WebView) findViewById(R.id.content);
-			webView.loadData(postDetails.getContent(), "text/html", null);
-			webView.getSettings().setLoadsImagesAutomatically(false);
-			webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+				final WebView webView = (WebView) view.findViewById(R.id.content);
+				webView.getSettings().setJavaScriptEnabled(true);
+				webView.getSettings().setDefaultTextEncodingName("utf-8");
+				String header = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
+				webView.loadData(header + postDetails.getContent(), "text/html; charset=utf-8",
+						null);
+				webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 
-			Button postComment = (Button) findViewById(R.id.post_comment);
-			postComment.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					showPostCommentDaiolg();
+				Button readComments = (Button) view.findViewById(R.id.read_comments);
+				if (postDetails.getComment_count() > 0) {
+					readComments.setVisibility(View.VISIBLE);
+					Resources res = getResources();
+					String text = String.format(res.getString(R.string.read_comments),
+							postDetails.getComment_count());
+					readComments.setText(text);
 				}
-			});
 
+				Button postComment = (Button) view.findViewById(R.id.post_comment);
+				postComment.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						showPostCommentDaiolg();
+					}
+				});
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return view;
 	}
 
 	private void showPostCommentDaiolg() {
 		try {
 			final Dialog alertDailog = Utils
-					.alertDailog(PostView.this, R.layout.post_comment_popup);
+					.alertDailog(getActivity(), R.layout.post_comment_popup);
 			if (alertDailog != null) {
 				Button postButton = (Button) alertDailog.findViewById(R.id.post);
 
@@ -91,9 +112,9 @@ public class PostView extends ActionBarActivity {
 								try {
 									JSONObject obj = new JSONObject(output);
 									if (obj.getString("status").equals(getString(R.string.error))) {
-										Utils.displayToad(PostView.this, obj.getString("error"));
+										Utils.displayToad(getActivity(), obj.getString("error"));
 									} else {
-										Utils.displayToad(PostView.this,
+										Utils.displayToad(getActivity(),
 												getString(R.string.post_comment_success_msg));
 									}
 									alertDailog.dismiss();
@@ -114,17 +135,10 @@ public class PostView extends ActionBarActivity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.post_view, menu);
-		return true;
-	}
-
-	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			finish();
+			getActivity().finish();
 			return true;
 		case R.id.share_icon:
 			Intent sendIntent = new Intent();

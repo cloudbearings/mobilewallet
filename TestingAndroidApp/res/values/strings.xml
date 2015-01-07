@@ -22,20 +22,29 @@
 
     <!-- Google analytics screen names -->
     <string name="splash_screen_name">Splash Screen</string>
+
+    <!-- tabs xml strings -->
     <string name="tabs_activity_screen_name">Tabs Activity</string>
+    <string name="action_search">Search</string>
+    <string name="search_hint">Search</string>
+    <string name="share_this_app">Share this app</string>
+    <string name="rate_this_app">Rate this app in Play Store</string>
+    <string name="about_us">About us</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="privacy_policy">Privacy policy</string>
     <string name="title_activity_tabs">TestingAndroidApp</string>
 
     <!-- category_posts_fragment.xml -->
     <string name="title_activity_category_posts_fragment">Category Posts</string>
     <string name="no_posts_error_msg">No Posts are available.</string>
-    
+
     <!-- post_view.xml -->
     <string name="title_activity_post_view">Post View</string>
-    <string name="read_comments">Read 3 comments</string>
+    <string name="read_comments">Read %1$d comments</string>
     <string name="post_comments">Post a comment</string>
     <string name="related_articals">Related Articals</string>
     <string name="share">Share</string>
-    
+
     <!-- post_comment_popup.xml -->
     <string name="post_comment_heading">Post Comment</string>
     <string name="name_hint">Name</string>
@@ -43,5 +52,7 @@
     <string name="post">Post</string>
     <string name="comment">Comment</string>
     <string name="post_comment_success_msg">Your comment submitted.</string>
+    <string name="title_activity_post_view_swipe">Post View</string>
+    <string name="title_activity_search_post">Search Post</string>
 
 </resources>

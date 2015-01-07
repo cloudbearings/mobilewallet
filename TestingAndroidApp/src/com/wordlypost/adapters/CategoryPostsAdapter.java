@@ -1,6 +1,6 @@
 package com.wordlypost.adapters;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.wordlypost.PostView;
+import com.wordlypost.PostViewSwipeActivity;
 import com.wordlypost.R;
 import com.wordlypost.beans.CategoryPostsRowItem;
 import com.wordlypost.utils.ImageLoader;
@@ -24,12 +24,15 @@ public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
 
 	private Context context;
 	private ImageLoader imgLoader;
-	private CategoryPostsRowItem rowItem;
 
-	public CategoryPostsAdapter(Context context, int resourceId, List<CategoryPostsRowItem> items) {
+	private ArrayList<CategoryPostsRowItem> items;
+
+	public CategoryPostsAdapter(Context context, int resourceId,
+			ArrayList<CategoryPostsRowItem> items) {
 		super(context, resourceId, items);
 		this.context = context;
 		imgLoader = new ImageLoader(context.getApplicationContext());
+		this.items = items;
 	}
 
 	/* private view holder class */
@@ -41,7 +44,7 @@ public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
 
 	public View getView(final int position, View myAppsView, ViewGroup parent) {
 		ViewHolder holder = null;
-		rowItem = getItem(position);
+		CategoryPostsRowItem rowItem = getItem(position);
 
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -70,10 +73,9 @@ public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
 		((ImageView) myAppsView.findViewById(R.id.post_image))
 				.setOnClickListener(new View.OnClickListener() {
 					public void onClick(View view) {
-						CategoryPostsRowItem item = getItem(position);
-						context.startActivity(new Intent(context, PostView.class).putExtra(
-								"postDetails", (Serializable) item).addFlags(
-								Intent.FLAG_ACTIVITY_CLEAR_TOP));
+						context.startActivity(new Intent(context, PostViewSwipeActivity.class)
+								.putExtra("postDetails", items).putExtra("position", position)
+								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 					}
 				});
 
