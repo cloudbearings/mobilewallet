@@ -43,10 +43,6 @@ public class CategoriesDAO {
 		opnToWrite();
 		long val = 0;
 		if (isCategoryExists(category_id) > 0) {
-			val = database.update(DbAdapter.CATEGORIES_TABLE_NAME, cv,
-					DbAdapter.C_ID + "='" + category_id + "'", null);
-			Close();
-		} else {
 			val = database.insert(DbAdapter.CATEGORIES_TABLE_NAME, null, cv);
 			Close();
 		}
