@@ -28,6 +28,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.adapters.NavDrawerListAdapter;
 import com.wordlypost.beans.NavDrawerItem;
+import com.wordlypost.dao.CategoriesDAO;
 
 public class TabsActivity extends ActionBarActivity {
 
@@ -58,22 +59,58 @@ public class TabsActivity extends ActionBarActivity {
 		setContentView(R.layout.tabs_activity);
 		try {
 
-			JSONObject obj = new JSONObject(getIntent().getStringExtra("categories"));
+			JSONObject obj = new JSONObject(getIntent().getStringExtra(
+					"categories"));
 			mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 			mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
 
 			navDrawerItems = new ArrayList<NavDrawerItem>();
 
 			// adding nav drawer items to array
-			for (int i = 0; i < obj.getJSONArray("categories").length(); i++) {
-				JSONObject category = obj.getJSONArray("categories").getJSONObject(i);
-				navDrawerItems.add(new NavDrawerItem(category.getInt("id"), category
-						.getInt("post_count"), category.getString("slug"), category
-						.getString("title")));
+			if (obj != null) {
+				// JsonObject is not null data is coming from server
+				CategoriesDAO categoriesDAO = new CategoriesDAO(
+						TabsActivity.this);
+				for (int i = 0; i < obj.getJSONArray("categories").length(); i++) {
+					JSONObject category = obj.getJSONArray("categories")
+							.getJSONObject(i);
+					/*
+					 * If server categories count is greater than sqlite db
+					 * categories count then server categories data is storing
+					 * in sqlite.
+					 */
+					if (obj.getJSONArray("categories").length() > categoriesDAO
+							.getCategoriesCount()) {
+						// Stpring categories is sqlite database
+						categoriesDAO.insertCategories(category.getInt("id"),
+								category.getString("title"),
+								category.getString("slug"),
+								category.getInt("post_count"));
+					}
+
+					setNavigationItems(category.getInt("id"),
+							category.getInt("post_count"),
+							category.getString("slug"),
+							category.getString("title"));
+				}
+			} else {
+				/*
+				 * obj is equal to null categories data is getting from sqlite
+				 * database.
+				 */
+				CategoriesDAO categoriesDAO = new CategoriesDAO(
+						TabsActivity.this);
+				if (categoriesDAO.getCategoriesCount() > 0) {
+					NavDrawerItem item = (NavDrawerItem) categoriesDAO
+							.getCategories();
+					setNavigationItems(item.getId(), item.getPost_count(),
+							item.getSlug(), item.getTitle());
+				}
 			}
 
 			// setting the nav drawer list adapter
-			adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
+			adapter = new NavDrawerListAdapter(getApplicationContext(),
+					navDrawerItems);
 			mDrawerList.setAdapter(adapter);
 
 			// enabling action bar app icon and behaving it as toggle button
@@ -109,9 +146,16 @@ public class TabsActivity extends ActionBarActivity {
 		}
 	}
 
-	private class SlideMenuClickListener implements ListView.OnItemClickListener {
+	private void setNavigationItems(int id, int postCount, String slug,
+			String title) {
+		navDrawerItems.add(new NavDrawerItem(id, postCount, slug, title));
+	}
+
+	private class SlideMenuClickListener implements
+			ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
 			// display view for selected nav drawer item
 			displayView(position);
 		}
@@ -127,7 +171,8 @@ public class TabsActivity extends ActionBarActivity {
 
 			if (fragment != null) {
 				FragmentManager fragmentManager = getSupportFragmentManager();
-				fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+				fragmentManager.beginTransaction()
+						.replace(R.id.frame_container, fragment).commit();
 				// update selected item and title, then close the drawer
 				mDrawerList.setItemChecked(position, true);
 				mDrawerList.setSelection(position);
@@ -182,8 +227,10 @@ public class TabsActivity extends ActionBarActivity {
 
 		// Associate searchable configuration with the SearchView
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
 
 		return super.onCreateOptionsMenu(menu);
 	}
@@ -207,7 +254,8 @@ public class TabsActivity extends ActionBarActivity {
 			startActivity(sendIntent);
 			return true;
 		case R.id.rate_this_app:
-			Intent rateIntent = new Intent(Intent.ACTION_VIEW,
+			Intent rateIntent = new Intent(
+					Intent.ACTION_VIEW,
 					Uri.parse("https://play.google.com/store/apps/details?id=com.wordlypost"));
 			startActivity(rateIntent);
 			return true;

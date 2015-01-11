@@ -8,6 +8,9 @@ public class NavDrawerItem implements Serializable {
 	private int id, post_count;
 	private String slug, title;
 
+	public NavDrawerItem() {
+	}
+
 	public NavDrawerItem(int id, int post_count, String slug, String title) {
 		this.id = id;
 		this.post_count = post_count;

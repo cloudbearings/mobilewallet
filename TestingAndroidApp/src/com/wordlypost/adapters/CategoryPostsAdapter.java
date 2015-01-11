@@ -16,19 +16,19 @@ import android.widget.TextView;
 
 import com.wordlypost.PostViewSwipeActivity;
 import com.wordlypost.R;
-import com.wordlypost.beans.CategoryPostsRowItem;
+import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.utils.ImageLoader;
 import com.wordlypost.utils.Utils;
 
-public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
+public class CategoryPostsAdapter extends ArrayAdapter<PostRowItem> {
 
 	private Context context;
 	private ImageLoader imgLoader;
 
-	private ArrayList<CategoryPostsRowItem> items;
+	private ArrayList<PostRowItem> items;
 
 	public CategoryPostsAdapter(Context context, int resourceId,
-			ArrayList<CategoryPostsRowItem> items) {
+			ArrayList<PostRowItem> items) {
 		super(context, resourceId, items);
 		this.context = context;
 		imgLoader = new ImageLoader(context.getApplicationContext());
@@ -44,7 +44,7 @@ public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
 
 	public View getView(final int position, View myAppsView, ViewGroup parent) {
 		ViewHolder holder = null;
-		CategoryPostsRowItem rowItem = getItem(position);
+		PostRowItem rowItem = getItem(position);
 
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
@@ -82,7 +82,7 @@ public class CategoryPostsAdapter extends ArrayAdapter<CategoryPostsRowItem> {
 		return myAppsView;
 	}
 
-	public int add(List<CategoryPostsRowItem> rowItems) {
+	public int add(List<PostRowItem> rowItems) {
 		return rowItems.size();
 	}
 
