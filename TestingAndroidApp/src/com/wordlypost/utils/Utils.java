@@ -11,6 +11,7 @@ import android.net.NetworkInfo;
 import android.view.Window;
 import android.widget.Toast;
 
+
 public class Utils {
 
 	public static void displayToad(Context context, String msg) {

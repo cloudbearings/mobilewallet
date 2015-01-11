@@ -37,31 +37,38 @@ public class SplashScreen extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		try {
 			setContentView(R.layout.splash_screen);
+			if (Utils.isNetworkAvailable(SplashScreen.this)) {
+				BuildService.build.getCategories(new Callback<String>() {
 
-			BuildService.build.getCategories(new Callback<String>() {
-
-				@Override
-				public void success(String output, Response arg1) {
-					try {
-						Log.i("Categories :", output);
-						JSONObject obj = new JSONObject(output);
-						if (obj.getString("status").equals(getString(R.string.error))) {
-							Utils.displayToad(SplashScreen.this, getString(R.string.task_error_msg));
-							finish();
+					@Override
+					public void success(String output, Response arg1) {
+						try {
+							Log.i("Categories :", output);
+							JSONObject obj = new JSONObject(output);
+							if (obj.getString("status").equals(
+									getString(R.string.error))) {
+								Utils.displayToad(SplashScreen.this,
+										getString(R.string.task_error_msg));
+								finish();
+							}
+						} catch (Exception e) {
 						}
-					} catch (Exception e) {
+
+						startActivity(new Intent(SplashScreen.this,
+								TabsActivity.class).addFlags(
+								Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(
+								"categories", output));
+						finish();
 					}
 
-					startActivity(new Intent(SplashScreen.this, TabsActivity.class).addFlags(
-							Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("categories", output));
-					finish();
-				}
-
-				@Override
-				public void failure(RetrofitError retrofitError) {
-					retrofitError.printStackTrace();
-				}
-			});
+					@Override
+					public void failure(RetrofitError retrofitError) {
+						retrofitError.printStackTrace();
+					}
+				});
+			} else {
+				finish();
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

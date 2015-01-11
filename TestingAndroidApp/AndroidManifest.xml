@@ -54,6 +54,14 @@
             android:name=".SearchPost"
             android:label="@string/title_activity_search_post" >
         </activity>
+        <activity
+            android:name=".AboutWordlyPost"
+            android:label="@string/title_activity_about_wordly_post" >
+        </activity>
+        <activity
+            android:name=".RecentPosts"
+            android:label="@string/title_activity_recent_posts" >
+        </activity>
     </application>
 
 </manifest>

@@ -2,7 +2,7 @@ package com.wordlypost.beans;
 
 import java.io.Serializable;
 
-public class CategoryPostsRowItem implements Serializable {
+public class PostRowItem implements Serializable {
 
 	private static final long serialVersionUID = -3149280330134029311L;
 	private int post_id, comment_count;

@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -24,15 +23,15 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.adapters.CategoryPostsAdapter;
-import com.wordlypost.beans.CategoryPostsRowItem;
+import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.Utils;
 
 public class CategoryPostsFragment extends Fragment {
 
-	private ListView feedList;
-	private ArrayList<CategoryPostsRowItem> rowItems;
+	private ListView categoryPostsList;
+	private ArrayList<PostRowItem> rowItems;
 	private boolean loadingMore = false;
 	private long page = 1;
 	private CategoryPostsAdapter adapter;
@@ -54,8 +53,8 @@ public class CategoryPostsFragment extends Fragment {
 				Log.d("TAG", getString(R.string.google_analytics_error));
 			}
 
-			rowItems = new ArrayList<CategoryPostsRowItem>();
-			feedList = (ListView) view.findViewById(R.id.categoryPostsList);
+			rowItems = new ArrayList<PostRowItem>();
+			categoryPostsList = (ListView) view.findViewById(R.id.categoryPostsList);
 			progressBar = (ProgressBar) view.findViewById(R.id.categoryPostsProgressBar);
 			adapter = new CategoryPostsAdapter(getActivity(), R.layout.category_posts_list_item,
 					rowItems);
@@ -64,9 +63,9 @@ public class CategoryPostsFragment extends Fragment {
 			int itemsPerRow = getResources().getInteger(R.integer.items_per_row);
 			MultiItemRowListAdapter wrapperAdapter = new MultiItemRowListAdapter(getActivity(),
 					adapter, itemsPerRow, spacing);
-			feedList.setAdapter(wrapperAdapter);
+			categoryPostsList.setAdapter(wrapperAdapter);
 
-			feedList.setOnScrollListener(new OnScrollListener() {
+			categoryPostsList.setOnScrollListener(new OnScrollListener() {
 
 				@Override
 				public void onScrollStateChanged(AbsListView view, int scrollState) {
@@ -107,7 +106,7 @@ public class CategoryPostsFragment extends Fragment {
 														JSONObject categotyPost = categotyPosts
 																.getJSONObject(i);
 
-														CategoryPostsRowItem item = new CategoryPostsRowItem();
+														PostRowItem item = new PostRowItem();
 
 														item.setPost_id(categotyPost.getInt("id"));
 														item.setTitle(categotyPost
@@ -160,17 +159,5 @@ public class CategoryPostsFragment extends Fragment {
 			});
 		}
 		return view;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 }

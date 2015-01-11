@@ -12,7 +12,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
 
 import com.wordlypost.adapters.PageViewSwipeAdapter;
-import com.wordlypost.beans.CategoryPostsRowItem;
+import com.wordlypost.beans.PostRowItem;
 
 public class PostViewSwipeActivity extends ActionBarActivity {
 
@@ -30,7 +30,7 @@ public class PostViewSwipeActivity extends ActionBarActivity {
 
 			fragments = new Vector<Fragment>();
 
-			ArrayList<CategoryPostsRowItem> items = (ArrayList<CategoryPostsRowItem>) getIntent()
+			ArrayList<PostRowItem> items = (ArrayList<PostRowItem>) getIntent()
 					.getSerializableExtra("postDetails");
 			if (items.size() > 0) {
 				generateOffers(items);
@@ -69,9 +69,9 @@ public class PostViewSwipeActivity extends ActionBarActivity {
 		}
 	}
 
-	public void generateOffers(List<CategoryPostsRowItem> posts) {
+	public void generateOffers(List<PostRowItem> posts) {
 		try {
-			for (CategoryPostsRowItem post : posts) {
+			for (PostRowItem post : posts) {
 				Fragment fragment = new PostViewFragment();
 				Bundle args = new Bundle();
 				args.putSerializable("postView", post);
