@@ -6,6 +6,10 @@
 
     <!-- Global dimes -->
     <dimen name="listview_layout_padding">5dp</dimen>
+    
+    <!-- Overflow icon dimes -->
+    <dimen name="action_button_width">42dp</dimen>
+    <dimen name="action_button_padding">0dp</dimen>
 
     <!-- tabs_activity xml dimes -->
     <dimen name="slider_drawer_listview_height">220dp</dimen>

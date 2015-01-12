@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
@@ -14,12 +16,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -212,7 +216,31 @@ public class TabsActivity extends ActionBarActivity {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.tabs, menu);
 
-		return true;
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+
+		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		searchView.setIconifiedByDefault(false);
+
+		SearchView.OnQueryTextListener textChangeListener = new SearchView.OnQueryTextListener() {
+			@Override
+			public boolean onQueryTextChange(String newText) {
+				// this is your adapter that will be filtered
+				return true;
+			}
+
+			@Override
+			public boolean onQueryTextSubmit(String query) {
+				// this is your adapter that will be filtered
+				Log.i("on query submit: ", query);
+				startActivity(new Intent(TabsActivity.this, SearchPost.class).addFlags(
+						Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("search", query));
+				return true;
+			}
+		};
+		searchView.setOnQueryTextListener(textChangeListener);
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override

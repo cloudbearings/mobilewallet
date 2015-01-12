@@ -30,6 +30,7 @@
         <item name="actionModeBackground">@drawable/cab_background_top_worlypost_theme</item>
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_worlypost_theme</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Worlypost_theme</item>
+        <item name="actionOverflowButtonStyle">@style/MyOverflowButton</item>
     </style>
 
     <style name="ActionBar.Solid.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
