@@ -1,7 +1,6 @@
 package com.wordlypost.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -32,11 +31,11 @@ public class PostsDAO {
 		database.close();
 	}
 
-	public long insertPosts(int post_id, String post_title, String post_date,
-			String post_icon_url, String post_author_name, String post_content,
-			String post_screen_image_url, int post_comment_count,
-			String post_url) {
-		ContentValues cv = new ContentValues(9);
+	public long insertPosts(int post_id, String post_title, String post_date, String post_icon_url,
+			String post_author_name, String post_content, String post_screen_image_url,
+			int post_comment_count, String post_url, String current_milliseconds, int categotyId,
+			String categorySlug) {
+		ContentValues cv = new ContentValues(12);
 		cv.put(DbAdapter.P_ID, post_id);
 		cv.put(DbAdapter.P_TITLE, post_title);
 		cv.put(DbAdapter.P_DATE, post_date);
@@ -46,38 +45,18 @@ public class PostsDAO {
 		cv.put(DbAdapter.P_SCREEN_IMAGE_URL, post_screen_image_url);
 		cv.put(DbAdapter.P_COMMENT_COUNT, post_comment_count);
 		cv.put(DbAdapter.P_URL, post_url);
-
-		opnToWrite();
-		long val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null,
-				cv);
-		Close();
-		return val;
-	}
-
-	public long updatePosts(int post_id, String post_title, String post_date,
-			String post_icon_url, String post_author_name, String post_content,
-			String post_screen_image_url, int post_comment_count,
-			String post_url) {
-		ContentValues cv = new ContentValues(9);
-		cv.put(DbAdapter.P_ID, post_id);
-		cv.put(DbAdapter.P_TITLE, post_title);
-		cv.put(DbAdapter.P_DATE, post_date);
-		cv.put(DbAdapter.P_ICON_URL, post_icon_url);
-		cv.put(DbAdapter.P_AUTHOR_NAME, post_author_name);
-		cv.put(DbAdapter.P_CONTENT, post_content);
-		cv.put(DbAdapter.P_SCREEN_IMAGE_URL, post_screen_image_url);
-		cv.put(DbAdapter.P_COMMENT_COUNT, post_comment_count);
-		cv.put(DbAdapter.P_URL, post_url);
+		cv.put(DbAdapter.P_CURRENT_MILLISECONDS, current_milliseconds);
+		cv.put(DbAdapter.PC_ID, categotyId);
+		cv.put(DbAdapter.PC_SLUG, categorySlug);
 
 		opnToWrite();
 		long val = 0;
 		if (isPostExists(post_id) > 0) {
-			val = database.update(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cv,
-					DbAdapter.P_ID + "='" + post_id + "'", null);
+			val = database.update(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cv, DbAdapter.P_ID + "="
+					+ post_id, null);
 			Close();
 		} else {
-			val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null,
-					cv);
+			val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null, cv);
 			Close();
 		}
 
@@ -88,8 +67,7 @@ public class PostsDAO {
 		SQLiteDatabase database = null;
 		long count = 0;
 		try {
-			String sql = "SELECT COUNT(*) FROM "
-					+ DbAdapter.CATEGORRY_POSTS_TABLE_NAME + " where "
+			String sql = "SELECT COUNT(*) FROM " + DbAdapter.CATEGORRY_POSTS_TABLE_NAME + " where "
 					+ DbAdapter.P_ID + "=" + post_id;
 
 			dbHelper = new DbAdapter(context);
@@ -107,7 +85,7 @@ public class PostsDAO {
 		return count;
 	}
 
-	public long getPostsCount() {
+	public long getPostsCount(int categoryId, String categorySlug) {
 		SQLiteDatabase database = null;
 		Cursor c = null;
 		long count = 0;
@@ -116,8 +94,9 @@ public class PostsDAO {
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			c = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols,
-					null, null, null, null, null);
+			c = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, DbAdapter.PC_ID + "="
+					+ categoryId + " and " + DbAdapter.PC_SLUG + "='" + categorySlug + "'", null,
+					null, null, null);
 			count = c.getCount();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,45 +115,38 @@ public class PostsDAO {
 		return count;
 	}
 
-	public List<PostRowItem> getPosts() {
+	public ArrayList<PostRowItem> getPosts(int categoryId, String categorySlug) {
 		SQLiteDatabase database = null;
 		Cursor cursor = null;
-		List<PostRowItem> postsList = null;
+		ArrayList<PostRowItem> postsList = null;
 		try {
 			postsList = new ArrayList<PostRowItem>();
-			String[] cols = { DbAdapter.P_ID, DbAdapter.P_TITLE,
-					DbAdapter.P_DATE, DbAdapter.P_ICON_URL,
-					DbAdapter.P_AUTHOR_NAME, DbAdapter.P_CONTENT,
-					DbAdapter.P_SCREEN_IMAGE_URL, DbAdapter.P_COMMENT_COUNT,
-					DbAdapter.P_URL };
+			String[] cols = { DbAdapter.P_ID, DbAdapter.P_TITLE, DbAdapter.P_DATE,
+					DbAdapter.P_ICON_URL, DbAdapter.P_AUTHOR_NAME, DbAdapter.P_CONTENT,
+					DbAdapter.P_SCREEN_IMAGE_URL, DbAdapter.P_COMMENT_COUNT, DbAdapter.P_URL };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols,
-					null, null, null, null, null);
+			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, DbAdapter.PC_ID
+					+ "=" + categoryId + " and " + DbAdapter.PC_SLUG + "='" + categorySlug + "'",
+					null, null, null, DbAdapter.P_DATE + " ASC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
 					item = new PostRowItem();
 
-					item.setPost_id(cursor.getInt(cursor
-							.getColumnIndex(DbAdapter.P_ID)));
-					item.setTitle(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.P_TITLE)));
-					item.setDate(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.P_DATE)));
+					item.setPost_id(cursor.getInt(cursor.getColumnIndex(DbAdapter.P_ID)));
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DbAdapter.P_TITLE)));
+					item.setDate(cursor.getString(cursor.getColumnIndex(DbAdapter.P_DATE)));
 					item.setPost_icon_url(cursor.getString(cursor
 							.getColumnIndex(DbAdapter.P_ICON_URL)));
-					item.setAuthor(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.P_AUTHOR_NAME)));
-					item.setContent(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.P_CONTENT)));
+					item.setAuthor(cursor.getString(cursor.getColumnIndex(DbAdapter.P_AUTHOR_NAME)));
+					item.setContent(cursor.getString(cursor.getColumnIndex(DbAdapter.P_CONTENT)));
 					item.setPost_banner(cursor.getString(cursor
 							.getColumnIndex(DbAdapter.P_SCREEN_IMAGE_URL)));
 					item.setComment_count(cursor.getInt(cursor
 							.getColumnIndex(DbAdapter.P_COMMENT_COUNT)));
-					item.setPost_url(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.P_URL)));
+					item.setPost_url(cursor.getString(cursor.getColumnIndex(DbAdapter.P_URL)));
 
 					postsList.add(item);
 				} while (cursor.moveToNext());
@@ -194,5 +166,15 @@ public class PostsDAO {
 			}
 		}
 		return postsList;
+	}
+
+	public long deletePosts(int categoryId, String categorySlug, String currentMilliseconds) {
+		opnToWrite();
+		long val = database.delete(DbAdapter.CATEGORRY_POSTS_TABLE_NAME,
+				DbAdapter.P_CURRENT_MILLISECONDS + "!='" + currentMilliseconds + "' and "
+						+ DbAdapter.PC_ID + "=" + categoryId + " and " + DbAdapter.PC_SLUG + "='"
+						+ categorySlug + "'", null);
+		Close();
+		return val;
 	}
 }
