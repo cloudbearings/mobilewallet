@@ -36,15 +36,7 @@
         </activity>
         <activity
             android:name=".TabsActivity"
-            android:label="@string/title_activity_tabs"
-            android:launchMode="singleTop" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
+            android:label="@string/title_activity_tabs" >
         </activity>
         <activity
             android:name=".CategoryPostsFragment"
@@ -60,7 +52,15 @@
         </activity>
         <activity
             android:name=".SearchPost"
-            android:label="@string/title_activity_search_post" >
+            android:label="@string/title_activity_search_post"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
         </activity>
         <activity
             android:name=".AboutWordlyPost"

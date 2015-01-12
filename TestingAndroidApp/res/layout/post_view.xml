@@ -70,9 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/view2"
             android:layout_below="@+id/view2"
-            android:layout_marginTop="@dimen/post_view_content_margin_top"
-            android:text="Post content"
-            android:textSize="@dimen/post_view_content_textsize" />
+            android:layout_marginTop="@dimen/post_view_content_margin_top" />
 
         <View
             android:id="@+id/view3"
@@ -92,8 +90,8 @@
             android:background="@drawable/brown_border_button"
             android:text="@string/read_comments"
             android:textColor="@color/brown"
-            android:textSize="@dimen/post_view_button_textsize" 
-            android:visibility="gone"/>
+            android:textSize="@dimen/post_view_button_textsize"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/post_comment"
@@ -114,26 +112,6 @@
             android:layout_below="@+id/post_comment"
             android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
             android:background="@color/horizental_view_color" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/view4"
-            android:layout_below="@+id/view4"
-            android:layout_marginTop="@dimen/post_view_related_articals_margin_top"
-            android:text="@string/related_articals"
-            android:textColor="@color/brown"
-            android:textSize="@dimen/post_view_related_articals_textsize" />
-
-        <TextView
-            android:id="@+id/related_articals"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_below="@+id/textView4"
-            android:layout_marginTop="@dimen/post_view_related_articals_margin_top"
-            android:text="TextView" />
     </RelativeLayout>
 
 </ScrollView>

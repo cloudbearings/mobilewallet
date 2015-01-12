@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wordlypost.PostViewSwipeActivity;
@@ -27,8 +28,7 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 
 	private ArrayList<PostRowItem> items;
 
-	public PostAdapter(Context context, int resourceId,
-			ArrayList<PostRowItem> items) {
+	public PostAdapter(Context context, int resourceId, ArrayList<PostRowItem> items) {
 		super(context, resourceId, items);
 		this.context = context;
 		imgLoader = new ImageLoader(context.getApplicationContext());
@@ -40,60 +40,58 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 
 		TextView title, des, commentCount;
 		ImageView post_image;
+		LinearLayout commentLayout;
 	}
 
-	public View getView(final int position, View myAppsView, ViewGroup parent) {
+	public View getView(final int position, View postView, ViewGroup parent) {
 		ViewHolder holder = null;
 		PostRowItem rowItem = getItem(position);
 
 		LayoutInflater mInflater = (LayoutInflater) context
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-		if (myAppsView == null) {
+		if (postView == null) {
 
-			myAppsView = mInflater.inflate(R.layout.post_list_item, parent,
-					false);
+			postView = mInflater.inflate(R.layout.post_list_item, parent, false);
 
 			holder = new ViewHolder();
 
-			holder.title = (TextView) myAppsView.findViewById(R.id.post_title);
-			holder.des = (TextView) myAppsView.findViewById(R.id.post_des);
-			holder.post_image = (ImageView) myAppsView
-					.findViewById(R.id.post_icon);
-			holder.commentCount = (TextView) myAppsView
-					.findViewById(R.id.comment_count);
+			holder.title = (TextView) postView.findViewById(R.id.post_title);
+			holder.des = (TextView) postView.findViewById(R.id.post_des);
+			holder.post_image = (ImageView) postView.findViewById(R.id.post_icon);
+			holder.commentCount = (TextView) postView.findViewById(R.id.comment_count);
+			holder.commentLayout = (LinearLayout) postView.findViewById(R.id.comment_layout);
 
-			myAppsView.setTag(holder);
+			postView.setTag(holder);
 		} else
-			holder = (ViewHolder) myAppsView.getTag();
+			holder = (ViewHolder) postView.getTag();
 
 		holder.title.setText(Html.fromHtml(rowItem.getTitle()));
-		holder.title.setTypeface(Utils.getFont(context,
-				context.getString(R.string.Helvetica)));
-		holder.des.setText(rowItem.getDate());
-		holder.des.setTypeface(Utils.getFont(context,
-				context.getString(R.string.DroidSerif)));
-
-		holder.commentCount.setText(Html.fromHtml(rowItem.getComment_count()
-				+ ""));
-		holder.commentCount.setTypeface(Utils.getFont(context,
-				context.getString(R.string.Helvetica)));
+		holder.title.setTypeface(Utils.getFont(context, context.getString(R.string.Helvetica)));
+		holder.des.setText(Html.fromHtml(rowItem.getPost_des()));
+		holder.des.setTypeface(Utils.getFont(context, context.getString(R.string.Arial)));
 
 		int loader = R.drawable.app_default_icon;
-		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader,
-				holder.post_image);
+		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader, holder.post_image);
 
-		((ImageView) myAppsView.findViewById(R.id.post_image))
-				.setOnClickListener(new View.OnClickListener() {
-					public void onClick(View view) {
-						context.startActivity(new Intent(context,
-								PostViewSwipeActivity.class)
-								.putExtra("postDetails", items)
-								.putExtra("position", position)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-					}
-				});
+		holder.post_image.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				context.startActivity(new Intent(context, PostViewSwipeActivity.class)
+						.putExtra("postDetails", items).putExtra("position", position)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+			}
+		});
+		if (holder.commentLayout != null) {
+			if (rowItem.getComment_count() > 0) {
+				holder.commentLayout.setVisibility(View.VISIBLE);
+				holder.commentCount.setText(Html.fromHtml(rowItem.getComment_count() + ""));
+				holder.commentCount.setTypeface(Utils.getFont(context,
+						context.getString(R.string.Helvetica)));
+			} else {
+				holder.commentLayout.setVisibility(View.GONE);
+			}
+		}
 
-		return myAppsView;
+		return postView;
 	}
 
 	public int add(List<PostRowItem> rowItems) {
