@@ -46,10 +46,10 @@
             android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
             android:background="@color/horizental_view_color" />
 
-        <ImageView
+        <com.wordlypost.utils.ResizableImageView
             android:id="@+id/post_image"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/post_view_image_height"
+            android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/view1"
             android:layout_alignRight="@+id/view1"
             android:layout_below="@+id/view1"

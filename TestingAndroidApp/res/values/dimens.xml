@@ -37,7 +37,6 @@
     <dimen name="post_view_author_textsize">14sp</dimen>
     <dimen name="post_view_author_lineSpacingExtra">2sp</dimen>
     <dimen name="post_view_horizental_view_margin_top">10dp</dimen>
-    <dimen name="post_view_image_height">200dp</dimen>
     <dimen name="post_view_image_margin_top">10dp</dimen>
     <dimen name="post_view_content_margin_top">15dp</dimen>
     <dimen name="post_view_content_textsize">14sp</dimen>
