@@ -1,39 +1,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:TestingAndroidApp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.wordlypost.TabsActivity" >
 
     <!-- Search Widget -->
     <item
         android:id="@+id/action_search"
-        android:actionViewClass="android.widget.SearchView"
+        TestingAndroidApp:showAsAction="always"
+        TestingAndroidApp:actionViewClass="android.widget.SearchView"
         android:icon="@drawable/ic_action_search"
-        android:showAsAction="always"
         android:title="@string/action_search"/>
     <item
         android:id="@+id/share_this_app"
+        TestingAndroidApp:showAsAction="never"
         android:orderInCategory="100"
-        android:title="@string/share_this_app"
-        app:showAsAction="never"/>
+        android:title="@string/share_this_app"/>
     <item
         android:id="@+id/rate_this_app"
+        TestingAndroidApp:showAsAction="never"
         android:orderInCategory="100"
-        android:title="@string/rate_this_app"
-        app:showAsAction="never"/>
+        android:title="@string/rate_this_app"/>
     <item
         android:id="@+id/about_us"
+        TestingAndroidApp:showAsAction="never"
         android:orderInCategory="100"
-        android:title="@string/about_us"
-        app:showAsAction="never"/>
+        android:title="@string/about_us"/>
     <item
         android:id="@+id/terms_of_use"
+        TestingAndroidApp:showAsAction="never"
         android:orderInCategory="100"
-        android:title="@string/terms_of_use"
-        app:showAsAction="never"/>
+        android:title="@string/terms_of_use"/>
     <item
         android:id="@+id/privacy_policy"
+        TestingAndroidApp:showAsAction="never"
         android:orderInCategory="100"
-        android:title="@string/privacy_policy"
-        app:showAsAction="never"/>
+        android:title="@string/privacy_policy"/>
 
 </menu>

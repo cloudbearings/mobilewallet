@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- File created by the Android Action Bar Style Generator
+<!--
+     File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -29,8 +30,7 @@
         <item name="android:actionModeBackground">@drawable/cab_background_top_worlypost_theme</item>
         <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_worlypost_theme</item>
         <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Worlypost_theme</item>
-        
-        
+        <item name="android:actionOverflowButtonStyle">@style/MyOverflowButton</item>
     </style>
 
     <style name="ActionBar.Solid.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
@@ -44,11 +44,17 @@
         <item name="android:background">@drawable/ab_transparent_worlypost_theme</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Worlypost_theme</item>
     </style>
-    
+
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Worlypost_theme.Widget" parent="@style/Theme.AppCompat">
         <item name="android:popupMenuStyle">@style/PopupMenu.Worlypost_theme</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Worlypost_theme</item>
+    </style>
+
+    <style name="MyOverflowButton" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:minWidth">@dimen/action_button_width</item>
+        <item name="android:padding">@dimen/action_button_padding</item>
+        <item name="android:src">@drawable/menu_icon</item>
     </style>
 
 </resources>

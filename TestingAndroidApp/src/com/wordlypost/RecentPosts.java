@@ -57,8 +57,7 @@ public class RecentPosts extends ActionBarActivity {
 		rowItems = new ArrayList<PostRowItem>();
 		recentPostsList = (ListView) findViewById(R.id.recentPostsList);
 		progressBar = (ProgressBar) findViewById(R.id.recentPostsProgressBar);
-		adapter = new PostAdapter(RecentPosts.this,
-				R.layout.post_list_item, rowItems);
+		adapter = new PostAdapter(RecentPosts.this, R.layout.post_list_item, rowItems);
 		recentPostsList.setAdapter(adapter);
 
 		recentPostsList.setOnScrollListener(new OnScrollListener() {
@@ -68,8 +67,8 @@ public class RecentPosts extends ActionBarActivity {
 			}
 
 			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-					int visibleItemCount, int totalItemCount) {
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+					int totalItemCount) {
 
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
@@ -77,7 +76,7 @@ public class RecentPosts extends ActionBarActivity {
 						loadingMore = true;
 						progressBar.setVisibility(View.VISIBLE);
 
-						BuildService.build.recentPosts(new Callback<String>() {
+						BuildService.build.recentPosts(page, new Callback<String>() {
 
 							@Override
 							public void failure(RetrofitError retofitError) {
@@ -94,38 +93,28 @@ public class RecentPosts extends ActionBarActivity {
 									JSONObject obj = new JSONObject(output);
 
 									if (obj.getJSONArray("posts").length() > 0) {
-										JSONArray categotyPosts = obj
-												.getJSONArray("posts");
+										JSONArray categotyPosts = obj.getJSONArray("posts");
 
-										for (int i = 0; i < categotyPosts
-												.length(); i++) {
+										for (int i = 0; i < categotyPosts.length(); i++) {
 											JSONObject categotyPost = categotyPosts
 													.getJSONObject(i);
 
 											PostRowItem item = new PostRowItem();
 
-											item.setPost_id(categotyPost
-													.getInt("id"));
-											item.setTitle(categotyPost
-													.getString("title"));
-											item.setDate(categotyPost
-													.getString("date"));
+											item.setPost_id(categotyPost.getInt("id"));
+											item.setTitle(categotyPost.getString("title"));
+											item.setDate(categotyPost.getString("date"));
 											item.setPost_icon_url(categotyPost
 													.getString("thumbnail"));
-											item.setAuthor(categotyPost
-													.getJSONObject("author")
+											item.setAuthor(categotyPost.getJSONObject("author")
 													.getString("name"));
-											item.setContent(categotyPost
-													.getString("content"));
+											item.setContent(categotyPost.getString("content"));
 											item.setPost_banner(categotyPost
-													.getJSONObject(
-															"thumbnail_images")
-													.getJSONObject("full")
-													.getString("url"));
+													.getJSONObject("thumbnail_images")
+													.getJSONObject("full").getString("url"));
 											item.setComment_count(categotyPost
 													.getInt("comment_count"));
-											item.setPost_url(categotyPost
-													.getString("url"));
+											item.setPost_url(categotyPost.getString("url"));
 
 											rowItems.add(item);
 										}
@@ -140,8 +129,7 @@ public class RecentPosts extends ActionBarActivity {
 											page = page + 1;
 										}
 									} else {
-										Utils.displayToad(
-												RecentPosts.this,
+										Utils.displayToad(RecentPosts.this,
 												getString(R.string.no_posts_error_msg));
 									}
 									progressBar.setVisibility(View.GONE);
@@ -153,8 +141,7 @@ public class RecentPosts extends ActionBarActivity {
 							}
 						});
 					} else {
-						Utils.displayToad(RecentPosts.this,
-								getString(R.string.no_internet));
+						Utils.displayToad(RecentPosts.this, getString(R.string.no_internet));
 					}
 				}
 			}

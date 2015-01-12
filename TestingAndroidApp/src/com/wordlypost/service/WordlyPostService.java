@@ -9,18 +9,18 @@ public interface WordlyPostService {
 	void getCategories(Callback<String> callback);
 
 	@GET("/get_category_posts")
-	void getCategoriesPosts(@Query("id") int categoryId,
-			@Query("slug") String slug, @Query("page") long page,
-			Callback<String> callback);
+	void getCategoriesPosts(@Query("id") int categoryId, @Query("slug") String slug,
+			@Query("page") long page, Callback<String> callback);
 
 	@GET("/submit_comment")
 	void postComment(@Query("post_id") int post_id, @Query("name") String name,
 			@Query("email") String email, @Query("content") String content,
 			Callback<String> callback);
 
-	@GET("/recent_posts")
-	void recentPosts(Callback<String> callback);
+	@GET("/get_recent_posts")
+	void recentPosts(@Query("page") long page, Callback<String> callback);
 
-	@GET("/search_posts")
-	void searchPosts(Callback<String> callback);
+	@GET("/get_search_results")
+	void searchPosts(@Query("search") String search, @Query("page") long page,
+			Callback<String> callback);
 }
