@@ -53,7 +53,7 @@ public class SearchPost extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.recent_posts);
+		setContentView(R.layout.search_post);
 		rowItems = new ArrayList<PostRowItem>();
 		searchPostsList = (ListView) findViewById(R.id.searchPostsList);
 		progressBar = (ProgressBar) findViewById(R.id.searchPostsProgressBar);
@@ -122,6 +122,8 @@ public class SearchPost extends ActionBarActivity {
 																.getInt("comment_count"));
 														item.setPost_url(categotyPost
 																.getString("url"));
+														item.setPost_des(categotyPost
+																.getString("excerpt"));
 
 														rowItems.add(item);
 													}

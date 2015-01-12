@@ -9,6 +9,8 @@ public class PostRowItem implements Serializable {
 
 	private String title, date, post_icon_url, author, content, post_banner, post_url;
 
+	private String post_des;
+
 	public int getPost_id() {
 		return post_id;
 	}
@@ -91,5 +93,13 @@ public class PostRowItem implements Serializable {
 
 	public void setPost_url(String post_url) {
 		this.post_url = post_url;
+	}
+
+	public String getPost_des() {
+		return post_des;
+	}
+
+	public void setPost_des(String post_des) {
+		this.post_des = post_des;
 	}
 }

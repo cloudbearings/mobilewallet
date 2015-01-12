@@ -50,7 +50,8 @@
         android:layout_alignBottom="@+id/post_icon"
         android:layout_alignParentRight="true"
         android:background="@drawable/textlines"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/comment_count"
