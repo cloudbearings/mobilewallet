@@ -32,8 +32,8 @@ public class CategoriesDAO {
 		database.close();
 	}
 
-	public long insertCategories(int category_id, String category_name,
-			String category_slug, int category_post_count) {
+	public long insertCategories(int category_id, String category_name, String category_slug,
+			int category_post_count) {
 		ContentValues cv = new ContentValues(4);
 		cv.put(DbAdapter.C_ID, category_id);
 		cv.put(DbAdapter.C_NAME, category_name);
@@ -42,7 +42,7 @@ public class CategoriesDAO {
 
 		opnToWrite();
 		long val = 0;
-		if (isCategoryExists(category_id) > 0) {
+		if (isCategoryExists(category_id) == 0) {
 			val = database.insert(DbAdapter.CATEGORIES_TABLE_NAME, null, cv);
 			Close();
 		}
@@ -54,8 +54,7 @@ public class CategoriesDAO {
 		SQLiteDatabase database = null;
 		long count = 0;
 		try {
-			String sql = "SELECT COUNT(*) FROM "
-					+ DbAdapter.CATEGORIES_TABLE_NAME + " where "
+			String sql = "SELECT COUNT(*) FROM " + DbAdapter.CATEGORIES_TABLE_NAME + " where "
 					+ DbAdapter.C_ID + "=" + category_id;
 
 			dbHelper = new DbAdapter(context);
@@ -82,8 +81,7 @@ public class CategoriesDAO {
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			c = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols, null,
-					null, null, null, null);
+			c = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols, null, null, null, null, null);
 			count = c.getCount();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -108,27 +106,23 @@ public class CategoriesDAO {
 		List<NavDrawerItem> categoriesList = null;
 		try {
 			categoriesList = new ArrayList<NavDrawerItem>();
-			String[] cols = { DbAdapter.C_ID, DbAdapter.C_NAME,
-					DbAdapter.C_SLUG, DbAdapter.C_POST_COUNT };
+			String[] cols = { DbAdapter.C_ID, DbAdapter.C_NAME, DbAdapter.C_SLUG,
+					DbAdapter.C_POST_COUNT };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			cursor = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols,
-					null, null, null, null, null);
+			cursor = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols, null, null, null, null,
+					null);
 			NavDrawerItem item;
 			if (cursor.moveToFirst()) {
 				do {
 					item = new NavDrawerItem();
 
-					item.setId(cursor.getInt(cursor
-							.getColumnIndex(DbAdapter.C_ID)));
+					item.setId(cursor.getInt(cursor.getColumnIndex(DbAdapter.C_ID)));
 
-					item.setTitle(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.C_NAME)));
-					item.setSlug(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.C_SLUG)));
-					item.setPost_count(cursor.getInt(cursor
-							.getColumnIndex(DbAdapter.C_POST_COUNT)));
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DbAdapter.C_NAME)));
+					item.setSlug(cursor.getString(cursor.getColumnIndex(DbAdapter.C_SLUG)));
+					item.setPost_count(cursor.getInt(cursor.getColumnIndex(DbAdapter.C_POST_COUNT)));
 
 					categoriesList.add(item);
 				} while (cursor.moveToNext());

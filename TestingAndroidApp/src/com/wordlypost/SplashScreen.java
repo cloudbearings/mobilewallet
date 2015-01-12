@@ -45,8 +45,7 @@ public class SplashScreen extends ActionBarActivity {
 						try {
 							Log.i("Categories :", output);
 							JSONObject obj = new JSONObject(output);
-							if (obj.getString("status").equals(
-									getString(R.string.error))) {
+							if (obj.getString("status").equals(getString(R.string.error))) {
 								Utils.displayToad(SplashScreen.this,
 										getString(R.string.task_error_msg));
 								finish();
@@ -54,10 +53,8 @@ public class SplashScreen extends ActionBarActivity {
 						} catch (Exception e) {
 						}
 
-						startActivity(new Intent(SplashScreen.this,
-								TabsActivity.class).addFlags(
-								Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(
-								"categories", output));
+						startActivity(new Intent(SplashScreen.this, TabsActivity.class).addFlags(
+								Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("categories", output));
 						finish();
 					}
 
@@ -67,6 +64,8 @@ public class SplashScreen extends ActionBarActivity {
 					}
 				});
 			} else {
+				startActivity(new Intent(SplashScreen.this, TabsActivity.class)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				finish();
 			}
 		} catch (Exception e) {
