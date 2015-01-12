@@ -32,33 +32,11 @@ public class RecentPostsDAO {
 		database.close();
 	}
 
-	public long insertRecentPosts(int post_id, String post_title, String post_date,
-			String post_icon_url, String post_author_name, String post_content,
-			String post_screen_image_url, int post_comment_count,
-			String post_url) {
-		ContentValues cv = new ContentValues(9);
-		cv.put(DbAdapter.RP_ID, post_id);
-		cv.put(DbAdapter.RP_TITLE, post_title);
-		cv.put(DbAdapter.RP_DATE, post_date);
-		cv.put(DbAdapter.RP_ICON_URL, post_icon_url);
-		cv.put(DbAdapter.RP_AUTHOR_NAME, post_author_name);
-		cv.put(DbAdapter.RP_CONTENT, post_content);
-		cv.put(DbAdapter.RP_SCREEN_IMAGE_URL, post_screen_image_url);
-		cv.put(DbAdapter.RP_COMMENT_COUNT, post_comment_count);
-		cv.put(DbAdapter.RP_URL, post_url);
-
-		opnToWrite();
-		long val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null,
-				cv);
-		Close();
-		return val;
-	}
-
 	public long updateRecentPosts(int post_id, String post_title, String post_date,
 			String post_icon_url, String post_author_name, String post_content,
-			String post_screen_image_url, int post_comment_count,
-			String post_url) {
-		ContentValues cv = new ContentValues(9);
+			String post_screen_image_url, int post_comment_count, String post_url,
+			String current_milliseconds) {
+		ContentValues cv = new ContentValues(10);
 		cv.put(DbAdapter.RP_ID, post_id);
 		cv.put(DbAdapter.RP_TITLE, post_title);
 		cv.put(DbAdapter.RP_DATE, post_date);
@@ -68,16 +46,16 @@ public class RecentPostsDAO {
 		cv.put(DbAdapter.RP_SCREEN_IMAGE_URL, post_screen_image_url);
 		cv.put(DbAdapter.RP_COMMENT_COUNT, post_comment_count);
 		cv.put(DbAdapter.RP_URL, post_url);
+		cv.put(DbAdapter.RP_CURRENT_MILLISECONDS, current_milliseconds);
 
 		opnToWrite();
 		long val = 0;
 		if (isRecentPostExists(post_id) > 0) {
-			val = database.update(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cv,
-					DbAdapter.RP_ID + "='" + post_id + "'", null);
+			val = database.update(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cv, DbAdapter.RP_ID + "='"
+					+ post_id + "'", null);
 			Close();
 		} else {
-			val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null,
-					cv);
+			val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null, cv);
 			Close();
 		}
 
@@ -88,8 +66,7 @@ public class RecentPostsDAO {
 		SQLiteDatabase database = null;
 		long count = 0;
 		try {
-			String sql = "SELECT COUNT(*) FROM "
-					+ DbAdapter.CATEGORRY_POSTS_TABLE_NAME + " where "
+			String sql = "SELECT COUNT(*) FROM " + DbAdapter.CATEGORRY_POSTS_TABLE_NAME + " where "
 					+ DbAdapter.RP_ID + "=" + post_id;
 
 			dbHelper = new DbAdapter(context);
@@ -116,8 +93,8 @@ public class RecentPostsDAO {
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			c = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols,
-					null, null, null, null, null);
+			c = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, null, null, null, null,
+					null);
 			count = c.getCount();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -142,39 +119,31 @@ public class RecentPostsDAO {
 		List<PostRowItem> postsList = null;
 		try {
 			postsList = new ArrayList<PostRowItem>();
-			String[] cols = { DbAdapter.RP_ID, DbAdapter.RP_TITLE,
-					DbAdapter.RP_DATE, DbAdapter.RP_ICON_URL,
-					DbAdapter.RP_AUTHOR_NAME, DbAdapter.RP_CONTENT,
-					DbAdapter.RP_SCREEN_IMAGE_URL, DbAdapter.RP_COMMENT_COUNT,
-					DbAdapter.RP_URL };
+			String[] cols = { DbAdapter.RP_ID, DbAdapter.RP_TITLE, DbAdapter.RP_DATE,
+					DbAdapter.RP_ICON_URL, DbAdapter.RP_AUTHOR_NAME, DbAdapter.RP_CONTENT,
+					DbAdapter.RP_SCREEN_IMAGE_URL, DbAdapter.RP_COMMENT_COUNT, DbAdapter.RP_URL };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols,
-					null, null, null, null, null);
+			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, null, null, null,
+					null, "ORDER BY " + DbAdapter.RP_DATE + " ASC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
 					item = new PostRowItem();
 
-					item.setPost_id(cursor.getInt(cursor
-							.getColumnIndex(DbAdapter.RP_ID)));
-					item.setTitle(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.RP_TITLE)));
-					item.setDate(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.RP_DATE)));
+					item.setPost_id(cursor.getInt(cursor.getColumnIndex(DbAdapter.RP_ID)));
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_TITLE)));
+					item.setDate(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_DATE)));
 					item.setPost_icon_url(cursor.getString(cursor
 							.getColumnIndex(DbAdapter.RP_ICON_URL)));
-					item.setAuthor(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.RP_AUTHOR_NAME)));
-					item.setContent(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.RP_CONTENT)));
+					item.setAuthor(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_AUTHOR_NAME)));
+					item.setContent(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_CONTENT)));
 					item.setPost_banner(cursor.getString(cursor
 							.getColumnIndex(DbAdapter.RP_SCREEN_IMAGE_URL)));
 					item.setComment_count(cursor.getInt(cursor
 							.getColumnIndex(DbAdapter.RP_COMMENT_COUNT)));
-					item.setPost_url(cursor.getString(cursor
-							.getColumnIndex(DbAdapter.RP_URL)));
+					item.setPost_url(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_URL)));
 
 					postsList.add(item);
 				} while (cursor.moveToNext());
@@ -194,5 +163,13 @@ public class RecentPostsDAO {
 			}
 		}
 		return postsList;
+	}
+
+	public long deleteRecentPosts(String currentMilliseconds) {
+		opnToWrite();
+		long val = database.delete(DbAdapter.CATEGORRY_POSTS_TABLE_NAME,
+				DbAdapter.RP_CURRENT_MILLISECONDS + "!='" + currentMilliseconds + "'", null);
+		Close();
+		return val;
 	}
 }

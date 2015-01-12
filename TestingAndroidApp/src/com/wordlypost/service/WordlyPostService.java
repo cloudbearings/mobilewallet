@@ -9,7 +9,7 @@ public interface WordlyPostService {
 	void getCategories(Callback<String> callback);
 
 	@GET("/get_category_posts")
-	void getCategoriesPosts(@Query("id") String categoryId,
+	void getCategoriesPosts(@Query("id") int categoryId,
 			@Query("slug") String slug, @Query("page") long page,
 			Callback<String> callback);
 
