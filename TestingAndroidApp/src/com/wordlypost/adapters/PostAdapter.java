@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,7 +69,8 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 			holder = (ViewHolder) postView.getTag();
 
 		holder.title.setText(Html.fromHtml(rowItem.getTitle()));
-		holder.title.setTypeface(Utils.getFont(context, context.getString(R.string.Helvetica)));
+		holder.title.setTypeface(Utils.getFont(context, context.getString(R.string.Helvetica)),
+				Typeface.BOLD);
 
 		holder.des.setText(Html.fromHtml(rowItem.getPost_des()));
 		holder.des.setTypeface(Utils.getFont(context, context.getString(R.string.Arial)));

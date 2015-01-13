@@ -254,6 +254,10 @@ public class TabsActivity extends ActionBarActivity {
 		case R.id.action_search:
 			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
 			return true;
+		case R.id.recent_posts:
+			startActivity(new Intent(TabsActivity.this, RecentPosts.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+			return true;
 		case R.id.share_this_app:
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
