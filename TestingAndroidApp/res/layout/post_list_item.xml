@@ -46,22 +46,45 @@
     <LinearLayout
         android:id="@+id/comment_layout"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/post_comment_count_layout_height"
-        android:layout_alignBottom="@+id/post_icon"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:background="@drawable/textlines"
-        android:orientation="horizontal" 
-        android:visibility="gone">
+        android:layout_below="@+id/post_icon"
+        android:background="@drawable/comment_icon"
+        android:orientation="horizontal"
+        android:visibility="invisible" >
 
         <TextView
             android:id="@+id/comment_count"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/post_comment_count_margin_right"
             android:layout_marginTop="@dimen/post_comment_count_margin_top"
+            android:paddingLeft="@dimen/post_comment_count_padding_left"
             android:text="0"
             android:textColor="@color/brown"
             android:textSize="@dimen/post_comment_count_text_size" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/post_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/post_icon"
+        android:layout_below="@+id/post_icon"
+        android:layout_marginTop="@dimen/post_comment_date_margin_top"
+        android:text="12-Jun-14"
+        android:textColor="@color/post_subTitle_color"
+        android:textSize="@dimen/post_des_text_size" />
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/post_date"
+        android:layout_alignBottom="@+id/post_date"
+        android:layout_marginRight="@dimen/post_date_margin_right"
+        android:layout_toLeftOf="@+id/comment_layout"
+        android:text="By Teja"
+        android:textColor="@color/post_subTitle_color"
+        android:textSize="@dimen/post_des_text_size" />
 
 </RelativeLayout>

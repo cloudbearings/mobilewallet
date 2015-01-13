@@ -75,7 +75,9 @@
     <dimen name="post_des_text_size">12sp</dimen>
     <dimen name="post_comment_count_layout_height">25dp</dimen>
     <dimen name="post_comment_count_text_size">14sp</dimen>
-    <dimen name="post_comment_count_margin_top">2.5dp</dimen>
-    <dimen name="post_comment_count_margin_right">5.5dp</dimen>
+    <dimen name="post_comment_count_margin_top">3dp</dimen>
+    <dimen name="post_comment_count_padding_left">12dp</dimen>
+    <dimen name="post_comment_date_margin_top">10dp</dimen>
+    <dimen name="post_date_margin_right">20dp</dimen>
 
 </resources>
