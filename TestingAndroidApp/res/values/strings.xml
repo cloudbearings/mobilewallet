@@ -30,6 +30,7 @@
     <string name="tabs_activity_screen_name">Tabs Activity</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Search</string>
+    <string name="recent_posts">Recent Posts</string>
     <string name="share_this_app">Share this app</string>
     <string name="rate_this_app">Rate this app in Play Store</string>
     <string name="about_us">About us</string>
@@ -43,7 +44,7 @@
 
     <!-- post_view.xml -->
     <string name="title_activity_post_view">Post View</string>
-    <string name="read_comments">Read %1$d comments</string>
+    <string name="read_comments">Read %1$d</string>
     <string name="post_comments">Post a comment</string>
     <string name="related_articals">Related Articals</string>
     <string name="share">Share</string>
@@ -55,7 +56,11 @@
     <string name="post">Post</string>
     <string name="comment">Comment</string>
     <string name="post_comment_success_msg">Your comment submitted.</string>
+
+    <!-- post_view.xml -->
     <string name="title_activity_post_view_swipe">Post View</string>
+    <string name="comments">&#160;comments</string>
+    <string name="pv_comment">&#160;comment</string>
     <string name="title_activity_search_post">Search Post</string>
 
     <!-- about_wordly_post.xml -->

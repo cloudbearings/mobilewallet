@@ -115,6 +115,7 @@ public class RecentPosts extends ActionBarActivity {
 											item.setComment_count(categotyPost
 													.getInt("comment_count"));
 											item.setPost_url(categotyPost.getString("url"));
+											item.setPost_des(categotyPost.getString("excerpt"));
 
 											rowItems.add(item);
 										}
