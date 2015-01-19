@@ -27,6 +27,7 @@
     <string name="recent_posts_screen_name">Recent Posts</string>
     <string name="search_posts_screen_name">Search Posts</string>
     <string name="about_wordlypost_screen_name">About WordlyPost</string>
+    <string name="privacy_policy_screen_name">Privacy Policy</string>
 
     <!-- tabs xml strings -->
     <string name="tabs_activity_screen_name">Tabs Activity</string>
@@ -67,11 +68,13 @@
 
     <!-- about_wordly_post.xml -->
     <string name="title_activity_about_wordly_post">About WordlyPost</string>
-    <string name="about_wordly_post"><![CDATA[<div class="entry-content"><p style="text-align: justify;">Dear Reader,</p> <p style="text-align: justify;">Thanks for taking few minutes of time to know About Us. We here at WordlyPost, comprise with dedicated small team; who strive for, to provide you with impeccable news across happenings in regional, national and around the globe.</p> <p style="text-align: justify;">From eye-opening social causes to with life changing technologies, we bring you with clear cut and interesting stories by upholding self-editorial guidelines at par with self-regulated standards to ensure our reader interests are served with vision to Be Better Informed.</p> <p style="text-align: justify;">For queries, contact us at : info@wordlypost.in</p> <p style="text-align: justify;">Thanks,<br>The Editor.</br></p></div>]]></string>
+    <string name="about_wordly_post"><![CDATA[<p style=\"text-align: justify;\">Dear Reader,</p>\n<p style=\"text-align: justify;\">Thanks for taking few minutes of time to know About Us. We here at WordlyPost, comprise with dedicated small team; who strive for, to provide you with impeccable news across happenings in regional, national and around the globe.</p>\n<p style=\"text-align: justify;\">From eye-opening social causes to with life changing technologies, we bring you with clear cut and interesting stories by upholding self-editorial guidelines at par with self-regulated standards to ensure our reader interests are served with vision to Be Better Informed.</p>\n<p style=\"text-align: justify;\">For queries, contact us at : info@wordlypost.in</p>\n<p style=\"text-align: justify;\">Thanks,<br />\nThe Editor.</p>]]></string>
+    <string name="wordly_post_privacy_policy"><![CDATA[<p style=\"text-align: center;\"><strong>Cookies & 3rd Party Advertisements</strong></p>\n<p style=\"text-align: justify;\">Google, as a third party vendor, uses cookies to serve ads on your site. Google’s use of the DART cookie enables it to serve ads to your users based on their visit to your sites and other sites on the Internet. Users may opt out of the use of the DART cookie by visiting the <a href=\"http://www.google.com/privacy_ads.html\" target=\"_blank\" rel=\"nofollow\">Google ad and content network privacy policy</a>.</p>\n<p style=\"text-align: justify;\">We allow third-party companies to serve ads and/or collect certain anonymous information when you visit our web site. These companies may use non-personally identifiable information (e.g., click stream information, browser type, time and date, subject of advertisements clicked or scrolled over) during your visits to this and other Web sites in order to provide advertisements about goods and services likely to be of greater interest to you. These companies typically use a cookie or third party web beacon to collect this information. To learn more about this behavioral advertising practice or to opt-out of this type of advertising, you can visit <a href=\"http://www.networkadvertising.org/managing/opt_out.asp\" target=\"_blank\" rel=\"nofollow\">http://www.networkadvertising.org/managing/opt_out.asp</a>.</p>]]></string>
     <string name="title_activity_recent_posts">Recent Posts</string>
-    
+
     <!-- comment_view.xml -->
     <string name="title_activity_comment_view">Comment View</string>
     <string name="comments_count">Comments (%1$d)</string>
+    <string name="title_activity_privacy_policy">Privacy Policy</string>
 
 </resources>

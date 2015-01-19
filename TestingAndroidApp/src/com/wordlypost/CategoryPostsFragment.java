@@ -19,6 +19,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -56,6 +57,9 @@ public class CategoryPostsFragment extends Fragment {
 			} catch (Exception e) {
 				Log.d("TAG", getString(R.string.google_analytics_error));
 			}
+
+			TextView categoryTitle = (TextView) view.findViewById(R.id.category_title);
+			categoryTitle.setText(categoryItem.getTitle());
 
 			rowItems = new ArrayList<PostRowItem>();
 			categoryPostsList = (ListView) view.findViewById(R.id.categoryPostsList);
