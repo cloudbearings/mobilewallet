@@ -1,7 +1,6 @@
 package com.wordlypost.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -32,10 +31,10 @@ public class RecentPostsDAO {
 		database.close();
 	}
 
-	public long updateRecentPosts(int post_id, String post_title, String post_date,
+	public long insertRecentPosts(int post_id, String post_title, String post_date,
 			String post_icon_url, String post_author_name, String post_content,
 			String post_screen_image_url, int post_comment_count, String post_url,
-			String current_milliseconds) {
+			String current_milliseconds, String excerpt, String comments) {
 		ContentValues cv = new ContentValues(10);
 		cv.put(DbAdapter.RP_ID, post_id);
 		cv.put(DbAdapter.RP_TITLE, post_title);
@@ -47,15 +46,17 @@ public class RecentPostsDAO {
 		cv.put(DbAdapter.RP_COMMENT_COUNT, post_comment_count);
 		cv.put(DbAdapter.RP_URL, post_url);
 		cv.put(DbAdapter.RP_CURRENT_MILLISECONDS, current_milliseconds);
+		cv.put(DbAdapter.RP_EXCERPT, excerpt);
+		cv.put(DbAdapter.RP_COMMENTS, comments);
 
 		opnToWrite();
 		long val = 0;
 		if (isRecentPostExists(post_id) > 0) {
-			val = database.update(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cv, DbAdapter.RP_ID + "='"
-					+ post_id + "'", null);
+			val = database.update(DbAdapter.RECENT_POSTS_TABLE_NAME, cv, DbAdapter.RP_ID + "="
+					+ post_id, null);
 			Close();
 		} else {
-			val = database.insert(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, null, cv);
+			val = database.insert(DbAdapter.RECENT_POSTS_TABLE_NAME, null, cv);
 			Close();
 		}
 
@@ -66,7 +67,7 @@ public class RecentPostsDAO {
 		SQLiteDatabase database = null;
 		long count = 0;
 		try {
-			String sql = "SELECT COUNT(*) FROM " + DbAdapter.CATEGORRY_POSTS_TABLE_NAME + " where "
+			String sql = "SELECT COUNT(*) FROM " + DbAdapter.RECENT_POSTS_TABLE_NAME + " where "
 					+ DbAdapter.RP_ID + "=" + post_id;
 
 			dbHelper = new DbAdapter(context);
@@ -89,11 +90,11 @@ public class RecentPostsDAO {
 		Cursor c = null;
 		long count = 0;
 		try {
-			String[] cols = { DbAdapter.C_ID };
+			String[] cols = { DbAdapter.RP_ID };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			c = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, null, null, null, null,
+			c = database.query(DbAdapter.RECENT_POSTS_TABLE_NAME, cols, null, null, null, null,
 					null);
 			count = c.getCount();
 		} catch (Exception e) {
@@ -113,20 +114,21 @@ public class RecentPostsDAO {
 		return count;
 	}
 
-	public List<PostRowItem> getRecentPosts() {
+	public ArrayList<PostRowItem> getRecentPosts() {
 		SQLiteDatabase database = null;
 		Cursor cursor = null;
-		List<PostRowItem> postsList = null;
+		ArrayList<PostRowItem> postsList = null;
 		try {
 			postsList = new ArrayList<PostRowItem>();
 			String[] cols = { DbAdapter.RP_ID, DbAdapter.RP_TITLE, DbAdapter.RP_DATE,
 					DbAdapter.RP_ICON_URL, DbAdapter.RP_AUTHOR_NAME, DbAdapter.RP_CONTENT,
-					DbAdapter.RP_SCREEN_IMAGE_URL, DbAdapter.RP_COMMENT_COUNT, DbAdapter.RP_URL };
+					DbAdapter.RP_SCREEN_IMAGE_URL, DbAdapter.RP_COMMENT_COUNT, DbAdapter.RP_URL,
+					DbAdapter.RP_EXCERPT, DbAdapter.RP_COMMENTS };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
-			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, null, null, null,
-					null, "ORDER BY " + DbAdapter.RP_DATE + " ASC");
+			cursor = database.query(DbAdapter.RECENT_POSTS_TABLE_NAME, cols, null, null, null,
+					null, DbAdapter.RP_DATE + " ASC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
@@ -144,6 +146,9 @@ public class RecentPostsDAO {
 					item.setComment_count(cursor.getInt(cursor
 							.getColumnIndex(DbAdapter.RP_COMMENT_COUNT)));
 					item.setPost_url(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_URL)));
+					item.setPost_des(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_EXCERPT)));
+					item.setCommentsArray(cursor.getString(cursor
+							.getColumnIndex(DbAdapter.RP_COMMENTS)));
 
 					postsList.add(item);
 				} while (cursor.moveToNext());
@@ -167,7 +172,7 @@ public class RecentPostsDAO {
 
 	public long deleteRecentPosts(String currentMilliseconds) {
 		opnToWrite();
-		long val = database.delete(DbAdapter.CATEGORRY_POSTS_TABLE_NAME,
+		long val = database.delete(DbAdapter.RECENT_POSTS_TABLE_NAME,
 				DbAdapter.RP_CURRENT_MILLISECONDS + "!='" + currentMilliseconds + "'", null);
 		Close();
 		return val;
