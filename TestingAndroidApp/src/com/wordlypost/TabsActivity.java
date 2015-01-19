@@ -271,14 +271,16 @@ public class TabsActivity extends ActionBarActivity {
 			startActivity(rateIntent);
 			return true;
 		case R.id.about_us:
-			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
+			startActivity(new Intent(TabsActivity.this, AboutWordlyPost.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			return true;
 		case R.id.terms_of_use:
 			// startActivity(new Intent(TabsActivity.this,
 			// AllCommonAppsCount.class));
 			return true;
 		case R.id.privacy_policy:
-			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
+			startActivity(new Intent(TabsActivity.this, PrivacyPolicy.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);

@@ -74,6 +74,10 @@
             android:name=".CommentView"
             android:label="@string/title_activity_comment_view" >
         </activity>
+        <activity
+            android:name=".PrivacyPolicy"
+            android:label="@string/title_activity_privacy_policy" >
+        </activity>
     </application>
 
 </manifest>

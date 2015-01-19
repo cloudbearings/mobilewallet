@@ -29,6 +29,8 @@
     <dimen name="category_posts_list_item_friend_count_textsize">13sp</dimen>
     <dimen name="category_posts_icon_dimes">130dp</dimen>
     <dimen name="spacing">10dp</dimen>
+    <dimen name="category_posts_heading_padding">10dp</dimen>
+    <dimen name="category_posts_heading_textsize">16sp</dimen>
 
     <!-- post_view.xml -->
     <dimen name="post_view_title_textsize">18sp</dimen>
