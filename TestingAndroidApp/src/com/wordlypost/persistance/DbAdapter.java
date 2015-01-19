@@ -41,6 +41,8 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String RP_COMMENT_COUNT = "post_comment_count";
 	public static final String RP_URL = "post_url";
 	public static final String RP_CURRENT_MILLISECONDS = "current_milliseconds";
+	public static final String RP_EXCERPT = "excerpt";
+	public static final String RP_COMMENTS = "comments";
 
 	private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + CATEGORIES_TABLE_NAME
 			+ " (" + C_ID + " INTEGER PRIMARY KEY, " + C_NAME + " TEXT, " + C_SLUG + " TEXT, "
@@ -58,7 +60,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 			+ " TEXT, " + RP_DATE + " TEXT, " + RP_ICON_URL + " TEXT, " + RP_AUTHOR_NAME
 			+ " TEXT, " + RP_CONTENT + " TEXT, " + RP_SCREEN_IMAGE_URL + " TEXT, " + ""
 			+ RP_COMMENT_COUNT + " INTEGER, " + RP_URL + " TEXT, " + RP_CURRENT_MILLISECONDS
-			+ " TEXT);";
+			+ " TEXT, " + RP_EXCERPT + " TEXT, " + RP_COMMENTS + " TEXT);";
 
 	public DbAdapter(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
