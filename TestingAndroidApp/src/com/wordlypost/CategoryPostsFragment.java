@@ -137,6 +137,11 @@ public class CategoryPostsFragment extends Fragment {
 									item.setComment_count(categotyPost.getInt("comment_count"));
 									item.setPost_url(categotyPost.getString("url"));
 
+									if (categotyPost.getInt("comment_count") > 0) {
+										item.setCommentsArray(categotyPost.getJSONArray("comments")
+												.toString());
+									}
+
 									rowItems.add(item);
 
 									if (page == 1) {
@@ -152,7 +157,8 @@ public class CategoryPostsFragment extends Fragment {
 														.getJSONObject("full").getString("url"),
 												categotyPost.getInt("comment_count"), categotyPost
 														.getString("url"), currentMilliSeconds,
-												categoryItem.getId(), categoryItem.getSlug());
+												categoryItem.getId(), categoryItem.getSlug(),
+												categotyPost.getJSONArray("comments").toString());
 									}
 								}
 

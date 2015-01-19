@@ -1,12 +1,6 @@
 package com.wordlypost;
 
-import org.json.JSONObject;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
@@ -21,7 +15,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,8 +22,8 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.beans.PostRowItem;
-import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.ImageLoader;
+import com.wordlypost.utils.PostCommentPopUp;
 import com.wordlypost.utils.Utils;
 
 public class PostViewFragment extends Fragment {
@@ -91,11 +84,19 @@ public class PostViewFragment extends Fragment {
 							+ readCommentButtonText(postDetails.getComment_count()));
 				}
 
+				readComments.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						readComments(postDetails.getCommentsArray(), postDetails.getPost_id());
+					}
+				});
+
 				Button postComment = (Button) view.findViewById(R.id.post_comment);
 				postComment.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						showPostCommentDaiolg();
+						PostCommentPopUp.showPostCommentDailog(getActivity(),
+								postDetails.getPost_id());
 					}
 				});
 			}
@@ -105,49 +106,11 @@ public class PostViewFragment extends Fragment {
 		return view;
 	}
 
-	private void showPostCommentDaiolg() {
-		try {
-			final Dialog alertDailog = Utils
-					.alertDailog(getActivity(), R.layout.post_comment_popup);
-			if (alertDailog != null) {
-				Button postButton = (Button) alertDailog.findViewById(R.id.post);
-
-				postButton.setOnClickListener(new OnClickListener() {
-					@Override
-					public void onClick(View v) {
-						EditText name = (EditText) alertDailog.findViewById(R.id.name);
-						EditText email = (EditText) alertDailog.findViewById(R.id.emailAddress);
-						EditText comment = (EditText) alertDailog.findViewById(R.id.comment);
-						BuildService.build.postComment(postDetails.getPost_id(), name.getText()
-								.toString(), email.getText().toString(), comment.getText()
-								.toString(), new Callback<String>() {
-
-							@Override
-							public void success(String output, Response arg1) {
-								Log.i("output", output);
-								try {
-									JSONObject obj = new JSONObject(output);
-									if (obj.getString("status").equals(getString(R.string.error))) {
-										Utils.displayToad(getActivity(), obj.getString("error"));
-									} else {
-										Utils.displayToad(getActivity(),
-												getString(R.string.post_comment_success_msg));
-									}
-									alertDailog.dismiss();
-								} catch (Exception e) {
-								}
-							}
-
-							@Override
-							public void failure(RetrofitError retrofitError) {
-								retrofitError.printStackTrace();
-							}
-						});
-					}
-				});
-			}
-		} catch (Exception e) {
-		}
+	private void readComments(String commentsArray, int postId) {
+		startActivity(new Intent(getActivity(), CommentView.class)
+				.putExtra(getString(R.string.pst_comments), commentsArray)
+				.putExtra(getString(R.string.pst_id), postId)
+				.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 	}
 
 	@Override

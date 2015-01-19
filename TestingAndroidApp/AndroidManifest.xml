@@ -70,6 +70,10 @@
             android:name=".RecentPosts"
             android:label="@string/title_activity_recent_posts" >
         </activity>
+        <activity
+            android:name=".CommentView"
+            android:label="@string/title_activity_comment_view" >
+        </activity>
     </application>
 
 </manifest>

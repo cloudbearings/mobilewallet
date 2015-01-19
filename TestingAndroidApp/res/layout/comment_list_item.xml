@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/comment_layout_padding" >
+
+    <TextView
+        android:id="@+id/comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="@dimen/comment_lineSpacingExtra"
+        android:text="A very good post. Reading this post got lot of information? Thank you."
+        android:textColor="@color/comment_color"
+        android:textSize="@dimen/comment_text_size" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Golla Gopi"
+        android:textSize="@dimen/comment_text_size" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/comment_date_margin_top"
+        android:text="2015/01/19 10:25:27"
+        android:textSize="@dimen/comment_text_size" />
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/comment_view_margin_top"
+        android:background="@color/horizental_view_color" />
+
+</LinearLayout>

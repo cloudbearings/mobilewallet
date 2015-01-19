@@ -117,6 +117,11 @@ public class RecentPosts extends ActionBarActivity {
 											item.setPost_url(categotyPost.getString("url"));
 											item.setPost_des(categotyPost.getString("excerpt"));
 
+											if (categotyPost.getInt("comment_count") > 0) {
+												item.setCommentsArray(categotyPost
+														.getJSONArray("comments").toString());
+											}
+
 											rowItems.add(item);
 										}
 

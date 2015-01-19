@@ -14,6 +14,8 @@
     <string name="processing">Processing&#8230;</string>
     <string name="no_internet">No network connection enabled.</string>
     <string name="please_wait">Please wait</string>
+    <string name="pst_comments">comments</string>
+    <string name="pst_id">postId</string>
 
     <!-- custom_fonts xml strings -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
@@ -67,5 +69,9 @@
     <string name="title_activity_about_wordly_post">About WordlyPost</string>
     <string name="about_wordly_post"><![CDATA[<div class="entry-content"><p style="text-align: justify;">Dear Reader,</p> <p style="text-align: justify;">Thanks for taking few minutes of time to know About Us. We here at WordlyPost, comprise with dedicated small team; who strive for, to provide you with impeccable news across happenings in regional, national and around the globe.</p> <p style="text-align: justify;">From eye-opening social causes to with life changing technologies, we bring you with clear cut and interesting stories by upholding self-editorial guidelines at par with self-regulated standards to ensure our reader interests are served with vision to Be Better Informed.</p> <p style="text-align: justify;">For queries, contact us at : info@wordlypost.in</p> <p style="text-align: justify;">Thanks,<br>The Editor.</br></p></div>]]></string>
     <string name="title_activity_recent_posts">Recent Posts</string>
+    
+    <!-- comment_view.xml -->
+    <string name="title_activity_comment_view">Comment View</string>
+    <string name="comments_count">Comments (%1$d)</string>
 
 </resources>

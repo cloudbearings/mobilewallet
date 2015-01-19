@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="brown">#bd3141</color>
@@ -11,17 +11,19 @@
     <color name="list_divider">#272727</color>
     <color name="list_background">#303030</color>
     <color name="list_background_pressed">#bd3141</color>
-    
+
     <!-- category_posts_list_item.xml -->
     <color name="category_posts_heading_color">#505050</color>
     <color name="category_posts_des_color">#a3a3a3</color>
-    
+
     <!-- post_comment_popup.xml -->
     <color name="post_comment_text_color">#a7a7a7</color>
-    
+
     <!-- search_posts_list_item.xml -->
     <color name="post_title_color">#000000</color>
     <color name="post_subTitle_color">#717171</color>
-    
+
+    <!-- comment_list_item.xml -->
+    <color name="comment_color">#717171</color>
 
 </resources>
