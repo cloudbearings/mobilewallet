@@ -125,6 +125,12 @@ public class SearchPost extends ActionBarActivity {
 														item.setPost_des(categotyPost
 																.getString("excerpt"));
 
+														if (categotyPost.getInt("comment_count") > 0) {
+															item.setCommentsArray(categotyPost
+																	.getJSONArray("comments")
+																	.toString());
+														}
+
 														rowItems.add(item);
 													}
 

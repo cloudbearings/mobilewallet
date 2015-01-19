@@ -43,8 +43,6 @@
         android:padding="@dimen/post_comment_email_padding"
         android:textColorHint="@color/post_comment_text_color"
         android:textSize="@dimen/post_comment_email_textsize" >
-
-        <requestFocus />
     </EditText>
 
     <EditText

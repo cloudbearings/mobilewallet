@@ -15,7 +15,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String C_SLUG = "category_slug";
 	public static final String C_POST_COUNT = "category_post_count";
 
-	public static final String CATEGORRY_POSTS_TABLE_NAME = "categorory_posts";
+	public static final String CATEGORRY_POSTS_TABLE_NAME = "category_posts";
 	public static final String P_ID = "post_id";
 	public static final String P_TITLE = "post_title";
 	public static final String P_DATE = "post_date";
@@ -28,6 +28,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String P_CURRENT_MILLISECONDS = "current_milliseconds";
 	public static final String PC_ID = "category_id";
 	public static final String PC_SLUG = "category_slug";
+	public static final String P_COMMENTS = "comments";
 
 	public static final String RECENT_POSTS_TABLE_NAME = "recent_posts";
 	public static final String RP_ID = "post_id";
@@ -50,7 +51,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 			+ P_ICON_URL + " TEXT, " + P_AUTHOR_NAME + " TEXT, " + P_CONTENT + " TEXT, "
 			+ P_SCREEN_IMAGE_URL + " TEXT, " + "" + P_COMMENT_COUNT + " INTEGER, " + P_URL
 			+ " TEXT, " + P_CURRENT_MILLISECONDS + " TEXT, " + PC_ID + " INTEGER, " + PC_SLUG
-			+ " TEXT);";
+			+ " TEXT, " + P_COMMENTS + " TEXT);";
 
 	private static final String CREATE_RECENT_POSTS_TABLE = "CREATE TABLE "
 			+ RECENT_POSTS_TABLE_NAME + " (" + RP_ID + " INTEGER PRIMARY KEY, " + RP_TITLE
