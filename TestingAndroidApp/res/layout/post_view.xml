@@ -79,7 +79,7 @@
             android:id="@+id/view3"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:layout_below="@+id/content"
+            android:layout_below="@+id/tags"
             android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
             android:background="@color/horizental_view_color" />
 
@@ -115,6 +115,16 @@
             android:layout_below="@+id/post_comment"
             android:layout_marginTop="@dimen/post_view_horizental_view_margin_top"
             android:background="@color/horizental_view_color" />
+
+        <LinearLayout
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/view3"
+            android:layout_below="@+id/content"
+            android:layout_marginTop="@dimen/post_view_tags_margin_top"
+            android:orientation="horizontal"
+            android:text="Tags :" />
     </RelativeLayout>
 
 </ScrollView>
