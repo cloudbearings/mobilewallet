@@ -18,3 +18,104 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+
+
+
+-optimizationpasses 5
+-dontusemixedcaseclassnames
+-dontskipnonpubliclibraryclasses
+-dontpreverify
+-verbose
+-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
+ 
+-keep public class * extends android.app.Activity
+-keep public class * extends android.app.Application
+-keep public class * extends android.app.Service
+-keep public class * extends android.content.BroadcastReceiver
+-keep public class * extends android.content.ContentProvider
+-keep public class * extends android.app.backup.BackupAgentHelper
+-keep public class * extends android.preference.Preference
+-keep public class com.android.vending.licensing.ILicensingService
+ 
+#keep all classes that might be used in XML layouts
+-keep public class * extends android.view.View
+-keep public class * extends android.app.Fragment
+-keep public class * extends android.support.v4.Fragment
+ 
+ 
+#keep all public and protected methods that could be used by java reflection
+-keepclassmembernames class * {
+    public protected <methods>;
+ }
+  
+-keepclasseswithmembernames class * {
+     native <methods>;
+ }
+  
+ -keepclasseswithmembernames class * {
+      public <init>(android.content.Context, android.util.AttributeSet);
+  }
+   
+ -keepclasseswithmembernames class * {
+     public <init>(android.content.Context, android.util.AttributeSet, int);
+  }
+   
+   
+ -keepclassmembers enum * {
+     public static **[] values();
+      public static ** valueOf(java.lang.String);
+  }
+    
+  -keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+  }
+    
+   -dontwarn **CompatHoneycomb
+   -dontwarn org.htmlcleaner.*
+   
+   
+#Removing Logging
+-assumenosideeffects class android.util.Log {
+    public static *** e(...);
+    public static *** w(...);
+    public static *** wtf(...);
+    public static *** d(...);
+    public static *** v(...);
+}
+
+#keep Fragments
+-keep public class * extends android.support.v4.app.Fragment
+-keep public class * extends android.app.Fragment
+
+#keep retrofit classes
+-keepattributes *Annotation*
+-keep class retrofit.** { *; }
+-keep class retrofit.appengine.** { *; }
+-keep class retrofit.client.** { *; }
+-keep class retrofit.android.** { *; }
+-keep class retrofit.converter.** { *; }
+-keep class retrofit.http.** { *; }
+-keep class retrofit.mime.** { *; }
+
+-keepclasseswithmembers class * {
+    @retrofit.http.* <methods>;
+}
+-keepattributes Signature
+
+# Gson specific classes
+-keep class sun.misc.Unsafe { *; }
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.google.gson.examples.android.model.** { *; }
+
+-keepattributes Annotation
+-keep class com.google.gson.** { *; }
+-keep class com.google.inject.** { *; }
+-keep class org.apache.http.** { *; }
+-keep class org.apache.james.mime4j.** { *; }
+-keep class javax.inject.** { *; }
+
+-dontwarn rx.**
+-dontwarn retrofit.**
