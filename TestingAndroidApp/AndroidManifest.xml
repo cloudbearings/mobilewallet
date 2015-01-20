@@ -78,6 +78,10 @@
             android:name=".PrivacyPolicy"
             android:label="@string/title_activity_privacy_policy" >
         </activity>
+        <activity
+            android:name=".TagPosts"
+            android:label="@string/title_activity_tag_posts" >
+        </activity>
     </application>
 
 </manifest>

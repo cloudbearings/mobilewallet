@@ -26,4 +26,7 @@
     <!-- comment_list_item.xml -->
     <color name="comment_color">#717171</color>
 
+    <!-- post_view.xml -->
+    <color name="post_view_tags_color">#717171</color>
+
 </resources>

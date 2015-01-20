@@ -34,8 +34,8 @@ public class PostsDAO {
 	public long insertPosts(int post_id, String post_title, String post_date, String post_icon_url,
 			String post_author_name, String post_content, String post_screen_image_url,
 			int post_comment_count, String post_url, String current_milliseconds, int categotyId,
-			String categorySlug, String comments) {
-		ContentValues cv = new ContentValues(12);
+			String categorySlug, String comments, String tags) {
+		ContentValues cv = new ContentValues(14);
 		cv.put(DbAdapter.P_ID, post_id);
 		cv.put(DbAdapter.P_TITLE, post_title);
 		cv.put(DbAdapter.P_DATE, post_date);
@@ -49,6 +49,7 @@ public class PostsDAO {
 		cv.put(DbAdapter.PC_ID, categotyId);
 		cv.put(DbAdapter.PC_SLUG, categorySlug);
 		cv.put(DbAdapter.P_COMMENTS, comments);
+		cv.put(DbAdapter.P_TAGS, tags);
 
 		opnToWrite();
 		long val = 0;
@@ -125,7 +126,7 @@ public class PostsDAO {
 			String[] cols = { DbAdapter.P_ID, DbAdapter.P_TITLE, DbAdapter.P_DATE,
 					DbAdapter.P_ICON_URL, DbAdapter.P_AUTHOR_NAME, DbAdapter.P_CONTENT,
 					DbAdapter.P_SCREEN_IMAGE_URL, DbAdapter.P_COMMENT_COUNT, DbAdapter.P_URL,
-					DbAdapter.P_COMMENTS };
+					DbAdapter.P_COMMENTS, DbAdapter.P_TAGS };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
@@ -151,6 +152,7 @@ public class PostsDAO {
 					item.setPost_url(cursor.getString(cursor.getColumnIndex(DbAdapter.P_URL)));
 					item.setCommentsArray(cursor.getString(cursor
 							.getColumnIndex(DbAdapter.P_COMMENTS)));
+					item.setTagsArray(cursor.getString(cursor.getColumnIndex(DbAdapter.P_TAGS)));
 
 					postsList.add(item);
 				} while (cursor.moveToNext());

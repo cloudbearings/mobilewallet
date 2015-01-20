@@ -145,6 +145,7 @@ public class CategoryPostsFragment extends Fragment {
 										item.setCommentsArray(categotyPost.getJSONArray("comments")
 												.toString());
 									}
+									item.setTagsArray(categotyPost.getJSONArray("tags").toString());
 
 									rowItems.add(item);
 
@@ -162,7 +163,8 @@ public class CategoryPostsFragment extends Fragment {
 												categotyPost.getInt("comment_count"), categotyPost
 														.getString("url"), currentMilliSeconds,
 												categoryItem.getId(), categoryItem.getSlug(),
-												categotyPost.getJSONArray("comments").toString());
+												categotyPost.getJSONArray("comments").toString(),
+												categotyPost.getJSONArray("tags").toString());
 									}
 								}
 

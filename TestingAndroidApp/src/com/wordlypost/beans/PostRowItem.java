@@ -15,7 +15,7 @@ public class PostRowItem implements Serializable {
 
 	private String title, date, post_icon_url, author, content, post_banner, post_url;
 
-	private String post_des, commentsArray;
+	private String post_des, commentsArray, tagsArray;
 
 	public int getPost_id() {
 		return post_id;
@@ -115,6 +115,14 @@ public class PostRowItem implements Serializable {
 
 	public void setCommentsArray(String commentsArray) {
 		this.commentsArray = commentsArray;
+	}
+
+	public String getTagsArray() {
+		return tagsArray;
+	}
+
+	public void setTagsArray(String tagsArray) {
+		this.tagsArray = tagsArray;
 	}
 
 	private String changeDateFormat(String oldDateString) {

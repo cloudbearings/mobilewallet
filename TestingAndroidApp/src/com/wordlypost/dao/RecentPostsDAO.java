@@ -34,8 +34,8 @@ public class RecentPostsDAO {
 	public long insertRecentPosts(int post_id, String post_title, String post_date,
 			String post_icon_url, String post_author_name, String post_content,
 			String post_screen_image_url, int post_comment_count, String post_url,
-			String current_milliseconds, String excerpt, String comments) {
-		ContentValues cv = new ContentValues(10);
+			String current_milliseconds, String excerpt, String comments, String tags) {
+		ContentValues cv = new ContentValues(13);
 		cv.put(DbAdapter.RP_ID, post_id);
 		cv.put(DbAdapter.RP_TITLE, post_title);
 		cv.put(DbAdapter.RP_DATE, post_date);
@@ -48,6 +48,7 @@ public class RecentPostsDAO {
 		cv.put(DbAdapter.RP_CURRENT_MILLISECONDS, current_milliseconds);
 		cv.put(DbAdapter.RP_EXCERPT, excerpt);
 		cv.put(DbAdapter.RP_COMMENTS, comments);
+		cv.put(DbAdapter.RP_TAGS, tags);
 
 		opnToWrite();
 		long val = 0;
@@ -123,7 +124,7 @@ public class RecentPostsDAO {
 			String[] cols = { DbAdapter.RP_ID, DbAdapter.RP_TITLE, DbAdapter.RP_DATE,
 					DbAdapter.RP_ICON_URL, DbAdapter.RP_AUTHOR_NAME, DbAdapter.RP_CONTENT,
 					DbAdapter.RP_SCREEN_IMAGE_URL, DbAdapter.RP_COMMENT_COUNT, DbAdapter.RP_URL,
-					DbAdapter.RP_EXCERPT, DbAdapter.RP_COMMENTS };
+					DbAdapter.RP_EXCERPT, DbAdapter.RP_COMMENTS, DbAdapter.RP_TAGS };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
@@ -149,6 +150,7 @@ public class RecentPostsDAO {
 					item.setPost_des(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_EXCERPT)));
 					item.setCommentsArray(cursor.getString(cursor
 							.getColumnIndex(DbAdapter.RP_COMMENTS)));
+					item.setTagsArray(cursor.getString(cursor.getColumnIndex(DbAdapter.RP_TAGS)));
 
 					postsList.add(item);
 				} while (cursor.moveToNext());

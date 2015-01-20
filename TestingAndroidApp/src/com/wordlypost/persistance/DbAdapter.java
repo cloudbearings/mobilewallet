@@ -29,6 +29,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String PC_ID = "category_id";
 	public static final String PC_SLUG = "category_slug";
 	public static final String P_COMMENTS = "comments";
+	public static final String P_TAGS = "tags";
 
 	public static final String RECENT_POSTS_TABLE_NAME = "recent_posts";
 	public static final String RP_ID = "post_id";
@@ -43,6 +44,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String RP_CURRENT_MILLISECONDS = "current_milliseconds";
 	public static final String RP_EXCERPT = "excerpt";
 	public static final String RP_COMMENTS = "comments";
+	public static final String RP_TAGS = "tags";
 
 	private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + CATEGORIES_TABLE_NAME
 			+ " (" + C_ID + " INTEGER PRIMARY KEY, " + C_NAME + " TEXT, " + C_SLUG + " TEXT, "
@@ -53,14 +55,14 @@ public class DbAdapter extends SQLiteOpenHelper {
 			+ P_ICON_URL + " TEXT, " + P_AUTHOR_NAME + " TEXT, " + P_CONTENT + " TEXT, "
 			+ P_SCREEN_IMAGE_URL + " TEXT, " + "" + P_COMMENT_COUNT + " INTEGER, " + P_URL
 			+ " TEXT, " + P_CURRENT_MILLISECONDS + " TEXT, " + PC_ID + " INTEGER, " + PC_SLUG
-			+ " TEXT, " + P_COMMENTS + " TEXT);";
+			+ " TEXT, " + P_COMMENTS + " TEXT, " + P_TAGS + " TEXT);";
 
 	private static final String CREATE_RECENT_POSTS_TABLE = "CREATE TABLE "
 			+ RECENT_POSTS_TABLE_NAME + " (" + RP_ID + " INTEGER PRIMARY KEY, " + RP_TITLE
 			+ " TEXT, " + RP_DATE + " TEXT, " + RP_ICON_URL + " TEXT, " + RP_AUTHOR_NAME
 			+ " TEXT, " + RP_CONTENT + " TEXT, " + RP_SCREEN_IMAGE_URL + " TEXT, " + ""
 			+ RP_COMMENT_COUNT + " INTEGER, " + RP_URL + " TEXT, " + RP_CURRENT_MILLISECONDS
-			+ " TEXT, " + RP_EXCERPT + " TEXT, " + RP_COMMENTS + " TEXT);";
+			+ " TEXT, " + RP_EXCERPT + " TEXT, " + RP_COMMENTS + " TEXT, " + RP_TAGS + " TEXT);";
 
 	public DbAdapter(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);

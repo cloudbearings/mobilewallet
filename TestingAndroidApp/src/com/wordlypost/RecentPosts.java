@@ -131,6 +131,7 @@ public class RecentPosts extends ActionBarActivity {
 								item.setCommentsArray(categotyPost.getJSONArray("comments")
 										.toString());
 							}
+							item.setTagsArray(categotyPost.getJSONArray("tags").toString());
 
 							rowItems.add(item);
 
@@ -148,7 +149,8 @@ public class RecentPosts extends ActionBarActivity {
 										categotyPost.getInt("comment_count"), categotyPost
 												.getString("url"), currentMilliSeconds,
 										categotyPost.getString("excerpt"), categotyPost
-												.getJSONArray("comments").toString());
+												.getJSONArray("comments").toString(), categotyPost
+												.getJSONArray("tags").toString());
 							}
 						}
 

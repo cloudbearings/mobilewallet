@@ -1,11 +1,16 @@
 package com.wordlypost;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar.LayoutParams;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +21,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -99,6 +105,55 @@ public class PostViewFragment extends Fragment {
 								postDetails.getPost_id());
 					}
 				});
+
+				try {
+					JSONArray tagsArray = new JSONArray(postDetails.getTagsArray());
+					LinearLayout Ll = (LinearLayout) view.findViewById(R.id.tags);
+					if (tagsArray.length() > 0) {
+						for (int i = 0; i < tagsArray.length(); i++) {
+							final JSONObject tagObj = tagsArray.getJSONObject(i);
+
+							TextView textDynamic = new TextView(getActivity());
+							textDynamic.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+									LayoutParams.WRAP_CONTENT));
+							if (i == 0) {
+								textDynamic.setText(getString(R.string.tags)
+										+ tagObj.getString("title") + ", ");
+							} else if (i == tagsArray.length() - 1) {
+								textDynamic.setText(tagObj.getString("title"));
+							} else {
+								textDynamic.setText(tagObj.getString("title") + ", ");
+							}
+							textDynamic.setTextColor(getResources().getColor(
+									R.color.post_view_tags_color));
+							textDynamic.setTextSize(getResources().getDimension(
+									R.dimen.post_view_tags_textsize));
+							textDynamic.isClickable();
+							Ll.addView(textDynamic);
+
+							textDynamic.setOnClickListener(new View.OnClickListener() {
+
+								@Override
+								public void onClick(View v) {
+									try {
+										startActivity(new Intent(getActivity(), TagPosts.class)
+												.putExtra(
+														getString(R.string.tagSlug),
+														tagObj.getString("id") + "$"
+																+ tagObj.getString("slug"))
+												.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+									} catch (JSONException je) {
+										je.printStackTrace();
+									}
+
+								}
+							});
+						}
+					} else {
+						Ll.setVisibility(View.GONE);
+					}
+				} catch (Exception e) {
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
