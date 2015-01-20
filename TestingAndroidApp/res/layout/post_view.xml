@@ -21,6 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:lineSpacingExtra="@dimen/post_view_title_lineSpacingExtra"
             android:maxLines="3"
             android:text="Software Engineer  stabs wife, hangs self in Dwaraka"
@@ -70,7 +72,8 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/view2"
             android:layout_below="@+id/view2"
-            android:layout_marginTop="@dimen/post_view_content_margin_top" />
+            android:layout_marginTop="@dimen/post_view_content_margin_top"
+            android:focusable="false" />
 
         <View
             android:id="@+id/view3"
