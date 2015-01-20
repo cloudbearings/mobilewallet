@@ -218,6 +218,7 @@ public class TabsActivity extends ActionBarActivity {
 
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		searchView.setQueryHint(getString(R.string.search_hint));
 
 		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 		searchView.setIconifiedByDefault(false);
