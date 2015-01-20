@@ -3,11 +3,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.wordlypost.PostView" >
 
-    <item
-        android:id="@+id/share_icon"
-        android:icon="@drawable/share_app_icon"
-        android:orderInCategory="100"
-        android:title="@string/share"
-        app:showAsAction="always"/>
-
 </menu>

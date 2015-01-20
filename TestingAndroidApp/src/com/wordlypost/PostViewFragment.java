@@ -36,6 +36,24 @@ public class PostViewFragment extends Fragment {
 
 	private PostRowItem postDetails;
 
+	private String postUrl, postTitle;
+
+	public String getPostTitle() {
+		return postTitle;
+	}
+
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
+
+	public String getPostUrl() {
+		return postUrl;
+	}
+
+	public void setPostUrl(String postUrl) {
+		this.postUrl = postUrl;
+	}
+
 	@SuppressLint("SetJavaScriptEnabled")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -173,14 +191,6 @@ public class PostViewFragment extends Fragment {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			getActivity().finish();
-			return true;
-		case R.id.share_icon:
-			Intent sendIntent = new Intent();
-			sendIntent.setAction(Intent.ACTION_SEND);
-			sendIntent.putExtra(Intent.EXTRA_TEXT, postDetails.getPost_url()).putExtra(
-					Intent.EXTRA_SUBJECT, postDetails.getTitle());
-			sendIntent.setType("text/plain");
-			startActivity(sendIntent);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
