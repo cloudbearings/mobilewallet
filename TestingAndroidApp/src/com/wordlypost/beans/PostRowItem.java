@@ -1,6 +1,12 @@
 package com.wordlypost.beans;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import android.util.Log;
 
 public class PostRowItem implements Serializable {
 
@@ -28,7 +34,7 @@ public class PostRowItem implements Serializable {
 	}
 
 	public String getDate() {
-		return date;
+		return changeDateFormat(date);
 	}
 
 	public void setDate(String date) {
@@ -109,5 +115,25 @@ public class PostRowItem implements Serializable {
 
 	public void setCommentsArray(String commentsArray) {
 		this.commentsArray = commentsArray;
+	}
+
+	private String changeDateFormat(String oldDateString) {
+
+		String OLD_FORMAT = "yyyy-MM-dd HH:mm:ss";
+		String NEW_FORMAT = "MMM dd, yyyy hh:mm aaa";
+
+		// August 12, 2010
+		String newDateString = "";
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT, Locale.ENGLISH);
+			Date d = sdf.parse(oldDateString.trim());
+
+			sdf.applyPattern(NEW_FORMAT);
+			newDateString = sdf.format(d);
+		} catch (ParseException e) {
+			Log.i("TAG :", "Date parse exception");
+			e.printStackTrace();
+		}
+		return newDateString;
 	}
 }
