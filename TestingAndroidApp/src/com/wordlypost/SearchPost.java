@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -15,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -162,6 +165,14 @@ public class SearchPost extends ActionBarActivity {
 						Utils.displayToad(SearchPost.this, getString(R.string.no_internet));
 					}
 				}
+			}
+		});
+
+		searchPostsList.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				startActivity(new Intent(SearchPost.this, PostViewSwipeActivity.class)
+						.putExtra("postDetails", rowItems).putExtra("position", position)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			}
 		});
 	}
