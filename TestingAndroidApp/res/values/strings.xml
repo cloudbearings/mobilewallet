@@ -62,6 +62,10 @@
     <string name="post">Post</string>
     <string name="comment">Comment</string>
     <string name="post_comment_success_msg">Your comment submitted.</string>
+    <string name="name_empty_error_msg">Enter your name.</string>
+    <string name="email_empty_error_msg">Enter email address.</string>
+    <string name="comment_empty_error_msg">Enter your comment.</string>
+    <string name="invalid_email_error_msg">Inavalid email</string>
 
     <!-- post_view.xml -->
     <string name="title_activity_post_view_swipe">Post View</string>
