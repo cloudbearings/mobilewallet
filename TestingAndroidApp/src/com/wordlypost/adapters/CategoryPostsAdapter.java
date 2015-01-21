@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,8 +28,7 @@ public class CategoryPostsAdapter extends ArrayAdapter<PostRowItem> {
 
 	private ArrayList<PostRowItem> items;
 
-	public CategoryPostsAdapter(Context context, int resourceId,
-			ArrayList<PostRowItem> items) {
+	public CategoryPostsAdapter(Context context, int resourceId, ArrayList<PostRowItem> items) {
 		super(context, resourceId, items);
 		this.context = context;
 		imgLoader = new ImageLoader(context.getApplicationContext());
@@ -63,21 +63,21 @@ public class CategoryPostsAdapter extends ArrayAdapter<PostRowItem> {
 			holder = (ViewHolder) myAppsView.getTag();
 
 		holder.title.setText(Html.fromHtml(rowItem.getTitle()));
-		holder.title.setTypeface(Utils.getFont(context, context.getString(R.string.Helvetica)));
+		holder.title.setTypeface(Utils.getFont(context, context.getString(R.string.Helvetica)),
+				Typeface.BOLD);
 		holder.date.setText(rowItem.getDate());
 		holder.date.setTypeface(Utils.getFont(context, context.getString(R.string.DroidSerif)));
 
 		int loader = R.drawable.app_default_icon;
 		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader, holder.post_image);
 
-		((ImageView) myAppsView.findViewById(R.id.post_image))
-				.setOnClickListener(new View.OnClickListener() {
-					public void onClick(View view) {
-						context.startActivity(new Intent(context, PostViewSwipeActivity.class)
-								.putExtra("postDetails", items).putExtra("position", position)
-								.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-					}
-				});
+		holder.post_image.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View view) {
+				context.startActivity(new Intent(context, PostViewSwipeActivity.class)
+						.putExtra("postDetails", items).putExtra("position", position)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+			}
+		});
 
 		return myAppsView;
 	}
