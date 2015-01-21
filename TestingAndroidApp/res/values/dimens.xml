@@ -50,6 +50,7 @@
     <dimen name="post_view_related_articals_margin_top">15dp</dimen>
     <dimen name="post_view_related_articals_textsize">16sp</dimen>
     <dimen name="post_view_tags_textsize">6sp</dimen>
+    <dimen name="post_view_comment_layout_margin_left">15dp</dimen>
 
     <!-- post_comment_popup.xml -->
     <dimen name="post_comment_layout_padding">20dp</dimen>
