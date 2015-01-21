@@ -23,12 +23,12 @@
     <!-- category_posts_list_item.xml -->
     <dimen name="category_posts_list_item_layout_padding_top">10dp</dimen>
     <dimen name="category_posts_list_item_layout_padding_bottom">10dp</dimen>
-    <dimen name="category_posts_list_item_appName_margin_top">20dp</dimen>
-    <dimen name="category_posts_list_item_appName_textsize">18sp</dimen>
+    <dimen name="category_posts_list_item_appName_margin_top">10dp</dimen>
+    <dimen name="category_posts_list_item_appName_textsize">14sp</dimen>
     <dimen name="category_posts_list_item_friend_count_margin_top">8dp</dimen>
-    <dimen name="category_posts_list_item_friend_count_textsize">13sp</dimen>
+    <dimen name="category_posts_list_item_friend_count_textsize">12sp</dimen>
     <dimen name="category_posts_icon_dimes">130dp</dimen>
-    <dimen name="spacing">10dp</dimen>
+    <dimen name="spacing">5dp</dimen>
     <dimen name="category_posts_heading_padding">10dp</dimen>
     <dimen name="category_posts_heading_textsize">16sp</dimen>
 
@@ -71,6 +71,7 @@
 
     <!-- search_posts_list_item.xml -->
     <dimen name="post_layout_padding">15dp</dimen>
+    <dimen name="post_layout_padding_bottom">10dp</dimen>
     <dimen name="post_icon_dimes">95dp</dimen>
     <dimen name="post_title_margin_left">10dp</dimen>
     <dimen name="post_title_text_size">14sp</dimen>
