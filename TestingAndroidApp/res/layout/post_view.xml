@@ -125,6 +125,28 @@
             android:layout_marginTop="@dimen/post_view_tags_margin_top"
             android:orientation="horizontal"
             android:text="Tags :" />
+
+        <LinearLayout
+            android:id="@+id/comment_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/author"
+            android:layout_marginLeft="@dimen/post_view_comment_layout_margin_left"
+            android:layout_toRightOf="@+id/author"
+            android:background="@drawable/comment_icon"
+            android:orientation="horizontal"
+            android:visibility="invisible" >
+
+            <TextView
+                android:id="@+id/comment_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/post_comment_count_margin_top"
+                android:paddingLeft="@dimen/post_comment_count_padding_left"
+                android:text="0"
+                android:textColor="@color/brown"
+                android:textSize="@dimen/post_comment_count_text_size" />
+        </LinearLayout>
     </RelativeLayout>
 
 </ScrollView>

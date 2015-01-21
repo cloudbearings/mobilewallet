@@ -85,6 +85,18 @@ public class PostViewFragment extends Fragment {
 						+ postDetails.getDate()));
 				author.setTypeface(Utils.getFont(getActivity(), getString(R.string.DroidSerif)));
 
+				TextView commentCount = (TextView) view.findViewById(R.id.comment_count);
+				LinearLayout commentLayout = (LinearLayout) view.findViewById(R.id.comment_layout);
+
+				if (postDetails.getComment_count() > 0) {
+					commentLayout.setVisibility(View.VISIBLE);
+					commentCount.setText(Html.fromHtml(postDetails.getComment_count() + ""));
+					commentCount.setTypeface(Utils.getFont(getActivity(),
+							getString(R.string.Helvetica)));
+				} else {
+					commentLayout.setVisibility(View.INVISIBLE);
+				}
+
 				ImageView postImage = (ImageView) view.findViewById(R.id.post_image);
 				ImageLoader imageLoder = new ImageLoader(getActivity());
 				imageLoder
