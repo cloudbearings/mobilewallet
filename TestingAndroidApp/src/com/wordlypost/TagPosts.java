@@ -11,6 +11,7 @@ import retrofit.client.Response;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -104,8 +105,8 @@ public class TagPosts extends ActionBarActivity {
 												Log.i("tagPosts", output);
 
 												JSONObject obj = new JSONObject(output);
-												tagTitle.setText(obj.getJSONObject("tag")
-														.getString("title"));
+												tagTitle.setText(Html.fromHtml(obj.getJSONObject("tag")
+														.getString("title")));
 
 												if (obj.getJSONArray("posts").length() > 0) {
 													JSONArray tagPosts = obj.getJSONArray("posts");

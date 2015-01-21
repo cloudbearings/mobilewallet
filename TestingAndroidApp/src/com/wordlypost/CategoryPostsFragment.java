@@ -11,6 +11,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +60,7 @@ public class CategoryPostsFragment extends Fragment {
 			}
 
 			TextView categoryTitle = (TextView) view.findViewById(R.id.category_title);
-			categoryTitle.setText(categoryItem.getTitle());
+			categoryTitle.setText(Html.fromHtml(categoryItem.getTitle()));
 
 			rowItems = new ArrayList<PostRowItem>();
 			categoryPostsList = (ListView) view.findViewById(R.id.categoryPostsList);
