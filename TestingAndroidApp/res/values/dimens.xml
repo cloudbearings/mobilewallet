@@ -51,6 +51,9 @@
     <dimen name="post_view_related_articals_textsize">16sp</dimen>
     <dimen name="post_view_tags_textsize">6sp</dimen>
     <dimen name="post_view_comment_layout_margin_left">15dp</dimen>
+    <dimen name="post_view_count_margin_top">5dp</dimen>
+    <dimen name="post_view_count_padding_left">10dp</dimen>
+    <dimen name="post_view_count_text_size">14sp</dimen>
 
     <!-- post_comment_popup.xml -->
     <dimen name="post_comment_layout_padding">20dp</dimen>
