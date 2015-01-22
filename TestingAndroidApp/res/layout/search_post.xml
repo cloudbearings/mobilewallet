@@ -23,4 +23,15 @@
         android:layout_centerHorizontal="true"
         android:visibility="gone" />
 
+    <com.wordlypost.textview.Helvetica
+        android:id="@+id/error_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/offerbg"
+        android:gravity="center"
+        android:textSize="@dimen/error_message_textsize"
+        android:visibility="gone" />
+
 </RelativeLayout>

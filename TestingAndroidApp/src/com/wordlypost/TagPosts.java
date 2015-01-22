@@ -219,8 +219,7 @@ public class TagPosts extends ActionBarActivity {
 									page = page + 1;
 								}
 							} else {
-								Utils.displayToad(TagPosts.this,
-										getString(R.string.no_posts_error_msg));
+								tagTitle.setText(R.string.no_posts_error_msg);
 							}
 							progressBar.setVisibility(View.GONE);
 
