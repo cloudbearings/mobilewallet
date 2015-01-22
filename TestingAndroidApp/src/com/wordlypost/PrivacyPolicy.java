@@ -1,15 +1,16 @@
 package com.wordlypost;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 
 public class PrivacyPolicy extends ActionBarActivity {
 
@@ -41,7 +42,11 @@ public class PrivacyPolicy extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			finish();
+			// app icon in action bar clicked; go home
+			Intent tabsIntent = new Intent(PrivacyPolicy.this,
+					TabsActivity.class);
+			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(tabsIntent);
 		default:
 			return super.onOptionsItemSelected(item);
 		}

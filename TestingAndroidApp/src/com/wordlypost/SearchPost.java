@@ -265,7 +265,10 @@ public class SearchPost extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			finish();
+			// app icon in action bar clicked; go home
+			Intent tabsIntent = new Intent(SearchPost.this, TabsActivity.class);
+			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(tabsIntent);
 		default:
 			return super.onOptionsItemSelected(item);
 		}

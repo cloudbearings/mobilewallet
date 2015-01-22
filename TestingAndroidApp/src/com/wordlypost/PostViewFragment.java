@@ -202,8 +202,11 @@ public class PostViewFragment extends Fragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			getActivity().finish();
-			return true;
+			// app icon in action bar clicked; go home
+			Intent tabsIntent = new Intent(getActivity(),
+					TabsActivity.class);
+			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(tabsIntent);
 		default:
 			return super.onOptionsItemSelected(item);
 		}
