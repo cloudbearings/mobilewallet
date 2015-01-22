@@ -7,7 +7,7 @@
     android:paddingBottom="@dimen/category_posts_list_item_layout_padding_bottom"
     android:paddingTop="@dimen/category_posts_list_item_layout_padding_top" >
 
-    <TextView
+    <com.wordlypost.textview.HelveticaBold
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         android:textColor="@color/category_posts_heading_color"
         android:textSize="@dimen/category_posts_list_item_appName_textsize" />
 
-    <TextView
+    <com.wordlypost.textview.DroidSerif
         android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
