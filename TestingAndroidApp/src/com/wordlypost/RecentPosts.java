@@ -17,8 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -212,7 +212,11 @@ public class RecentPosts extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			finish();
+			// app icon in action bar clicked; go home
+			Intent tabsIntent = new Intent(RecentPosts.this,
+					TabsActivity.class);
+			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(tabsIntent);
 		default:
 			return super.onOptionsItemSelected(item);
 		}
