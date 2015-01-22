@@ -147,7 +147,6 @@ public class RecentPosts extends ActionBarActivity {
 							rowItems.add(item);
 
 							if (page == 1) {
-								Log.i("page :", page + "");
 								recentPostsDAO = new RecentPostsDAO(RecentPosts.this);
 								recentPostsDAO.insertRecentPosts(categotyPost.getInt("id"),
 										categotyPost.getString("title"), categotyPost
@@ -167,7 +166,7 @@ public class RecentPosts extends ActionBarActivity {
 
 						if (page == 1) {
 							long deleted = recentPostsDAO.deleteRecentPosts(currentMilliSeconds);
-							Log.i("Deletion Failure: ", deleted + "");
+							Log.i("Deleted Records: ", deleted + "");
 						}
 
 						adapter.notifyDataSetChanged();
