@@ -6,6 +6,7 @@
 
     <!-- Global dimes -->
     <dimen name="listview_layout_padding">5dp</dimen>
+    <dimen name="error_message_textsize">18dp</dimen>
 
     <!-- Overflow icon dimes -->
     <dimen name="action_button_width">42dp</dimen>

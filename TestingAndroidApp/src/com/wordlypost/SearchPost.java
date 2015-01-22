@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -226,9 +227,9 @@ public class SearchPost extends ActionBarActivity {
 										page = page + 1;
 									}
 								} else {
-									Utils.displayToad(
-											SearchPost.this,
-											getString(R.string.no_posts_error_msg));
+									TextView errorMsg = (TextView) findViewById(R.id.error_msg);
+									errorMsg.setVisibility(View.VISIBLE);
+									errorMsg.setText(R.string.no_posts_error_msg);
 								}
 								progressBar.setVisibility(View.GONE);
 
