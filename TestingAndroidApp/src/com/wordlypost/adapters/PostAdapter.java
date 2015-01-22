@@ -5,7 +5,6 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import com.wordlypost.R;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.utils.ImageLoader;
-import com.wordlypost.utils.Utils;
 
 public class PostAdapter extends ArrayAdapter<PostRowItem> {
 
@@ -64,17 +62,9 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 			holder = (ViewHolder) postView.getTag();
 
 		holder.title.setText(Html.fromHtml(rowItem.getTitle()));
-		holder.title.setTypeface(Utils.getFont(context, context.getString(R.string.Helvetica)),
-				Typeface.BOLD);
-
 		holder.des.setText(Html.fromHtml(rowItem.getPost_des()));
-		holder.des.setTypeface(Utils.getFont(context, context.getString(R.string.Arial)));
-
 		holder.date.setText(Html.fromHtml(rowItem.getDate()));
-		holder.date.setTypeface(Utils.getFont(context, context.getString(R.string.DroidSerif)));
-
 		holder.author.setText(Html.fromHtml(rowItem.getAuthor()));
-		holder.author.setTypeface(Utils.getFont(context, context.getString(R.string.DroidSerif)));
 
 		int loader = R.drawable.app_default_icon;
 		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader, holder.post_image);
@@ -83,8 +73,6 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 			if (rowItem.getComment_count() > 0) {
 				holder.commentLayout.setVisibility(View.VISIBLE);
 				holder.commentCount.setText(Html.fromHtml(rowItem.getComment_count() + ""));
-				holder.commentCount.setTypeface(Utils.getFont(context,
-						context.getString(R.string.Helvetica)));
 			} else {
 				holder.commentLayout.setVisibility(View.INVISIBLE);
 			}
