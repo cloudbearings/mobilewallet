@@ -102,6 +102,6 @@
     <dimen name="comments_margin_top">5dp</dimen>
 
     <!-- home_fragment.xml -->
-    <dimen name="home_fragment_relative_margin">15dp</dimen>
+    <dimen name="home_fragment_relative_margin">6dp</dimen>
 
 </resources>
