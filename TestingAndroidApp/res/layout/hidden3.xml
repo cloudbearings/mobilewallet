@@ -241,7 +241,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/post_image34"
                     android:layout_alignRight="@+id/post_image34"
-                    android:layout_below="@+id/post_image4"
+                    android:layout_below="@+id/post_image34"
                     android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
                     android:ellipsize="end"
                     android:maxLines="3"
