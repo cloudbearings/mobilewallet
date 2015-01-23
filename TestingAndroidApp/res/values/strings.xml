@@ -84,5 +84,6 @@
     <string name="comments_count">Comments (%1$d)</string>
     <string name="title_activity_privacy_policy">Privacy Policy</string>
     <string name="title_activity_tag_posts">Tag Posts</string>
+    <string name="title_activity_home_fragment">Home</string>
 
 </resources>

@@ -136,6 +136,11 @@ public class TabsActivity extends ActionBarActivity {
 
 			mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 
+			if (savedInstanceState == null) {
+				// on first time display view for first nav item
+				displayView(0);
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -156,10 +161,15 @@ public class TabsActivity extends ActionBarActivity {
 	private void displayView(int position) {
 		// update the main content by replacing fragments
 		try {
-			Fragment fragment = new CategoryPostsFragment();
-			Bundle bundle = new Bundle();
-			bundle.putSerializable("category", navDrawerItems.get(position));
-			fragment.setArguments(bundle);
+			Fragment fragment = null;
+			if (position == 0) {
+				fragment = new HomeFragment();
+			} else {
+				fragment = new CategoryPostsFragment();
+				Bundle bundle = new Bundle();
+				bundle.putSerializable("category", navDrawerItems.get(position));
+				fragment.setArguments(bundle);
+			}
 
 			if (fragment != null) {
 				FragmentManager fragmentManager = getSupportFragmentManager();
