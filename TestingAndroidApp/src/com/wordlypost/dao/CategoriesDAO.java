@@ -143,4 +143,48 @@ public class CategoriesDAO {
 		}
 		return categoriesList;
 	}
+
+	public List<NavDrawerItem> getRandomCategories() {
+		SQLiteDatabase database = null;
+		Cursor cursor = null;
+		List<NavDrawerItem> categoriesList = null;
+		try {
+			categoriesList = new ArrayList<NavDrawerItem>();
+			String[] cols = { DbAdapter.C_ID, DbAdapter.C_NAME, DbAdapter.C_SLUG,
+					DbAdapter.C_POST_COUNT };
+
+			dbHelper = new DbAdapter(context);
+			database = dbHelper.getReadableDatabase();
+			cursor = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols, null, null, null, null,
+					"RANDOM()", "5");
+			NavDrawerItem item;
+			if (cursor.moveToFirst()) {
+				do {
+					item = new NavDrawerItem();
+
+					item.setId(cursor.getInt(cursor.getColumnIndex(DbAdapter.C_ID)));
+
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DbAdapter.C_NAME)));
+					item.setSlug(cursor.getString(cursor.getColumnIndex(DbAdapter.C_SLUG)));
+					item.setPost_count(cursor.getInt(cursor.getColumnIndex(DbAdapter.C_POST_COUNT)));
+
+					categoriesList.add(item);
+				} while (cursor.moveToNext());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (!cursor.isClosed()) {
+					cursor.close();
+				}
+			} catch (Exception e) {
+			}
+			try {
+				database.close();
+			} catch (Exception e) {
+			}
+		}
+		return categoriesList;
+	}
 }

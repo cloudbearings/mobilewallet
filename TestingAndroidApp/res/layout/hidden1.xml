@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hiddenLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.wordlypost.HomeFragment" >
+
+    <TextView
+        android:id="@+id/category_title1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/brown"
+        android:padding="@dimen/category_posts_heading_padding"
+        android:textColor="@color/white"
+        android:textSize="@dimen/category_posts_heading_textsize" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category_title1"
+        android:padding="@dimen/listview_layout_padding" >
+
+        <RelativeLayout
+            android:id="@+id/relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/offerbg"
+            android:paddingBottom="@dimen/post_layout_padding_bottom"
+            android:paddingLeft="@dimen/post_layout_padding"
+            android:paddingRight="@dimen/post_layout_padding"
+            android:paddingTop="@dimen/post_layout_padding" >
+
+            <com.wordlypost.utils.ResizableImageView
+                android:id="@+id/post_screen1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/loading" />
+
+            <com.wordlypost.textview.HelveticaBold
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/post_screen1"
+                android:layout_alignRight="@+id/post_screen1"
+                android:layout_below="@+id/post_screen1"
+                android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:text="Baahubali : A Look Up Into, India’s Most Expensive Movie Ever Made"
+                android:textColor="@color/category_posts_heading_color"
+                android:textSize="@dimen/category_posts_list_item_appName_textsize" />
+
+            <com.wordlypost.textview.DroidSerif
+                android:id="@+id/date1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/title1"
+                android:layout_alignRight="@+id/title1"
+                android:layout_below="@+id/title1"
+                android:layout_marginTop="@dimen/category_posts_list_item_friend_count_margin_top"
+                android:text="12-Jun-14"
+                android:textColor="@color/category_posts_des_color"
+                android:textSize="@dimen/category_posts_list_item_friend_count_textsize" />
+
+            <com.wordlypost.textview.Arial
+                android:id="@+id/des1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/date1"
+                android:layout_below="@+id/date1"
+                android:layout_marginTop="@dimen/post_des_margin_top"
+                android:ellipsize="end"
+                android:maxLines="7"
+                android:text="Looking into the facts of an upcoming TollyWoods and India\’s most expensive movie ever made, the Bahubali ranks in second place with budgeted amount of $21 million dollars after superstar Rajini Kanth movie Robo/Enthiran which made with budget of $36 million dollars. Given, Enthiran movie surrounds around human-robot conflicts, the Baahubali movie is based on epic drama"
+                android:textColor="@color/post_subTitle_color"
+                android:textSize="@dimen/post_des_text_size"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_layout"
+            android:layout_centerHorizontal="true" >
+
+            <RelativeLayout
+                android:id="@+id/relative_layout1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/home_fragment_relative_margin"
+                android:background="@drawable/ver_9_patch"
+                android:orientation="vertical"
+                android:padding="@dimen/listview_layout_padding" >
+
+                <ImageView
+                    android:id="@+id/post_image11"
+                    android:layout_width="@dimen/category_posts_icon_dimes"
+                    android:layout_height="@dimen/category_posts_icon_dimes"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/app_default_icon" />
+
+                <com.wordlypost.textview.HelveticaBold
+                    android:id="@+id/title11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/post_image11"
+                    android:layout_alignRight="@+id/post_image11"
+                    android:layout_below="@+id/post_image11"
+                    android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="Baahubali : A Look Up Into, India’s Most Expensive Movie Ever Made"
+                    android:textColor="@color/category_posts_heading_color"
+                    android:textSize="@dimen/category_posts_list_item_appName_textsize" />
+
+                <com.wordlypost.textview.DroidSerif
+                    android:id="@+id/date11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/title11"
+                    android:layout_alignRight="@+id/title11"
+                    android:layout_below="@+id/title11"
+                    android:layout_marginTop="@dimen/category_posts_list_item_friend_count_margin_top"
+                    android:text="12-Jun-14"
+                    android:textColor="@color/category_posts_des_color"
+                    android:textSize="@dimen/category_posts_list_item_friend_count_textsize" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/home_fragment_relative_margin"
+                android:layout_toRightOf="@+id/relative_layout1"
+                android:background="@drawable/ver_9_patch"
+                android:orientation="vertical"
+                android:padding="@dimen/listview_layout_padding" >
+
+                <ImageView
+                    android:id="@+id/post_image12"
+                    android:layout_width="@dimen/category_posts_icon_dimes"
+                    android:layout_height="@dimen/category_posts_icon_dimes"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/app_default_icon" />
+
+                <com.wordlypost.textview.HelveticaBold
+                    android:id="@+id/title12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/post_image12"
+                    android:layout_alignRight="@+id/post_image12"
+                    android:layout_below="@+id/post_image12"
+                    android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="Baahubali : A Look Up Into, India’s Most Expensive Movie Ever Made"
+                    android:textColor="@color/category_posts_heading_color"
+                    android:textSize="@dimen/category_posts_list_item_appName_textsize" />
+
+                <com.wordlypost.textview.DroidSerif
+                    android:id="@+id/date12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/title12"
+                    android:layout_alignRight="@+id/title12"
+                    android:layout_below="@+id/title12"
+                    android:layout_marginTop="@dimen/category_posts_list_item_friend_count_margin_top"
+                    android:text="12-Jun-14"
+                    android:textColor="@color/category_posts_des_color"
+                    android:textSize="@dimen/category_posts_list_item_friend_count_textsize" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_layout1"
+                android:layout_margin="@dimen/home_fragment_relative_margin"
+                android:background="@drawable/ver_9_patch"
+                android:orientation="vertical"
+                android:padding="@dimen/listview_layout_padding" >
+
+                <ImageView
+                    android:id="@+id/post_image13"
+                    android:layout_width="@dimen/category_posts_icon_dimes"
+                    android:layout_height="@dimen/category_posts_icon_dimes"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/app_default_icon" />
+
+                <com.wordlypost.textview.HelveticaBold
+                    android:id="@+id/title13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/post_image13"
+                    android:layout_alignRight="@+id/post_image13"
+                    android:layout_below="@+id/post_image13"
+                    android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="Baahubali : A Look Up Into, India’s Most Expensive Movie Ever Made"
+                    android:textColor="@color/category_posts_heading_color"
+                    android:textSize="@dimen/category_posts_list_item_appName_textsize" />
+
+                <com.wordlypost.textview.DroidSerif
+                    android:id="@+id/date13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/title13"
+                    android:layout_alignRight="@+id/title13"
+                    android:layout_below="@+id/title13"
+                    android:layout_marginTop="@dimen/category_posts_list_item_friend_count_margin_top"
+                    android:text="12-Jun-14"
+                    android:textColor="@color/category_posts_des_color"
+                    android:textSize="@dimen/category_posts_list_item_friend_count_textsize" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relative_layout4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_layout1"
+                android:layout_margin="@dimen/home_fragment_relative_margin"
+                android:layout_toRightOf="@+id/relative_layout3"
+                android:background="@drawable/ver_9_patch"
+                android:orientation="vertical"
+                android:padding="@dimen/listview_layout_padding" >
+
+                <ImageView
+                    android:id="@+id/post_image14"
+                    android:layout_width="@dimen/category_posts_icon_dimes"
+                    android:layout_height="@dimen/category_posts_icon_dimes"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/app_default_icon" />
+
+                <com.wordlypost.textview.HelveticaBold
+                    android:id="@+id/title14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/post_image14"
+                    android:layout_alignRight="@+id/post_image14"
+                    android:layout_below="@+id/post_image14"
+                    android:layout_marginTop="@dimen/category_posts_list_item_appName_margin_top"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="Baahubali : A Look Up Into, India’s Most Expensive Movie Ever Made"
+                    android:textColor="@color/category_posts_heading_color"
+                    android:textSize="@dimen/category_posts_list_item_appName_textsize" />
+
+                <com.wordlypost.textview.DroidSerif
+                    android:id="@+id/date14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/title14"
+                    android:layout_alignRight="@+id/title14"
+                    android:layout_below="@+id/title14"
+                    android:layout_marginTop="@dimen/category_posts_list_item_friend_count_margin_top"
+                    android:text="12-Jun-14"
+                    android:textColor="@color/category_posts_des_color"
+                    android:textSize="@dimen/category_posts_list_item_friend_count_textsize" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -83,6 +83,10 @@
             android:name=".TagPosts"
             android:label="@string/title_activity_tag_posts" >
         </activity>
+        <activity
+            android:name=".HomeFragment"
+            android:label="@string/title_activity_home_fragment" >
+        </activity>
     </application>
 
 </manifest>
