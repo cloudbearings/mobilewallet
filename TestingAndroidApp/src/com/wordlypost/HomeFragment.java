@@ -163,10 +163,10 @@ public class HomeFragment extends Fragment {
 					imageLoader12.DisplayImage(post12.getString("thumbnail"),
 							R.drawable.app_default_icon, postIcon12);
 
-					((TextView) view.findViewById(title12[i])).setText(Html.fromHtml(post11
+					((TextView) view.findViewById(title12[i])).setText(Html.fromHtml(post12
 							.getString("title")));
 
-					((TextView) view.findViewById(date12[i])).setText(Html.fromHtml(post11
+					((TextView) view.findViewById(date12[i])).setText(Html.fromHtml(post12
 							.getString("date")));
 
 					JSONObject post13 = postsArray.getJSONObject(3);
@@ -175,10 +175,10 @@ public class HomeFragment extends Fragment {
 					imageLoader13.DisplayImage(post13.getString("thumbnail"),
 							R.drawable.app_default_icon, postIcon13);
 
-					((TextView) view.findViewById(title13[i])).setText(Html.fromHtml(post11
+					((TextView) view.findViewById(title13[i])).setText(Html.fromHtml(post13
 							.getString("title")));
 
-					((TextView) view.findViewById(date13[i])).setText(Html.fromHtml(post11
+					((TextView) view.findViewById(date13[i])).setText(Html.fromHtml(post13
 							.getString("date")));
 
 					JSONObject post14 = postsArray.getJSONObject(4);
@@ -187,10 +187,10 @@ public class HomeFragment extends Fragment {
 					imageLoader14.DisplayImage(post14.getString("thumbnail"),
 							R.drawable.app_default_icon, postIcon14);
 
-					((TextView) view.findViewById(title14[i])).setText(Html.fromHtml(post11
+					((TextView) view.findViewById(title14[i])).setText(Html.fromHtml(post14
 							.getString("title")));
 
-					((TextView) view.findViewById(date14[i])).setText(Html.fromHtml(post11
+					((TextView) view.findViewById(date14[i])).setText(Html.fromHtml(post14
 							.getString("date")));
 				} catch (Exception e) {
 				}
