@@ -24,7 +24,7 @@
         android:padding="@dimen/listview_layout_padding" >
 
         <RelativeLayout
-            android:id="@+id/relative_layout"
+            android:id="@+id/relative_layout5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/offerbg"
@@ -83,11 +83,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/relative_layout"
+            android:layout_below="@+id/relative_layout5"
             android:layout_centerHorizontal="true" >
 
             <RelativeLayout
-                android:id="@+id/relative_layout1"
+                android:id="@+id/relative_layout51"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/home_fragment_relative_margin"
@@ -130,11 +130,11 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relative_layout2"
+                android:id="@+id/relative_layout52"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/home_fragment_relative_margin"
-                android:layout_toRightOf="@+id/relative_layout1"
+                android:layout_toRightOf="@+id/relative_layout51"
                 android:background="@drawable/ver_9_patch"
                 android:orientation="vertical"
                 android:padding="@dimen/listview_layout_padding" >
@@ -174,10 +174,10 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relative_layout3"
+                android:id="@+id/relative_layout53"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_layout1"
+                android:layout_below="@+id/relative_layout51"
                 android:layout_margin="@dimen/home_fragment_relative_margin"
                 android:background="@drawable/ver_9_patch"
                 android:orientation="vertical"
@@ -218,12 +218,12 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/relative_layout4"
+                android:id="@+id/relative_layout54"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/relative_layout1"
+                android:layout_below="@+id/relative_layout51"
                 android:layout_margin="@dimen/home_fragment_relative_margin"
-                android:layout_toRightOf="@+id/relative_layout3"
+                android:layout_toRightOf="@+id/relative_layout53"
                 android:background="@drawable/ver_9_patch"
                 android:orientation="vertical"
                 android:padding="@dimen/listview_layout_padding" >

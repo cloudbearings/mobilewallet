@@ -70,22 +70,8 @@ public class TabsActivity extends ActionBarActivity {
 			if (getIntent().getStringExtra("categories") != null) {
 				JSONObject obj = new JSONObject(getIntent().getStringExtra("categories"));
 				// JsonObject is not null data is coming from server
-				CategoriesDAO categoriesDAO = new CategoriesDAO(TabsActivity.this);
 				for (int i = 0; i < obj.getJSONArray("categories").length(); i++) {
 					JSONObject category = obj.getJSONArray("categories").getJSONObject(i);
-					/*
-					 * If server categories count is greater than sqlite db
-					 * categories count then server categories data is storing
-					 * in sqlite.
-					 */
-					if (obj.getJSONArray("categories").length() > categoriesDAO
-							.getCategoriesCount()) {
-						// Stpring categories is sqlite database
-						categoriesDAO.insertCategories(category.getInt("id"),
-								category.getString("title"), category.getString("slug"),
-								category.getInt("post_count"));
-					}
-
 					setNavigationItems(category.getInt("id"), category.getInt("post_count"),
 							category.getString("slug"), category.getString("title"));
 				}
