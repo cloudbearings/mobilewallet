@@ -173,6 +173,63 @@ public class PostsDAO {
 		}
 		return postsList;
 	}
+	
+	public ArrayList<PostRowItem> getfivePosts(int categoryId, String categorySlug) {
+		SQLiteDatabase database = null;
+		Cursor cursor = null;
+		ArrayList<PostRowItem> postsList = null;
+		try {
+			postsList = new ArrayList<PostRowItem>();
+			String[] cols = { DbAdapter.P_ID, DbAdapter.P_TITLE, DbAdapter.P_DATE,
+					DbAdapter.P_ICON_URL, DbAdapter.P_AUTHOR_NAME, DbAdapter.P_CONTENT,
+					DbAdapter.P_SCREEN_IMAGE_URL, DbAdapter.P_COMMENT_COUNT, DbAdapter.P_URL,
+					DbAdapter.P_COMMENTS, DbAdapter.P_TAGS };
+
+			dbHelper = new DbAdapter(context);
+			database = dbHelper.getReadableDatabase();
+			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, DbAdapter.PC_ID
+					+ "=" + categoryId + " and " + DbAdapter.PC_SLUG + "='" + categorySlug + "'",
+					null, null, null, DbAdapter.P_DATE + " ASC", "5");
+			PostRowItem item;
+			if (cursor.moveToFirst()) {
+				do {
+					item = new PostRowItem();
+
+					item.setPost_id(cursor.getInt(cursor.getColumnIndex(DbAdapter.P_ID)));
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DbAdapter.P_TITLE)));
+					item.setDate(cursor.getString(cursor.getColumnIndex(DbAdapter.P_DATE)));
+					item.setPost_icon_url(cursor.getString(cursor
+							.getColumnIndex(DbAdapter.P_ICON_URL)));
+					item.setAuthor(cursor.getString(cursor.getColumnIndex(DbAdapter.P_AUTHOR_NAME)));
+					item.setContent(cursor.getString(cursor.getColumnIndex(DbAdapter.P_CONTENT)));
+					item.setPost_banner(cursor.getString(cursor
+							.getColumnIndex(DbAdapter.P_SCREEN_IMAGE_URL)));
+					item.setComment_count(cursor.getInt(cursor
+							.getColumnIndex(DbAdapter.P_COMMENT_COUNT)));
+					item.setPost_url(cursor.getString(cursor.getColumnIndex(DbAdapter.P_URL)));
+					item.setCommentsArray(cursor.getString(cursor
+							.getColumnIndex(DbAdapter.P_COMMENTS)));
+					item.setTagsArray(cursor.getString(cursor.getColumnIndex(DbAdapter.P_TAGS)));
+
+					postsList.add(item);
+				} while (cursor.moveToNext());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (!cursor.isClosed()) {
+					cursor.close();
+				}
+			} catch (Exception e) {
+			}
+			try {
+				database.close();
+			} catch (Exception e) {
+			}
+		}
+		return postsList;
+	}
 
 	public long deletePosts(int categoryId, String categorySlug, String currentMilliseconds) {
 		opnToWrite();

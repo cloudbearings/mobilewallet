@@ -1,5 +1,9 @@
 package com.wordlypost;
 
+import java.util.Calendar;
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import retrofit.Callback;
@@ -13,10 +17,16 @@ import android.util.Log;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
+import com.wordlypost.beans.NavDrawerItem;
+import com.wordlypost.dao.CategoriesDAO;
+import com.wordlypost.dao.PostsDAO;
 import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.Utils;
 
 public class SplashScreen extends ActionBarActivity {
+
+	private int count;
+	private String categories;
 
 	@Override
 	protected void onResume() {
@@ -45,7 +55,8 @@ public class SplashScreen extends ActionBarActivity {
 						try {
 							Log.i("Categories :", output);
 							JSONObject obj = new JSONObject(output);
-							if (obj.getString("status").equals(getString(R.string.error))) {
+							if (obj.getString("status").equals(
+									getString(R.string.error))) {
 								Utils.displayToad(SplashScreen.this,
 										getString(R.string.task_error_msg));
 								finish();
@@ -53,9 +64,40 @@ public class SplashScreen extends ActionBarActivity {
 						} catch (Exception e) {
 						}
 
-						startActivity(new Intent(SplashScreen.this, TabsActivity.class).addFlags(
-								Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("categories", output));
-						finish();
+						try {
+							categories = output;
+							JSONObject obj = new JSONObject(output);
+							CategoriesDAO categoriesDAO = new CategoriesDAO(
+									SplashScreen.this);
+							for (int i = 0; i < obj.getJSONArray("categories")
+									.length(); i++) {
+								JSONObject category = obj.getJSONArray(
+										"categories").getJSONObject(i);
+								/*
+								 * If server categories count is greater than
+								 * sqlite db categories count then server
+								 * categories data is storing in sqlite.
+								 */
+								if (obj.getJSONArray("categories").length() > categoriesDAO
+										.getCategoriesCount()) {
+									// Stpring categories is sqlite database
+									categoriesDAO.insertCategories(
+											category.getInt("id"),
+											category.getString("title"),
+											category.getString("slug"),
+											category.getInt("post_count"));
+								}
+							}
+
+							List<NavDrawerItem> categories = categoriesDAO
+									.getRandomCategories();
+							for (int i = 0; i < categories.size(); i++) {
+								NavDrawerItem category = categories.get(i);
+								getCategoryPosts(category.getId(),
+										category.getSlug());
+							}
+						} catch (Exception e) {
+						}
 					}
 
 					@Override
@@ -71,5 +113,74 @@ public class SplashScreen extends ActionBarActivity {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void getCategoryPosts(final int categoryId, final String slug) {
+		BuildService.build.getCategoriesPosts(categoryId, slug, 1,
+				new Callback<String>() {
+
+					@Override
+					public void failure(RetrofitError retrofitError) {
+						retrofitError.printStackTrace();
+					}
+
+					@Override
+					public void success(String output, Response arg1) {
+						try {
+							Log.i("Category Posts :", output);
+							PostsDAO postsDAO = new PostsDAO(SplashScreen.this);
+							JSONObject obj = new JSONObject(output);
+							if (obj.getJSONArray("posts").length() > 0) {
+								JSONArray categotyPosts = obj
+										.getJSONArray("posts");
+								String currentMilliSeconds = Calendar
+										.getInstance().getTimeInMillis() + "";
+								for (int i = 0; i < categotyPosts.length(); i++) {
+									JSONObject categotyPost = categotyPosts
+											.getJSONObject(i);
+									postsDAO.insertPosts(
+											categotyPost.getInt("id"),
+											categotyPost.getString("title"),
+											categotyPost.getString("date"),
+											categotyPost.getString("thumbnail"),
+											categotyPost
+													.getJSONObject("author")
+													.getString("name"),
+											categotyPost.getString("content"),
+											categotyPost
+													.getJSONObject(
+															"thumbnail_images")
+													.getJSONObject("full")
+													.getString("url"),
+											categotyPost
+													.getInt("comment_count"),
+											categotyPost.getString("url"),
+											currentMilliSeconds,
+											categoryId,
+											slug,
+											categotyPost.getJSONArray(
+													"comments").toString(),
+											categotyPost.getJSONArray("tags")
+													.toString());
+								}
+
+								long deleted = postsDAO.deletePosts(categoryId,
+										slug, currentMilliSeconds);
+								Log.i("Deletion Failure: ", deleted + "");
+								
+								count++;
+								if (count == 4) {
+									startActivity(new Intent(SplashScreen.this,
+											TabsActivity.class).addFlags(
+											Intent.FLAG_ACTIVITY_CLEAR_TOP)
+											.putExtra("categories", categories));
+									finish();
+								}
+							}
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 	}
 }

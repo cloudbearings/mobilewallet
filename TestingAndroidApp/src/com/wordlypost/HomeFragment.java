@@ -1,18 +1,13 @@
 package com.wordlypost;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,11 +17,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wordlypost.beans.NavDrawerItem;
+import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.dao.CategoriesDAO;
-import com.wordlypost.service.BuildService;
+import com.wordlypost.dao.PostsDAO;
 import com.wordlypost.utils.ImageLoader;
 
 public class HomeFragment extends Fragment {
+	
+	private PostsDAO postsDAO;
 
 	private static final int[] hidden_layout = new int[] { R.id.hiddenLayout1, R.id.hiddenLayout2,
 			R.id.hiddenLayout3, R.id.hiddenLayout4, R.id.hiddenLayout5 };
@@ -87,6 +85,22 @@ public class HomeFragment extends Fragment {
 
 	private static final int[] date14 = new int[] { R.id.date14, R.id.date24, R.id.date34,
 			R.id.date44, R.id.date54 };
+	
+	private static final int[] relativeLayout1 = new int[] { R.id.relative_layout1, R.id.relative_layout2, R.id.relative_layout3,
+		R.id.relative_layout4, R.id.relative_layout5 };
+	
+	private static final int[] relativeLayout11 = new int[] { R.id.relative_layout11, R.id.relative_layout21, R.id.relative_layout31,
+		R.id.relative_layout41, R.id.relative_layout51 };
+	
+	private static final int[] relativeLayout12 = new int[] { R.id.relative_layout12, R.id.relative_layout22, R.id.relative_layout32,
+		R.id.relative_layout42, R.id.relative_layout52 };
+	
+	private static final int[] relativeLayout13 = new int[] { R.id.relative_layout13, R.id.relative_layout23, R.id.relative_layout33,
+		R.id.relative_layout43, R.id.relative_layout53 };
+	
+	private static final int[] relativeLayout14 = new int[] { R.id.relative_layout14, R.id.relative_layout24, R.id.relative_layout34,
+		R.id.relative_layout44, R.id.relative_layout54 };
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -106,13 +120,12 @@ public class HomeFragment extends Fragment {
 		return view;
 	}
 
-	private void getCategoryPosts(int categoryId, String slug, int count, final View view,
+	private void getCategoryPosts(final int categoryId, final String slug, int count, final View view,
 			final int i, final String categoryTitle) {
-		BuildService.build.getCategoryPosts(categoryId, slug, count, new Callback<String>() {
-
-			@Override
-			public void success(String output, Response arg1) {
-				Log.i("CategoryPosts :", output);
+		
+		postsDAO = new PostsDAO(getActivity());
+		List<PostRowItem> posts = postsDAO.getfivePosts(categoryId, slug);
+	
 				RelativeLayout hiddenLayout = (RelativeLayout) view.findViewById(hidden_layout[i]);
 
 				if (hiddenLayout == null) {
@@ -126,80 +139,111 @@ public class HomeFragment extends Fragment {
 				try {
 					((TextView) view.findViewById(categoty_title[i])).setText(Html
 							.fromHtml(categoryTitle));
-					JSONObject obj = new JSONObject(output);
-					JSONArray postsArray = obj.getJSONArray("posts");
-					JSONObject post = postsArray.getJSONObject(0);
+					PostRowItem post = posts.get(0);
 
 					ImageView postScreen = (ImageView) view.findViewById(post_screen[i]);
 					ImageLoader imageLoader = new ImageLoader(getActivity());
 					imageLoader.DisplayImage(
-							post.getJSONObject("thumbnail_images").getJSONObject("full")
-									.getString("url"), R.drawable.loading, postScreen);
+							post.getPost_banner(), R.drawable.loading, postScreen);
 
 					((TextView) view.findViewById(title1[i])).setText(Html.fromHtml(post
-							.getString("title")));
+							.getTitle()));
 
 					((TextView) view.findViewById(date1[i])).setText(Html.fromHtml(post
-							.getString("date")));
+							.getDate()));
 
 					((TextView) view.findViewById(des[i])).setText(Html.fromHtml(post
-							.getString("excerpt")));
+							.getContent()));
+					
+					((RelativeLayout) view.findViewById(relativeLayout1[i])).setOnClickListener(new View.OnClickListener() {
+						public void onClick(View view) {
+							showPostView(categoryId, slug, 0);
+						}
+					});
 
-					JSONObject post11 = postsArray.getJSONObject(1);
+					PostRowItem post11 = posts.get(1);
 					ImageView postIcon11 = (ImageView) view.findViewById(post_icon11[i]);
 					ImageLoader imageLoader11 = new ImageLoader(getActivity());
-					imageLoader11.DisplayImage(post11.getString("thumbnail"),
+					imageLoader11.DisplayImage(post11.getPost_icon_url(),
 							R.drawable.app_default_icon, postIcon11);
 
 					((TextView) view.findViewById(title11[i])).setText(Html.fromHtml(post11
-							.getString("title")));
+							.getTitle()));
 
 					((TextView) view.findViewById(date11[i])).setText(Html.fromHtml(post11
-							.getString("date")));
+							.getDate()));
+					
+					((RelativeLayout) view.findViewById(relativeLayout11[i])).setOnClickListener(new View.OnClickListener() {
+						public void onClick(View view) {
+							showPostView(categoryId, slug, 1);
+						}
+					});
 
-					JSONObject post12 = postsArray.getJSONObject(2);
+					PostRowItem post12 = posts.get(2);
 					ImageView postIcon12 = (ImageView) view.findViewById(post_icon12[i]);
 					ImageLoader imageLoader12 = new ImageLoader(getActivity());
-					imageLoader12.DisplayImage(post12.getString("thumbnail"),
+					imageLoader12.DisplayImage(post12.getPost_icon_url(),
 							R.drawable.app_default_icon, postIcon12);
 
 					((TextView) view.findViewById(title12[i])).setText(Html.fromHtml(post12
-							.getString("title")));
+							.getTitle()));
 
 					((TextView) view.findViewById(date12[i])).setText(Html.fromHtml(post12
-							.getString("date")));
+							.getDate()));
+					
+					((RelativeLayout) view.findViewById(relativeLayout12[i])).setOnClickListener(new View.OnClickListener() {
+						public void onClick(View view) {
+							showPostView(categoryId, slug, 2);
+						}
+					});
 
-					JSONObject post13 = postsArray.getJSONObject(3);
+					PostRowItem post13 = posts.get(3);
 					ImageView postIcon13 = (ImageView) view.findViewById(post_icon13[i]);
 					ImageLoader imageLoader13 = new ImageLoader(getActivity());
-					imageLoader13.DisplayImage(post13.getString("thumbnail"),
+					imageLoader13.DisplayImage(post13.getPost_icon_url(),
 							R.drawable.app_default_icon, postIcon13);
 
 					((TextView) view.findViewById(title13[i])).setText(Html.fromHtml(post13
-							.getString("title")));
+							.getTitle()));
 
 					((TextView) view.findViewById(date13[i])).setText(Html.fromHtml(post13
-							.getString("date")));
+							.getDate()));
+					
+					((RelativeLayout) view.findViewById(relativeLayout13[i])).setOnClickListener(new View.OnClickListener() {
+						public void onClick(View view) {
+							showPostView(categoryId, slug, 3);
+						}
+					});
 
-					JSONObject post14 = postsArray.getJSONObject(4);
+					PostRowItem post14 = posts.get(4);
 					ImageView postIcon14 = (ImageView) view.findViewById(post_icon14[i]);
 					ImageLoader imageLoader14 = new ImageLoader(getActivity());
-					imageLoader14.DisplayImage(post14.getString("thumbnail"),
+					imageLoader14.DisplayImage(post14.getPost_icon_url(),
 							R.drawable.app_default_icon, postIcon14);
 
 					((TextView) view.findViewById(title14[i])).setText(Html.fromHtml(post14
-							.getString("title")));
+							.getTitle()));
 
 					((TextView) view.findViewById(date14[i])).setText(Html.fromHtml(post14
-							.getString("date")));
+							.getDate()));
+					
+					((RelativeLayout) view.findViewById(relativeLayout14[i])).setOnClickListener(new View.OnClickListener() {
+						public void onClick(View view) {
+							showPostView(categoryId, slug, 4);
+						}
+					});
 				} catch (Exception e) {
 				}
 			}
-
-			@Override
-			public void failure(RetrofitError retrofitError) {
-				retrofitError.printStackTrace();
-			}
-		});
+	
+	private void showPostView(int categoryId, String slug, int position){
+		if(postsDAO!= null){
+			ArrayList<PostRowItem> items = postsDAO.getPosts(categoryId, slug);
+			startActivity(new Intent(getActivity(),
+					PostViewSwipeActivity.class)
+					.putExtra("postDetails", items)
+					.putExtra("position", position)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+		}
 	}
 }

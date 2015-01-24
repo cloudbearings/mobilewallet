@@ -151,7 +151,6 @@ public class CategoryPostsFragment extends Fragment {
 									rowItems.add(item);
 
 									if (page == 1) {
-										Log.i("page :", page + "");
 										postsDAO = new PostsDAO(getActivity());
 										postsDAO.insertPosts(categotyPost.getInt("id"),
 												categotyPost.getString("title"), categotyPost
@@ -172,7 +171,7 @@ public class CategoryPostsFragment extends Fragment {
 								if (page == 1) {
 									long deleted = postsDAO.deletePosts(categoryItem.getId(),
 											categoryItem.getSlug(), currentMilliSeconds);
-									Log.i("Deletion Failure: ", deleted + "");
+									Log.i("Deleted records: ", deleted + "");
 								}
 
 								adapter.notifyDataSetChanged();
