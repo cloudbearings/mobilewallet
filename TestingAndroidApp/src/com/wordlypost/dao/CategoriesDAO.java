@@ -112,7 +112,7 @@ public class CategoriesDAO {
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols, null, null, null, null,
-					null);
+					DbAdapter.C_NAME + " ASC");
 			NavDrawerItem item;
 			if (cursor.moveToFirst()) {
 				do {

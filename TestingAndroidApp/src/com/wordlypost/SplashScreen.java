@@ -19,7 +19,7 @@ import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.dao.CategoriesDAO;
-import com.wordlypost.dao.PostsDAO;
+import com.wordlypost.dao.HomeDAO;
 import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.Utils;
 
@@ -27,6 +27,7 @@ public class SplashScreen extends ActionBarActivity {
 
 	private int count;
 	private String categories;
+	private CategoriesDAO categoriesDAO;
 
 	@Override
 	protected void onResume() {
@@ -48,63 +49,61 @@ public class SplashScreen extends ActionBarActivity {
 		try {
 			setContentView(R.layout.splash_screen);
 			if (Utils.isNetworkAvailable(SplashScreen.this)) {
-				BuildService.build.getCategories(new Callback<String>() {
+				categoriesDAO = new CategoriesDAO(SplashScreen.this);
+				if (categoriesDAO.getCategoriesCount() > 0) {
+					getRandomCategories();
+				} else {
+					BuildService.build.getCategories(new Callback<String>() {
 
-					@Override
-					public void success(String output, Response arg1) {
-						try {
-							Log.i("Categories :", output);
-							JSONObject obj = new JSONObject(output);
-							if (obj.getString("status").equals(
-									getString(R.string.error))) {
-								Utils.displayToad(SplashScreen.this,
-										getString(R.string.task_error_msg));
-								finish();
-							}
-						} catch (Exception e) {
-						}
-
-						try {
-							categories = output;
-							JSONObject obj = new JSONObject(output);
-							CategoriesDAO categoriesDAO = new CategoriesDAO(
-									SplashScreen.this);
-							for (int i = 0; i < obj.getJSONArray("categories")
-									.length(); i++) {
-								JSONObject category = obj.getJSONArray(
-										"categories").getJSONObject(i);
-								/*
-								 * If server categories count is greater than
-								 * sqlite db categories count then server
-								 * categories data is storing in sqlite.
-								 */
-								if (obj.getJSONArray("categories").length() > categoriesDAO
-										.getCategoriesCount()) {
-									// Stpring categories is sqlite database
-									categoriesDAO.insertCategories(
-											category.getInt("id"),
-											category.getString("title"),
-											category.getString("slug"),
-											category.getInt("post_count"));
+						@Override
+						public void success(String output, Response arg1) {
+							try {
+								Log.i("Categories :", output);
+								JSONObject obj = new JSONObject(output);
+								if (obj.getString("status").equals(
+										getString(R.string.error))) {
+									Utils.displayToad(SplashScreen.this,
+											getString(R.string.task_error_msg));
+									finish();
 								}
+							} catch (Exception e) {
 							}
 
-							List<NavDrawerItem> categories = categoriesDAO
-									.getRandomCategories();
-							for (int i = 0; i < categories.size(); i++) {
-								NavDrawerItem category = categories.get(i);
-								getCategoryPosts(category.getId(),
-										category.getSlug());
+							try {
+								categories = output;
+								JSONObject obj = new JSONObject(output);
+
+								for (int i = 0; i < obj.getJSONArray(
+										"categories").length(); i++) {
+									JSONObject category = obj.getJSONArray(
+											"categories").getJSONObject(i);
+									/*
+									 * If server categories count is greater
+									 * than sqlite db categories count then
+									 * server categories data is storing in
+									 * sqlite.
+									 */
+									if (obj.getJSONArray("categories").length() > categoriesDAO
+											.getCategoriesCount()) {
+										// Stpring categories is sqlite database
+										categoriesDAO.insertCategories(
+												category.getInt("id"),
+												category.getString("title"),
+												category.getString("slug"),
+												category.getInt("post_count"));
+									}
+								}
+								getRandomCategories();
+							} catch (Exception e) {
 							}
-						} catch (Exception e) {
 						}
-					}
 
-					@Override
-					public void failure(RetrofitError retrofitError) {
-						retrofitError.printStackTrace();
-					}
-				});
+						@Override
+						public void failure(RetrofitError retrofitError) {
+							retrofitError.printStackTrace();
+						}
+					});
+				}
 			} else {
 				startActivity(new Intent(SplashScreen.this, TabsActivity.class)
 						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -112,6 +111,14 @@ public class SplashScreen extends ActionBarActivity {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	private void getRandomCategories() {
+		List<NavDrawerItem> categories = categoriesDAO.getRandomCategories();
+		for (int i = 0; i < categories.size(); i++) {
+			NavDrawerItem category = categories.get(i);
+			getCategoryPosts(category.getId(), category.getSlug());
 		}
 	}
 
@@ -128,7 +135,7 @@ public class SplashScreen extends ActionBarActivity {
 					public void success(String output, Response arg1) {
 						try {
 							Log.i("Category Posts :", output);
-							PostsDAO postsDAO = new PostsDAO(SplashScreen.this);
+							HomeDAO homeDAO = new HomeDAO(SplashScreen.this);
 							JSONObject obj = new JSONObject(output);
 							if (obj.getJSONArray("posts").length() > 0) {
 								JSONArray categotyPosts = obj
@@ -138,7 +145,7 @@ public class SplashScreen extends ActionBarActivity {
 								for (int i = 0; i < categotyPosts.length(); i++) {
 									JSONObject categotyPost = categotyPosts
 											.getJSONObject(i);
-									postsDAO.insertPosts(
+									homeDAO.insertPosts(
 											categotyPost.getInt("id"),
 											categotyPost.getString("title"),
 											categotyPost.getString("date"),
@@ -155,19 +162,19 @@ public class SplashScreen extends ActionBarActivity {
 											categotyPost
 													.getInt("comment_count"),
 											categotyPost.getString("url"),
-											currentMilliSeconds,
-											categoryId,
-											slug,
-											categotyPost.getJSONArray(
-													"comments").toString(),
-											categotyPost.getJSONArray("tags")
+											currentMilliSeconds, categotyPost
+													.getString("excerpt"),
+											categoryId, slug, categotyPost
+													.getJSONArray("comments")
+													.toString(), categotyPost
+													.getJSONArray("tags")
 													.toString());
 								}
 
-								long deleted = postsDAO.deletePosts(categoryId,
+								long deleted = homeDAO.deletePosts(categoryId,
 										slug, currentMilliSeconds);
 								Log.i("Deletion Failure: ", deleted + "");
-								
+
 								count++;
 								if (count == 4) {
 									startActivity(new Intent(SplashScreen.this,
