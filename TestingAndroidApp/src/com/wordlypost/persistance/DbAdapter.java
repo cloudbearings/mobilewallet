@@ -81,6 +81,24 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String SP_COMMENTS = "comments";
 	public static final String SP_TAGS = "tags";
 
+	// Home posts table columns
+	public static final String HOME_POSTS_TABLE_NAME = "home_posts";
+	public static final String H_ID = "post_id";
+	public static final String H_TITLE = "post_title";
+	public static final String H_DATE = "post_date";
+	public static final String H_ICON_URL = "post_icon_url";
+	public static final String H_AUTHOR_NAME = "post_author_name";
+	public static final String H_CONTENT = "post_comment";
+	public static final String H_SCREEN_IMAGE_URL = "post_screen_image_url";
+	public static final String H_COMMENT_COUNT = "post_comment_count";
+	public static final String H_URL = "post_url";
+	public static final String H_CURRENT_MILLISECONDS = "current_milliseconds";
+	public static final String H_EXCERPT = "excerpt";
+	public static final String HC_ID = "category_id";
+	public static final String HC_SLUG = "category_slug";
+	public static final String H_COMMENTS = "comments";
+	public static final String H_TAGS = "tags";
+
 	private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE "
 			+ CATEGORIES_TABLE_NAME + " (" + C_ID + " INTEGER PRIMARY KEY, "
 			+ C_NAME + " TEXT, " + C_SLUG + " TEXT, " + C_POST_COUNT
@@ -122,6 +140,15 @@ public class DbAdapter extends SQLiteOpenHelper {
 			+ " TEXT, " + SP_EXCERPT + " TEXT, " + SP_COMMENTS + " TEXT, "
 			+ SP_TAGS + " TEXT);";
 
+	private static final String CREATE_HOME_POSTS_TABLE = "CREATE TABLE "
+			+ HOME_POSTS_TABLE_NAME + " (" + H_ID + " INTEGER PRIMARY KEY, "
+			+ H_TITLE + " TEXT, " + H_DATE + " TEXT, " + H_ICON_URL + " TEXT, "
+			+ H_AUTHOR_NAME + " TEXT, " + H_CONTENT + " TEXT, "
+			+ H_SCREEN_IMAGE_URL + " TEXT, " + "" + H_COMMENT_COUNT
+			+ " INTEGER, " + H_URL + " TEXT, " + H_CURRENT_MILLISECONDS
+			+ " TEXT, " + H_EXCERPT + " TEXT, " + HC_ID + " INTEGER, "
+			+ HC_SLUG + " TEXT, " + H_COMMENTS + " TEXT, " + H_TAGS + " TEXT);";
+
 	public DbAdapter(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
 	}
@@ -133,6 +160,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 		db.execSQL(CREATE_RECENT_POSTS_TABLE);
 		db.execSQL(CREATE_TAG_POSTS_TABLE);
 		db.execSQL(CREATE_SEARCH_POSTS_TABLE);
+		db.execSQL(CREATE_HOME_POSTS_TABLE);
 	}
 
 	@Override
@@ -142,6 +170,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + RECENT_POSTS_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + TAG_POSTS_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + SEARCH_POSTS_TABLE_NAME);
+		db.execSQL("DROP TABLE IF EXISTS " + HOME_POSTS_TABLE_NAME);
 		onCreate(db);
 	}
 }

@@ -19,12 +19,12 @@ import android.widget.TextView;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.dao.CategoriesDAO;
-import com.wordlypost.dao.PostsDAO;
+import com.wordlypost.dao.HomeDAO;
 import com.wordlypost.utils.ImageLoader;
 
 public class HomeFragment extends Fragment {
 	
-	private PostsDAO postsDAO;
+	private HomeDAO homeDAO;
 
 	private static final int[] hidden_layout = new int[] { R.id.hiddenLayout1, R.id.hiddenLayout2,
 			R.id.hiddenLayout3, R.id.hiddenLayout4, R.id.hiddenLayout5 };
@@ -123,8 +123,8 @@ public class HomeFragment extends Fragment {
 	private void getCategoryPosts(final int categoryId, final String slug, int count, final View view,
 			final int i, final String categoryTitle) {
 		
-		postsDAO = new PostsDAO(getActivity());
-		List<PostRowItem> posts = postsDAO.getfivePosts(categoryId, slug);
+		homeDAO = new HomeDAO(getActivity());
+		List<PostRowItem> posts = homeDAO.getfivePosts(categoryId, slug);
 	
 				RelativeLayout hiddenLayout = (RelativeLayout) view.findViewById(hidden_layout[i]);
 
@@ -153,7 +153,7 @@ public class HomeFragment extends Fragment {
 							.getDate()));
 
 					((TextView) view.findViewById(des[i])).setText(Html.fromHtml(post
-							.getContent()));
+							.getPost_des()));
 					
 					((RelativeLayout) view.findViewById(relativeLayout1[i])).setOnClickListener(new View.OnClickListener() {
 						public void onClick(View view) {
@@ -237,8 +237,8 @@ public class HomeFragment extends Fragment {
 			}
 	
 	private void showPostView(int categoryId, String slug, int position){
-		if(postsDAO!= null){
-			ArrayList<PostRowItem> items = postsDAO.getPosts(categoryId, slug);
+		if(homeDAO!= null){
+			ArrayList<PostRowItem> items = homeDAO.getPosts(categoryId, slug);
 			startActivity(new Intent(getActivity(),
 					PostViewSwipeActivity.class)
 					.putExtra("postDetails", items)
