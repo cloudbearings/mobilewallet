@@ -68,30 +68,42 @@ public class TabsActivity extends ActionBarActivity {
 
 			// adding nav drawer items to array
 			if (getIntent().getStringExtra("categories") != null) {
-				JSONObject obj = new JSONObject(getIntent().getStringExtra("categories"));
+				JSONObject obj = new JSONObject(getIntent().getStringExtra(
+						"categories"));
 				// JsonObject is not null data is coming from server
+				setNavigationItems(1, 20, "home",
+						getString(R.string.title_activity_home_fragment));
+
 				for (int i = 0; i < obj.getJSONArray("categories").length(); i++) {
-					JSONObject category = obj.getJSONArray("categories").getJSONObject(i);
-					setNavigationItems(category.getInt("id"), category.getInt("post_count"),
-							category.getString("slug"), category.getString("title"));
+					JSONObject category = obj.getJSONArray("categories")
+							.getJSONObject(i);
+					setNavigationItems(category.getInt("id"),
+							category.getInt("post_count"),
+							category.getString("slug"),
+							category.getString("title"));
 				}
 			} else {
 				/*
 				 * obj is equal to null categories data is getting from sqlite
 				 * database.
 				 */
-				CategoriesDAO categoriesDAO = new CategoriesDAO(TabsActivity.this);
+				setNavigationItems(1, 20, "home",
+						getString(R.string.title_activity_home_fragment));
+
+				CategoriesDAO categoriesDAO = new CategoriesDAO(
+						TabsActivity.this);
 				if (categoriesDAO.getCategoriesCount() > 0) {
 					List<NavDrawerItem> items = categoriesDAO.getCategories();
 					for (NavDrawerItem item : items) {
-						setNavigationItems(item.getId(), item.getPost_count(), item.getSlug(),
-								item.getTitle());
+						setNavigationItems(item.getId(), item.getPost_count(),
+								item.getSlug(), item.getTitle());
 					}
 				}
 			}
 
 			// setting the nav drawer list adapter
-			adapter = new NavDrawerListAdapter(getApplicationContext(), navDrawerItems);
+			adapter = new NavDrawerListAdapter(getApplicationContext(),
+					navDrawerItems);
 			mDrawerList.setAdapter(adapter);
 
 			// enabling action bar app icon and behaving it as toggle button
@@ -132,13 +144,16 @@ public class TabsActivity extends ActionBarActivity {
 		}
 	}
 
-	private void setNavigationItems(int id, int postCount, String slug, String title) {
+	private void setNavigationItems(int id, int postCount, String slug,
+			String title) {
 		navDrawerItems.add(new NavDrawerItem(id, postCount, slug, title));
 	}
 
-	private class SlideMenuClickListener implements ListView.OnItemClickListener {
+	private class SlideMenuClickListener implements
+			ListView.OnItemClickListener {
 		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		public void onItemClick(AdapterView<?> parent, View view, int position,
+				long id) {
 			// display view for selected nav drawer item
 			displayView(position);
 		}
@@ -159,7 +174,8 @@ public class TabsActivity extends ActionBarActivity {
 
 			if (fragment != null) {
 				FragmentManager fragmentManager = getSupportFragmentManager();
-				fragmentManager.beginTransaction().replace(R.id.frame_container, fragment).commit();
+				fragmentManager.beginTransaction()
+						.replace(R.id.frame_container, fragment).commit();
 				// update selected item and title, then close the drawer
 				mDrawerList.setItemChecked(position, true);
 				mDrawerList.setSelection(position);
@@ -213,10 +229,12 @@ public class TabsActivity extends ActionBarActivity {
 		inflater.inflate(R.menu.tabs, menu);
 
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
 		searchView.setQueryHint(getString(R.string.search_hint));
 
-		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
 		searchView.setIconifiedByDefault(false);
 
 		SearchView.OnQueryTextListener textChangeListener = new SearchView.OnQueryTextListener() {
@@ -230,8 +248,9 @@ public class TabsActivity extends ActionBarActivity {
 			public boolean onQueryTextSubmit(String query) {
 				// this is your adapter that will be filtered
 				Log.i("on query submit: ", query);
-				startActivity(new Intent(TabsActivity.this, SearchPost.class).addFlags(
-						Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("search", query));
+				startActivity(new Intent(TabsActivity.this, SearchPost.class)
+						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(
+								"search", query));
 				return true;
 			}
 		};
@@ -263,7 +282,8 @@ public class TabsActivity extends ActionBarActivity {
 			startActivity(sendIntent);
 			return true;
 		case R.id.rate_this_app:
-			Intent rateIntent = new Intent(Intent.ACTION_VIEW,
+			Intent rateIntent = new Intent(
+					Intent.ACTION_VIEW,
 					Uri.parse("https://play.google.com/store/apps/details?id=com.wordlypost"));
 			startActivity(rateIntent);
 			return true;
