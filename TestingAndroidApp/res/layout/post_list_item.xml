@@ -46,26 +46,19 @@
         android:textSize="@dimen/post_des_text_size"
         android:textStyle="normal" />
 
-    <LinearLayout
-        android:id="@+id/comment_layout"
+    <com.wordlypost.textview.Helvetica
+        android:id="@+id/comment_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/post_icon"
         android:background="@drawable/comment_icon"
-        android:orientation="horizontal"
-        android:visibility="invisible" >
-
-        <com.wordlypost.textview.Helvetica
-            android:id="@+id/comment_count"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/post_comment_count_margin_top"
-            android:paddingLeft="@dimen/post_comment_count_padding_left"
-            android:text="0"
-            android:textColor="@color/brown"
-            android:textSize="@dimen/post_comment_count_text_size" />
-    </LinearLayout>
+        android:gravity="top|center"
+        android:paddingTop="@dimen/post_comment_count_pading_top"
+        android:text="0"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/post_comment_count_text_size"
+        android:visibility="invisible" />
 
     <com.wordlypost.textview.DroidSerif
         android:id="@+id/post_date"
@@ -85,7 +78,7 @@
         android:layout_alignBaseline="@+id/post_date"
         android:layout_alignBottom="@+id/post_date"
         android:layout_marginRight="@dimen/post_date_margin_right"
-        android:layout_toLeftOf="@+id/comment_layout"
+        android:layout_toLeftOf="@+id/comment_count"
         android:text="By Teja"
         android:textColor="@color/post_subTitle_color"
         android:textSize="@dimen/post_des_text_size" />

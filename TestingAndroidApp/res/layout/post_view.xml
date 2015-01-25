@@ -16,7 +16,7 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.wordlypost.PostViewFragment" >
 
-        <TextView
+        <com.wordlypost.textview.HelveticaBold
             android:id="@+id/post_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:text="Software Engineer  stabs wife, hangs self in Dwaraka"
             android:textSize="@dimen/post_view_title_textsize" />
 
-        <TextView
+        <com.wordlypost.textview.DroidSerif
             android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,27 +126,20 @@
             android:orientation="horizontal"
             android:text="Tags :" />
 
-        <LinearLayout
-            android:id="@+id/comment_layout"
+        <com.wordlypost.textview.Helvetica
+            android:id="@+id/comment_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/author"
             android:layout_marginLeft="@dimen/post_view_comment_layout_margin_left"
             android:layout_toRightOf="@+id/author"
             android:background="@drawable/cmt_icon"
-            android:orientation="horizontal"
-            android:visibility="invisible" >
-
-            <TextView
-                android:id="@+id/comment_count"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/post_view_count_margin_top"
-                android:paddingLeft="@dimen/post_view_count_padding_left"
-                android:text="0"
-                android:textColor="@color/white"
-                android:textSize="@dimen/post_view_count_text_size" />
-        </LinearLayout>
+            android:gravity="top|center"
+            android:paddingTop="@dimen/post_view_count_padding_top"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/post_view_count_text_size"
+            android:visibility="invisible" />
     </RelativeLayout>
 
 </ScrollView>

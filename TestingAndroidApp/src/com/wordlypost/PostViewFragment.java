@@ -7,7 +7,6 @@ import org.json.JSONObject;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar.LayoutParams;
@@ -30,7 +29,6 @@ import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.utils.ImageLoader;
 import com.wordlypost.utils.PostCommentPopUp;
-import com.wordlypost.utils.Utils;
 
 public class PostViewFragment extends Fragment {
 
@@ -77,24 +75,17 @@ public class PostViewFragment extends Fragment {
 
 				TextView postTitle = (TextView) view.findViewById(R.id.post_title);
 				postTitle.setText(Html.fromHtml(postDetails.getTitle()));
-				postTitle.setTypeface(Utils.getFont(getActivity(), getString(R.string.Helvetica)),
-						Typeface.BOLD);
 
 				TextView author = (TextView) view.findViewById(R.id.author);
 				author.setText(Html.fromHtml("By " + postDetails.getAuthor() + "<br/>"
 						+ postDetails.getDate()));
-				author.setTypeface(Utils.getFont(getActivity(), getString(R.string.DroidSerif)));
 
 				TextView commentCount = (TextView) view.findViewById(R.id.comment_count);
-				LinearLayout commentLayout = (LinearLayout) view.findViewById(R.id.comment_layout);
-
 				if (postDetails.getComment_count() > 0) {
-					commentLayout.setVisibility(View.VISIBLE);
+					commentCount.setVisibility(View.VISIBLE);
 					commentCount.setText(Html.fromHtml(postDetails.getComment_count() + ""));
-					commentCount.setTypeface(Utils.getFont(getActivity(),
-							getString(R.string.Helvetica)));
 				} else {
-					commentLayout.setVisibility(View.INVISIBLE);
+					commentCount.setVisibility(View.INVISIBLE);
 				}
 
 				ImageView postImage = (ImageView) view.findViewById(R.id.post_image);

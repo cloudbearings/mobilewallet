@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wordlypost.R;
@@ -23,7 +22,8 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 	private Context context;
 	private ImageLoader imgLoader;
 
-	public PostAdapter(Context context, int resourceId, ArrayList<PostRowItem> items) {
+	public PostAdapter(Context context, int resourceId,
+			ArrayList<PostRowItem> items) {
 		super(context, resourceId, items);
 		this.context = context;
 		imgLoader = new ImageLoader(context.getApplicationContext());
@@ -34,7 +34,6 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 
 		TextView title, des, commentCount, date, author;
 		ImageView post_image;
-		LinearLayout commentLayout;
 	}
 
 	public View getView(final int position, View postView, ViewGroup parent) {
@@ -45,17 +44,19 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 				.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 		if (postView == null) {
 
-			postView = mInflater.inflate(R.layout.post_list_item, parent, false);
+			postView = mInflater
+					.inflate(R.layout.post_list_item, parent, false);
 
 			holder = new ViewHolder();
 
 			holder.title = (TextView) postView.findViewById(R.id.post_title);
 			holder.des = (TextView) postView.findViewById(R.id.post_des);
-			holder.post_image = (ImageView) postView.findViewById(R.id.post_icon);
+			holder.post_image = (ImageView) postView
+					.findViewById(R.id.post_icon);
 			holder.date = (TextView) postView.findViewById(R.id.post_date);
 			holder.author = (TextView) postView.findViewById(R.id.author);
-			holder.commentCount = (TextView) postView.findViewById(R.id.comment_count);
-			holder.commentLayout = (LinearLayout) postView.findViewById(R.id.comment_layout);
+			holder.commentCount = (TextView) postView
+					.findViewById(R.id.comment_count);
 
 			postView.setTag(holder);
 		} else
@@ -67,15 +68,15 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 		holder.author.setText(Html.fromHtml(rowItem.getAuthor()));
 
 		int loader = R.drawable.app_default_icon;
-		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader, holder.post_image);
+		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader,
+				holder.post_image);
 
-		if (holder.commentLayout != null) {
-			if (rowItem.getComment_count() > 0) {
-				holder.commentLayout.setVisibility(View.VISIBLE);
-				holder.commentCount.setText(Html.fromHtml(rowItem.getComment_count() + ""));
-			} else {
-				holder.commentLayout.setVisibility(View.INVISIBLE);
-			}
+		if (rowItem.getComment_count() > 0) {
+			holder.commentCount.setVisibility(View.VISIBLE);
+			holder.commentCount.setText(Html.fromHtml(rowItem
+					.getComment_count() + ""));
+		} else {
+			holder.commentCount.setVisibility(View.INVISIBLE);
 		}
 
 		return postView;
