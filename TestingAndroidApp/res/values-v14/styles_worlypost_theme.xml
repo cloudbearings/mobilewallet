@@ -38,6 +38,7 @@
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_worlypost_theme</item>
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_worlypost_theme</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Worlypost_theme</item>
+        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
     </style>
 
     <style name="ActionBar.Transparent.Worlypost_theme" parent="@style/Widget.AppCompat.Light.ActionBar">
