@@ -33,7 +33,7 @@ public class CommentView extends ActionBarActivity {
 		try {
 			Tracker t = ((WordlyPostGoogleAnalytics) getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
-			t.setScreenName(getString(R.string.recent_posts_screen_name));
+			t.setScreenName(getString(R.string.comment_view_screen_name));
 			t.send(new HitBuilders.AppViewBuilder().build());
 
 		} catch (Exception e) {
