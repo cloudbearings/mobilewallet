@@ -25,15 +25,17 @@
     <string name="DroidSerif">fonts/DroidSerif-Italic.ttf</string>
 
     <!-- Google analytics screen names -->
+    <string name="tabs_activity_screen_name">Tabs Activity</string>
     <string name="splash_screen_name">Splash Screen</string>
     <string name="recent_posts_screen_name">Recent Posts</string>
     <string name="search_posts_screen_name">Search Posts</string>
     <string name="about_wordlypost_screen_name">About WordlyPost</string>
     <string name="privacy_policy_screen_name">Privacy Policy</string>
     <string name="tag_posts_screen_name">Tag Posts</string>
+    <string name="home_fragment_screen_name">Home</string>
+    <string name="comment_view_screen_name">Comment View</string>
 
     <!-- tabs xml strings -->
-    <string name="tabs_activity_screen_name">Tabs Activity</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Search</string>
     <string name="recent_posts">Recent Posts</string>
