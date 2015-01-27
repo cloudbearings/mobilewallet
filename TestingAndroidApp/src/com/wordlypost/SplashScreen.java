@@ -21,6 +21,7 @@ import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.dao.CategoriesDAO;
 import com.wordlypost.dao.HomeDAO;
 import com.wordlypost.service.BuildService;
+import com.wordlypost.threads.HomePostsThread;
 import com.wordlypost.utils.Utils;
 
 public class SplashScreen extends ActionBarActivity {
@@ -112,10 +113,18 @@ public class SplashScreen extends ActionBarActivity {
 	}
 
 	private void getRandomCategories() {
-		List<NavDrawerItem> categories = categoriesDAO.getRandomCategories();
-		for (int i = 0; i < categories.size(); i++) {
-			NavDrawerItem category = categories.get(i);
-			getCategoryPosts(category.getId(), category.getSlug());
+		HomeDAO homeDAO = new HomeDAO(SplashScreen.this);
+		long count = homeDAO.getTotlaPostsCount();
+		if (count > 0) {
+			HomePostsThread thread = new HomePostsThread(SplashScreen.this);
+			thread.run();
+			openTabsActivity();
+		} else {
+			List<NavDrawerItem> categories = categoriesDAO.getRandomCategories();
+			for (int i = 0; i < categories.size(); i++) {
+				NavDrawerItem category = categories.get(i);
+				getCategoryPosts(category.getId(), category.getSlug());
+			}
 		}
 	}
 
@@ -160,10 +169,7 @@ public class SplashScreen extends ActionBarActivity {
 						Log.i("Deleted records: ", deleted + "");
 						count++;
 						if (count == 5) {
-							startActivity(new Intent(SplashScreen.this, TabsActivity.class)
-									.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(
-											"categories", categories));
-							finish();
+							openTabsActivity();
 						}
 					}
 				} catch (Exception e) {
@@ -171,5 +177,11 @@ public class SplashScreen extends ActionBarActivity {
 				}
 			}
 		});
+	}
+
+	private void openTabsActivity() {
+		startActivity(new Intent(SplashScreen.this, TabsActivity.class).addFlags(
+				Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra("categories", categories));
+		finish();
 	}
 }

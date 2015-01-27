@@ -96,13 +96,41 @@ public class HomeDAO {
 		Cursor c = null;
 		long count = 0;
 		try {
-			String[] cols = { DbAdapter.C_ID };
+			String[] cols = { DbAdapter.HC_ID };
 
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
 			c = database.query(DbAdapter.HOME_POSTS_TABLE_NAME, cols, DbAdapter.HC_ID + "="
 					+ categoryId + " and " + DbAdapter.HC_SLUG + "='" + categorySlug + "'", null,
 					null, null, null);
+			count = c.getCount();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (!c.isClosed()) {
+					c.close();
+				}
+			} catch (Exception e) {
+			}
+			try {
+				database.close();
+			} catch (Exception e) {
+			}
+		}
+		return count;
+	}
+
+	public long getTotlaPostsCount() {
+		SQLiteDatabase database = null;
+		Cursor c = null;
+		long count = 0;
+		try {
+			String[] cols = { DbAdapter.HC_ID };
+
+			dbHelper = new DbAdapter(context);
+			database = dbHelper.getReadableDatabase();
+			c = database.query(DbAdapter.HOME_POSTS_TABLE_NAME, cols, null, null, null, null, null);
 			count = c.getCount();
 		} catch (Exception e) {
 			e.printStackTrace();
