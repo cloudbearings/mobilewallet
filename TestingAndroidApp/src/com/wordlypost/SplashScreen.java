@@ -60,8 +60,7 @@ public class SplashScreen extends ActionBarActivity {
 							try {
 								Log.i("Categories :", output);
 								JSONObject obj = new JSONObject(output);
-								if (obj.getString("status").equals(
-										getString(R.string.error))) {
+								if (obj.getString("status").equals(getString(R.string.error))) {
 									Utils.displayToad(SplashScreen.this,
 											getString(R.string.task_error_msg));
 									finish();
@@ -73,10 +72,9 @@ public class SplashScreen extends ActionBarActivity {
 								categories = output;
 								JSONObject obj = new JSONObject(output);
 
-								for (int i = 0; i < obj.getJSONArray(
-										"categories").length(); i++) {
-									JSONObject category = obj.getJSONArray(
-											"categories").getJSONObject(i);
+								for (int i = 0; i < obj.getJSONArray("categories").length(); i++) {
+									JSONObject category = obj.getJSONArray("categories")
+											.getJSONObject(i);
 									/*
 									 * If server categories count is greater
 									 * than sqlite db categories count then
@@ -86,8 +84,7 @@ public class SplashScreen extends ActionBarActivity {
 									if (obj.getJSONArray("categories").length() > categoriesDAO
 											.getCategoriesCount()) {
 										// Stpring categories is sqlite database
-										categoriesDAO.insertCategories(
-												category.getInt("id"),
+										categoriesDAO.insertCategories(category.getInt("id"),
 												category.getString("title"),
 												category.getString("slug"),
 												category.getInt("post_count"));
@@ -123,71 +120,56 @@ public class SplashScreen extends ActionBarActivity {
 	}
 
 	private void getCategoryPosts(final int categoryId, final String slug) {
-		BuildService.build.getCategoriesPosts(categoryId, slug, 1,
-				new Callback<String>() {
+		BuildService.build.getCategoriesPosts(categoryId, slug, 1, new Callback<String>() {
 
-					@Override
-					public void failure(RetrofitError retrofitError) {
-						retrofitError.printStackTrace();
-					}
+			@Override
+			public void failure(RetrofitError retrofitError) {
+				retrofitError.printStackTrace();
+			}
 
-					@Override
-					public void success(String output, Response arg1) {
-						try {
-							Log.i("Category Posts :", output);
-							HomeDAO homeDAO = new HomeDAO(SplashScreen.this);
-							JSONObject obj = new JSONObject(output);
-							if (obj.getJSONArray("posts").length() > 0) {
-								JSONArray categotyPosts = obj
-										.getJSONArray("posts");
-								String currentMilliSeconds = Calendar
-										.getInstance().getTimeInMillis() + "";
-								for (int i = 0; i < categotyPosts.length(); i++) {
-									JSONObject categotyPost = categotyPosts
-											.getJSONObject(i);
-									homeDAO.insertPosts(
-											categotyPost.getInt("id"),
-											categotyPost.getString("title"),
-											categotyPost.getString("date"),
-											categotyPost.getString("thumbnail"),
-											categotyPost
-													.getJSONObject("author")
-													.getString("name"),
-											categotyPost.getString("content"),
-											categotyPost
-													.getJSONObject(
-															"thumbnail_images")
-													.getJSONObject("full")
-													.getString("url"),
-											categotyPost
-													.getInt("comment_count"),
-											categotyPost.getString("url"),
-											currentMilliSeconds, categotyPost
-													.getString("excerpt"),
-											categoryId, slug, categotyPost
-													.getJSONArray("comments")
-													.toString(), categotyPost
-													.getJSONArray("tags")
-													.toString());
-								}
+			@Override
+			public void success(String output, Response arg1) {
+				try {
+					Log.i("Category Posts :", output);
+					HomeDAO homeDAO = new HomeDAO(SplashScreen.this);
+					JSONObject obj = new JSONObject(output);
+					String categoryTitle = obj.getJSONObject("category").getString("title");
+					if (obj.getJSONArray("posts").length() > 0) {
+						JSONArray categotyPosts = obj.getJSONArray("posts");
+						String currentMilliSeconds = Calendar.getInstance().getTimeInMillis() + "";
+						for (int i = 0; i < categotyPosts.length(); i++) {
+							JSONObject categotyPost = categotyPosts.getJSONObject(i);
+							homeDAO.insertPosts(
+									categotyPost.getInt("id"),
+									categotyPost.getString("title"),
+									categotyPost.getString("date"),
+									categotyPost.getString("thumbnail"),
+									categotyPost.getJSONObject("author").getString("name"),
+									categotyPost.getString("content"),
+									categotyPost.getJSONObject("thumbnail_images")
+											.getJSONObject("full").getString("url"), categotyPost
+											.getInt("comment_count"),
+									categotyPost.getString("url"), currentMilliSeconds,
+									categotyPost.getString("excerpt"), categoryId, slug,
+									categoryTitle,
+									categotyPost.getJSONArray("comments").toString(), categotyPost
+											.getJSONArray("tags").toString());
+						}
 
-								long deleted = homeDAO.deletePosts(categoryId,
-										slug, currentMilliSeconds);
-								Log.i("Deletion Failure: ", deleted + "");
-
-								count++;
-								if (count == 4) {
-									startActivity(new Intent(SplashScreen.this,
-											TabsActivity.class).addFlags(
-											Intent.FLAG_ACTIVITY_CLEAR_TOP)
-											.putExtra("categories", categories));
-									finish();
-								}
-							}
-						} catch (Exception e) {
-							e.printStackTrace();
+						long deleted = homeDAO.deletePosts(categoryId, slug, currentMilliSeconds);
+						Log.i("Deleted records: ", deleted + "");
+						count++;
+						if (count == 5) {
+							startActivity(new Intent(SplashScreen.this, TabsActivity.class)
+									.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP).putExtra(
+											"categories", categories));
+							finish();
 						}
 					}
-				});
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
