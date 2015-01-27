@@ -158,7 +158,6 @@ public class HomeFragment extends Fragment {
 		try {
 			((TextView) view.findViewById(categoty_title[i])).setText(Html.fromHtml(categoryTitle));
 			PostRowItem post = posts.get(0);
-			Log.i("posts: ", post.getTitle());
 			ImageView postScreen = (ImageView) view.findViewById(post_screen[i]);
 			ImageLoader imageLoader = new ImageLoader(getActivity());
 			imageLoader.DisplayImage(post.getPost_banner(), R.drawable.loading, postScreen);
