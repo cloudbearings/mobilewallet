@@ -96,58 +96,49 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String H_EXCERPT = "excerpt";
 	public static final String HC_ID = "category_id";
 	public static final String HC_SLUG = "category_slug";
+	public static final String HC_TITLE = "category_title";
 	public static final String H_COMMENTS = "comments";
 	public static final String H_TAGS = "tags";
 
-	private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE "
-			+ CATEGORIES_TABLE_NAME + " (" + C_ID + " INTEGER PRIMARY KEY, "
-			+ C_NAME + " TEXT, " + C_SLUG + " TEXT, " + C_POST_COUNT
-			+ " INTEGER);";
+	private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + CATEGORIES_TABLE_NAME
+			+ " (" + C_ID + " INTEGER PRIMARY KEY, " + C_NAME + " TEXT, " + C_SLUG + " TEXT, "
+			+ C_POST_COUNT + " INTEGER);";
 
-	private static final String CREATE_POSTS_TABLE = "CREATE TABLE "
-			+ CATEGORRY_POSTS_TABLE_NAME + " (" + P_ID
-			+ " INTEGER PRIMARY KEY, " + P_TITLE + " TEXT, " + P_DATE
-			+ " TEXT, " + P_ICON_URL + " TEXT, " + P_AUTHOR_NAME + " TEXT, "
-			+ P_CONTENT + " TEXT, " + P_SCREEN_IMAGE_URL + " TEXT, " + ""
-			+ P_COMMENT_COUNT + " INTEGER, " + P_URL + " TEXT, "
-			+ P_CURRENT_MILLISECONDS + " TEXT, " + PC_ID + " INTEGER, "
-			+ PC_SLUG + " TEXT, " + P_COMMENTS + " TEXT, " + P_TAGS + " TEXT);";
+	private static final String CREATE_POSTS_TABLE = "CREATE TABLE " + CATEGORRY_POSTS_TABLE_NAME
+			+ " (" + P_ID + " INTEGER PRIMARY KEY, " + P_TITLE + " TEXT, " + P_DATE + " TEXT, "
+			+ P_ICON_URL + " TEXT, " + P_AUTHOR_NAME + " TEXT, " + P_CONTENT + " TEXT, "
+			+ P_SCREEN_IMAGE_URL + " TEXT, " + "" + P_COMMENT_COUNT + " INTEGER, " + P_URL
+			+ " TEXT, " + P_CURRENT_MILLISECONDS + " TEXT, " + PC_ID + " INTEGER, " + PC_SLUG
+			+ " TEXT, " + P_COMMENTS + " TEXT, " + P_TAGS + " TEXT);";
 
 	private static final String CREATE_RECENT_POSTS_TABLE = "CREATE TABLE "
-			+ RECENT_POSTS_TABLE_NAME + " (" + RP_ID + " INTEGER PRIMARY KEY, "
-			+ RP_TITLE + " TEXT, " + RP_DATE + " TEXT, " + RP_ICON_URL
-			+ " TEXT, " + RP_AUTHOR_NAME + " TEXT, " + RP_CONTENT + " TEXT, "
-			+ RP_SCREEN_IMAGE_URL + " TEXT, " + "" + RP_COMMENT_COUNT
-			+ " INTEGER, " + RP_URL + " TEXT, " + RP_CURRENT_MILLISECONDS
-			+ " TEXT, " + RP_EXCERPT + " TEXT, " + RP_COMMENTS + " TEXT, "
-			+ RP_TAGS + " TEXT);";
+			+ RECENT_POSTS_TABLE_NAME + " (" + RP_ID + " INTEGER PRIMARY KEY, " + RP_TITLE
+			+ " TEXT, " + RP_DATE + " TEXT, " + RP_ICON_URL + " TEXT, " + RP_AUTHOR_NAME
+			+ " TEXT, " + RP_CONTENT + " TEXT, " + RP_SCREEN_IMAGE_URL + " TEXT, " + ""
+			+ RP_COMMENT_COUNT + " INTEGER, " + RP_URL + " TEXT, " + RP_CURRENT_MILLISECONDS
+			+ " TEXT, " + RP_EXCERPT + " TEXT, " + RP_COMMENTS + " TEXT, " + RP_TAGS + " TEXT);";
 
-	private static final String CREATE_TAG_POSTS_TABLE = "CREATE TABLE "
-			+ TAG_POSTS_TABLE_NAME + " (" + TP_ID + " INTEGER PRIMARY KEY, "
-			+ TP_TITLE + " TEXT, " + TP_DATE + " TEXT, " + TP_ICON_URL
-			+ " TEXT, " + TP_AUTHOR_NAME + " TEXT, " + TP_CONTENT + " TEXT, "
-			+ TP_SCREEN_IMAGE_URL + " TEXT, " + "" + TP_COMMENT_COUNT
-			+ " INTEGER, " + TP_URL + " TEXT, " + TP_CURRENT_MILLISECONDS
-			+ " TEXT, " + TP_EXCERPT + " TEXT, " + TP_COMMENTS + " TEXT, "
-			+ TP_TAGS + " TEXT);";
+	private static final String CREATE_TAG_POSTS_TABLE = "CREATE TABLE " + TAG_POSTS_TABLE_NAME
+			+ " (" + TP_ID + " INTEGER PRIMARY KEY, " + TP_TITLE + " TEXT, " + TP_DATE + " TEXT, "
+			+ TP_ICON_URL + " TEXT, " + TP_AUTHOR_NAME + " TEXT, " + TP_CONTENT + " TEXT, "
+			+ TP_SCREEN_IMAGE_URL + " TEXT, " + "" + TP_COMMENT_COUNT + " INTEGER, " + TP_URL
+			+ " TEXT, " + TP_CURRENT_MILLISECONDS + " TEXT, " + TP_EXCERPT + " TEXT, "
+			+ TP_COMMENTS + " TEXT, " + TP_TAGS + " TEXT);";
 
 	private static final String CREATE_SEARCH_POSTS_TABLE = "CREATE TABLE "
-			+ SEARCH_POSTS_TABLE_NAME + " (" + SP_ID + " INTEGER PRIMARY KEY, "
-			+ SP_TITLE + " TEXT, " + SP_DATE + " TEXT, " + SP_ICON_URL
-			+ " TEXT, " + SP_AUTHOR_NAME + " TEXT, " + SP_CONTENT + " TEXT, "
-			+ SP_SCREEN_IMAGE_URL + " TEXT, " + "" + SP_COMMENT_COUNT
-			+ " INTEGER, " + SP_URL + " TEXT, " + SP_CURRENT_MILLISECONDS
-			+ " TEXT, " + SP_EXCERPT + " TEXT, " + SP_COMMENTS + " TEXT, "
-			+ SP_TAGS + " TEXT);";
+			+ SEARCH_POSTS_TABLE_NAME + " (" + SP_ID + " INTEGER PRIMARY KEY, " + SP_TITLE
+			+ " TEXT, " + SP_DATE + " TEXT, " + SP_ICON_URL + " TEXT, " + SP_AUTHOR_NAME
+			+ " TEXT, " + SP_CONTENT + " TEXT, " + SP_SCREEN_IMAGE_URL + " TEXT, " + ""
+			+ SP_COMMENT_COUNT + " INTEGER, " + SP_URL + " TEXT, " + SP_CURRENT_MILLISECONDS
+			+ " TEXT, " + SP_EXCERPT + " TEXT, " + SP_COMMENTS + " TEXT, " + SP_TAGS + " TEXT);";
 
-	private static final String CREATE_HOME_POSTS_TABLE = "CREATE TABLE "
-			+ HOME_POSTS_TABLE_NAME + " (" + H_ID + " INTEGER PRIMARY KEY, "
-			+ H_TITLE + " TEXT, " + H_DATE + " TEXT, " + H_ICON_URL + " TEXT, "
-			+ H_AUTHOR_NAME + " TEXT, " + H_CONTENT + " TEXT, "
-			+ H_SCREEN_IMAGE_URL + " TEXT, " + "" + H_COMMENT_COUNT
-			+ " INTEGER, " + H_URL + " TEXT, " + H_CURRENT_MILLISECONDS
-			+ " TEXT, " + H_EXCERPT + " TEXT, " + HC_ID + " INTEGER, "
-			+ HC_SLUG + " TEXT, " + H_COMMENTS + " TEXT, " + H_TAGS + " TEXT);";
+	private static final String CREATE_HOME_POSTS_TABLE = "CREATE TABLE " + HOME_POSTS_TABLE_NAME
+			+ " (" + H_ID + " INTEGER PRIMARY KEY, " + H_TITLE + " TEXT, " + H_DATE + " TEXT, "
+			+ H_ICON_URL + " TEXT, " + H_AUTHOR_NAME + " TEXT, " + H_CONTENT + " TEXT, "
+			+ H_SCREEN_IMAGE_URL + " TEXT, " + "" + H_COMMENT_COUNT + " INTEGER, " + H_URL
+			+ " TEXT, " + H_CURRENT_MILLISECONDS + " TEXT, " + H_EXCERPT + " TEXT, " + HC_ID
+			+ " INTEGER, " + HC_SLUG + " TEXT, " + HC_TITLE + " TEXT, " + H_COMMENTS + " TEXT, "
+			+ H_TAGS + " TEXT);";
 
 	public DbAdapter(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
