@@ -106,7 +106,10 @@ public class PostViewSwipeActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			finish();
+			Intent tabsIntent = new Intent(PostViewSwipeActivity.this, TabsActivity.class);
+			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(tabsIntent);
+			return true;
 		case R.id.share_icon:
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
