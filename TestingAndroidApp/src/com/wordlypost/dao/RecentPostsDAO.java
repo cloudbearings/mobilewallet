@@ -129,7 +129,7 @@ public class RecentPostsDAO {
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.RECENT_POSTS_TABLE_NAME, cols, null, null, null,
-					null, DbAdapter.RP_DATE + " ASC");
+					null, DbAdapter.RP_DATE + " DESC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {

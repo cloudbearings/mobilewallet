@@ -134,7 +134,7 @@ public class TagPostsDAO {
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.TAG_POSTS_TABLE_NAME, cols, null,
-					null, null, null, DbAdapter.TP_DATE + " ASC");
+					null, null, null, DbAdapter.TP_DATE + " DESC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {

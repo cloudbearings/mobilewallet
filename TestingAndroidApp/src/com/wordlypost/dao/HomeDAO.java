@@ -164,7 +164,7 @@ public class HomeDAO {
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.HOME_POSTS_TABLE_NAME, cols, DbAdapter.HC_ID + "="
 					+ categoryId + " and " + DbAdapter.HC_SLUG + "='" + categorySlug + "'", null,
-					null, null, DbAdapter.H_DATE + " ASC");
+					null, null, DbAdapter.H_DATE + " DESC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
@@ -222,7 +222,7 @@ public class HomeDAO {
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.HOME_POSTS_TABLE_NAME, cols, DbAdapter.HC_ID + "="
 					+ categoryId + " and " + DbAdapter.HC_SLUG + "='" + categorySlug + "'", null,
-					null, null, DbAdapter.H_DATE + " ASC", "5");
+					null, null, DbAdapter.H_DATE + " DESC", "5");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
