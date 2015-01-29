@@ -134,7 +134,7 @@ public class SearchPostsDAO {
 			dbHelper = new DbAdapter(context);
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.SEARCH_POSTS_TABLE_NAME, cols, null,
-					null, null, null, DbAdapter.SP_DATE + " ASC");
+					null, null, null, DbAdapter.SP_DATE + " DESC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {

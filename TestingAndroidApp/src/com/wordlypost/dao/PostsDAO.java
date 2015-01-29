@@ -132,7 +132,7 @@ public class PostsDAO {
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, DbAdapter.PC_ID
 					+ "=" + categoryId + " and " + DbAdapter.PC_SLUG + "='" + categorySlug + "'",
-					null, null, null, DbAdapter.P_DATE + " ASC");
+					null, null, null, DbAdapter.P_DATE + " DESC");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
@@ -189,7 +189,7 @@ public class PostsDAO {
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.CATEGORRY_POSTS_TABLE_NAME, cols, DbAdapter.PC_ID
 					+ "=" + categoryId + " and " + DbAdapter.PC_SLUG + "='" + categorySlug + "'",
-					null, null, null, DbAdapter.P_DATE + " ASC", "5");
+					null, null, null, DbAdapter.P_DATE + " DESC", "5");
 			PostRowItem item;
 			if (cursor.moveToFirst()) {
 				do {
