@@ -1,0 +1,117 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Global dimes -->
+    <dimen name="listview_layout_padding">15dp</dimen>
+    <dimen name="error_message_textsize">18dp</dimen>
+
+    <!-- Overflow icon dimes -->
+    <dimen name="action_button_width">42dp</dimen>
+    <dimen name="action_button_padding">0dp</dimen>
+
+    <!-- tabs_activity xml dimes -->
+    <dimen name="slider_drawer_listview_height">330dp</dimen>
+
+    <!-- drawer_list_item xml dimes -->
+    <dimen name="list_item_text_size">20sp</dimen>
+    <dimen name="list_item_text_height">65dp</dimen>
+    <dimen name="list_item_text_margin_right">25dp</dimen>
+    <dimen name="list_layout_hegith">70dp</dimen>
+
+    <!-- category_posts_list_item.xml -->
+    <dimen name="category_posts_list_item_layout_padding_top">15dp</dimen>
+    <dimen name="category_posts_list_item_layout_padding_bottom">15dp</dimen>
+    <dimen name="category_posts_list_item_appName_margin_top">10dp</dimen>
+    <dimen name="category_posts_list_item_appName_textsize">20sp</dimen>
+    <dimen name="category_posts_list_item_friend_count_margin_top">8dp</dimen>
+    <dimen name="category_posts_list_item_friend_count_textsize">17sp</dimen>
+    <dimen name="category_posts_icon_dimes">250dp</dimen>
+    <dimen name="spacing">5dp</dimen>
+    <dimen name="category_posts_heading_padding">20dp</dimen>
+    <dimen name="category_posts_heading_textsize">22sp</dimen>
+
+    <!-- post_view.xml -->
+    <dimen name="post_view_title_textsize">22sp</dimen>
+    <dimen name="post_view_title_lineSpacingExtra">2dp</dimen>
+    <dimen name="post_view_author_margin_top">10dp</dimen>
+    <dimen name="post_view_author_textsize">18sp</dimen>
+    <dimen name="post_view_author_lineSpacingExtra">2sp</dimen>
+    <dimen name="post_view_horizental_view_margin_top">15dp</dimen>
+    <dimen name="post_view_image_margin_top">10dp</dimen>
+    <dimen name="post_view_content_margin_top">15dp</dimen>
+    <dimen name="post_view_tags_margin_top">10dp</dimen>
+    <dimen name="post_view_read_comments_button_margin_top">15dp</dimen>
+    <dimen name="post_view_button_padding">5dp</dimen>
+    <dimen name="post_view_button_radius">4dp</dimen>
+    <dimen name="post_view_button_textsize">20sp</dimen>
+    <dimen name="post_view_post_comment_button_margin_top">15dp</dimen>
+    <dimen name="post_view_related_articals_margin_top">15dp</dimen>
+    <dimen name="post_view_related_articals_textsize">16sp</dimen>
+    <dimen name="post_view_tags_textsize">14sp</dimen>
+    <dimen name="post_view_comment_layout_margin_left">15dp</dimen>
+    <dimen name="post_view_count_padding_top">10dp</dimen>
+    <dimen name="post_view_count_text_size">17sp</dimen>
+
+    <!-- post_comment_popup.xml -->
+    <dimen name="post_comment_layout_padding">20dp</dimen>
+    <dimen name="post_comment_layout_height">325dp</dimen>
+    <dimen name="post_comment_heading_textsize">22sp</dimen>
+    <dimen name="post_comment_name_margin_top">15dp</dimen>
+    <dimen name="post_comment_email_padding">15dp</dimen>
+    <dimen name="post_comment_email_margin_top">10dp</dimen>
+    <dimen name="post_comment_email_textsize">18sp</dimen>
+    <dimen name="post_comment_height">150dp</dimen>
+    <dimen name="post_comment_textsize">18sp</dimen>
+    <dimen name="post_comment_margin_top">10dp</dimen>
+    <dimen name="post_comment_padding_top">10dp</dimen>
+    <dimen name="post_comment_padding_left">10dp</dimen>
+    <dimen name="post_comment_button_margin_top">15dp</dimen>
+    <dimen name="post_comment_button_height">50dp</dimen>
+    <dimen name="post_comment_button_textsize">20sp</dimen>
+    <dimen name="post_comment_status_textsize">12sp</dimen>
+
+    <!-- search_posts_list_item.xml -->
+    <dimen name="post_layout_padding">20dp</dimen>
+    <dimen name="post_layout_padding_bottom">20dp</dimen>
+    <dimen name="post_icon_dimes">135dp</dimen>
+    <dimen name="post_title_margin_left">15dp</dimen>
+    <dimen name="post_title_text_size">20sp</dimen>
+    <dimen name="post_title_padding_top">0dp</dimen>
+    <dimen name="post_des_margin_top">10dp</dimen>
+    <dimen name="post_des_text_size">18sp</dimen>
+    <dimen name="post_comment_count_layout_height">25dp</dimen>
+    <dimen name="post_comment_count_text_size">20sp</dimen>
+    <dimen name="post_comment_count_pading_top">7dp</dimen>
+    <dimen name="post_comment_date_margin_top">10dp</dimen>
+    <dimen name="post_date_margin_right">20dp</dimen>
+    <dimen name="post_list_item_layout_padding_bottom">8dp</dimen>
+
+    <!-- comment_list_item.xml -->
+    <dimen name="comment_layout_padding">10dp</dimen>
+    <dimen name="comment_lineSpacingExtra">3dp</dimen>
+    <dimen name="comment_date_margin_top">3dp</dimen>
+    <dimen name="comment_view_margin_top">10dp</dimen>
+    <dimen name="comment_text_size">18sp</dimen>
+
+    <!-- comment_view.xml -->
+    <dimen name="comments_text_size">18sp</dimen>
+    <dimen name="comments_margin_top">10dp</dimen>
+
+    <!-- home_fragment.xml -->
+    <dimen name="home_fragment_relative_margin">7dp</dimen>
+
+    <!-- about_wordlypost.xml -->
+    <dimen name="about_textsize">20dp</dimen>
+    <dimen name="about_lineSpacingExtra">3dp</dimen>
+
+    <!-- privacy_policy.xml -->
+    <dimen name="privacy_policy_textsize">20dp</dimen>
+    <dimen name="privacy_policy_lineSpacingExtra">3dp</dimen>
+
+    <!-- actionbar_title dimes -->
+    <dimen name="actionbar_title_text_size">22sp</dimen>
+
+</resources>
