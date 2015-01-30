@@ -351,4 +351,27 @@
         <item name="android:textColor">@color/bringal_color</item>
     </style>
 
+    <!-- question.xml -->
+    <style name="questionStyle">
+        <item name="android:textSize">@dimen/questions_question_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/question_color</item>
+    </style>
+
+    <style name="optionsStyle">
+        <item name="android:textSize">@dimen/questions_options_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:paddingRight">@dimen/questions_options_padding</item>
+        <item name="android:paddingTop">@dimen/questions_options_padding</item>
+        <item name="android:paddingBottom">@dimen/questions_options_padding</item>
+        <item name="android:paddingLeft">@dimen/questions_options_padding_left</item>
+        <item name="android:textColor">@color/options_color</item>
+    </style>
+
+    <style name="noOfQuestionsStyle">
+        <item name="android:textSize">@dimen/questions_no_of_questions_text_size</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/no_of_questions</item>
+    </style>
+
 </resources>

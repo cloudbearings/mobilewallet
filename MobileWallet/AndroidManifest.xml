@@ -160,8 +160,12 @@
             android:label="@string/title_activity_earn_rewards" >
         </activity>
         <activity
-            android:name="com.mobilewallet.earnrewards.UserQuestions"
+            android:name=".earnrewards.UserQuestions"
             android:label="@string/title_activity_user_questions" >
+        </activity>
+        <activity
+            android:name=".Question"
+            android:label="@string/title_activity_question" >
         </activity>
     </application>
 

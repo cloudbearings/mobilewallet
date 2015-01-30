@@ -247,5 +247,6 @@
     <string name="question_error">Enter your question.</string>
     <string name="answers_error">Enter your question answer.</string>
     <string name="answer_error">Enter question answer.</string>
+    <string name="title_activity_question">Question</string>
 
 </resources>

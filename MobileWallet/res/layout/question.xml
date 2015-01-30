@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/questions_relyt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    tools:context="com.mobilewallet.Question" >
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/questions_view_margin_top"
+        android:background="@color/view_border_color" />
+
+    <RadioGroup
+        android:id="@+id/optionsGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_marginLeft="@dimen/questions_options_margin_left"
+        android:layout_marginRight="@dimen/questions_options_margin_right"
+        android:layout_marginTop="@dimen/questions_options_margin_top" >
+
+        <RadioButton
+            android:id="@+id/option1"
+            style="@style/optionsStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="option1" />
+
+        <RadioButton
+            android:id="@+id/option2"
+            style="@style/optionsStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="option2" />
+
+        <RadioButton
+            android:id="@+id/option3"
+            style="@style/optionsStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="option3" />
+
+        <RadioButton
+            android:id="@+id/option4"
+            style="@style/optionsStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="option4" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/question"
+        style="@style/questionStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/optionsGroup"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/optionsGroup"
+        android:layout_marginTop="@dimen/questions_question_margin_top"
+        android:text="Question?" />
+
+    <TextView
+        android:id="@+id/textView1"
+        style="@style/noOfQuestionsStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/no_of_questions_text_margin_top"
+        android:text="Question 1 of 20" />
+
+</RelativeLayout>
