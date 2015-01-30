@@ -10,7 +10,7 @@ import com.mobilewallet.R;
 
 public class MobileWalletGoogleAnalytics extends Application {
 	// The following line should be changed to include the correct property id.
-	private static final String PROPERTY_ID = "";
+	private static final String PROPERTY_ID = "UA-59158093-1";
 
 	public static int GENERAL_TRACKER = 0;
 
@@ -41,8 +41,4 @@ public class MobileWalletGoogleAnalytics extends Application {
 		}
 		return mTrackers.get(trackerId);
 	}
-
-
- 
-
 }
