@@ -24,7 +24,9 @@
             <TextView
                 android:id="@+id/privacy_policy"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="@dimen/privacy_policy_lineSpacingExtra"
+                android:textSize="@dimen/privacy_policy_textsize" />
         </RelativeLayout>
     </RelativeLayout>
 

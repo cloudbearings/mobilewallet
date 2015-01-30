@@ -139,7 +139,7 @@
             android:text="0"
             android:textColor="@color/white"
             android:textSize="@dimen/post_view_count_text_size"
-            android:visibility="invisible" />
+            android:visibility="visible" />
     </RelativeLayout>
 
 </ScrollView>

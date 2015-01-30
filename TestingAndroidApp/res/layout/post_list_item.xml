@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/offerbg"
     android:gravity="center_vertical"
-    android:paddingBottom="@dimen/post_layout_padding_bottom"
+    android:paddingBottom="@dimen/post_list_item_layout_padding_bottom"
     android:paddingLeft="@dimen/post_layout_padding"
     android:paddingRight="@dimen/post_layout_padding"
     android:paddingTop="@dimen/post_layout_padding" >
