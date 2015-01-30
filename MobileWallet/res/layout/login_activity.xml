@@ -78,6 +78,7 @@
         android:text="@string/login_with_fb_button_name"
         facebook:confirm_logout="false"
         facebook:fetch_user_info="true"
+        fb:login_text="@string/login_with_fb_button_name"
         fb:logout_text="@string/title_processing" />
 
     <ImageView
