@@ -111,4 +111,7 @@
     <dimen name="privacy_policy_textsize">15dp</dimen>
     <dimen name="privacy_policy_lineSpacingExtra">1dp</dimen>
 
+    <!-- actionbar_title dimes -->
+    <dimen name="actionbar_title_text_size">16sp</dimen>
+
 </resources>

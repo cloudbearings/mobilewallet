@@ -58,7 +58,7 @@
         android:text="0"
         android:textColor="@color/brown"
         android:textSize="@dimen/post_comment_count_text_size"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <com.wordlypost.textview.DroidSerif
         android:id="@+id/post_date"
