@@ -95,6 +95,8 @@ public class PostViewFragment extends Fragment {
 
 				final WebView webView = (WebView) view.findViewById(R.id.content);
 				webView.getSettings().setJavaScriptEnabled(true);
+				webView.getSettings().setDefaultFontSize(
+						getResources().getInteger(R.integer.post_des_text_size));
 				webView.getSettings().setDefaultTextEncodingName("utf-8");
 				String header = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>";
 				webView.loadData(header + postDetails.getContent(), "text/html; charset=utf-8",
@@ -194,8 +196,7 @@ public class PostViewFragment extends Fragment {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent tabsIntent = new Intent(getActivity(),
-					TabsActivity.class);
+			Intent tabsIntent = new Intent(getActivity(), TabsActivity.class);
 			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(tabsIntent);
 		default:
