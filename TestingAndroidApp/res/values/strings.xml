@@ -2,6 +2,8 @@
 <resources>
 
     <string name="app_name">WordlyPost</string>
+    <string name="app_des1">Be Better Informed</string>
+    <string name="app_des2">Copyrights Reserved By WorldyPost</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 

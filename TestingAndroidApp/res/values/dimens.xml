@@ -113,5 +113,12 @@
 
     <!-- actionbar_title dimes -->
     <dimen name="actionbar_title_text_size">16sp</dimen>
+    
+    <!-- splash_screen dimes -->
+    <dimen name="app_icon_margin_top">126dp</dimen>
+    <dimen name="app_des1_textsize">22sp</dimen>
+    <dimen name="app_des1_margin_top">5dp</dimen>
+    <dimen name="app_des2_textsize">14sp</dimen>
+    <dimen name="app_des2_margin_top">5dp</dimen>
 
 </resources>

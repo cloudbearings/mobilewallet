@@ -2,7 +2,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/brown_bg"
+    android:background="@color/brown"
     tools:context="com.wordlypost.SplashScreen" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/app_icon_margin_top"
+        android:src="@drawable/worldypost_home_logo" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/app_des1_margin_top"
+        android:gravity="center_horizontal"
+        android:text="@string/app_des1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="@dimen/app_des1_textsize" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="@dimen/app_des2_margin_top"
+        android:gravity="center_horizontal"
+        android:text="@string/app_des2"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="@dimen/app_des2_textsize" />
 
 </RelativeLayout>
