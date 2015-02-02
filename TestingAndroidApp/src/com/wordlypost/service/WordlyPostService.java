@@ -31,4 +31,7 @@ public interface WordlyPostService {
 	@GET("/get_category_posts")
 	void getCategoryPosts(@Query("id") int categoryId, @Query("slug") String slug,
 			@Query("count") int count, Callback<String> callback);
+
+	@GET("/")
+	void storeGcmId(@Query("regId") String regId, Callback<String> callback);
 }
