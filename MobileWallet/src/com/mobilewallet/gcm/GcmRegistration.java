@@ -35,7 +35,7 @@ public class GcmRegistration {
 				protected void onPostExecute(String gcmid) {
 					try {
 						if (gcmid != null && !"".equals(gcmid.trim())) {
-							new StoreGcmId(gcmid, context);
+							new StoreGcmId(gcmid, context).update();
 						}
 
 					} catch (Exception e) {
