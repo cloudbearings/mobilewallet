@@ -25,6 +25,7 @@
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
     <string name="Arial">fonts/arial.ttf</string>
     <string name="DroidSerif">fonts/DroidSerif-Italic.ttf</string>
+    <string name="DroidSerif_Bold">fonts/DroidSerif-Bold.ttf</string>
 
     <!-- Google analytics screen names -->
     <string name="tabs_activity_screen_name">Tabs Activity</string>
