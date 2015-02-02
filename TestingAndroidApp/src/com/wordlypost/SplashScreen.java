@@ -97,10 +97,12 @@ public class SplashScreen extends ActionBarActivity {
 									if (obj.getJSONArray("categories").length() > categoriesDAO
 											.getCategoriesCount()) {
 										// Stpring categories is sqlite database
-										categoriesDAO.insertCategories(category.getInt("id"),
-												category.getString("title"),
-												category.getString("slug"),
-												category.getInt("post_count"));
+										if (category.getInt("id") != 174) {
+											categoriesDAO.insertCategories(category.getInt("id"),
+													category.getString("title"),
+													category.getString("slug"),
+													category.getInt("post_count"));
+										}
 									}
 								}
 								getRandomCategories();
