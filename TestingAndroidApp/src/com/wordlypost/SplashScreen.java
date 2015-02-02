@@ -10,9 +10,12 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -29,6 +32,7 @@ public class SplashScreen extends ActionBarActivity {
 	private int count;
 	private String categories;
 	private CategoriesDAO categoriesDAO;
+	private static int SPLASH_TIME_OUT = 1500;
 
 	@Override
 	protected void onResume() {
@@ -49,6 +53,14 @@ public class SplashScreen extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		try {
 			setContentView(R.layout.splash_screen);
+
+			TextView appDes1 = (TextView) findViewById(R.id.app_des1);
+			appDes1.setTypeface(
+					Utils.getFont(SplashScreen.this, getString(R.string.DroidSerif_Bold)),
+					Typeface.BOLD);
+			TextView appDes2 = (TextView) findViewById(R.id.app_des2);
+			appDes2.setTypeface(Utils.getFont(SplashScreen.this, getString(R.string.DroidSerif)));
+
 			if (Utils.isNetworkAvailable(SplashScreen.this)) {
 				categoriesDAO = new CategoriesDAO(SplashScreen.this);
 				if (categoriesDAO.getCategoriesCount() > 0) {
@@ -118,7 +130,14 @@ public class SplashScreen extends ActionBarActivity {
 		if (count > 0) {
 			HomePostsThread thread = new HomePostsThread(SplashScreen.this);
 			thread.run();
-			openTabsActivity();
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					openTabsActivity();
+
+				}
+			}, SPLASH_TIME_OUT);
 		} else {
 			List<NavDrawerItem> categories = categoriesDAO.getRandomCategories();
 			for (int i = 0; i < categories.size(); i++) {
