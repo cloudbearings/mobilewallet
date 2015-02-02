@@ -9,7 +9,7 @@ import com.google.android.gms.analytics.Tracker;
 
 public class WordlyPostGoogleAnalytics extends Application {
 	// The following line should be changed to include the correct property id.
-	private static final String PROPERTY_ID = "UA-58954320-1";
+	private static final String PROPERTY_ID = "UA-59214225-1";
 
 	public static int GENERAL_TRACKER = 0;
 
