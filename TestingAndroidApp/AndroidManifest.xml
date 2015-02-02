@@ -28,6 +28,7 @@
         <activity
             android:name=".SplashScreen"
             android:label="@string/app_name"
+            android:screenOrientation="portrait"
             android:theme="@style/NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,11 +38,13 @@
         </activity>
         <activity
             android:name=".TabsActivity"
-            android:label="@string/title_activity_tabs" >
+            android:label="@string/title_activity_tabs"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CategoryPostsFragment"
-            android:label="@string/title_activity_category_posts_fragment" >
+            android:label="@string/title_activity_category_posts_fragment"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".PostViewFragment"
@@ -85,7 +88,8 @@
         </activity>
         <activity
             android:name=".HomeFragment"
-            android:label="@string/title_activity_home_fragment" >
+            android:label="@string/title_activity_home_fragment"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
