@@ -28,7 +28,7 @@
     <dimen name="category_posts_list_item_appName_textsize">20sp</dimen>
     <dimen name="category_posts_list_item_friend_count_margin_top">8dp</dimen>
     <dimen name="category_posts_list_item_friend_count_textsize">17sp</dimen>
-    <dimen name="category_posts_icon_dimes">250dp</dimen>
+    <dimen name="category_posts_icon_dimes">340dp</dimen>
     <dimen name="spacing">5dp</dimen>
     <dimen name="category_posts_heading_padding">20dp</dimen>
     <dimen name="category_posts_heading_textsize">22sp</dimen>
@@ -50,7 +50,7 @@
     <dimen name="post_view_post_comment_button_margin_top">15dp</dimen>
     <dimen name="post_view_related_articals_margin_top">15dp</dimen>
     <dimen name="post_view_related_articals_textsize">16sp</dimen>
-    <dimen name="post_view_tags_textsize">14sp</dimen>
+    <dimen name="post_view_tags_textsize">16sp</dimen>
     <dimen name="post_view_comment_layout_margin_left">15dp</dimen>
     <dimen name="post_view_count_padding_top">10dp</dimen>
     <dimen name="post_view_count_text_size">17sp</dimen>
@@ -113,5 +113,12 @@
 
     <!-- actionbar_title dimes -->
     <dimen name="actionbar_title_text_size">22sp</dimen>
+
+    <!-- splash_screen dimes -->
+    <dimen name="app_icon_margin_top">310dp</dimen>
+    <dimen name="app_des1_textsize">42sp</dimen>
+    <dimen name="app_des1_margin_top">5dp</dimen>
+    <dimen name="app_des2_textsize">24sp</dimen>
+    <dimen name="app_des2_margin_top">5dp</dimen>
 
 </resources>

@@ -15,7 +15,7 @@
         android:src="@drawable/worldypost_home_logo" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/app_des1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
@@ -27,15 +27,16 @@
         android:textSize="@dimen/app_des1_textsize" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/app_des2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/app_des1"
+        android:layout_below="@+id/app_des1"
         android:layout_marginTop="@dimen/app_des2_margin_top"
         android:gravity="center_horizontal"
         android:text="@string/app_des2"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/black"
         android:textSize="@dimen/app_des2_textsize" />
 
 </RelativeLayout>
