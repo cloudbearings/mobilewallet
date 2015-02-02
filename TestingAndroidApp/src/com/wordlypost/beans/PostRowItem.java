@@ -70,6 +70,9 @@ public class PostRowItem implements Serializable {
 		if (content.contains("height")) {
 			content = content.replace("height", "high");
 		}
+		if (content.contains("justify")) {
+			content = content.replace("justify", "");
+		}
 		return content;
 	}
 
