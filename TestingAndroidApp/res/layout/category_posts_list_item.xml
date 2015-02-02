@@ -35,7 +35,6 @@
         android:id="@+id/post_image"
         android:layout_width="@dimen/category_posts_icon_dimes"
         android:layout_height="@dimen/category_posts_icon_dimes"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/app_default_icon" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

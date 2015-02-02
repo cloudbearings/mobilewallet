@@ -37,7 +37,6 @@
         android:layout_centerHorizontal="true"
         android:background="@color/brown"
         android:padding="@dimen/category_posts_heading_padding"
-        android:text="Entertainment"
         android:textColor="@color/white"
         android:textSize="@dimen/category_posts_heading_textsize" />
 

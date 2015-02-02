@@ -25,7 +25,6 @@
             android:focusableInTouchMode="true"
             android:lineSpacingExtra="@dimen/post_view_title_lineSpacingExtra"
             android:maxLines="3"
-            android:text="Software Engineer  stabs wife, hangs self in Dwaraka"
             android:textSize="@dimen/post_view_title_textsize" />
 
         <com.wordlypost.textview.DroidSerif
@@ -36,7 +35,6 @@
             android:layout_below="@+id/post_title"
             android:layout_marginTop="@dimen/post_view_author_margin_top"
             android:lineSpacingExtra="@dimen/post_view_author_lineSpacingExtra"
-            android:text="By Shubhomoy Sikdar\nJan 05, 2015 08:20AM"
             android:textColor="@color/brown"
             android:textSize="@dimen/post_view_author_textsize" />
 
@@ -55,8 +53,7 @@
             android:layout_alignLeft="@+id/view1"
             android:layout_alignRight="@+id/view1"
             android:layout_below="@+id/view1"
-            android:layout_marginTop="@dimen/post_view_image_margin_top"
-            android:src="@drawable/loading" />
+            android:layout_marginTop="@dimen/post_view_image_margin_top" />
 
         <View
             android:id="@+id/view2"
@@ -123,8 +120,7 @@
             android:layout_alignLeft="@+id/view3"
             android:layout_below="@+id/content"
             android:layout_marginTop="@dimen/post_view_tags_margin_top"
-            android:orientation="horizontal"
-            android:text="Tags :" />
+            android:orientation="horizontal" />
 
         <com.wordlypost.textview.Helvetica
             android:id="@+id/comment_count"
@@ -136,10 +132,9 @@
             android:background="@drawable/cmt_icon"
             android:gravity="top|center"
             android:paddingTop="@dimen/post_view_count_padding_top"
-            android:text="0"
             android:textColor="@color/white"
             android:textSize="@dimen/post_view_count_text_size"
-            android:visibility="visible" />
+            android:visibility="invisible" />
     </RelativeLayout>
 
 </ScrollView>

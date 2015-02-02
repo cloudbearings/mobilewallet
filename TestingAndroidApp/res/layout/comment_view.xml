@@ -52,7 +52,6 @@
         android:layout_alignLeft="@+id/view1"
         android:layout_below="@+id/view1"
         android:layout_marginTop="@dimen/comments_margin_top"
-        android:text="@string/comments_count"
         android:textColor="@color/brown"
         android:textSize="@dimen/comments_text_size" />
 
