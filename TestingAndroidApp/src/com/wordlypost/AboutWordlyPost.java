@@ -11,8 +11,12 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
+import com.wordlypost.utils.Utils;
 
 public class AboutWordlyPost extends ActionBarActivity {
+
+	String condition = "0";
+	String ms;
 
 	@Override
 	public void onResume() {
@@ -34,6 +38,12 @@ public class AboutWordlyPost extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about_wordly_post);
 
+		condition = getIntent().getStringExtra("alert");
+		if (condition != null) {
+			ms = getIntent().getStringExtra("msg");
+			Utils.displayToad(AboutWordlyPost.this, ms);
+		}
+
 		((TextView) findViewById(R.id.about_us)).setText(Html
 				.fromHtml(getString(R.string.about_wordly_post)));
 	}
@@ -43,8 +53,7 @@ public class AboutWordlyPost extends ActionBarActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent tabsIntent = new Intent(AboutWordlyPost.this,
-					TabsActivity.class);
+			Intent tabsIntent = new Intent(AboutWordlyPost.this, TabsActivity.class);
 			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(tabsIntent);
 		default:

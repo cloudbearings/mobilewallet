@@ -9,12 +9,16 @@ import java.util.Locale;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
+
+import com.wordlypost.gcm.Config;
 
 public class Utils {
 
@@ -84,5 +88,41 @@ public class Utils {
 			e.printStackTrace();
 		}
 		return newDateString;
+	}
+
+	public static String getGcmId(Context context) {
+		final SharedPreferences prefs = context.getSharedPreferences(Config.GCM_ID,
+				Context.MODE_PRIVATE);
+		String registrationId = prefs.getString(Config.GCM_ID, "");
+		if (registrationId == null || "".equals(registrationId.trim())) {
+			return null;
+		}
+		int registeredVersion = prefs.getInt(Config.APP_VERSION, Integer.MIN_VALUE);
+		int currentVersion = getAppVersion(context);
+		if (registeredVersion != currentVersion) {
+			return null;
+		}
+		return registrationId;
+	}
+
+	public static void storeGcmId(String gcmId, Context context) {
+		final SharedPreferences prefs = context.getSharedPreferences(Config.GCM_ID,
+				Context.MODE_PRIVATE);
+		int appVersion = Utils.getAppVersion(context);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putString(Config.GCM_ID, gcmId);
+		editor.putInt(Config.APP_VERSION, appVersion);
+		editor.commit();
+	}
+
+	public static int getAppVersion(Context context) {
+		try {
+			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(
+					context.getPackageName(), 0);
+			return packageInfo.versionCode;
+		} catch (Exception e) {
+
+			throw new RuntimeException(e);
+		}
 	}
 }

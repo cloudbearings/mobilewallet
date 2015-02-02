@@ -31,6 +31,7 @@ import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.adapters.NavDrawerListAdapter;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.dao.CategoriesDAO;
+import com.wordlypost.gcm.GcmRegistration;
 
 public class TabsActivity extends ActionBarActivity {
 
@@ -58,6 +59,7 @@ public class TabsActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		new GcmRegistration(TabsActivity.this).register();
 		setContentView(R.layout.tabs_activity);
 		try {
 
