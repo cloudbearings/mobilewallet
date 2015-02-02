@@ -4,6 +4,6 @@
     <integer name="ga_sessionTimeout">60</integer>
     <!-- The following value should be replaced with correct property id. -->
 
-    <string name="ga_trackingId">UA-58954320-1</string>
+    <string name="ga_trackingId">UA-59214225-1</string>
 
 </resources>
