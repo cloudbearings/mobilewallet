@@ -1,5 +1,7 @@
 package com.wordlypost.beans;
 
+import com.wordlypost.utils.Utils;
+
 public class CommentRowItem {
 
 	private int id, parent;
@@ -38,7 +40,7 @@ public class CommentRowItem {
 	}
 
 	public String getDate() {
-		return date;
+		return Utils.changeDateFormat(date);
 	}
 
 	public void setDate(String date) {

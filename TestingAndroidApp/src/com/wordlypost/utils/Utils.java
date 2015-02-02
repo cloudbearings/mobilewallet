@@ -2,15 +2,19 @@ package com.wordlypost.utils;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
-
 
 public class Utils {
 
@@ -60,5 +64,25 @@ public class Utils {
 			e.printStackTrace();
 		}
 		return dialog;
+	}
+
+	public static String changeDateFormat(String oldDateString) {
+
+		String OLD_FORMAT = "yyyy-MM-dd HH:mm:ss";
+		String NEW_FORMAT = "MMM dd, yyyy hh:mm aaa";
+
+		// August 12, 2010
+		String newDateString = "";
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT, Locale.ENGLISH);
+			Date d = sdf.parse(oldDateString.trim());
+
+			sdf.applyPattern(NEW_FORMAT);
+			newDateString = sdf.format(d);
+		} catch (ParseException e) {
+			Log.i("TAG :", "Date parse exception");
+			e.printStackTrace();
+		}
+		return newDateString;
 	}
 }
