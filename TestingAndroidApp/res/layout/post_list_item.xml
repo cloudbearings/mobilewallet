@@ -14,8 +14,7 @@
         android:layout_width="@dimen/post_icon_dimes"
         android:layout_height="@dimen/post_icon_dimes"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/post_title"
-        android:src="@drawable/app_default_icon" />
+        android:layout_alignTop="@+id/post_title" />
 
     <com.wordlypost.textview.HelveticaBold
         android:id="@+id/post_title"
@@ -27,7 +26,6 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingTop="@dimen/post_title_padding_top"
-        android:text="Baahubali : A Look Up Into, India’s Most Expensive Movie Ever Made"
         android:textColor="@color/post_title_color"
         android:textSize="@dimen/post_title_text_size"
         android:textStyle="bold" />
@@ -41,7 +39,6 @@
         android:layout_marginTop="@dimen/post_des_margin_top"
         android:ellipsize="end"
         android:maxLines="3"
-        android:text="Looking into the facts of an upcoming TollyWoods and India\’s most expensive movie ever made, the Bahubali ranks in second place with budgeted amount of $21 million dollars after superstar Rajini Kanth movie Robo/Enthiran which made with budget of $36 million dollars. Given, Enthiran movie surrounds around human-robot conflicts, the Baahubali movie is based on epic drama"
         android:textColor="@color/post_subTitle_color"
         android:textSize="@dimen/post_des_text_size"
         android:textStyle="normal" />
@@ -55,10 +52,9 @@
         android:background="@drawable/comment_icon"
         android:gravity="top|center"
         android:paddingTop="@dimen/post_comment_count_pading_top"
-        android:text="0"
         android:textColor="@color/brown"
         android:textSize="@dimen/post_comment_count_text_size"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <com.wordlypost.textview.DroidSerif
         android:id="@+id/post_date"
@@ -67,7 +63,6 @@
         android:layout_alignLeft="@+id/post_icon"
         android:layout_below="@+id/post_icon"
         android:layout_marginTop="@dimen/post_comment_date_margin_top"
-        android:text="12-Jun-14"
         android:textColor="@color/post_subTitle_color"
         android:textSize="@dimen/post_des_text_size" />
 
@@ -79,7 +74,6 @@
         android:layout_alignBottom="@+id/post_date"
         android:layout_marginRight="@dimen/post_date_margin_right"
         android:layout_toLeftOf="@+id/comment_count"
-        android:text="By Teja"
         android:textColor="@color/post_subTitle_color"
         android:textSize="@dimen/post_des_text_size" />
 
