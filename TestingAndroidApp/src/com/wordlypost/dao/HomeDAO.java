@@ -313,4 +313,26 @@ public class HomeDAO {
 		}
 		return categoriesList;
 	}
+
+	public long isCategoryExists(int category_id) {
+		SQLiteDatabase database = null;
+		long count = 0;
+		try {
+			String sql = "SELECT COUNT(*) FROM " + DbAdapter.HOME_POSTS_TABLE_NAME + " where "
+					+ DbAdapter.HC_ID + "=" + category_id;
+
+			dbHelper = new DbAdapter(context);
+			database = dbHelper.getReadableDatabase();
+			SQLiteStatement statement = database.compileStatement(sql);
+			count = statement.simpleQueryForLong();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				database.close();
+			} catch (Exception e) {
+			}
+		}
+		return count;
+	}
 }

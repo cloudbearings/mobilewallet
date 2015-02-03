@@ -132,8 +132,12 @@ public class HomeFragment extends Fragment {
 			List<NavDrawerItem> categories = homeDAO.getRandomCategories();
 			for (int i = 0; i < categories.size(); i++) {
 				NavDrawerItem category = categories.get(i);
-				getCategoryPosts(category.getId(), category.getSlug(), 5, view, i,
-						category.getTitle());
+				if (i == 0 && homeDAO.isCategoryExists(120) > 0) {
+					getCategoryPosts(120, "top-news", 5, view, i, "Top News");
+				} else {
+					getCategoryPosts(category.getId(), category.getSlug(), 5, view, i,
+							category.getTitle());
+				}
 			}
 
 		} catch (Exception e) {
