@@ -76,9 +76,18 @@ public class TabsActivity extends ActionBarActivity {
 
 				for (int i = 0; i < obj.getJSONArray("categories").length(); i++) {
 					JSONObject category = obj.getJSONArray("categories").getJSONObject(i);
-					if (!category.getString("title").equals("174")) {
-						setNavigationItems(category.getInt("id"), category.getInt("post_count"),
-								category.getString("slug"), category.getString("title"));
+					if (!category.getString("id").equals("174")) {
+						if (category.getString("id").equals("120")) {
+							navDrawerItems.add(
+									1,
+									new NavDrawerItem(category.getInt("id"), category
+											.getInt("post_count"), category.getString("slug"),
+											category.getString("title")));
+						} else {
+							setNavigationItems(category.getInt("id"),
+									category.getInt("post_count"), category.getString("slug"),
+									category.getString("title"));
+						}
 					}
 				}
 			} else {
@@ -93,8 +102,15 @@ public class TabsActivity extends ActionBarActivity {
 					List<NavDrawerItem> items = categoriesDAO.getCategories();
 					for (NavDrawerItem item : items) {
 						if (item.getId() != 174) {
-							setNavigationItems(item.getId(), item.getPost_count(), item.getSlug(),
-									item.getTitle());
+							if (item.getId() == 120) {
+								navDrawerItems.add(
+										1,
+										new NavDrawerItem(item.getId(), item.getPost_count(), item
+												.getSlug(), item.getTitle()));
+							} else {
+								setNavigationItems(item.getId(), item.getPost_count(),
+										item.getSlug(), item.getTitle());
+							}
 						}
 					}
 				}
