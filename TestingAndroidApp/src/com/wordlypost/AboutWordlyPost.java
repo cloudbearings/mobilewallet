@@ -11,12 +11,8 @@ import android.widget.TextView;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
-import com.wordlypost.utils.Utils;
 
 public class AboutWordlyPost extends ActionBarActivity {
-
-	String condition = "0";
-	String ms;
 
 	@Override
 	public void onResume() {
@@ -37,12 +33,6 @@ public class AboutWordlyPost extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.about_wordly_post);
-
-		condition = getIntent().getStringExtra("alert");
-		if (condition != null) {
-			ms = getIntent().getStringExtra("msg");
-			Utils.displayToad(AboutWordlyPost.this, ms);
-		}
 
 		((TextView) findViewById(R.id.about_us)).setText(Html
 				.fromHtml(getString(R.string.about_wordly_post)));
