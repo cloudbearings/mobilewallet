@@ -335,4 +335,43 @@ public class HomeDAO {
 		}
 		return count;
 	}
+
+	public List<NavDrawerItem> getHomeRandomCategories() {
+		SQLiteDatabase database = null;
+		Cursor cursor = null;
+		List<NavDrawerItem> categoriesList = null;
+		try {
+			categoriesList = new ArrayList<NavDrawerItem>();
+			String[] cols = { DbAdapter.HC_ID, DbAdapter.HC_SLUG, DbAdapter.HC_TITLE };
+
+			dbHelper = new DbAdapter(context);
+			database = dbHelper.getReadableDatabase();
+			cursor = database.query(true, DbAdapter.HOME_POSTS_TABLE_NAME, cols, DbAdapter.HC_ID
+					+ "!=120", null, null, null, "RANDOM()", "5");
+			NavDrawerItem item;
+			if (cursor.moveToFirst()) {
+				do {
+					item = new NavDrawerItem();
+					item.setId(cursor.getInt(cursor.getColumnIndex(DbAdapter.HC_ID)));
+					item.setSlug(cursor.getString(cursor.getColumnIndex(DbAdapter.HC_SLUG)));
+					item.setTitle(cursor.getString(cursor.getColumnIndex(DbAdapter.HC_TITLE)));
+					categoriesList.add(item);
+				} while (cursor.moveToNext());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (!cursor.isClosed()) {
+					cursor.close();
+				}
+			} catch (Exception e) {
+			}
+			try {
+				database.close();
+			} catch (Exception e) {
+			}
+		}
+		return categoriesList;
+	}
 }
