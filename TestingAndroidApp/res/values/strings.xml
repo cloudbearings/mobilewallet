@@ -48,6 +48,9 @@
     <string name="terms_of_use">Terms of use</string>
     <string name="privacy_policy">Privacy policy</string>
     <string name="title_activity_tabs">WordlyPost</string>
+    <string name="share_subject">Check out The WordlyPost app for Android</string>
+    <string name="share_text">Hi, I am using The WordlyPost Android app. Why don\'t you check it out on your Android phone.\nhttps://play.google.com/store/apps/details?id=com.wordlypost</string>
+    <string name="playstore_url">https://play.google.com/store/apps/details?id=com.wordlypost</string>
 
     <!-- category_posts_fragment.xml -->
     <string name="title_activity_category_posts_fragment">Category Posts</string>
