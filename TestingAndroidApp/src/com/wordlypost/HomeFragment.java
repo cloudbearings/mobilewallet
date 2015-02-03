@@ -129,7 +129,7 @@ public class HomeFragment extends Fragment {
 		View view = inflater.inflate(R.layout.home_fragment, container, false);
 		try {
 			homeDAO = new HomeDAO(getActivity());
-			List<NavDrawerItem> categories = homeDAO.getRandomCategories();
+			List<NavDrawerItem> categories = homeDAO.getHomeRandomCategories();
 			for (int i = 0; i < categories.size(); i++) {
 				NavDrawerItem category = categories.get(i);
 				if (i == 0 && homeDAO.isCategoryExists(120) > 0) {
