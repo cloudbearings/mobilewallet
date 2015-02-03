@@ -274,23 +274,21 @@ public class TabsActivity extends ActionBarActivity {
 		}
 
 		switch (item.getItemId()) {
-		case R.id.action_search:
-			// startActivity(new Intent(TabsActivity.this, MyProfile.class));
-			return true;
 		case R.id.recent_posts:
 			startActivity(new Intent(TabsActivity.this, RecentPosts.class)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			return true;
 		case R.id.share_this_app:
 			Intent sendIntent = new Intent();
-			sendIntent.setAction(Intent.ACTION_SEND);
-			sendIntent.putExtra(Intent.EXTRA_TEXT, "");
-			sendIntent.setType("text/plain");
+			sendIntent.setAction(Intent.ACTION_SEND)
+					.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.share_subject))
+					.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_text))
+					.setType("text/plain");
 			startActivity(sendIntent);
 			return true;
 		case R.id.rate_this_app:
 			Intent rateIntent = new Intent(Intent.ACTION_VIEW,
-					Uri.parse("https://play.google.com/store/apps/details?id=com.wordlypost"));
+					Uri.parse(getString(R.string.playstore_url)));
 			startActivity(rateIntent);
 			return true;
 		case R.id.about_us:
