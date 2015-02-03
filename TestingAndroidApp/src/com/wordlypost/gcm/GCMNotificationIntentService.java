@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.wordlypost.AboutWordlyPost;
+import com.wordlypost.PostViewNotification;
 import com.wordlypost.R;
 import com.wordlypost.receivers.GcmBroadcastReceiver;
 
@@ -54,7 +54,7 @@ public class GCMNotificationIntentService extends IntentService {
 		mNotificationManager = (NotificationManager) this
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 
-		Intent intent = new Intent(this, AboutWordlyPost.class);
+		Intent intent = new Intent(this, PostViewNotification.class);
 		intent.putExtra("alert", "1");
 		intent.putExtra("msg", newms);
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, intent, 0);

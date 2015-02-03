@@ -118,6 +118,10 @@
             android:label="@string/title_activity_home_fragment"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".PostViewNotification"
+            android:label="@string/title_activity_post_view_notification" >
+        </activity>
     </application>
 
 </manifest>
