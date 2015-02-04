@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -29,6 +30,7 @@ import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.adapters.PostAdapter;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.dao.SearchPostsDAO;
+import com.wordlypost.google.adcontroller.AdController;
 import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.Utils;
 
@@ -41,12 +43,19 @@ public class SearchPost extends ActionBarActivity {
 	private PostAdapter adapter;
 	private ProgressBar progressBar;
 	private SearchPostsDAO searchPostsDAO;
+	private AdController adController;
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		try {
+			if (adController != null) {
+				adController.pauseAdView();
+			} else {
+				new AdController().pauseAdView();
+			}
+
 			Tracker t = ((WordlyPostGoogleAnalytics) getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
 			t.setScreenName(getString(R.string.search_posts_screen_name));
@@ -61,11 +70,19 @@ public class SearchPost extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_post);
+
+		try {
+			RelativeLayout bannerLayout = (RelativeLayout) findViewById(R.id.searchBannerAd);
+			new AdController().bannerAd(SearchPost.this, bannerLayout,
+					getString(R.string.search_posts_banner_unit_id));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		rowItems = new ArrayList<PostRowItem>();
 		searchPostsList = (ListView) findViewById(R.id.searchPostsList);
 		progressBar = (ProgressBar) findViewById(R.id.searchPostsProgressBar);
-		adapter = new PostAdapter(SearchPost.this, R.layout.post_list_item,
-				rowItems);
+		adapter = new PostAdapter(SearchPost.this, R.layout.post_list_item, rowItems);
 		searchPostsList.setAdapter(adapter);
 
 		searchPostsList.setOnScrollListener(new OnScrollListener() {
@@ -75,8 +92,8 @@ public class SearchPost extends ActionBarActivity {
 			}
 
 			@Override
-			public void onScroll(AbsListView view, int firstVisibleItem,
-					int visibleItemCount, int totalItemCount) {
+			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+					int totalItemCount) {
 
 				int lastInScreen = firstVisibleItem + visibleItemCount;
 				if ((lastInScreen == totalItemCount) && !(loadingMore)) {
@@ -90,12 +107,9 @@ public class SearchPost extends ActionBarActivity {
 		});
 
 		searchPostsList.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				startActivity(new Intent(SearchPost.this,
-						PostViewSwipeActivity.class)
-						.putExtra("postDetails", rowItems)
-						.putExtra("position", position)
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				startActivity(new Intent(SearchPost.this, PostViewSwipeActivity.class)
+						.putExtra("postDetails", rowItems).putExtra("position", position)
 						.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			}
 		});
@@ -106,8 +120,7 @@ public class SearchPost extends ActionBarActivity {
 			loadingMore = true;
 			progressBar.setVisibility(View.VISIBLE);
 
-			BuildService.build.searchPosts(
-					getIntent().getStringExtra("search"), page,
+			BuildService.build.searchPosts(getIntent().getStringExtra("search"), page,
 					new Callback<String>() {
 
 						@Override
@@ -125,89 +138,56 @@ public class SearchPost extends ActionBarActivity {
 								JSONObject obj = new JSONObject(output);
 
 								if (obj.getJSONArray("posts").length() > 0) {
-									JSONArray categotyPosts = obj
-											.getJSONArray("posts");
-									String currentMilliSeconds = Calendar
-											.getInstance().getTimeInMillis()
-											+ "";
+									JSONArray categotyPosts = obj.getJSONArray("posts");
+									String currentMilliSeconds = Calendar.getInstance()
+											.getTimeInMillis() + "";
 
 									for (int i = 0; i < categotyPosts.length(); i++) {
-										JSONObject categotyPost = categotyPosts
-												.getJSONObject(i);
+										JSONObject categotyPost = categotyPosts.getJSONObject(i);
 
 										PostRowItem item = new PostRowItem();
 
-										item.setPost_id(categotyPost
-												.getInt("id"));
-										item.setTitle(categotyPost
-												.getString("title"));
-										item.setDate(categotyPost
-												.getString("date"));
-										item.setPost_icon_url(categotyPost
-												.getString("thumbnail"));
-										item.setAuthor(categotyPost
-												.getJSONObject("author")
+										item.setPost_id(categotyPost.getInt("id"));
+										item.setTitle(categotyPost.getString("title"));
+										item.setDate(categotyPost.getString("date"));
+										item.setPost_icon_url(categotyPost.getString("thumbnail"));
+										item.setAuthor(categotyPost.getJSONObject("author")
 												.getString("name"));
-										item.setContent(categotyPost
-												.getString("content"));
+										item.setContent(categotyPost.getString("content"));
 										item.setPost_banner(categotyPost
-												.getJSONObject(
-														"thumbnail_images")
-												.getJSONObject("full")
-												.getString("url"));
-										item.setComment_count(categotyPost
-												.getInt("comment_count"));
-										item.setPost_url(categotyPost
-												.getString("url"));
-										item.setPost_des(categotyPost
-												.getString("excerpt"));
+												.getJSONObject("thumbnail_images")
+												.getJSONObject("full").getString("url"));
+										item.setComment_count(categotyPost.getInt("comment_count"));
+										item.setPost_url(categotyPost.getString("url"));
+										item.setPost_des(categotyPost.getString("excerpt"));
 
-										if (categotyPost
-												.getInt("comment_count") > 0) {
-											item.setCommentsArray(categotyPost
-													.getJSONArray("comments")
-													.toString());
+										if (categotyPost.getInt("comment_count") > 0) {
+											item.setCommentsArray(categotyPost.getJSONArray(
+													"comments").toString());
 										}
-										item.setTagsArray(categotyPost
-												.getJSONArray("tags")
+										item.setTagsArray(categotyPost.getJSONArray("tags")
 												.toString());
 
 										rowItems.add(item);
 
 										if (page == 1) {
-											searchPostsDAO = new SearchPostsDAO(
-													SearchPost.this);
+											searchPostsDAO = new SearchPostsDAO(SearchPost.this);
 											searchPostsDAO.insertSearchPosts(
 													categotyPost.getInt("id"),
-													categotyPost
-															.getString("title"),
-													categotyPost
-															.getString("date"),
-													categotyPost
-															.getString("thumbnail"),
-													categotyPost.getJSONObject(
-															"author")
-															.getString("name"),
-													categotyPost
-															.getString("content"),
-													categotyPost
-															.getJSONObject(
-																	"thumbnail_images")
-															.getJSONObject(
-																	"full")
-															.getString("url"),
-													categotyPost
-															.getInt("comment_count"),
-													categotyPost
-															.getString("url"),
-													currentMilliSeconds,
-													categotyPost
-															.getString("excerpt"),
-													categotyPost.getJSONArray(
-															"comments")
-															.toString(),
-													categotyPost.getJSONArray(
-															"tags").toString());
+													categotyPost.getString("title"),
+													categotyPost.getString("date"),
+													categotyPost.getString("thumbnail"),
+													categotyPost.getJSONObject("author").getString(
+															"name"),
+													categotyPost.getString("content"),
+													categotyPost.getJSONObject("thumbnail_images")
+															.getJSONObject("full").getString("url"),
+													categotyPost.getInt("comment_count"),
+													categotyPost.getString("url"),
+													currentMilliSeconds, categotyPost
+															.getString("excerpt"), categotyPost
+															.getJSONArray("comments").toString(),
+													categotyPost.getJSONArray("tags").toString());
 										}
 									}
 
@@ -249,14 +229,12 @@ public class SearchPost extends ActionBarActivity {
 
 		if (searchPostsDAO.getSearchPostsCount() > 0) {
 			rowItems = searchPostsDAO.getSearchPosts();
-			adapter = new PostAdapter(SearchPost.this, R.layout.post_list_item,
-					rowItems);
+			adapter = new PostAdapter(SearchPost.this, R.layout.post_list_item, rowItems);
 
 			searchPostsList.setAdapter(adapter);
 			adapter.notifyDataSetChanged();
 		} else {
-			Utils.displayToad(SearchPost.this,
-					getString(R.string.no_posts_error_msg));
+			Utils.displayToad(SearchPost.this, getString(R.string.no_posts_error_msg));
 		}
 		progressBar.setVisibility(View.GONE);
 	}
@@ -271,6 +249,28 @@ public class SearchPost extends ActionBarActivity {
 			startActivity(tabsIntent);
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (adController != null) {
+			adController.pauseAdView();
+		} else {
+			new AdController().pauseAdView();
+		}
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (adController != null) {
+			adController.destroyAdView();
+		} else {
+			new AdController().destroyAdView();
 		}
 	}
 }

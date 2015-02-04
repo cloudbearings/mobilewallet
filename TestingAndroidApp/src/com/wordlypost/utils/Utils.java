@@ -125,4 +125,34 @@ public class Utils {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public static void storeAddClosedDate(Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.ADD_LOADED_DATE,
+				Context.MODE_PRIVATE)).edit();
+		editor.putLong(Config.ADD_LOADED_DATE, new Date().getTime());
+		editor.commit();
+	}
+
+	private static long getAddClosedDate(Context context) {
+		return (context.getSharedPreferences(Config.ADD_LOADED_DATE, Context.MODE_PRIVATE))
+				.getLong(Config.ADD_LOADED_DATE, 0);
+	}
+
+	public static boolean openAd(Context context) {
+		boolean call = false;
+		try {
+			long closedTime = getAddClosedDate(context);
+
+			if (closedTime != 0) {
+				long diff = (new Date().getTime()) - closedTime;
+				call = (diff / 1000) % 60 >= 5;
+				Log.i("Seconds Diff :", (diff / 1000) % 60 + "");
+			} else {
+				call = true;
+			}
+		} catch (Exception e) {
+
+		}
+		return call;
+	}
 }

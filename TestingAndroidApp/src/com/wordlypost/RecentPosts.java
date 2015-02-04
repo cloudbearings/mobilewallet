@@ -21,6 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -28,6 +29,7 @@ import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.adapters.PostAdapter;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.dao.RecentPostsDAO;
+import com.wordlypost.google.adcontroller.AdController;
 import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.Utils;
 
@@ -40,12 +42,20 @@ public class RecentPosts extends ActionBarActivity {
 	private PostAdapter adapter;
 	private ProgressBar progressBar;
 	private RecentPostsDAO recentPostsDAO;
+	private AdController adController;
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		try {
+
+			if (adController != null) {
+				adController.resumeAdView();
+			} else {
+				new AdController().resumeAdView();
+			}
+
 			Tracker t = ((WordlyPostGoogleAnalytics) getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
 			t.setScreenName(getString(R.string.recent_posts_screen_name));
@@ -60,6 +70,15 @@ public class RecentPosts extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.recent_posts);
+
+		try {
+			RelativeLayout bannerLayout = (RelativeLayout) findViewById(R.id.recentBannerAd);
+			new AdController().bannerAd(RecentPosts.this, bannerLayout,
+					getString(R.string.recent_posts_banner_unit_id));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		rowItems = new ArrayList<PostRowItem>();
 		recentPostsList = (ListView) findViewById(R.id.recentPostsList);
 		progressBar = (ProgressBar) findViewById(R.id.recentPostsProgressBar);
@@ -213,12 +232,33 @@ public class RecentPosts extends ActionBarActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent tabsIntent = new Intent(RecentPosts.this,
-					TabsActivity.class);
+			Intent tabsIntent = new Intent(RecentPosts.this, TabsActivity.class);
 			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(tabsIntent);
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (adController != null) {
+			adController.pauseAdView();
+		} else {
+			new AdController().pauseAdView();
+		}
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (adController != null) {
+			adController.destroyAdView();
+		} else {
+			new AdController().destroyAdView();
 		}
 	}
 }

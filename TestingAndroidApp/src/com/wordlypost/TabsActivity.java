@@ -32,6 +32,8 @@ import com.wordlypost.adapters.NavDrawerListAdapter;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.dao.CategoriesDAO;
 import com.wordlypost.gcm.GcmRegistration;
+import com.wordlypost.google.adcontroller.AdController;
+import com.wordlypost.utils.Utils;
 
 public class TabsActivity extends ActionBarActivity {
 
@@ -62,6 +64,15 @@ public class TabsActivity extends ActionBarActivity {
 		new GcmRegistration(TabsActivity.this).register();
 		setContentView(R.layout.tabs_activity);
 		try {
+
+			try {
+				if (Utils.openAd(TabsActivity.this)) {
+					new AdController().interstitialAd(TabsActivity.this,
+							getString(R.string.home_interstitial_unit_id));
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 			mDrawerList = (ListView) findViewById(R.id.list_slidermenu);

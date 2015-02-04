@@ -23,15 +23,23 @@ import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.dao.HomeDAO;
+import com.wordlypost.google.adcontroller.AdController;
 import com.wordlypost.utils.ImageLoader;
 
 public class HomeFragment extends Fragment {
+	private AdController adController;
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		try {
+			if (adController != null) {
+				adController.resumeAdView();
+			} else {
+				new AdController().resumeAdView();
+			}
+
 			Tracker t = ((WordlyPostGoogleAnalytics) getActivity().getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
 			t.setScreenName(getString(R.string.home_fragment_screen_name));
@@ -128,6 +136,14 @@ public class HomeFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.home_fragment, container, false);
 		try {
+			try {
+				RelativeLayout bannerLayout = (RelativeLayout) view.findViewById(R.id.homeBannerAd);
+				new AdController().bannerAd(getActivity(), bannerLayout,
+						getString(R.string.home_banner_unit_id));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			homeDAO = new HomeDAO(getActivity());
 			List<NavDrawerItem> categories = homeDAO.getHomeRandomCategories();
 			for (int i = 0; i < categories.size(); i++) {
@@ -257,6 +273,28 @@ public class HomeFragment extends Fragment {
 			startActivity(new Intent(getActivity(), PostViewSwipeActivity.class)
 					.putExtra("postDetails", items).putExtra("position", position)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+		}
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (adController != null) {
+			adController.pauseAdView();
+		} else {
+			new AdController().pauseAdView();
+		}
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (adController != null) {
+			adController.destroyAdView();
+		} else {
+			new AdController().destroyAdView();
 		}
 	}
 }

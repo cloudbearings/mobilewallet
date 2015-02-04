@@ -2,36 +2,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/listview_layout_padding"
     tools:context="com.wordlypost.SearchPost" >
 
-    <ListView
-        android:id="@+id/searchPostsList"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/listview_layout_padding" >
+
+        <ListView
+            android:id="@+id/searchPostsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/searchPostsProgressBar"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:scrollbars="none" >
+        </ListView>
+
+        <ProgressBar
+            android:id="@+id/searchPostsProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone" />
+
+        <com.wordlypost.textview.Helvetica
+            android:id="@+id/error_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/offerbg"
+            android:gravity="center"
+            android:textSize="@dimen/error_message_textsize"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searchBannerAd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/searchPostsProgressBar"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:scrollbars="none" >
-    </ListView>
-
-    <ProgressBar
-        android:id="@+id/searchPostsProgressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone" />
-
-    <com.wordlypost.textview.Helvetica
-        android:id="@+id/error_msg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/offerbg"
-        android:gravity="center"
-        android:textSize="@dimen/error_message_textsize"
-        android:visibility="gone" />
+        android:layout_alignParentBottom="true" >
+    </RelativeLayout>
 
 </RelativeLayout>

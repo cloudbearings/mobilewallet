@@ -9,13 +9,13 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.wordlypost.utils.Utils;
 
 public class AdController {
 
 	private AdView adView;
 
-	public void bannerAd(Context context, RelativeLayout layout,
-			String AD_UNIT_ID) {
+	public void bannerAd(Context context, RelativeLayout layout, String AD_UNIT_ID) {
 		try {
 
 			// Create an ad.
@@ -69,8 +69,7 @@ public class AdController {
 	private InterstitialAd interstitialAd;
 	private boolean isLoaded = true;
 
-	public void interstitialAd(final Context context, RelativeLayout layout,
-			String AD_UNIT_ID) {
+	public void interstitialAd(final Context context, String AD_UNIT_ID) {
 		/** The log tag. */
 		final String LOG_TAG = "InterstitialAdd";
 
@@ -86,6 +85,7 @@ public class AdController {
 				public void onAdLoaded() {
 					if (isLoaded) {
 						isLoaded = false;
+						Utils.storeAddClosedDate(context);
 						interstitialAd.show();
 					}
 				}
