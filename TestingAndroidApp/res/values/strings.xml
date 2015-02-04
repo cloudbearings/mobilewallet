@@ -95,4 +95,14 @@
     <string name="title_activity_home_fragment">Home</string>
     <string name="title_activity_post_view_notification">PostView</string>
 
+    <!-- AdMob unit ids -->
+    <string name="home_banner_unit_id">ca-app-pub-6058638697889796/8547304065</string>
+    <string name="category_posts_banner_unit_id">ca-app-pub-6058638697889796/3419100467</string>
+    <string name="about_us_banner_unit_id">ca-app-pub-6058638697889796/6372566863</string>
+    <string name="privacy_policy_banner_unit_id">ca-app-pub-6058638697889796/7849300068</string>
+    <string name="recent_posts_banner_unit_id">ca-app-pub-6058638697889796/3279499662</string>
+    <string name="search_posts_banner_unit_id">ca-app-pub-6058638697889796/4756232867</string>
+    <string name="post_view_banner_unit_id">ca-app-pub-6058638697889796/6093365260</string>
+    <string name="home_interstitial_unit_id">ca-app-pub-6058638697889796/3977503660</string>
+
 </resources>

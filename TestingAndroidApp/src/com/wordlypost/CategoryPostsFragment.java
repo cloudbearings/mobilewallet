@@ -20,6 +20,7 @@ import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
@@ -29,6 +30,7 @@ import com.wordlypost.adapters.CategoryPostsAdapter;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.beans.PostRowItem;
 import com.wordlypost.dao.PostsDAO;
+import com.wordlypost.google.adcontroller.AdController;
 import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.Utils;
 
@@ -42,10 +44,19 @@ public class CategoryPostsFragment extends Fragment {
 	private ProgressBar progressBar;
 	private NavDrawerItem categoryItem;
 	private PostsDAO postsDAO;
+	private AdController adController;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.category_posts_fragment, container, false);
+
+		try {
+			RelativeLayout bannerLayout = (RelativeLayout) view.findViewById(R.id.bannerAd);
+			new AdController().bannerAd(getActivity(), bannerLayout,
+					getString(R.string.category_posts_banner_unit_id));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Bundle bundle = getArguments();
 		if (bundle.getSerializable("category") != null) {
 			categoryItem = (NavDrawerItem) bundle.getSerializable("category");
@@ -217,5 +228,38 @@ public class CategoryPostsFragment extends Fragment {
 			Utils.displayToad(getActivity(), getString(R.string.no_posts_error_msg));
 		}
 		progressBar.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (adController != null) {
+			adController.resumeAdView();
+		} else {
+			new AdController().resumeAdView();
+		}
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (adController != null) {
+			adController.pauseAdView();
+		} else {
+			new AdController().pauseAdView();
+		}
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (adController != null) {
+			adController.destroyAdView();
+		} else {
+			new AdController().destroyAdView();
+		}
 	}
 }

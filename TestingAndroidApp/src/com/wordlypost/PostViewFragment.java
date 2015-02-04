@@ -21,18 +21,21 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.beans.PostRowItem;
+import com.wordlypost.google.adcontroller.AdController;
 import com.wordlypost.utils.ImageLoader;
 import com.wordlypost.utils.PostCommentPopUp;
 
 public class PostViewFragment extends Fragment {
 
 	private PostRowItem postDetails;
+	private AdController adController;
 
 	private String postUrl, postTitle;
 
@@ -59,6 +62,16 @@ public class PostViewFragment extends Fragment {
 
 		view = inflater.inflate(R.layout.post_view, container, false);
 		try {
+
+			try {
+				RelativeLayout bannerLayout = (RelativeLayout) view
+						.findViewById(R.id.postViewBannerAd);
+				new AdController().bannerAd(getActivity(), bannerLayout,
+						getString(R.string.post_view_banner_unit_id));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
 			Bundle args = getArguments();
 			if (args.getSerializable("postView") != null) {
 				postDetails = (PostRowItem) args.getSerializable("postView");
@@ -209,6 +222,39 @@ public class PostViewFragment extends Fragment {
 			return getString(R.string.comments);
 		} else {
 			return getString(R.string.pv_comment);
+		}
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (adController != null) {
+			adController.resumeAdView();
+		} else {
+			new AdController().resumeAdView();
+		}
+	}
+
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		if (adController != null) {
+			adController.pauseAdView();
+		} else {
+			new AdController().pauseAdView();
+		}
+	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		if (adController != null) {
+			adController.destroyAdView();
+		} else {
+			new AdController().destroyAdView();
 		}
 	}
 }
