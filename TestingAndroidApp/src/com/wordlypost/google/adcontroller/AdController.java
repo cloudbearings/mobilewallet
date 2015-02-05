@@ -13,9 +13,9 @@ import com.wordlypost.utils.Utils;
 
 public class AdController {
 
-	private AdView adView;
+	private static AdView adView;
 
-	public void bannerAd(Context context, RelativeLayout layout, String AD_UNIT_ID) {
+	public static void bannerAd(Context context, RelativeLayout layout, String AD_UNIT_ID) {
 		try {
 
 			// Create an ad.
@@ -46,19 +46,19 @@ public class AdController {
 		}
 	}
 
-	public void resumeAdView() {
+	public static void resumeAdView() {
 		if (adView != null) {
 			adView.resume();
 		}
 	}
 
-	public void pauseAdView() {
+	public static void pauseAdView() {
 		if (adView != null) {
 			adView.pause();
 		}
 	}
 
-	public void destroyAdView() {
+	public static void destroyAdView() {
 		// Destroy the AdView.
 		if (adView != null) {
 			adView.destroy();

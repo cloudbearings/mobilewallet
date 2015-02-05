@@ -15,18 +15,13 @@ import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.google.adcontroller.AdController;
 
 public class PrivacyPolicy extends ActionBarActivity {
-	private AdController adController;
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		try {
-			if (adController != null) {
-				adController.resumeAdView();
-			} else {
-				new AdController().resumeAdView();
-			}
+			AdController.resumeAdView();
 
 			Tracker t = ((WordlyPostGoogleAnalytics) getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
@@ -45,7 +40,7 @@ public class PrivacyPolicy extends ActionBarActivity {
 
 		try {
 			RelativeLayout bannerLayout = (RelativeLayout) findViewById(R.id.privacyBannerAd);
-			new AdController().bannerAd(PrivacyPolicy.this, bannerLayout,
+			AdController.bannerAd(PrivacyPolicy.this, bannerLayout,
 					getString(R.string.privacy_policy_banner_unit_id));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,23 +65,14 @@ public class PrivacyPolicy extends ActionBarActivity {
 
 	@Override
 	public void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
-		if (adController != null) {
-			adController.pauseAdView();
-		} else {
-			new AdController().pauseAdView();
-		}
+		AdController.pauseAdView();
+
 	}
 
 	@Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
-		if (adController != null) {
-			adController.destroyAdView();
-		} else {
-			new AdController().destroyAdView();
-		}
+		AdController.destroyAdView();
 	}
 }

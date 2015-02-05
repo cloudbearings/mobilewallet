@@ -35,7 +35,6 @@ import com.wordlypost.utils.PostCommentPopUp;
 public class PostViewFragment extends Fragment {
 
 	private PostRowItem postDetails;
-	private AdController adController;
 
 	private String postUrl, postTitle;
 
@@ -66,7 +65,7 @@ public class PostViewFragment extends Fragment {
 			try {
 				RelativeLayout bannerLayout = (RelativeLayout) view
 						.findViewById(R.id.postViewBannerAd);
-				new AdController().bannerAd(getActivity(), bannerLayout,
+				AdController.bannerAd(getActivity(), bannerLayout,
 						getString(R.string.post_view_banner_unit_id));
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -227,34 +226,7 @@ public class PostViewFragment extends Fragment {
 
 	@Override
 	public void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
-		if (adController != null) {
-			adController.resumeAdView();
-		} else {
-			new AdController().resumeAdView();
-		}
-	}
-
-	@Override
-	public void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		if (adController != null) {
-			adController.pauseAdView();
-		} else {
-			new AdController().pauseAdView();
-		}
-	}
-
-	@Override
-	public void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		if (adController != null) {
-			adController.destroyAdView();
-		} else {
-			new AdController().destroyAdView();
-		}
+		AdController.resumeAdView();
 	}
 }

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.wordlypost.adapters.PageViewSwipeAdapter;
 import com.wordlypost.beans.PostRowItem;
+import com.wordlypost.google.adcontroller.AdController;
 
 public class PostViewSwipeActivity extends ActionBarActivity {
 
@@ -128,5 +129,18 @@ public class PostViewSwipeActivity extends ActionBarActivity {
 		PostViewFragment o = (PostViewFragment) fr;
 		postUrl = o.getPostUrl();
 		postTitle = o.getPostTitle();
+	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		AdController.pauseAdView();
+
+	}
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		AdController.destroyAdView();
 	}
 }
