@@ -43,18 +43,13 @@ public class SearchPost extends ActionBarActivity {
 	private PostAdapter adapter;
 	private ProgressBar progressBar;
 	private SearchPostsDAO searchPostsDAO;
-	private AdController adController;
 
 	@Override
 	public void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 		try {
-			if (adController != null) {
-				adController.pauseAdView();
-			} else {
-				new AdController().pauseAdView();
-			}
+			AdController.resumeAdView();
 
 			Tracker t = ((WordlyPostGoogleAnalytics) getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
@@ -73,7 +68,7 @@ public class SearchPost extends ActionBarActivity {
 
 		try {
 			RelativeLayout bannerLayout = (RelativeLayout) findViewById(R.id.searchBannerAd);
-			new AdController().bannerAd(SearchPost.this, bannerLayout,
+			AdController.bannerAd(SearchPost.this, bannerLayout,
 					getString(R.string.search_posts_banner_unit_id));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -254,23 +249,14 @@ public class SearchPost extends ActionBarActivity {
 
 	@Override
 	public void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
-		if (adController != null) {
-			adController.pauseAdView();
-		} else {
-			new AdController().pauseAdView();
-		}
+		AdController.pauseAdView();
+
 	}
 
 	@Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
-		if (adController != null) {
-			adController.destroyAdView();
-		} else {
-			new AdController().destroyAdView();
-		}
+		AdController.destroyAdView();
 	}
 }

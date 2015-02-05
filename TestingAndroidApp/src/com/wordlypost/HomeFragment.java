@@ -27,18 +27,13 @@ import com.wordlypost.google.adcontroller.AdController;
 import com.wordlypost.utils.ImageLoader;
 
 public class HomeFragment extends Fragment {
-	private AdController adController;
 
 	@Override
 	public void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		try {
-			if (adController != null) {
-				adController.resumeAdView();
-			} else {
-				new AdController().resumeAdView();
-			}
+
+			AdController.resumeAdView();
 
 			Tracker t = ((WordlyPostGoogleAnalytics) getActivity().getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
@@ -138,7 +133,7 @@ public class HomeFragment extends Fragment {
 		try {
 			try {
 				RelativeLayout bannerLayout = (RelativeLayout) view.findViewById(R.id.homeBannerAd);
-				new AdController().bannerAd(getActivity(), bannerLayout,
+				AdController.bannerAd(getActivity(), bannerLayout,
 						getString(R.string.home_banner_unit_id));
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -278,23 +273,14 @@ public class HomeFragment extends Fragment {
 
 	@Override
 	public void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
-		if (adController != null) {
-			adController.pauseAdView();
-		} else {
-			new AdController().pauseAdView();
-		}
+		AdController.pauseAdView();
+
 	}
 
 	@Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
-		if (adController != null) {
-			adController.destroyAdView();
-		} else {
-			new AdController().destroyAdView();
-		}
+		AdController.destroyAdView();
 	}
 }

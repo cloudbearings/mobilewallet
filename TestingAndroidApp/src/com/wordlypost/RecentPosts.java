@@ -42,7 +42,6 @@ public class RecentPosts extends ActionBarActivity {
 	private PostAdapter adapter;
 	private ProgressBar progressBar;
 	private RecentPostsDAO recentPostsDAO;
-	private AdController adController;
 
 	@Override
 	public void onResume() {
@@ -50,11 +49,7 @@ public class RecentPosts extends ActionBarActivity {
 		super.onResume();
 		try {
 
-			if (adController != null) {
-				adController.resumeAdView();
-			} else {
-				new AdController().resumeAdView();
-			}
+			AdController.resumeAdView();
 
 			Tracker t = ((WordlyPostGoogleAnalytics) getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
@@ -73,7 +68,7 @@ public class RecentPosts extends ActionBarActivity {
 
 		try {
 			RelativeLayout bannerLayout = (RelativeLayout) findViewById(R.id.recentBannerAd);
-			new AdController().bannerAd(RecentPosts.this, bannerLayout,
+			AdController.bannerAd(RecentPosts.this, bannerLayout,
 					getString(R.string.recent_posts_banner_unit_id));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -242,23 +237,14 @@ public class RecentPosts extends ActionBarActivity {
 
 	@Override
 	public void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
-		if (adController != null) {
-			adController.pauseAdView();
-		} else {
-			new AdController().pauseAdView();
-		}
+		AdController.pauseAdView();
+
 	}
 
 	@Override
 	public void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
-		if (adController != null) {
-			adController.destroyAdView();
-		} else {
-			new AdController().destroyAdView();
-		}
+		AdController.destroyAdView();
 	}
 }
