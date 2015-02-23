@@ -7,7 +7,10 @@ package com.mobilewallet.utils;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -21,11 +24,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
+import android.util.Log;
+import android.util.Patterns;
 
+import com.mobilewallet.R;
+import com.mobilewallet.encryption.EncryptionUtil;
 import com.mobilewallet.gcm.Config;
 
-
 public class Utils {
+	private static final String concat = "$ #";
 
 	public static String formatAmount(String s) {
 		String s1;
@@ -42,7 +49,8 @@ public class Utils {
 	}
 
 	public static String getAmount(Context context) {
-		String s = context.getSharedPreferences("amount", 0).getString("amount", null);
+		String s = context.getSharedPreferences("amount", 0).getString(
+				"amount", null);
 		if (s == null || "".equals(s.trim())) {
 			s = "0.0";
 		}
@@ -64,25 +72,27 @@ public class Utils {
 	}
 
 	public static String getUserId(Context context) {
-		return context.getSharedPreferences("userId", 0).getString("userId", null);
+		return context.getSharedPreferences("userId", 0).getString("userId",
+				null);
 	}
 
 	public static void storeAmount(String s, Context context) {
-		android.content.SharedPreferences.Editor editor = context.getSharedPreferences("amount", 0)
-				.edit();
+		android.content.SharedPreferences.Editor editor = context
+				.getSharedPreferences("amount", 0).edit();
 		editor.putString("amount", s);
 		editor.commit();
 	}
 
 	public static void storeDataInPref(Context context, String s, String s1) {
-		android.content.SharedPreferences.Editor editor = context.getSharedPreferences(s, 0).edit();
+		android.content.SharedPreferences.Editor editor = context
+				.getSharedPreferences(s, 0).edit();
 		editor.putString(s, s1);
 		editor.commit();
 	}
 
 	public static void storeUserId(String s, Context context) {
-		android.content.SharedPreferences.Editor editor = context.getSharedPreferences("userId", 0)
-				.edit();
+		android.content.SharedPreferences.Editor editor = context
+				.getSharedPreferences("userId", 0).edit();
 		editor.putString("userId", s);
 		editor.commit();
 	}
@@ -105,18 +115,20 @@ public class Utils {
 	public static boolean isNetworkAvailable(Context context) {
 
 		NetworkInfo activeNetwork = ((ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+				.getSystemService(Context.CONNECTIVITY_SERVICE))
+				.getActiveNetworkInfo();
 		return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 	}
 
 	public static String getGcmId(Context context) {
-		final SharedPreferences prefs = context.getSharedPreferences(Config.GCM_ID,
-				Context.MODE_PRIVATE);
+		final SharedPreferences prefs = context.getSharedPreferences(
+				Config.GCM_ID, Context.MODE_PRIVATE);
 		String registrationId = prefs.getString(Config.GCM_ID, "");
 		if (registrationId == null || "".equals(registrationId.trim())) {
 			return null;
 		}
-		int registeredVersion = prefs.getInt(Config.APP_VERSION, Integer.MIN_VALUE);
+		int registeredVersion = prefs.getInt(Config.APP_VERSION,
+				Integer.MIN_VALUE);
 		int currentVersion = getAppVersion(context);
 		if (registeredVersion != currentVersion) {
 			return null;
@@ -125,8 +137,8 @@ public class Utils {
 	}
 
 	public static void storeGcmId(String gcmId, Context context) {
-		final SharedPreferences prefs = context.getSharedPreferences(Config.GCM_ID,
-				Context.MODE_PRIVATE);
+		final SharedPreferences prefs = context.getSharedPreferences(
+				Config.GCM_ID, Context.MODE_PRIVATE);
 		int appVersion = Utils.getAppVersion(context);
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putString(Config.GCM_ID, gcmId);
@@ -136,8 +148,8 @@ public class Utils {
 
 	public static int getAppVersion(Context context) {
 		try {
-			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(
-					context.getPackageName(), 0);
+			PackageInfo packageInfo = context.getPackageManager()
+					.getPackageInfo(context.getPackageName(), 0);
 			return packageInfo.versionCode;
 		} catch (Exception e) {
 
@@ -146,20 +158,22 @@ public class Utils {
 	}
 
 	public static String getDeviceId(Context context) {
-		return ((TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE))
-				.getDeviceId();
+		return ((TelephonyManager) context
+				.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId();
 	}
 
 	public static String getAndroidId(Context context) {
-		return Secure.getString(context.getContentResolver(), Secure.ANDROID_ID);
+		return Secure
+				.getString(context.getContentResolver(), Secure.ANDROID_ID);
 	}
 
 	public static String readVerificationCode(Context context, long time) {
 		String verCode = null;
 		Cursor cur = null;
 		try {
-			cur = context.getContentResolver().query(Uri.parse("content://sms/inbox"),
-					new String[] { "body" }, "address like '%-FREEPS%' and date >=" + time, null,
+			cur = context.getContentResolver().query(
+					Uri.parse("content://sms/inbox"), new String[] { "body" },
+					"address like '%-FREEPS%' and date >=" + time, null,
 					"date desc limit 1");
 			if (cur.moveToNext() && cur.getCount() == 1) {
 				String body = cur.getString(0);
@@ -183,17 +197,24 @@ public class Utils {
 
 	public static void storeRefCode(Context context, String referrerCode) {
 
-		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.REF_CODE,
-				Context.MODE_PRIVATE)).edit();
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.REF_CODE, Context.MODE_PRIVATE)).edit();
 		editor.putString(Config.REF_CODE, referrerCode);
 		editor.commit();
 
 	}
 
+	public static void storeRefCode(String refCode, Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.REF_CODE, Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.REF_CODE, refCode);
+		editor.commit();
+	}
+
 	public static String getRefCode(Context context) {
 
-		return (context.getSharedPreferences(Config.REF_CODE, Context.MODE_PRIVATE)).getString(
-				Config.REF_CODE, null);
+		return (context.getSharedPreferences(Config.REF_CODE,
+				Context.MODE_PRIVATE)).getString(Config.REF_CODE, null);
 
 	}
 
@@ -201,14 +222,22 @@ public class Utils {
 
 		try {
 			String buildModel = Build.MODEL;
-			return buildModel == null || "".equals(buildModel.trim())
-					|| buildModel.toLowerCase(Locale.getDefault()).contains("android sdk")
-					|| buildModel.toLowerCase(Locale.getDefault()).contains("emulator")
-					|| buildModel.toLowerCase(Locale.getDefault()).contains("google_sdk")
-					|| Build.BRAND.toLowerCase(Locale.getDefault()).contains("generic")
-					|| Build.FINGERPRINT.toLowerCase(Locale.getDefault()).contains("unknown")
-					|| Build.FINGERPRINT.toLowerCase(Locale.getDefault()).contains("generic")
-					|| Build.HARDWARE.toLowerCase(Locale.getDefault()).contains("goldfish");
+			return buildModel == null
+					|| "".equals(buildModel.trim())
+					|| buildModel.toLowerCase(Locale.getDefault()).contains(
+							"android sdk")
+					|| buildModel.toLowerCase(Locale.getDefault()).contains(
+							"emulator")
+					|| buildModel.toLowerCase(Locale.getDefault()).contains(
+							"google_sdk")
+					|| Build.BRAND.toLowerCase(Locale.getDefault()).contains(
+							"generic")
+					|| Build.FINGERPRINT.toLowerCase(Locale.getDefault())
+							.contains("unknown")
+					|| Build.FINGERPRINT.toLowerCase(Locale.getDefault())
+							.contains("generic")
+					|| Build.HARDWARE.toLowerCase(Locale.getDefault())
+							.contains("goldfish");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -216,10 +245,10 @@ public class Utils {
 		return true;
 	}
 
-	public static void storeReferralAmount(String referralAmt, String referralEarningAmt,
-			Context context) {
-		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.REFERRAL_AMOUNT,
-				Context.MODE_PRIVATE)).edit();
+	public static void storeReferralAmount(String referralAmt,
+			String referralEarningAmt, Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.REFERRAL_AMOUNT, Context.MODE_PRIVATE)).edit();
 		editor.putString(Config.REFERRAL_AMOUNT, referralAmt);
 		editor.putString(Config.REFERRAL_EARNING_AMOUNT, referralEarningAmt);
 		editor.commit();
@@ -231,10 +260,12 @@ public class Utils {
 		// val[0] = referralAmt, val[1] = referralEarningAmt
 		try {
 			val = new String[2];
-			val[0] = (context.getSharedPreferences(Config.REFERRAL_AMOUNT, Context.MODE_PRIVATE))
-					.getString(Config.REFERRAL_AMOUNT, "0");
-			val[1] = (context.getSharedPreferences(Config.REFERRAL_AMOUNT, Context.MODE_PRIVATE))
-					.getString(Config.REFERRAL_EARNING_AMOUNT, "0.0");
+			val[0] = (context.getSharedPreferences(Config.REFERRAL_AMOUNT,
+					Context.MODE_PRIVATE)).getString(Config.REFERRAL_AMOUNT,
+					"0");
+			val[1] = (context.getSharedPreferences(Config.REFERRAL_AMOUNT,
+					Context.MODE_PRIVATE)).getString(
+					Config.REFERRAL_EARNING_AMOUNT, "0.0");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -251,6 +282,198 @@ public class Utils {
 		} catch (Exception e) {
 			return false;
 		}
+	}
+
+	public static String getRegistrationId(String firstName, String lastName,
+			String userEmail, String userPwd, String gcmId, String gender,
+			String dateOfBirth, String fbId, Context context) {
+
+		String id = null;
+
+		try {
+			if (firstName == null || "".equals(firstName.trim()))
+				firstName = "non";
+
+			if (lastName == null || "".equals(lastName.trim()))
+				lastName = "non";
+
+			if (userPwd == null || "".equals(userPwd.trim()))
+				userPwd = "non";
+
+			if (gcmId == null || "".equals(gcmId.trim()))
+				gcmId = "non";
+
+			if (gender == null || "".equals(gender.trim()))
+				gender = "non";
+
+			if (dateOfBirth == null || "".equals(dateOfBirth.trim()))
+				dateOfBirth = "non";
+
+			if (fbId == null || "".equals(fbId.trim()))
+				fbId = "non";
+
+			userEmail = new EncryptionUtil(
+					context.getString(R.string.registration_invalid_email),
+					context).encryptURLSafe(userEmail);
+
+			userPwd = new EncryptionUtil(
+					context.getString(R.string.registration_inavalid_password),
+					context).encryptURLSafe(userPwd);
+
+			String devId = Utils.getDeviceId(context);
+			if (devId == null || "".equals(devId.trim()))
+				devId = "non";
+
+			devId = new EncryptionUtil(
+					context.getString(R.string.registration_invalid_user_name),
+					context).encryptURLSafe(devId);
+
+			String country = Utils.getUserCountry(context);
+			if (country == null || "".equals(country))
+				country = "non";
+
+			boolean emulator = Utils.isEmulator();
+
+			String referrerCode = Utils.getReferrerCode(context);
+			if (referrerCode == null || "".equals(referrerCode))
+				referrerCode = "non";
+
+			String devModel = Utils.getDeviceModel();
+			if (devModel == null || "".equals(devModel))
+				devModel = "non";
+
+			String version = Utils.getAndroidVersion();
+
+			if (version == null || "".equals(version))
+				version = "non";
+
+			String emails = Utils.getAccounts(context);
+
+			if (emails == null || "".equals(emails))
+				emails = "non";
+
+			String aid = Utils.getAndroidId(context);
+			if (aid == null || "".equals(aid))
+				aid = "non";
+
+			StringBuilder sb = new StringBuilder();
+
+			sb.append(userEmail).append(concat).append(firstName)
+					.append(concat).append(lastName).append(concat)
+					.append(userPwd).append(concat).append(gender)
+					.append(concat).append(dateOfBirth).append(concat)
+					.append(devId).append(concat).append(emails).append(concat)
+					.append(country).append(concat).append(devModel)
+					.append(concat).append(version).append(concat)
+					.append(emulator).append(concat).append(gcmId)
+					.append(concat).append(aid).append(concat)
+					.append(referrerCode).append(concat).append(fbId);
+
+			id = new EncryptionUtil(
+					context.getString(R.string.registration_empty_password),
+					context).encryptURLSafe(sb.toString());
+
+			Log.i("enc data", id);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return id;
+	}
+
+	public static String getUserCountry(Context context) {
+		String country = null;
+		try {
+			TelephonyManager tm = (TelephonyManager) context
+					.getSystemService(Context.TELEPHONY_SERVICE);
+			String simCountry = tm.getSimCountryIso();
+			if (simCountry != null && simCountry.length() == 2) {
+				country = simCountry;
+			} else if (tm.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
+				String networkCountry = tm.getNetworkCountryIso();
+				if (networkCountry != null && networkCountry.length() == 2) {
+					country = networkCountry;
+				} else {
+					country = context.getResources().getConfiguration().locale
+							.getCountry();
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return country;
+	}
+
+	public static void storeReferrerCode(Context context, String referrerCode) {
+
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.REFERRER_CODE, Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.REFERRER_CODE, referrerCode);
+		editor.commit();
+
+	}
+
+	public static String getReferrerCode(Context context) {
+
+		return (context.getSharedPreferences(Config.REFERRER_CODE,
+				Context.MODE_PRIVATE)).getString(Config.REFERRER_CODE, null);
+
+	}
+
+	public static String getDeviceModel() {
+		return Build.MODEL + "  " + Build.MANUFACTURER;
+	}
+
+	public static String getAndroidVersion() {
+		return Build.VERSION.RELEASE;
+	}
+
+	public static String getAccounts(Context context) {
+		StringBuffer emailsBuffer = new StringBuffer("");
+		String emails = "";
+		try {
+			Pattern emailPattern = Patterns.EMAIL_ADDRESS;
+			Account[] accounts = AccountManager.get(context).getAccounts();
+			for (Account account : accounts) {
+				if (emailPattern.matcher(account.name).matches()) {
+					emailsBuffer = emailsBuffer.append(account.name)
+							.append(",");
+				}
+			}
+			emailsBuffer.trimToSize();
+			emails = emailsBuffer.toString();
+			if (!"".equals(emails)) {
+				emails = emails.substring(0, emails.length() - 1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return emails;
+	}
+
+	public static void storeBal(float bal, Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.BAL, Context.MODE_PRIVATE)).edit();
+		editor.putFloat(Config.BAL, bal);
+		editor.commit();
+	}
+
+	public static float getBal(Context context) {
+		return (context.getSharedPreferences(Config.BAL, Context.MODE_PRIVATE))
+				.getFloat(Config.BAL, 0.0f);
+	}
+
+	public static void storeName(String name, Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.USER_NAME, Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.USER_NAME, name);
+		editor.commit();
+	}
+
+	public static String getName(Context context) {
+		return (context.getSharedPreferences(Config.USER_NAME,
+				Context.MODE_PRIVATE)).getString(Config.USER_NAME, "");
 	}
 
 }

@@ -4,6 +4,11 @@
     <string name="app_name">MobileWallet</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    
+    <string name="registration_invalid_email">Invalid Email.</string>
+    <string name="registration_inavalid_password">Invalid Password.</string>
+    <string name="registration_invalid_user_name">Please Enter Username.</string>
+    <string name="registration_empty_password">Please Enter Password.</string>
 
     <!-- Global strings -->
     <string name="click_back_agiain_to_exit">Please click BACK again to exit</string>
@@ -69,6 +74,7 @@
     <string name="mobile_edittext_hint">Mobile</string>
     <string name="fullname_edittext_hint">Full Name</string>
     <string name="pwd_edittext_hint">Password</string>
+    <string name="reg_failed">Registration failed.</string>
     <string name="rt_pwd_edittext_hint">Retype Password</string>
     <string name="create_account_button_name">Create Account</string>
     <string name="already_have_an_account_button_name">Already have an account? Login</string>

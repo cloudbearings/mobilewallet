@@ -8,12 +8,18 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.json.JSONObject;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.Signature;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -31,12 +37,18 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.mobilewallet.gcm.Config;
+import com.mobilewallet.service.BuildService;
 import com.mobilewallet.utils.Utils;
 
 public class RegisterActivity extends ActionBarActivity {
 
 	private EditText email, name, pwd, mobile;
 	private static final String TAG = "RegisterActivity";
+	private String gcmId;
+	private Button register;
+	private boolean clicked;
 
 	private static final List<String> permissions = new ArrayList<String>();
 	static {
@@ -48,7 +60,8 @@ public class RegisterActivity extends ActionBarActivity {
 	private Session.StatusCallback callBack = new Session.StatusCallback() {
 
 		@Override
-		public void call(Session session, SessionState state, Exception exception) {
+		public void call(Session session, SessionState state,
+				Exception exception) {
 			Log.i(TAG, getString(R.string.session_status));
 
 		}
@@ -90,88 +103,114 @@ public class RegisterActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		uiHelper = new UiLifecycleHelper(RegisterActivity.this, callBack);
 		uiHelper.onCreate(savedInstanceState);
-
+		runTaskForGcmId();
 		super.onCreate(savedInstanceState);
 		try {
 			setContentView(R.layout.register_activity);
 
 			// Specifying actionbar display options
-			getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+			getSupportActionBar().setDisplayOptions(
+					ActionBar.DISPLAY_SHOW_CUSTOM);
 			// Adding custom actionbar.
 			getSupportActionBar().setCustomView(R.layout.custom_actionbar);
 
 			TextView activity_title = (TextView) findViewById(R.id.actionbar_title);
-			activity_title.setTypeface(
-					Utils.getFont(RegisterActivity.this, getString(R.string.Helvetica)),
-					Typeface.BOLD);
+			activity_title.setTypeface(Utils.getFont(RegisterActivity.this,
+					getString(R.string.Helvetica)), Typeface.BOLD);
 			activity_title.setText(getString(R.string.title_activity_register));
 
 			// Facebok authentication code
 			LoginButton fbSignupButton = (LoginButton) findViewById(R.id.sign_up);
 			fbSignupButton.setReadPermissions(permissions);
-			fbSignupButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
-				@Override
-				public void onUserInfoFetched(GraphUser user) {
+			fbSignupButton
+					.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
+						@Override
+						public void onUserInfoFetched(GraphUser user) {
 
-					Session session = Session.getActiveSession();
+							Session session = Session.getActiveSession();
 
-					if (session != null && session.isOpened()) {
-						if (isvalideGraphUser(user)) {
+							if (session != null && session.isOpened()) {
+								if (isvalideGraphUser(user)) {
 
-							try {
+									try {
 
-								Log.i("UserFBDetails", "Hello " + user.getName() + "\nFbid : "
-										+ user.getId() + "\nBirthday : " + user.getBirthday()
-										+ "\nGender : " + user.getProperty("gender") + "\nEmail : "
-										+ user.getProperty("email") + "\nBirthday Date : "
-										+ getDate(user.getBirthday()));
+										Log.i("UserFBDetails",
+												"Hello "
+														+ user.getName()
+														+ "\nFbid : "
+														+ user.getId()
+														+ "\nBirthday : "
+														+ user.getBirthday()
+														+ "\nGender : "
+														+ user.getProperty("gender")
+														+ "\nEmail : "
+														+ user.getProperty("email")
+														+ "\nBirthday Date : "
+														+ getDate(user
+																.getBirthday()));
 
-								startActivity(new Intent(RegisterActivity.this, TabsActivity.class)
-										.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-							} catch (Exception e) {
-								e.printStackTrace();
+										startActivity(new Intent(
+												RegisterActivity.this,
+												TabsActivity.class)
+												.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
+
+								} else {
+									displayToad(getString(R.string.failed_to_get_details));
+								}
+
+								facebookLogout();
 							}
-
-						} else {
-							displayToad(getString(R.string.failed_to_get_details));
 						}
-
-						facebookLogout();
-					}
-				}
-			});
+					});
 
 			mobile = (EditText) findViewById(R.id.mobile_number);
 			email = (EditText) findViewById(R.id.email);
 			name = (EditText) findViewById(R.id.fullname);
 			pwd = (EditText) findViewById(R.id.pwd);
 
-			Button register = (Button) findViewById(R.id.register);
+			register = (Button) findViewById(R.id.register);
 			// Adding Helvetica custom font to button text
-			register.setTypeface(Utils
-					.getFont(RegisterActivity.this, getString(R.string.Helvetica)));
+			register.setTypeface(Utils.getFont(RegisterActivity.this,
+					getString(R.string.Helvetica)));
 			register.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
 					if (isFormValid()) {
+						if (!clicked) {
+							clicked = true;
+							register.setText(getString(R.string.title_processing));
+							String id = Utils.getRegistrationId(name.getText()
+									.toString().trim(), null,
+									email.getText().toString().trim()
+											.toLowerCase(Locale.ENGLISH), pwd
+											.getText().toString(), gcmId, null,
+									null, null, RegisterActivity.this);
 
-						// Opening TabsActivity
-						startActivity(new Intent(RegisterActivity.this, TabsActivity.class)
-								.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
+							if (id != null) {
+								callRegistrationService(id);
+							} else {
+								clicked = false;
+								register.setText(getString(R.string.create_account_button_name));
+								displayToad(getString(R.string.reg_failed));
+							}
+						}
 					}
 				}
 			});
 
 			// Add code to print out the key hash
 			try {
-				PackageInfo info = getPackageManager().getPackageInfo("com.testingfbauth",
-						PackageManager.GET_SIGNATURES);
+				PackageInfo info = getPackageManager().getPackageInfo(
+						"com.testingfbauth", PackageManager.GET_SIGNATURES);
 				for (Signature signature : info.signatures) {
 					MessageDigest md = MessageDigest.getInstance("SHA");
 					md.update(signature.toByteArray());
-					Log.i("keyhash: ", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+					Log.i("keyhash: ",
+							Base64.encodeToString(md.digest(), Base64.DEFAULT));
 
 				}
 			} catch (NameNotFoundException e) {
@@ -188,7 +227,8 @@ public class RegisterActivity extends ActionBarActivity {
 		if (session != null)
 			session.closeAndClearTokenInformation();
 		else {
-			session = Session.openActiveSession(RegisterActivity.this, false, null);
+			session = Session.openActiveSession(RegisterActivity.this, false,
+					null);
 			if (session != null)
 				session.closeAndClearTokenInformation();
 		}
@@ -197,7 +237,8 @@ public class RegisterActivity extends ActionBarActivity {
 
 	private String getDate(String date) {
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy",
+					Locale.ENGLISH);
 			Date d = sdf.parse(date.trim());
 			sdf.applyPattern("dd-MMM-yyyy");
 
@@ -219,7 +260,8 @@ public class RegisterActivity extends ActionBarActivity {
 				return false;
 
 			if (user.getProperty("verified") == null
-					|| !"true".equalsIgnoreCase(user.getProperty("verified").toString().trim()))
+					|| !"true".equalsIgnoreCase(user.getProperty("verified")
+							.toString().trim()))
 				return false;
 
 			return true;
@@ -258,7 +300,8 @@ public class RegisterActivity extends ActionBarActivity {
 			return false;
 		}
 
-		if (!(Patterns.EMAIL_ADDRESS).matcher(email.getText().toString().trim()).matches()) {
+		if (!(Patterns.EMAIL_ADDRESS)
+				.matcher(email.getText().toString().trim()).matches()) {
 			displayToad(getString(R.string.invalid_email));
 			return false;
 		}
@@ -278,6 +321,80 @@ public class RegisterActivity extends ActionBarActivity {
 		}
 
 		return true;
+	}
+
+	private void callRegistrationService(String id) {
+
+		BuildService.build.reg(id, new Callback<String>() {
+
+			@Override
+			public void success(String output, Response res) {
+				try {
+					Log.i("Register :", output);
+					JSONObject obj = new JSONObject(output);
+
+					String error = null;
+					try {
+						error = obj.getString("error");
+					} catch (Exception e) {
+					}
+
+					if (error == null) {
+						String userId = obj.getString("id");
+						if (userId != null && !"".equals(userId.trim())
+								&& !"null".equalsIgnoreCase(userId)) {
+							Utils.storeRefCode(obj.getString("myRefCode"),
+									RegisterActivity.this);
+							Utils.storeBal((float) obj.getDouble("BL"),
+									RegisterActivity.this);
+							Utils.storeName(name.getText().toString().trim(),
+									RegisterActivity.this);
+							Utils.storeUserId(userId, RegisterActivity.this);
+							startActivity(new Intent(RegisterActivity.this,
+									TabsActivity.class)
+									.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+							RegisterActivity.this.finish();
+						} else {
+							clicked = false;
+							register.setText(getString(R.string.create_account_button_name));
+							displayToad(getString(R.string.reg_failed));
+						}
+					} else {
+						clicked = false;
+						register.setText(getString(R.string.create_account_button_name));
+						displayToad(error);
+					}
+				} catch (Exception e) {
+					clicked = false;
+					register.setText(getString(R.string.create_account_button_name));
+					displayToad(getString(R.string.reg_failed));
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void failure(RetrofitError retrofitError) {
+				clicked = false;
+				register.setText(getString(R.string.create_account_button_name));
+				displayToad(getString(R.string.reg_failed));
+				retrofitError.printStackTrace();
+			}
+		});
+	}
+
+	private void runTaskForGcmId() {
+		new AsyncTask<Void, Void, Void>() {
+			@Override
+			protected Void doInBackground(Void... params) {
+				try {
+					gcmId = GoogleCloudMessaging.getInstance(
+							RegisterActivity.this).register(
+							Config.GOOGLE_PROJECT_ID);
+				} catch (Exception e) {
+				}
+				return null;
+			}
+		}.execute();
 	}
 
 	private void displayToad(String toad) {
