@@ -4,6 +4,16 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <integer name="actionbar_coins_text_padding">187</integer>
+    <integer name="reg_failed_layout_padding">95</integer>
+    <integer name="forgot_pwd_button_text_padding">231</integer>
+    <integer name="email_cfm_butt_left_padding">36</integer>
+    <integer name="main_text_padding">86</integer>
+    <integer name="update_referrer_invited_butt_padding">222</integer>
+    <integer name="paypal_success_heading_padding">194</integer>
+    <integer name="paypal_instructions_padding">203</integer>
+    <integer name="redeem_world_wide_padding">9</integer>
+
     <!-- global dimes -->
     <dimen name="progress_bar_dimes">40dp</dimen>
 

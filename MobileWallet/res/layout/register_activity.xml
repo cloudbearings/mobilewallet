@@ -35,8 +35,6 @@
         android:ems="10"
         android:hint="@string/email_edittext_hint"
         android:inputType="textEmailAddress" >
-
-        <requestFocus />
     </EditText>
 
     <EditText
@@ -49,7 +47,7 @@
         android:layout_marginTop="@dimen/register_activity_pwd_edittext_margintop"
         android:ems="10"
         android:hint="@string/pwd_edittext_hint"
-        android:inputType="numberPassword" />
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/fullname"

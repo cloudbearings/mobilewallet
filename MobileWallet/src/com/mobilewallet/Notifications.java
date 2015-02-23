@@ -45,9 +45,8 @@ public class Notifications extends ActionBarActivity {
 		try {
 			setContentView(R.layout.notifications);
 			offerSwitch = (CompoundButton) findViewById(R.id.notificationsStauts);
-			offerSwitch.setTypeface(
-					Utils.getFont(Notifications.this, getString(R.string.GothamRnd)),
-					Typeface.BOLD);
+			offerSwitch.setTypeface(Utils.getFont(Notifications.this,
+					getString(R.string.GothamRnd)), Typeface.BOLD);
 
 			populateDefaultData();
 			offerSwitchChangedListener();
@@ -58,8 +57,8 @@ public class Notifications extends ActionBarActivity {
 	}
 
 	private void populateDefaultData() {
-		BuildService.build.notification(Utils.getUserId(Notifications.this),
-				new Callback<String>() {
+		BuildService.build.getNotifications(
+				Utils.getUserId(Notifications.this), new Callback<String>() {
 
 					@Override
 					public void success(String result, Response arg1) {
@@ -68,7 +67,8 @@ public class Notifications extends ActionBarActivity {
 							Log.i("notification json", result + " result");
 							JSONArray array = new JSONArray(result);
 
-							offerSwitch.setChecked("Y".equals((String) array.get(0)));
+							offerSwitch.setChecked("Y".equals((String) array
+									.get(0)));
 
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -90,17 +90,21 @@ public class Notifications extends ActionBarActivity {
 	}
 
 	private void offerSwitchChangedListener() {
-		offerSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		offerSwitch
+				.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-			@Override
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				updateNotification(getString(R.string.offer), isChecked ? "Y" : "N");
-			}
-		});
+					@Override
+					public void onCheckedChanged(CompoundButton buttonView,
+							boolean isChecked) {
+						updateNotification(getString(R.string.offer),
+								isChecked ? "Y" : "N");
+					}
+				});
 	}
 
 	private void updateNotification(String type, String status) {
-		BuildService.build.notification(Utils.getUserId(Notifications.this), status, type,
+		BuildService.build.updateNotifications(
+				Utils.getUserId(Notifications.this), status, type,
 				new Callback<String>() {
 					@Override
 					public void failure(RetrofitError arg0) {
@@ -111,7 +115,8 @@ public class Notifications extends ActionBarActivity {
 					@Override
 					public void success(String result, Response arg1) {
 						try {
-							if (!"Y".equals(new JSONObject(result).getString("sc"))) {
+							if (!"Y".equals(new JSONObject(result)
+									.getString("sc"))) {
 								showToad(getString(R.string.notifc_failure_msg));
 							}
 						} catch (Exception e) {
@@ -127,7 +132,8 @@ public class Notifications extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Intent tabsIntent = new Intent(Notifications.this, TabsActivity.class);
+			Intent tabsIntent = new Intent(Notifications.this,
+					TabsActivity.class);
 			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(tabsIntent);
 		default:

@@ -10,7 +10,7 @@ public interface MobileWalletService {
 	void storeGcmId(@Query("id") String userId, @Query("gcmid") String gcmid,
 			Callback<String> callback);
 
-	@GET("/freeplusservices/register_v2")
+	@GET("/register")
 	void reg(@Query("id") String id, Callback<String> callback);
 
 	@GET("/freeplusservices/verifysignup")
@@ -24,16 +24,16 @@ public interface MobileWalletService {
 	void finishRegistration(@Query("vid") String vid, @Query("id") String id,
 			Callback<String> callback);
 
-	@GET("/freeplusservices/fpp_addd__ref_incentive___")
+	@GET("/addReferralIncentive")
 	void referral(@Query("id") String id, Callback<String> callback);
 
 	// registration
 
-	@GET("/freeplusservices/login_fp__user_service")
+	@GET("/login")
 	void login(@Query("email") String email, @Query("pwd") String password,
 			Callback<String> callback);
 
-	@GET("/freeplusservices/fpp_send_password___touser")
+	@GET("/forgotPassword")
 	void fp(@Query("email") String email, Callback<String> callback);
 
 	@GET("/freeplusservices/fpp___offerss_")
@@ -48,25 +48,25 @@ public interface MobileWalletService {
 	void checkOferStatus(@Query("id") String userId,
 			@Query("eid") String encryptedOfferId, Callback<String> callback);
 
-	@GET("/freeplusservices/userprofile")
+	@GET("/profile")
 	void userProfile(@Query("id") String userId, Callback<String> callback);
 
-	@GET("/freeplusservices/updateProfileV2")
+	@GET("/updateProfile")
 	void updateuserProfile(@Query("id") String userId,
 			@Query("name") String name, @Query("dob") String dob,
 			@Query("gender") String gender, @Query("occ") String occupation,
 			@Query("income") String income, Callback<String> callback);
 
-	@GET("/freeplusservices/feed_back__me_")
+	@GET("/feedback")
 	void feedback(@Query("id") String userId,
 			@Query("feedType") String feedType, @Query("text") String text,
 			@Query("email") String email, Callback<String> callback);
 
-	@GET("/freeplusservices/fp__credit___his_toryyy")
+	@GET("/walletHistory")
 	void credit(@Query("id") String userId, @Query("b") long b,
 			Callback<String> callback);
 
-	@GET("/freeplusservices/fp_debit___his____story")
+	@GET("/rechargeHistory")
 	void debit(@Query("id") String userId, @Query("b") long b,
 			Callback<String> callback);
 
@@ -79,7 +79,7 @@ public interface MobileWalletService {
 			@Query("special") String isSpecialRecharge,
 			Callback<String> callback);
 
-	@GET("/freeplusservices/fp__update___gcm")
+	@GET("/updateGCM")
 	void gcm(@Query("id") String userId, @Query("gcmid") String gcmid,
 			Callback<String> callback);
 
@@ -92,14 +92,14 @@ public interface MobileWalletService {
 	void findOP(@Query("id") String userId,
 			@Query("startsWith") String startsWith, Callback<String> callback);
 
-	@GET("/freeplusservices/fp_balance_serVice")
+	@GET("/balance")
 	void balance(@Query("id") String userId, Callback<String> callback);
 
-	@GET("/freeplusservices/get_notifications_offf_user")
-	void notification(@Query("id") String userId, Callback<String> callback);
+	@GET("/getNotifications")
+	void getNotifications(@Query("id") String userId, Callback<String> callback);
 
-	@GET("/freeplusservices/notification___updatee")
-	void notification(@Query("id") String userId,
+	@GET("/updateNotifications")
+	void updateNotifications(@Query("id") String userId,
 			@Query("status") String status, @Query("type") String type,
 			Callback<String> callback);
 
@@ -107,7 +107,7 @@ public interface MobileWalletService {
 	void getOfferNotification(@Query("id") String userId,
 			@Query("eid") String encryptedOfferId, Callback<String> callback);
 
-	@GET("/dailyLoginCredits.jsp")
+	@GET("/dailyCredits")
 	void dailyCredits(@Query("id") String userId, @Query("imei") String imei,
 			@Query("gcmid") String gcmid, Callback<String> callback);
 

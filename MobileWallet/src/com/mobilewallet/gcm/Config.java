@@ -9,4 +9,7 @@ public interface Config {
 	String REF_CODE = "ref_code";
 	String REFERRAL_AMOUNT = "referralAmount";
 	String REFERRAL_EARNING_AMOUNT = "referralEarningAmount";
+	String REFERRER_CODE = "referrerCode";
+	String BAL = "bal";
+	String USER_NAME = "userName";
 }
