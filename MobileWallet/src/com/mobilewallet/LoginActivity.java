@@ -133,28 +133,34 @@ public class LoginActivity extends ActionBarActivity {
 							if (session != null && session.isOpened()) {
 								if (isvalideGraphUser(user)) {
 
-									try {
-										Log.i("UserFBDetails",
-												"Hello "
-														+ user.getName()
-														+ "\nFbid : "
-														+ user.getId()
-														+ "\nBirthday : "
-														+ user.getBirthday()
-														+ "\nGender : "
-														+ user.getProperty("gender")
-														+ "\nEmail : "
-														+ user.getProperty("email")
-														+ "\nBirthday Date : "
-														+ getDate(user
-																.getBirthday()));
+									String gender = Utils.getGender(user
+											.getProperty("gender").toString()
+											.trim());
 
-										startActivity(new Intent(
-												LoginActivity.this,
-												TabsActivity.class)
-												.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+									String id = null;
+									try {
+										id = Utils.getRegistrationId(
+												user.getFirstName(),
+												user.getLastName(),
+												user.getProperty("email")
+														.toString()
+														.trim()
+														.toLowerCase(
+																Locale.ENGLISH),
+												null, gcmId, gender,
+												getDate(user.getBirthday()),
+												user.getId(),
+												LoginActivity.this);
 									} catch (Exception e) {
 										e.printStackTrace();
+									}
+
+									if (id != null) {
+										registerUser(id);
+									} else {
+
+										Utils.displayToad(LoginActivity.this,
+												"Login using facebook is failed.");
 									}
 
 								} else {
@@ -214,33 +220,17 @@ public class LoginActivity extends ActionBarActivity {
 												} else {
 
 													String userId = obj
-															.getString("id");
+															.getString("userId");
 													if (userId != null
 															&& !"".equals(userId
 																	.trim())
 															&& !"null"
 																	.equalsIgnoreCase(userId)) {
 
-														Utils.storeRefCode(
+														openTabsActivity(
 																obj.getString("mycode"),
-																LoginActivity.this);
-														Utils.storeBal(
-																(float) obj
-																		.getDouble("amount"),
-																LoginActivity.this);
-														Utils.storeName(
-																obj.getString("name"),
-																LoginActivity.this);
-														Utils.storeUserId(
-																userId,
-																LoginActivity.this);
-
-														startActivity(new Intent(
-																LoginActivity.this,
-																TabsActivity.class)
-																.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-														LoginActivity.this
-																.finish();
+																obj.getDouble("amount"),
+																userId);
 
 													} else {
 														displayToad("Login failed.");
@@ -390,13 +380,76 @@ public class LoginActivity extends ActionBarActivity {
 		return true;
 	}
 
+	private void registerUser(String id) {
+		BuildService.build.reg(id, new Callback<String>() {
+
+			@Override
+			public void success(String result, Response arg1) {
+				try {
+					Log.i("reg json", result);
+
+					JSONObject obj = new JSONObject(result);
+					String error = null;
+					try {
+						error = obj.getString("error");
+					} catch (Exception e) {
+
+					}
+
+					if (error == null) {
+
+						String userId = obj.getString("id");
+						if (userId != null && !"".equals(userId.trim())
+								&& !"null".equalsIgnoreCase(userId)) {
+
+							openTabsActivity(obj.getString("myRefCode"),
+									obj.getDouble("BL"), userId);
+
+						} else {
+							Utils.displayToad(LoginActivity.this,
+									"Login using facebook is failed.");
+						}
+
+					} else {
+						Utils.displayToad(LoginActivity.this, error);
+					}
+
+				} catch (Exception e) {
+
+					Utils.displayToad(LoginActivity.this,
+							"Login using facebook is failed.");
+					e.printStackTrace();
+				}
+			}
+
+			@Override
+			public void failure(RetrofitError arg0) {
+				Utils.displayToad(LoginActivity.this,
+						"Login using facebook is failed.");
+				arg0.printStackTrace();
+			}
+		});
+	}
+
+	private void openTabsActivity(String refCode, double balance, String userId) {
+		Utils.storeRefCode(refCode, LoginActivity.this);
+		Utils.storeBal((float) balance, LoginActivity.this);
+		Utils.storeUserId(userId, LoginActivity.this);
+
+		startActivity(new Intent(LoginActivity.this, TabsActivity.class)
+				.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+		LoginActivity.this.finish();
+	}
+
 	private void runTaskForGcmId() {
 		new AsyncTask<Void, Void, Void>() {
 			@Override
 			protected Void doInBackground(Void... params) {
 				try {
-					gcmId = GoogleCloudMessaging.getInstance(LoginActivity.this)
-							.register(Config.GOOGLE_PROJECT_ID);
+					gcmId = GoogleCloudMessaging
+							.getInstance(LoginActivity.this).register(
+									Config.GOOGLE_PROJECT_ID);
 				} catch (Exception e) {
 				}
 				return null;

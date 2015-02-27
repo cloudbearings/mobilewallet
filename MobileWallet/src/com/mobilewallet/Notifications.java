@@ -13,12 +13,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics;
-import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics.TrackerName;
 import com.mobilewallet.service.BuildService;
 import com.mobilewallet.utils.Utils;
 
@@ -29,14 +24,8 @@ public class Notifications extends ActionBarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		try {
-			Tracker t = ((MobileWalletGoogleAnalytics) getApplication())
-					.getTracker(TrackerName.APP_TRACKER);
-			t.setScreenName(getString(R.string.notifications_screen_name));
-			t.send(new HitBuilders.AppViewBuilder().build());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Utils.googleAnalyticsTracking(Notifications.this,
+				getString(R.string.notifications_screen_name));
 	}
 
 	@Override
@@ -109,7 +98,8 @@ public class Notifications extends ActionBarActivity {
 					@Override
 					public void failure(RetrofitError arg0) {
 						arg0.printStackTrace();
-						showToad(getString(R.string.notifc_failure_msg));
+						Utils.displayToad(Notifications.this,
+								getString(R.string.notifc_failure_msg));
 					}
 
 					@Override
@@ -117,11 +107,13 @@ public class Notifications extends ActionBarActivity {
 						try {
 							if (!"Y".equals(new JSONObject(result)
 									.getString("sc"))) {
-								showToad(getString(R.string.notifc_failure_msg));
+								Utils.displayToad(Notifications.this,
+										getString(R.string.notifc_failure_msg));
 							}
 						} catch (Exception e) {
 							e.printStackTrace();
-							showToad(getString(R.string.notifc_failure_msg));
+							Utils.displayToad(Notifications.this,
+									getString(R.string.notifc_failure_msg));
 						}
 					}
 				});
@@ -139,10 +131,5 @@ public class Notifications extends ActionBarActivity {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	}
-
-	private void showToad(String toad) {
-		Toast.makeText(Notifications.this, toad, Toast.LENGTH_LONG).show();
-
 	}
 }
