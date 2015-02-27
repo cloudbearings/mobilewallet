@@ -23,15 +23,23 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings.Secure;
+import android.support.v7.app.ActionBarActivity;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.Patterns;
+import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.mobilewallet.Notifications;
 import com.mobilewallet.R;
 import com.mobilewallet.encryption.EncryptionUtil;
 import com.mobilewallet.gcm.Config;
+import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics;
+import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics.TrackerName;
 
 public class Utils {
+	private static final String TAG = "Utils";
 	private static final String concat = "$ #";
 
 	public static String formatAmount(String s) {
@@ -476,4 +484,40 @@ public class Utils {
 				Context.MODE_PRIVATE)).getString(Config.USER_NAME, "");
 	}
 
+	public static void googleAnalyticsTracking(ActionBarActivity context,
+			String screenName) {
+		try {
+			Tracker t = ((MobileWalletGoogleAnalytics) context.getApplication())
+					.getTracker(TrackerName.APP_TRACKER);
+			t.setScreenName(screenName);
+			t.send(new HitBuilders.AppViewBuilder().build());
+		} catch (Exception e) {
+			Log.d(TAG, "Exception raised in Google analytics tracking.");
+			e.printStackTrace();
+		}
+	}
+
+	public static void displayToad(Context context, String message) {
+		try {
+			Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+		} catch (Exception e) {
+			Log.d(TAG, "Exception raised in displayToad() method.");
+			e.printStackTrace();
+		}
+	}
+
+	public static String getGender(String fbGender) {
+		String gender = null;
+		try {
+			gender = fbGender;
+			if ("male".equalsIgnoreCase(gender)) {
+				gender = "M";
+			} else if ("female".equalsIgnoreCase(gender)) {
+				gender = "F";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return gender;
+	}
 }
