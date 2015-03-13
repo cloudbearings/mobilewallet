@@ -25,9 +25,6 @@ import android.widget.Toast;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 import com.mobilewallet.R;
-import com.mobilewallet.R.id;
-import com.mobilewallet.R.layout;
-import com.mobilewallet.R.string;
 import com.mobilewallet.adapters.RechargeHistoryAdapter;
 import com.mobilewallet.beans.RechargeHistoryBean;
 import com.mobilewallet.googleanalytics.MobileWalletGoogleAnalytics;
@@ -64,7 +61,7 @@ public class RechargeHistory extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.debit_history);
+		setContentView(R.layout.recharge_history);
 
 		TextView heading = (TextView) findViewById(R.id.textView1);
 		heading.setTypeface(Utils.getFont(this, getString(R.string.GothamRnd)), Typeface.BOLD);

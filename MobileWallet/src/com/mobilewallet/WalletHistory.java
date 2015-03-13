@@ -61,7 +61,7 @@ public class WalletHistory extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.credit_history);
+		setContentView(R.layout.wallet_histoy);
 
 		TextView heading = (TextView) findViewById(R.id.textView1);
 		heading.setTypeface(Utils.getFont(this, getString(R.string.GothamRnd)), Typeface.BOLD);
