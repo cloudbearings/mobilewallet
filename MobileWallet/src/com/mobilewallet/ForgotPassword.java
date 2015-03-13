@@ -7,9 +7,9 @@ import org.json.JSONObject;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
+import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
@@ -23,7 +23,7 @@ import android.widget.Toast;
 import com.mobilewallet.service.BuildService;
 import com.mobilewallet.utils.Utils;
 
-public class ForgotPassword extends ActionBarActivity {
+public class ForgotPassword extends Activity {
 	private EditText emailEditText;
 	private Button submitButton;
 	private boolean clicked = false;
