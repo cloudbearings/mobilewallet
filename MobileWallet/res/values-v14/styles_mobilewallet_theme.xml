@@ -39,6 +39,7 @@
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_mobilewallet_theme</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Mobilewallet_theme</item>
         <item name="android:icon">@android:color/transparent</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
     </style>
 
     <style name="ActionBar.Transparent.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionBar">

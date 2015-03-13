@@ -39,6 +39,7 @@
         <item name="backgroundSplit">@drawable/ab_bottom_solid_mobilewallet_theme</item>
         <item name="progressBarStyle">@style/ProgressBar.Mobilewallet_theme</item>
         <item name="icon">@android:color/transparent</item>
+        <item name="titleTextStyle">@style/MyActionBarTitleText</item>
     </style>
 
     <style name="ActionBar.Transparent.Mobilewallet_theme" parent="@style/Widget.AppCompat.Light.ActionBar">
@@ -76,6 +77,12 @@
     <style name="Theme.Mobilewallet_theme.Widget" parent="@style/Theme.AppCompat">
         <item name="popupMenuStyle">@style/PopupMenu.Mobilewallet_theme</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Mobilewallet_theme</item>
+    </style>
+    
+    <style name="MyActionBarTitleText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/custom_actionbar_text_size</item>
     </style>
 
 </resources>
