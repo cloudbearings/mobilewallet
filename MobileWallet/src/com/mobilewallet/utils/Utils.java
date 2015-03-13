@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -484,7 +485,7 @@ public class Utils {
 				Context.MODE_PRIVATE)).getString(Config.USER_NAME, "");
 	}
 
-	public static void googleAnalyticsTracking(ActionBarActivity context,
+	public static void googleAnalyticsTracking(Activity context,
 			String screenName) {
 		try {
 			Tracker t = ((MobileWalletGoogleAnalytics) context.getApplication())
