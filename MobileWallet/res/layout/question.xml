@@ -53,6 +53,19 @@
             android:text="option4" />
     </RadioGroup>
 
+    <Button
+        android:id="@+id/next_question"
+        style="@style/recharge_button_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/balance_red_button_height"
+        android:layout_alignLeft="@+id/optionsGroup"
+        android:layout_alignRight="@+id/optionsGroup"
+        android:layout_below="@+id/optionsGroup"
+        android:layout_marginTop="@dimen/balance_red_button_margin_bottom"
+        android:text="@string/next_question"
+        android:textSize="@dimen/balance_red_button_text_size"
+        android:textStyle="normal" />
+
     <TextView
         android:id="@+id/question"
         style="@style/questionStyle"
