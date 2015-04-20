@@ -7,9 +7,14 @@
     <item
         android:id="@+id/action_search"
         TestingAndroidApp:actionViewClass="android.widget.SearchView"
-        TestingAndroidApp:showAsAction="ifRoom|collapseActionView"
+        TestingAndroidApp:showAsAction="always|collapseActionView"
         android:icon="@drawable/ic_action_search"
         android:title="@string/action_search"/>
+    <item
+        android:id="@+id/refresh_posts"
+        TestingAndroidApp:showAsAction="always"
+        android:icon="@drawable/refresh_icon"
+        android:title="@string/action_refresh"/>
     <item
         android:id="@+id/recent_posts"
         TestingAndroidApp:showAsAction="never"
@@ -25,6 +30,11 @@
         TestingAndroidApp:showAsAction="never"
         android:orderInCategory="100"
         android:title="@string/rate_this_app"/>
+    <item
+        android:id="@+id/settings"
+        TestingAndroidApp:showAsAction="never"
+        android:orderInCategory="100"
+        android:title="@string/app_settings"/>
     <item
         android:id="@+id/about_us"
         TestingAndroidApp:showAsAction="never"

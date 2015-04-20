@@ -1,8 +1,15 @@
 package com.wordlypost;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,11 +29,18 @@ import com.google.android.gms.analytics.Tracker;
 import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.beans.PostRowItem;
+import com.wordlypost.dao.CategoriesDAO;
 import com.wordlypost.dao.HomeDAO;
 import com.wordlypost.google.adcontroller.AdController;
+import com.wordlypost.service.BuildService;
 import com.wordlypost.utils.ImageLoader;
+import com.wordlypost.utils.Utils;
 
 public class HomeFragment extends Fragment {
+
+	private View view;
+	private ArrayList<PostRowItem> rowItems;
+	private static final String TAG = "HomeFragment";
 
 	@Override
 	public void onResume() {
@@ -129,8 +143,9 @@ public class HomeFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.home_fragment, container, false);
+		view = inflater.inflate(R.layout.home_fragment, container, false);
 		try {
+			rowItems = new ArrayList<PostRowItem>();
 			try {
 				RelativeLayout bannerLayout = (RelativeLayout) view.findViewById(R.id.homeBannerAd);
 				AdController.bannerAd(getActivity(), bannerLayout,
@@ -140,15 +155,11 @@ public class HomeFragment extends Fragment {
 			}
 
 			homeDAO = new HomeDAO(getActivity());
-			List<NavDrawerItem> categories = homeDAO.getHomeRandomCategories();
+			CategoriesDAO categoriesDAO = new CategoriesDAO(getActivity());
+			List<NavDrawerItem> categories = categoriesDAO.getHomeCategories();
 			for (int i = 0; i < categories.size(); i++) {
 				NavDrawerItem category = categories.get(i);
-				if (i == 0 && homeDAO.isCategoryExists(120) > 0) {
-					getCategoryPosts(120, "top-news", 5, view, i, "Top News");
-				} else {
-					getCategoryPosts(category.getId(), category.getSlug(), 5, view, i,
-							category.getTitle());
-				}
+				getPostsFromServer(category, i);
 			}
 
 		} catch (Exception e) {
@@ -157,9 +168,96 @@ public class HomeFragment extends Fragment {
 		return view;
 	}
 
-	private void getCategoryPosts(final int categoryId, final String slug, int count,
-			final View view, final int i, final String categoryTitle) {
-		List<PostRowItem> posts = homeDAO.getfivePosts(categoryId, slug);
+	private void getPostsFromServer(final NavDrawerItem category, final int i) {
+		BuildService.build.getCategoryPosts(category.getId(), category.getSlug(), 5,
+				new Callback<String>() {
+
+					@Override
+					public void success(String output, Response arg1) {
+						try {
+							Log.i("Home :", arg1.getUrl());
+							Log.i("Home :", output);
+							JSONObject obj = new JSONObject(output);
+
+							if (obj.getJSONArray("posts").length() > 0) {
+								JSONArray categotyPosts = obj.getJSONArray("posts");
+								String currentMilliSeconds = Calendar.getInstance()
+										.getTimeInMillis() + "";
+
+								for (int i = 0; i < categotyPosts.length(); i++) {
+									JSONObject categotyPost = categotyPosts.getJSONObject(i);
+
+									PostRowItem item = new PostRowItem();
+
+									item.setPost_id(categotyPost.getInt("id"));
+									item.setTitle(categotyPost.getString("title"));
+									item.setDate(categotyPost.getString("date"));
+									item.setPost_icon_url(categotyPost.getString("thumbnail"));
+									item.setAuthor(categotyPost.getJSONObject("author").getString(
+											"name"));
+									item.setContent(categotyPost.getString("content"));
+									item.setPost_banner(categotyPost
+											.getJSONObject("thumbnail_images")
+											.getJSONObject("full").getString("url"));
+									item.setComment_count(categotyPost.getInt("comment_count"));
+									item.setPost_url(categotyPost.getString("url"));
+
+									if (categotyPost.getInt("comment_count") > 0) {
+										item.setCommentsArray(categotyPost.getJSONArray("comments")
+												.toString());
+									}
+									item.setTagsArray(categotyPost.getJSONArray("tags").toString());
+									item.setPost_des(categotyPost.getString("excerpt"));
+
+									rowItems.add(item);
+
+									/*
+									 * Inserting category posts in sqlite.
+									 */
+									homeDAO.insertPosts(categotyPost.getInt("id"), categotyPost
+											.getString("title"), categotyPost.getString("date"),
+											categotyPost.getString("thumbnail"), categotyPost
+													.getJSONObject("author").getString("name"),
+											categotyPost.getString("content"), categotyPost
+													.getJSONObject("thumbnail_images")
+													.getJSONObject("full").getString("url"),
+											categotyPost.getInt("comment_count"), categotyPost
+													.getString("url"), currentMilliSeconds,
+											categotyPost.getString("excerpt"), category.getId(),
+											category.getSlug(), category.getTitle(), categotyPost
+													.getJSONArray("comments").toString(),
+											categotyPost.getJSONArray("tags").toString());
+
+								}
+
+								long deleted = homeDAO.deletePosts(category.getId(),
+										category.getSlug(), currentMilliSeconds);
+								Log.i("Deleted records: ", deleted + "");
+
+							} else {
+								Utils.displayToad(getActivity(),
+										getString(R.string.no_posts_error_msg));
+							}
+							if (rowItems != null && rowItems.size() > 0) {
+								getCategoryPosts(category, i, rowItems);
+								rowItems.clear();
+							}
+						} catch (Exception e) {
+							Log.d(TAG, "Exception raised to get category posts from server.");
+							e.printStackTrace();
+						}
+					}
+
+					@Override
+					public void failure(RetrofitError retrofitError) {
+						retrofitError.printStackTrace();
+					}
+				});
+	}
+
+	private void getCategoryPosts(final NavDrawerItem category, final int i, List<PostRowItem> posts) {
+
+		/* List<PostRowItem> posts = homeDAO.getfivePosts(categoryId, slug); */
 		RelativeLayout hiddenLayout = (RelativeLayout) view.findViewById(hidden_layout[i]);
 
 		if (hiddenLayout == null) {
@@ -171,7 +269,8 @@ public class HomeFragment extends Fragment {
 			myLayout.addView(hiddenInfo);
 		}
 		try {
-			((TextView) view.findViewById(categoty_title[i])).setText(Html.fromHtml(categoryTitle));
+			((TextView) view.findViewById(categoty_title[i])).setText(Html.fromHtml(category
+					.getTitle()));
 			PostRowItem post = posts.get(0);
 			ImageView postScreen = (ImageView) view.findViewById(post_screen[i]);
 			ImageLoader imageLoader = new ImageLoader(getActivity());
@@ -186,7 +285,7 @@ public class HomeFragment extends Fragment {
 			((RelativeLayout) view.findViewById(relativeLayout1[i]))
 					.setOnClickListener(new View.OnClickListener() {
 						public void onClick(View view) {
-							showPostView(categoryId, slug, 0);
+							showPostView(category.getId(), category.getSlug(), 0);
 						}
 					});
 
@@ -203,7 +302,7 @@ public class HomeFragment extends Fragment {
 			((RelativeLayout) view.findViewById(relativeLayout11[i]))
 					.setOnClickListener(new View.OnClickListener() {
 						public void onClick(View view) {
-							showPostView(categoryId, slug, 1);
+							showPostView(category.getId(), category.getSlug(), 1);
 						}
 					});
 
@@ -220,7 +319,7 @@ public class HomeFragment extends Fragment {
 			((RelativeLayout) view.findViewById(relativeLayout12[i]))
 					.setOnClickListener(new View.OnClickListener() {
 						public void onClick(View view) {
-							showPostView(categoryId, slug, 2);
+							showPostView(category.getId(), category.getSlug(), 2);
 						}
 					});
 
@@ -237,7 +336,7 @@ public class HomeFragment extends Fragment {
 			((RelativeLayout) view.findViewById(relativeLayout13[i]))
 					.setOnClickListener(new View.OnClickListener() {
 						public void onClick(View view) {
-							showPostView(categoryId, slug, 3);
+							showPostView(category.getId(), category.getSlug(), 3);
 						}
 					});
 
@@ -254,7 +353,7 @@ public class HomeFragment extends Fragment {
 			((RelativeLayout) view.findViewById(relativeLayout14[i]))
 					.setOnClickListener(new View.OnClickListener() {
 						public void onClick(View view) {
-							showPostView(categoryId, slug, 4);
+							showPostView(category.getId(), category.getSlug(), 4);
 						}
 					});
 		} catch (Exception e) {
@@ -265,8 +364,9 @@ public class HomeFragment extends Fragment {
 	private void showPostView(int categoryId, String slug, int position) {
 		if (homeDAO != null) {
 			ArrayList<PostRowItem> items = homeDAO.getPosts(categoryId, slug);
-			startActivity(new Intent(getActivity(), PostViewSwipeActivity.class)
+			startActivity(new Intent(getActivity(), HomePostsSwipeViewActivity.class)
 					.putExtra("postDetails", items).putExtra("position", position)
+					.putExtra("categoryId", categoryId).putExtra("slug", slug)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		}
 	}

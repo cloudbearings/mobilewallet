@@ -7,7 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DbAdapter extends SQLiteOpenHelper {
 
 	private static final String DB_NAME = "wordlypost.db";
-	private static final int DB_VERSION = 1;
+	/*
+	 * Upgraded DB_VERSION from 1 to 2
+	 */
+	private static final int DB_VERSION = 2;
 
 	// Categories table columns
 	public static final String CATEGORIES_TABLE_NAME = "categories";
@@ -15,6 +18,11 @@ public class DbAdapter extends SQLiteOpenHelper {
 	public static final String C_NAME = "category_name";
 	public static final String C_SLUG = "category_slug";
 	public static final String C_POST_COUNT = "category_post_count";
+	/*
+	 * Added new column in 2nd version 
+	 * to show categories in home screen based on user choice.
+	 */
+	public static final String IS_HOME_CATEGORY = "isHomeCategory";
 
 	// Category posts table columns
 	public static final String CATEGORRY_POSTS_TABLE_NAME = "category_posts";
@@ -102,7 +110,7 @@ public class DbAdapter extends SQLiteOpenHelper {
 
 	private static final String CREATE_CATEGORIES_TABLE = "CREATE TABLE " + CATEGORIES_TABLE_NAME
 			+ " (" + C_ID + " INTEGER PRIMARY KEY, " + C_NAME + " TEXT, " + C_SLUG + " TEXT, "
-			+ C_POST_COUNT + " INTEGER);";
+			+ C_POST_COUNT + " INTEGER, " + IS_HOME_CATEGORY + " TEXT);";
 
 	private static final String CREATE_POSTS_TABLE = "CREATE TABLE " + CATEGORRY_POSTS_TABLE_NAME
 			+ " (" + P_ID + " INTEGER PRIMARY KEY, " + P_TITLE + " TEXT, " + P_DATE + " TEXT, "

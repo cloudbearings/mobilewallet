@@ -33,6 +33,7 @@ import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.dao.CategoriesDAO;
 import com.wordlypost.gcm.GcmRegistration;
 import com.wordlypost.google.adcontroller.AdController;
+import com.wordlypost.threads.HomePostsThread;
 import com.wordlypost.utils.Utils;
 
 public class TabsActivity extends ActionBarActivity {
@@ -285,6 +286,10 @@ public class TabsActivity extends ActionBarActivity {
 		}
 
 		switch (item.getItemId()) {
+		case R.id.refresh_posts:
+			HomePostsThread thread = new HomePostsThread(TabsActivity.this);
+			thread.run();
+			return true;
 		case R.id.recent_posts:
 			startActivity(new Intent(TabsActivity.this, RecentPosts.class)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
@@ -301,6 +306,10 @@ public class TabsActivity extends ActionBarActivity {
 			Intent rateIntent = new Intent(Intent.ACTION_VIEW,
 					Uri.parse(getString(R.string.playstore_url)));
 			startActivity(rateIntent);
+			return true;
+		case R.id.settings:
+			startActivity(new Intent(TabsActivity.this, SettingsActivity.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 			return true;
 		case R.id.about_us:
 			startActivity(new Intent(TabsActivity.this, AboutWordlyPost.class)
