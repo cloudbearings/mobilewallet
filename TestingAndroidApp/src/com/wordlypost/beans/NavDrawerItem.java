@@ -6,7 +6,7 @@ public class NavDrawerItem implements Serializable {
 
 	private static final long serialVersionUID = -6590514305977522847L;
 	private int id, post_count;
-	private String slug, title;
+	private String slug, title, isHomeCategory;
 
 	public NavDrawerItem() {
 	}
@@ -48,5 +48,13 @@ public class NavDrawerItem implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getIsHomeCategory() {
+		return isHomeCategory;
+	}
+
+	public void setIsHomeCategory(String isHomeCategory) {
+		this.isHomeCategory = isHomeCategory;
 	}
 }

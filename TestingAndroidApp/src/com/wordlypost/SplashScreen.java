@@ -64,7 +64,10 @@ public class SplashScreen extends ActionBarActivity {
 			if (Utils.isNetworkAvailable(SplashScreen.this)) {
 				categoriesDAO = new CategoriesDAO(SplashScreen.this);
 				if (categoriesDAO.getCategoriesCount() > 0) {
-					getRandomCategories();
+					// getRandomCategories();
+					startActivity(new Intent(SplashScreen.this, TabsActivity.class)
+							.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+					finish();
 				} else {
 					BuildService.build.getCategories(new Callback<String>() {
 
@@ -98,14 +101,23 @@ public class SplashScreen extends ActionBarActivity {
 											.getCategoriesCount()) {
 										// Stpring categories is sqlite database
 										if (category.getInt("id") != 174) {
+											String isHomeCategory;
+											if (i < 6) {
+												// Log.i("count", i + "");
+												isHomeCategory = getString(R.string.Y);
+											} else {
+												isHomeCategory = getString(R.string.N);
+											}
+
 											categoriesDAO.insertCategories(category.getInt("id"),
 													category.getString("title"),
 													category.getString("slug"),
-													category.getInt("post_count"));
+													category.getInt("post_count"), isHomeCategory);
 										}
 									}
 								}
-								getRandomCategories();
+								// getRandomCategories();
+								openTabsActivity();
 							} catch (Exception e) {
 							}
 						}
@@ -132,6 +144,7 @@ public class SplashScreen extends ActionBarActivity {
 		if (count > 0) {
 			HomePostsThread thread = new HomePostsThread(SplashScreen.this);
 			thread.run();
+			Log.i("Thread State : ", thread.getState() + "");
 			new Handler().postDelayed(new Runnable() {
 
 				@Override

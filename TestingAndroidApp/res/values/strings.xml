@@ -20,6 +20,8 @@
     <string name="pst_id">postId</string>
     <string name="tags">Tags :&#160;</string>
     <string name="tagSlug">TagSlug</string>
+    <string name="Y">Y</string>
+    <string name="N">N</string>
 
     <!-- custom_fonts xml strings -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
@@ -37,13 +39,16 @@
     <string name="tag_posts_screen_name">Tag Posts</string>
     <string name="home_fragment_screen_name">Home</string>
     <string name="comment_view_screen_name">Comment View</string>
+    <string name="settings_screen_name">Settings</string>
 
     <!-- tabs xml strings -->
     <string name="action_search">Search</string>
+    <string name="action_refresh">Refresh</string>
     <string name="search_hint">Search</string>
     <string name="recent_posts">Recent Posts</string>
     <string name="share_this_app">Share this app</string>
     <string name="rate_this_app">Rate this app in Play Store</string>
+    <string name="app_settings">Settings</string>
     <string name="about_us">About us</string>
     <string name="terms_of_use">Terms of use</string>
     <string name="privacy_policy">Privacy policy</string>
@@ -104,5 +109,9 @@
     <string name="search_posts_banner_unit_id">ca-app-pub-6058638697889796/4756232867</string>
     <string name="post_view_banner_unit_id">ca-app-pub-6058638697889796/6093365260</string>
     <string name="home_interstitial_unit_id">ca-app-pub-6058638697889796/3977503660</string>
+    
+    <!-- settings.xml -->
+    <string name="title_activity_settings">Settings</string>
+    <string name="five_categories_error_msg">Select five categories only</string>
 
 </resources>

@@ -14,13 +14,20 @@ import android.content.pm.PackageInfo;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.wordlypost.WordlyPostGoogleAnalytics;
+import com.wordlypost.WordlyPostGoogleAnalytics.TrackerName;
 import com.wordlypost.gcm.Config;
 
 public class Utils {
+
+	private static final String TAG = "Utils";
 
 	public static void displayToad(Context context, String msg) {
 		Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
@@ -154,5 +161,16 @@ public class Utils {
 
 		}
 		return call;
+	}
+
+	public static void googleAnalaticsTracking(ActionBarActivity activity, String screenName) {
+		try {
+			Tracker t = ((WordlyPostGoogleAnalytics) activity.getApplication())
+					.getTracker(TrackerName.APP_TRACKER);
+			t.setScreenName(screenName);
+			t.send(new HitBuilders.AppViewBuilder().build());
+		} catch (Exception e) {
+			Log.d(TAG, "Exception raised in googleAnalaticsTracking() method.");
+		}
 	}
 }
