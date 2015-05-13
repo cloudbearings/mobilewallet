@@ -286,10 +286,10 @@ public class TabsActivity extends ActionBarActivity {
 		}
 
 		switch (item.getItemId()) {
-		case R.id.refresh_posts:
+		/*case R.id.refresh_posts:
 			HomePostsThread thread = new HomePostsThread(TabsActivity.this);
 			thread.run();
-			return true;
+			return true;*/
 		case R.id.recent_posts:
 			startActivity(new Intent(TabsActivity.this, RecentPosts.class)
 					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));

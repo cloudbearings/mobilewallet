@@ -102,6 +102,8 @@
 
     <!-- home_fragment.xml -->
     <dimen name="home_fragment_relative_margin">7dp</dimen>
+    <dimen name="home_fragment_loading_text_size">17sp</dimen>
+    <dimen name="home_fragment_loading_margin_top">10dp</dimen>
 
     <!-- about_wordlypost.xml -->
     <dimen name="about_textsize">18dp</dimen>

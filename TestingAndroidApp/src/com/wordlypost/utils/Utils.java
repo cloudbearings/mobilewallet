@@ -173,4 +173,54 @@ public class Utils {
 			Log.d(TAG, "Exception raised in googleAnalaticsTracking() method.");
 		}
 	}
+	
+	public static void storePostsLoadedDate(Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.POST_LOADED_DATE, Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.POST_LOADED_DATE, new Date().getTime() + "");
+		editor.commit();
+	}
+
+	private static String getPostsLoadedDate(Context context) {
+		return (context.getSharedPreferences(Config.POST_LOADED_DATE,
+				Context.MODE_PRIVATE))
+				.getString(Config.POST_LOADED_DATE, null);
+	}
+
+	public static boolean callPostsUrl(Context context) {
+		boolean call = false;
+		try {
+			call = ((new Date().getTime() - new Date(
+					Long.parseLong(getPostsLoadedDate(context))).getTime()) / (60 * 60 * 1000)) < 1;
+
+		} catch (Exception e) {
+
+		}
+		return call;
+	}
+	
+	public static void storeHMPostsLoadedDate(Context context) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.HM_POST_LOADED_DATE, Context.MODE_PRIVATE)).edit();
+		editor.putString(Config.HM_POST_LOADED_DATE, new Date().getTime() + "");
+		editor.commit();
+	}
+
+	private static String getHMPostsLoadedDate(Context context) {
+		return (context.getSharedPreferences(Config.HM_POST_LOADED_DATE,
+				Context.MODE_PRIVATE))
+				.getString(Config.HM_POST_LOADED_DATE, null);
+	}
+
+	public static boolean callHMPostsUrl(Context context) {
+		boolean call = false;
+		try {
+			call = ((new Date().getTime() - new Date(
+					Long.parseLong(getHMPostsLoadedDate(context))).getTime()) / (60 * 60 * 1000)) < 1;
+
+		} catch (Exception e) {
+
+		}
+		return call;
+	}
 }

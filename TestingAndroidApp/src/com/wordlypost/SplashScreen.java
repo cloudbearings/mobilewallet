@@ -63,6 +63,9 @@ public class SplashScreen extends ActionBarActivity {
 
 			if (Utils.isNetworkAvailable(SplashScreen.this)) {
 				categoriesDAO = new CategoriesDAO(SplashScreen.this);
+				/*
+				 * Checking categories are available in sqlite db.
+				 */
 				if (categoriesDAO.getCategoriesCount() > 0) {
 					// getRandomCategories();
 					startActivity(new Intent(SplashScreen.this, TabsActivity.class)
@@ -99,7 +102,10 @@ public class SplashScreen extends ActionBarActivity {
 									 */
 									if (obj.getJSONArray("categories").length() > categoriesDAO
 											.getCategoriesCount()) {
-										// Stpring categories is sqlite database
+										/* Storing categories in sqlite database.
+										 * BestVideosEver category is not showing in Slider Drawer.
+										 * If statement is used to stop storing BestVideosEver in sqlite database.
+										 */
 										if (category.getInt("id") != 174) {
 											String isHomeCategory;
 											if (i < 6) {
@@ -139,6 +145,9 @@ public class SplashScreen extends ActionBarActivity {
 	}
 
 	private void getRandomCategories() {
+		/*
+		 * Getting Random categories(5) from sqlite categories table.
+		 */
 		HomeDAO homeDAO = new HomeDAO(SplashScreen.this);
 		long count = homeDAO.getTotlaPostsCount();
 		if (count > 0) {
@@ -150,7 +159,6 @@ public class SplashScreen extends ActionBarActivity {
 				@Override
 				public void run() {
 					openTabsActivity();
-
 				}
 			}, SPLASH_TIME_OUT);
 		} else {
