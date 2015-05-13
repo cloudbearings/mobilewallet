@@ -10,11 +10,11 @@
         TestingAndroidApp:showAsAction="always|collapseActionView"
         android:icon="@drawable/ic_action_search"
         android:title="@string/action_search"/>
-    <item
+    <!-- <item
         android:id="@+id/refresh_posts"
         TestingAndroidApp:showAsAction="always"
         android:icon="@drawable/refresh_icon"
-        android:title="@string/action_refresh"/>
+        android:title="@string/action_refresh"/> -->
     <item
         android:id="@+id/recent_posts"
         TestingAndroidApp:showAsAction="never"
