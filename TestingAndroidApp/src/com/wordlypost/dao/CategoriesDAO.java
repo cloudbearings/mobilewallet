@@ -246,7 +246,7 @@ public class CategoriesDAO {
 			database = dbHelper.getReadableDatabase();
 			cursor = database.query(DbAdapter.CATEGORIES_TABLE_NAME, cols,
 					DbAdapter.IS_HOME_CATEGORY + "='Y'", null, null, null, DbAdapter.C_NAME
-							+ " ASC");
+							+ " DESC");
 			NavDrawerItem item;
 			if (cursor.moveToFirst()) {
 				do {
