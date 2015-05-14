@@ -59,7 +59,8 @@ public class Utils {
 	public static boolean isNetworkAvailable(Context context) {
 
 		NetworkInfo activeNetwork = ((ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+				.getSystemService(Context.CONNECTIVITY_SERVICE))
+				.getActiveNetworkInfo();
 		return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 	}
 
@@ -85,7 +86,8 @@ public class Utils {
 		// August 12, 2010
 		String newDateString = "";
 		try {
-			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT, Locale.ENGLISH);
+			SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT,
+					Locale.ENGLISH);
 			Date d = sdf.parse(oldDateString.trim());
 
 			sdf.applyPattern(NEW_FORMAT);
@@ -98,13 +100,14 @@ public class Utils {
 	}
 
 	public static String getGcmId(Context context) {
-		final SharedPreferences prefs = context.getSharedPreferences(Config.GCM_ID,
-				Context.MODE_PRIVATE);
+		final SharedPreferences prefs = context.getSharedPreferences(
+				Config.GCM_ID, Context.MODE_PRIVATE);
 		String registrationId = prefs.getString(Config.GCM_ID, "");
 		if (registrationId == null || "".equals(registrationId.trim())) {
 			return null;
 		}
-		int registeredVersion = prefs.getInt(Config.APP_VERSION, Integer.MIN_VALUE);
+		int registeredVersion = prefs.getInt(Config.APP_VERSION,
+				Integer.MIN_VALUE);
 		int currentVersion = getAppVersion(context);
 		if (registeredVersion != currentVersion) {
 			return null;
@@ -113,8 +116,8 @@ public class Utils {
 	}
 
 	public static void storeGcmId(String gcmId, Context context) {
-		final SharedPreferences prefs = context.getSharedPreferences(Config.GCM_ID,
-				Context.MODE_PRIVATE);
+		final SharedPreferences prefs = context.getSharedPreferences(
+				Config.GCM_ID, Context.MODE_PRIVATE);
 		int appVersion = Utils.getAppVersion(context);
 		SharedPreferences.Editor editor = prefs.edit();
 		editor.putString(Config.GCM_ID, gcmId);
@@ -124,8 +127,8 @@ public class Utils {
 
 	public static int getAppVersion(Context context) {
 		try {
-			PackageInfo packageInfo = context.getPackageManager().getPackageInfo(
-					context.getPackageName(), 0);
+			PackageInfo packageInfo = context.getPackageManager()
+					.getPackageInfo(context.getPackageName(), 0);
 			return packageInfo.versionCode;
 		} catch (Exception e) {
 
@@ -134,15 +137,15 @@ public class Utils {
 	}
 
 	public static void storeAddClosedDate(Context context) {
-		SharedPreferences.Editor editor = (context.getSharedPreferences(Config.ADD_LOADED_DATE,
-				Context.MODE_PRIVATE)).edit();
+		SharedPreferences.Editor editor = (context.getSharedPreferences(
+				Config.ADD_LOADED_DATE, Context.MODE_PRIVATE)).edit();
 		editor.putLong(Config.ADD_LOADED_DATE, new Date().getTime());
 		editor.commit();
 	}
 
 	private static long getAddClosedDate(Context context) {
-		return (context.getSharedPreferences(Config.ADD_LOADED_DATE, Context.MODE_PRIVATE))
-				.getLong(Config.ADD_LOADED_DATE, 0);
+		return (context.getSharedPreferences(Config.ADD_LOADED_DATE,
+				Context.MODE_PRIVATE)).getLong(Config.ADD_LOADED_DATE, 0);
 	}
 
 	public static boolean openAd(Context context) {
@@ -163,7 +166,8 @@ public class Utils {
 		return call;
 	}
 
-	public static void googleAnalaticsTracking(ActionBarActivity activity, String screenName) {
+	public static void googleAnalaticsTracking(ActionBarActivity activity,
+			String screenName) {
 		try {
 			Tracker t = ((WordlyPostGoogleAnalytics) activity.getApplication())
 					.getTracker(TrackerName.APP_TRACKER);
@@ -173,7 +177,7 @@ public class Utils {
 			Log.d(TAG, "Exception raised in googleAnalaticsTracking() method.");
 		}
 	}
-	
+
 	public static void storePostsLoadedDate(Context context) {
 		SharedPreferences.Editor editor = (context.getSharedPreferences(
 				Config.POST_LOADED_DATE, Context.MODE_PRIVATE)).edit();
@@ -183,8 +187,7 @@ public class Utils {
 
 	private static String getPostsLoadedDate(Context context) {
 		return (context.getSharedPreferences(Config.POST_LOADED_DATE,
-				Context.MODE_PRIVATE))
-				.getString(Config.POST_LOADED_DATE, null);
+				Context.MODE_PRIVATE)).getString(Config.POST_LOADED_DATE, null);
 	}
 
 	public static boolean callPostsUrl(Context context) {
@@ -198,7 +201,7 @@ public class Utils {
 		}
 		return call;
 	}
-	
+
 	public static void storeHMPostsLoadedDate(Context context) {
 		SharedPreferences.Editor editor = (context.getSharedPreferences(
 				Config.HM_POST_LOADED_DATE, Context.MODE_PRIVATE)).edit();
@@ -208,8 +211,8 @@ public class Utils {
 
 	private static String getHMPostsLoadedDate(Context context) {
 		return (context.getSharedPreferences(Config.HM_POST_LOADED_DATE,
-				Context.MODE_PRIVATE))
-				.getString(Config.HM_POST_LOADED_DATE, null);
+				Context.MODE_PRIVATE)).getString(Config.HM_POST_LOADED_DATE,
+				null);
 	}
 
 	public static boolean callHMPostsUrl(Context context) {
@@ -222,5 +225,26 @@ public class Utils {
 
 		}
 		return call;
+	}
+
+	public static void storeDataInPref(Context context, String key, String value) {
+		SharedPreferences.Editor editor = (context.getSharedPreferences(key,
+				Context.MODE_PRIVATE)).edit();
+		editor.putString(key, value);
+		editor.commit();
+	}
+
+	public static String getDataFromPref(Context context, String key) {
+		return (context.getSharedPreferences(key, Context.MODE_PRIVATE))
+				.getString(key, null);
+	}
+
+	public static void removeDataFromPref(Context context, String key) {
+		if (getDataFromPref(context, key) != null) {
+			SharedPreferences.Editor editor = (context.getSharedPreferences(
+					key, Context.MODE_PRIVATE)).edit();
+			editor.remove(key);
+			editor.commit();
+		}
 	}
 }
