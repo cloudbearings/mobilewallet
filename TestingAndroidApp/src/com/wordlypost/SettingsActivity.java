@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.wordlypost.beans.NavDrawerItem;
 import com.wordlypost.dao.CategoriesDAO;
+import com.wordlypost.gcm.Config;
 import com.wordlypost.utils.Utils;
 
 public class SettingsActivity extends ActionBarActivity {
@@ -42,7 +43,8 @@ public class SettingsActivity extends ActionBarActivity {
 					checkBox = new CheckBox(this);
 					checkBox.setId(item.getId());
 					checkBox.setText(Html.fromHtml(item.getTitle()));
-					if (item.getId() == getResources().getInteger(R.integer.top_news)) {
+					if (item.getId() == getResources().getInteger(
+							R.integer.top_news)) {
 						checkBox.setEnabled(false);
 					}
 					if (item.getIsHomeCategory().equals(getString(R.string.Y))) {
@@ -71,17 +73,30 @@ public class SettingsActivity extends ActionBarActivity {
 								getString(R.string.five_categories_error_msg));
 
 					} else {
-						updateHomeCategory(button.getId(), getString(R.string.Y));
+						updateHomeCategory(button.getId(),
+								getString(R.string.Y));
 					}
 				} else {
-					updateHomeCategory(button.getId(), getString(R.string.N));
+					if (categoriesDAO.getHomeCategoriesCount() > 3) {
+						updateHomeCategory(button.getId(),
+								getString(R.string.N));
+					} else {
+						button.setChecked(true);
+						Utils.displayToad(
+								SettingsActivity.this,
+								getString(R.string.min_three_max_five_categories_error_msg));
+					}
+
 				}
 			}
 		};
 	}
 
 	private void updateHomeCategory(int categoryId, String isHomeCategory) {
-		long updated = categoriesDAO.updateIsHomeCategory(categoryId, isHomeCategory);
+		Utils.removeDataFromPref(SettingsActivity.this,
+				Config.HM_POST_LOADED_DATE);
+		long updated = categoriesDAO.updateIsHomeCategory(categoryId,
+				isHomeCategory);
 		if (updated > 0) {
 			Log.i(TAG, "isHomeCategory column is updated in Categories table.");
 		}
@@ -92,11 +107,17 @@ public class SettingsActivity extends ActionBarActivity {
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			// app icon in action bar clicked; go home
-			Intent tabsIntent = new Intent(SettingsActivity.this, TabsActivity.class);
-			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(tabsIntent);
+			startActivity(new Intent(SettingsActivity.this, TabsActivity.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed();
+		startActivity(new Intent(SettingsActivity.this, TabsActivity.class)
+				.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 	}
 }
