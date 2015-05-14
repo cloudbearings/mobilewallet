@@ -102,13 +102,19 @@ public class SplashScreen extends ActionBarActivity {
 									 */
 									if (obj.getJSONArray("categories").length() > categoriesDAO
 											.getCategoriesCount()) {
-										/* Storing categories in sqlite database.
-										 * BestVideosEver category is not showing in Slider Drawer.
-										 * If statement is used to stop storing BestVideosEver in sqlite database.
+										/*
+										 * Storing categories in sqlite
+										 * database. BestVideosEver category is
+										 * not showing in Slider Drawer. If
+										 * statement is used to stop storing
+										 * BestVideosEver in sqlite database.
 										 */
-										if (category.getInt("id") != 174) {
+										if (category.getInt("id") != getResources().getInteger(
+												R.integer.best_vides_ever)) {
 											String isHomeCategory;
-											if (i < 6) {
+											if (category.getInt("id") == getResources().getInteger(
+													R.integer.top_news)
+													|| i < 5) {
 												// Log.i("count", i + "");
 												isHomeCategory = getString(R.string.Y);
 											} else {
