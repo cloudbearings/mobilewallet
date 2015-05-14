@@ -53,8 +53,6 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 			getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 			fragments = new Vector<Fragment>();
-
-			getPostsFromServer();
 			/*
 			 * ArrayList<PostRowItem> rowItems = (ArrayList<PostRowItem>)
 			 * getIntent().getSerializableExtra("postDetails"); if
@@ -64,8 +62,7 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 			// Initilization
 			viewPager = (ViewPager) findViewById(R.id.postViewPager);
 
-			mAdapter = new PageViewSwipeAdapter(
-					super.getSupportFragmentManager(), fragments);
+			mAdapter = new PageViewSwipeAdapter(super.getSupportFragmentManager(), fragments);
 
 			viewPager.setAdapter(mAdapter);
 
@@ -74,27 +71,28 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 			/**
 			 * on swiping the viewpager make respective tab selected
 			 * */
-			viewPager
-					.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+			viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-						@Override
-						public void onPageSelected(int position) {
-							 addPostUrl(position);
-							if (position == posts.size()) {
-								if (!loadingMore) {
-									getPostsFromServer();
-								}
-							}
+				@Override
+				public void onPageSelected(int position) {
+					addPostUrl(position);
+					if (position == posts.size()) {
+						if (!loadingMore) {
+							getPostsFromServer();
 						}
+					}
+				}
 
-						@Override
-						public void onPageScrolled(int pos, float arg1, int arg2) {
-						}
+				@Override
+				public void onPageScrolled(int pos, float arg1, int arg2) {
+				}
 
-						@Override
-						public void onPageScrollStateChanged(int arg0) {
-						}
-					});
+				@Override
+				public void onPageScrollStateChanged(int arg0) {
+				}
+			});
+
+			getPostsFromServer();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -106,11 +104,11 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 			final int categoryId = getIntent().getIntExtra("categoryId", 0);
 			final String sulg = getIntent().getStringExtra("slug");
 			homeDAO = new HomeDAO(HomePostsSwipeViewActivity.this);
-			if (page == 1
-					&& Utils.callPostsUrl(HomePostsSwipeViewActivity.this)
+			if (page == 1 && Utils.callPostsUrl(HomePostsSwipeViewActivity.this)
 					&& homeDAO.getPostsCount(categoryId, sulg) > 6) {
 				posts = homeDAO.getPosts(categoryId, sulg);
 				generateOffers(posts);
+				mAdapter.notifyDataSetChanged();
 				showTab(getIntent().getIntExtra("position", 0));
 			} else {
 				progressBar.setVisibility(View.VISIBLE);
@@ -130,55 +128,38 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 
 										Utils.storePostsLoadedDate(HomePostsSwipeViewActivity.this);
 
-										JSONArray categotyPosts = obj
-												.getJSONArray("posts");
-										String currentMilliSeconds = Calendar
-												.getInstance()
-												.getTimeInMillis()
-												+ "";
+										JSONArray categotyPosts = obj.getJSONArray("posts");
+										String currentMilliSeconds = Calendar.getInstance()
+												.getTimeInMillis() + "";
 
-										for (int i = 0; i < categotyPosts
-												.length(); i++) {
+										for (int i = 0; i < categotyPosts.length(); i++) {
 											JSONObject categotyPost = categotyPosts
 													.getJSONObject(i);
 
 											PostRowItem item = new PostRowItem();
 
-											item.setPost_id(categotyPost
-													.getInt("id"));
-											item.setTitle(categotyPost
-													.getString("title"));
-											item.setDate(categotyPost
-													.getString("date"));
+											item.setPost_id(categotyPost.getInt("id"));
+											item.setTitle(categotyPost.getString("title"));
+											item.setDate(categotyPost.getString("date"));
 											item.setPost_icon_url(categotyPost
 													.getString("thumbnail"));
-											item.setAuthor(categotyPost
-													.getJSONObject("author")
+											item.setAuthor(categotyPost.getJSONObject("author")
 													.getString("name"));
-											item.setContent(categotyPost
-													.getString("content"));
+											item.setContent(categotyPost.getString("content"));
 											item.setPost_banner(categotyPost
-													.getJSONObject(
-															"thumbnail_images")
-													.getJSONObject("full")
-													.getString("url"));
+													.getJSONObject("thumbnail_images")
+													.getJSONObject("full").getString("url"));
 											item.setComment_count(categotyPost
 													.getInt("comment_count"));
-											item.setPost_url(categotyPost
-													.getString("url"));
+											item.setPost_url(categotyPost.getString("url"));
 
-											if (categotyPost
-													.getInt("comment_count") > 0) {
-												item.setCommentsArray(categotyPost
-														.getJSONArray(
-																"comments")
-														.toString());
+											if (categotyPost.getInt("comment_count") > 0) {
+												item.setCommentsArray(categotyPost.getJSONArray(
+														"comments").toString());
 											}
-											item.setTagsArray(categotyPost
-													.getJSONArray("tags")
+											item.setTagsArray(categotyPost.getJSONArray("tags")
 													.toString());
-											item.setPost_des(categotyPost
-													.getString("excerpt"));
+											item.setPost_des(categotyPost.getString("excerpt"));
 
 											posts.add(item);
 
@@ -188,62 +169,38 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 												 * sqlite.
 												 */
 												homeDAO.insertPosts(
+														categotyPost.getInt("id"),
+														categotyPost.getString("title"),
+														categotyPost.getString("date"),
+														categotyPost.getString("thumbnail"),
+														categotyPost.getJSONObject("author")
+																.getString("name"),
+														categotyPost.getString("content"),
 														categotyPost
-																.getInt("id"),
-														categotyPost
-																.getString("title"),
-														categotyPost
-																.getString("date"),
-														categotyPost
-																.getString("thumbnail"),
-														categotyPost
-																.getJSONObject(
-																		"author")
-																.getString(
-																		"name"),
-														categotyPost
-																.getString("content"),
-														categotyPost
-																.getJSONObject(
-																		"thumbnail_images")
-																.getJSONObject(
-																		"full")
-																.getString(
-																		"url"),
-														categotyPost
+																.getJSONObject("thumbnail_images")
+																.getJSONObject("full")
+																.getString("url"), categotyPost
 																.getInt("comment_count"),
-														categotyPost
-																.getString("url"),
-														currentMilliSeconds,
-														categotyPost
-																.getString("excerpt"),
-														categoryId,
-														sulg,
-														"",
-														categotyPost
-																.getJSONArray(
-																		"comments")
-																.toString(),
-														categotyPost
-																.getJSONArray(
-																		"tags")
-																.toString());
+														categotyPost.getString("url"),
+														currentMilliSeconds, categotyPost
+																.getString("excerpt"), categoryId,
+														sulg, "",
+														categotyPost.getJSONArray("comments")
+																.toString(), categotyPost
+																.getJSONArray("tags").toString());
 											}
 										}
 
 										if (page == 1) {
-											long deleted = homeDAO.deletePosts(
-													categoryId, sulg,
+											long deleted = homeDAO.deletePosts(categoryId, sulg,
 													currentMilliSeconds);
-											Log.i("Deleted records: ", deleted
-													+ "");
+											Log.i("Deleted records: ", deleted + "");
 										}
 
 										generateOffers(posts);
 										progressBar.setVisibility(View.GONE);
 										mAdapter.notifyDataSetChanged();
-										showTab(getIntent().getIntExtra(
-												"position", 0));
+										showTab(getIntent().getIntExtra("position", 0));
 
 										if (page == obj.getInt("pages")) {
 											Log.i("loadingmore", "true");
@@ -254,8 +211,7 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 										}
 
 									} else {
-										Utils.displayToad(
-												HomePostsSwipeViewActivity.this,
+										Utils.displayToad(HomePostsSwipeViewActivity.this,
 												getString(R.string.no_posts_error_msg));
 									}
 								} catch (Exception e) {
@@ -294,8 +250,13 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 	}
 
 	public void showTab(int tabIndex) {
-		addPostUrl(tabIndex);
-		viewPager.setCurrentItem(tabIndex);
+		try {
+			addPostUrl(tabIndex);
+			viewPager.setCurrentItem(tabIndex);
+		} catch (Exception e) {
+			Log.d(TAG, "Exception raised in showTab() method");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
@@ -309,16 +270,15 @@ public class HomePostsSwipeViewActivity extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Intent tabsIntent = new Intent(HomePostsSwipeViewActivity.this,
-					TabsActivity.class);
+			Intent tabsIntent = new Intent(HomePostsSwipeViewActivity.this, TabsActivity.class);
 			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			startActivity(tabsIntent);
 			return true;
 		case R.id.share_icon:
 			Intent sendIntent = new Intent();
 			sendIntent.setAction(Intent.ACTION_SEND);
-			sendIntent.putExtra(Intent.EXTRA_TEXT, postUrl).putExtra(
-					Intent.EXTRA_SUBJECT, postTitle);
+			sendIntent.putExtra(Intent.EXTRA_TEXT, postUrl).putExtra(Intent.EXTRA_SUBJECT,
+					postTitle);
 			sendIntent.setType("text/plain");
 			startActivity(sendIntent);
 			return true;
