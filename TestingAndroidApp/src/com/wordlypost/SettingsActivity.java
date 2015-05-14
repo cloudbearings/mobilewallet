@@ -42,12 +42,16 @@ public class SettingsActivity extends ActionBarActivity {
 					checkBox = new CheckBox(this);
 					checkBox.setId(item.getId());
 					checkBox.setText(Html.fromHtml(item.getTitle()));
+					if (item.getId() == getResources().getInteger(R.integer.top_news)) {
+						checkBox.setEnabled(false);
+					}
 					if (item.getIsHomeCategory().equals(getString(R.string.Y))) {
 						checkBox.setChecked(true);
 					} else {
 						checkBox.setChecked(false);
 					}
 					checkBox.setOnClickListener(addListenerOnCheckbox(checkBox));
+
 					linearMain.addView(checkBox);
 				}
 			}
@@ -59,20 +63,28 @@ public class SettingsActivity extends ActionBarActivity {
 	private View.OnClickListener addListenerOnCheckbox(final CheckBox button) {
 		return new View.OnClickListener() {
 			public void onClick(View v) {
-				if (categoriesDAO.getHomeCategoriesCount() >= 5) {
-					Log.i("Cid", button.getId() + "");
-					Log.i("Title", button.getText().toString());
-					long updated = categoriesDAO.updateIsHomeCategory(button.getId(), button
-							.getText().toString());
-					if (updated > 0) {
-						Log.i(TAG, "isHomeCategory column is updated in Categories table.");
+
+				if (button.isChecked()) {
+					if (categoriesDAO.getHomeCategoriesCount() == 5) {
+						button.setChecked(false);
+						Utils.displayToad(SettingsActivity.this,
+								getString(R.string.five_categories_error_msg));
+
+					} else {
+						updateHomeCategory(button.getId(), getString(R.string.Y));
 					}
 				} else {
-					Utils.displayToad(SettingsActivity.this,
-							getString(R.string.five_categories_error_msg));
+					updateHomeCategory(button.getId(), getString(R.string.N));
 				}
 			}
 		};
+	}
+
+	private void updateHomeCategory(int categoryId, String isHomeCategory) {
+		long updated = categoriesDAO.updateIsHomeCategory(categoryId, isHomeCategory);
+		if (updated > 0) {
+			Log.i(TAG, "isHomeCategory column is updated in Categories table.");
+		}
 	}
 
 	@Override
