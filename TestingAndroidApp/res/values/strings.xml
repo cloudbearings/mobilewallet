@@ -81,7 +81,7 @@
     <string name="invalid_email_error_msg">Inavalid email</string>
 
     <!-- post_view.xml -->
-    <string name="title_activity_post_view_swipe">Post View</string>
+    <string name="title_activity_post_view_swipe"></string>
     <string name="comments">&#160;comments</string>
     <string name="pv_comment">&#160;comment</string>
     <string name="title_activity_search_post">Search Post</string>
@@ -112,6 +112,8 @@
     
     <!-- settings.xml -->
     <string name="title_activity_settings">Settings</string>
+    <string name="settings_heading">Select Minimum 3 and Maximum 5 categories</string>
     <string name="five_categories_error_msg">Select five categories only</string>
+    <string name="min_three_max_five_categories_error_msg">Select minimum 3 maximum 5 categories</string>
 
 </resources>
