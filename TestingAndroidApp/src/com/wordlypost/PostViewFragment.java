@@ -152,13 +152,12 @@ public class PostViewFragment extends Fragment {
 							textDynamic.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 									LayoutParams.WRAP_CONTENT));
 							if (i == 0) {
-								textDynamic.setText(getString(R.string.tags)
-										+ tagObj.getString("title"));
-							} else if (i == tagsArray.length() - 1) {
-								textDynamic.setText(tagObj.getString("title"));
+								textDynamic.setText(Html.fromHtml(getString(R.string.tags)
+										+ tagObj.getString("title")));
 							} else {
-								textDynamic.setText(", " + tagObj.getString("title") + ", ");
+								textDynamic.setText(tagObj.getString("title"));
 							}
+
 							textDynamic.setTextColor(getResources().getColor(
 									R.color.post_view_tags_color));
 							textDynamic.setTextSize(getResources().getDimension(
