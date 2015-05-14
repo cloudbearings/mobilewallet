@@ -18,7 +18,7 @@
     <string name="please_wait">Please wait</string>
     <string name="pst_comments">comments</string>
     <string name="pst_id">postId</string>
-    <string name="tags">Tags :&#160;</string>
+    <string name="tags"><![CDATA[<b>Tags :&#160;</b>]]></string>
     <string name="tagSlug">TagSlug</string>
     <string name="Y">Y</string>
     <string name="N">N</string>

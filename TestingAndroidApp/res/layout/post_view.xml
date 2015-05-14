@@ -124,7 +124,7 @@
                 android:layout_alignLeft="@+id/view3"
                 android:layout_below="@+id/content"
                 android:layout_marginTop="@dimen/post_view_tags_margin_top"
-                android:orientation="horizontal" />
+                android:orientation="vertical" />
 
             <com.wordlypost.textview.Helvetica
                 android:id="@+id/comment_count"
