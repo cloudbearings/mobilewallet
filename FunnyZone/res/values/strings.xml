@@ -5,4 +5,28 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Global strings -->
+    <string name="task_error_msg">OOPS! No data found.</string>
+    <string name="click_back_agiain_to_exit">Please click BACK again to exit</string>
+    <string name="loading">Loading&#8230;</string>
+    <string name="processing">Processing&#8230;</string>
+    <string name="no_internet">No network connection enabled.</string>
+    <string name="please_wait">Please wait</string>
+    <string name="Y">Y</string>
+    <string name="N">N</string>
+    <string name="error">error</string>
+
+    <!-- custom_fonts xml strings -->
+    <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
+    <string name="Arial">fonts/arial.ttf</string>
+    <string name="DroidSerif">fonts/DroidSerif-Italic.ttf</string>
+    <string name="DroidSerif_Bold">fonts/DroidSerif-Bold.ttf</string>
+
+    <!-- Google analytics screen names -->
+    <string name="splash_screen_name">SplashScreen</string>
+
+    <!-- tabs.xml strings -->
+    <string name="search_hint">Search</string>
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
 </resources>
