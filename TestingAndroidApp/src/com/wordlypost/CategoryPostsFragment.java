@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,45 @@ public class CategoryPostsFragment extends Fragment {
 	private ProgressBar progressBar;
 	private NavDrawerItem categoryItem;
 	private PostsDAO postsDAO;
+	private boolean doubleBackToExitPressedOnce = false;
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		try {
+			AdController.resumeAdView();
+
+			View view = getView();
+			view.setFocusableInTouchMode(true);
+			view.requestFocus();
+			view.setOnKeyListener(new View.OnKeyListener() {
+				@Override
+				public boolean onKey(View view, int keyCode, KeyEvent event) {
+					if (event.getAction() == KeyEvent.ACTION_UP) {
+						if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+							if (((TabsActivity) getActivity()).isDrawerOpened()) {
+								((TabsActivity) getActivity()).closeDrawer();
+								return true;
+							} else if (doubleBackToExitPressedOnce) {
+								doubleBackToExitPressedOnce = false;
+								getActivity().finish();
+							} else {
+								doubleBackToExitPressedOnce = true;
+								Utils.displayToad(getActivity(),
+										getString(R.string.click_back_agiain_to_exit));
+								return true;
+							}
+						}
+					}
+					return false;
+				}
+			});
+
+		} catch (Exception e) {
+			Log.d("TAG", "Exception raised in CategoryPostsFragment onResume()");
+		}
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -227,12 +267,6 @@ public class CategoryPostsFragment extends Fragment {
 			Utils.displayToad(getActivity(), getString(R.string.no_posts_error_msg));
 		}
 		progressBar.setVisibility(View.GONE);
-	}
-
-	@Override
-	public void onResume() {
-		super.onResume();
-		AdController.resumeAdView();
 	}
 
 	@Override
