@@ -24,9 +24,11 @@
 
     <!-- Google analytics screen names -->
     <string name="splash_screen_name">SplashScreen</string>
+    <string name="tabs_screen_name">TabsActivity</string>
 
     <!-- tabs.xml strings -->
     <string name="search_hint">Search</string>
     <string name="title_activity_splash_screen">SplashScreen</string>
+    <string name="title_activity_tabs">TabsActivity</string>
 
 </resources>

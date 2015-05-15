@@ -4,4 +4,13 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- tabs_activity xml dimes -->
+    <dimen name="slider_drawer_listview_height">220dp</dimen>
+
+    <!-- drawer_list_item xml dimes -->
+    <dimen name="list_item_text_size">14sp</dimen>
+    <dimen name="list_item_text_height">45dp</dimen>
+    <dimen name="list_item_text_margin_right">20dp</dimen>
+    <dimen name="list_layout_hegith">50dp</dimen>
+
 </resources>
