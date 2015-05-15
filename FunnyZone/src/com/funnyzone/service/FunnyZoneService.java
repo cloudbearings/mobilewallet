@@ -5,7 +5,7 @@ import retrofit.http.POST;
 import retrofit.http.Query;
 
 public interface FunnyZoneService {
-	@POST("/get_category_index")
+	@POST("/categories")
 	void getCategories(Callback<String> callback);
 
 	@POST("/get_category_posts")
