@@ -8,9 +8,9 @@ public class DbAdapter extends SQLiteOpenHelper {
 
 	private static final String DB_NAME = "wordlypost.db";
 	/*
-	 * Upgraded DB_VERSION from 1 to 2
+	 * Upgraded DB_VERSION from 2 to 3
 	 */
-	private static final int DB_VERSION = 2;
+	private static final int DB_VERSION = 3;
 
 	// Categories table columns
 	public static final String CATEGORIES_TABLE_NAME = "categories";
