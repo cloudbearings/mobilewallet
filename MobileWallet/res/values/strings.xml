@@ -4,7 +4,6 @@
     <string name="app_name">MobileWallet</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
     <string name="registration_invalid_email">Invalid Email.</string>
     <string name="registration_inavalid_password">Invalid Password.</string>
     <string name="registration_invalid_user_name">Please Enter Username.</string>
@@ -22,6 +21,8 @@
     <string name="show_true">true</string>
     <string name="end">end</string>
     <string name="count">count</string>
+    <string name="Y">Y</string>
+    <string name="N">N</string>
 
     <!-- Google analytics strings -->
     <string name="daily_credits_screen_name">Daily Credits</string>
@@ -37,6 +38,8 @@
     <string name="notifications_screen_name">Notifications</string>
     <string name="invite_screen_name">Invite</string>
     <string name="user_questions_screen_name">User Questions</string>
+    <string name="question_screen_name">Question</string>
+    <string name="submit_question_screen_name">Submit Question</string>
 
     <!-- custom fonts -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.otf</string>
@@ -253,9 +256,10 @@
     <string name="question_error">Enter your question.</string>
     <string name="answers_error">Enter your question answer.</string>
     <string name="answer_error">Enter question answer.</string>
-    
+
     <!-- questions.xml -->
     <string name="title_activity_question">Question</string>
     <string name="next_question">Next Question</string>
+    <string name="title_activity_submit_question">Submit Question</string>
 
 </resources>

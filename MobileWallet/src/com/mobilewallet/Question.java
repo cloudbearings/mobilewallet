@@ -1,34 +1,75 @@
 package com.mobilewallet;
 
-import android.support.v7.app.ActionBarActivity;
+import org.json.JSONArray;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.mobilewallet.service.BuildService;
+import com.mobilewallet.utils.Utils;
 
 public class Question extends ActionBarActivity {
+	private static final String TAG = "Question";
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Utils.googleAnalyticsTracking(Question.this,
+				getString(R.string.question_screen_name));
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.question);
-	}
+		try {
+			setContentView(R.layout.question);
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.question, menu);
-		return true;
+			BuildService.build.getQuestion(Utils.getUserId(Question.this),
+					new Callback<String>() {
+
+						@Override
+						public void success(String result, Response arg1) {
+
+							try {
+								Log.i("Questuin json", result + " result");
+								JSONArray array = new JSONArray(result);
+
+								((TextView) findViewById(R.id.question))
+										.setText("");
+
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						}
+
+						@Override
+						public void failure(RetrofitError retrofitError) {
+							Log.d(TAG,
+									"Exception raised in retrofilt failure()");
+							retrofitError.printStackTrace();
+						}
+					});
+		} catch (Exception e) {
+			Log.d(TAG, "Exception raised in onCreate()");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			startActivity(new Intent(Question.this, TabsActivity.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+		default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 }
