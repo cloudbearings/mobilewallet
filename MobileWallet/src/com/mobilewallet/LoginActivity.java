@@ -275,9 +275,12 @@ public class LoginActivity extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					// Opening Login activity
-					startActivity(new Intent(LoginActivity.this,
+					/*startActivity(new Intent(LoginActivity.this,
 							RegisterActivity.class)
-							.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+							.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));*/
+					
+					startActivity(new Intent(LoginActivity.this, TabsActivity.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 				}
 			});
 

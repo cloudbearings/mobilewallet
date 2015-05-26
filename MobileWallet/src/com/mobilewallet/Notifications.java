@@ -51,28 +51,24 @@ public class Notifications extends ActionBarActivity {
 
 					@Override
 					public void success(String result, Response arg1) {
-						// TODO Auto-generated method stub
+
 						try {
 							Log.i("notification json", result + " result");
 							JSONArray array = new JSONArray(result);
 
-							offerSwitch.setChecked("Y".equals((String) array
-									.get(0)));
+							offerSwitch.setChecked(getString(R.string.Y)
+									.equals((String) array.get(0)));
 
 						} catch (Exception e) {
 							e.printStackTrace();
 							offerSwitch.setChecked(false);
-
 						}
-
 					}
 
 					@Override
 					public void failure(RetrofitError arg0) {
-						// TODO Auto-generated method stub
 						arg0.printStackTrace();
 						offerSwitch.setChecked(false);
-
 					}
 				});
 
@@ -86,7 +82,8 @@ public class Notifications extends ActionBarActivity {
 					public void onCheckedChanged(CompoundButton buttonView,
 							boolean isChecked) {
 						updateNotification(getString(R.string.offer),
-								isChecked ? "Y" : "N");
+								isChecked ? getString(R.string.Y)
+										: getString(R.string.N));
 					}
 				});
 	}
@@ -105,8 +102,8 @@ public class Notifications extends ActionBarActivity {
 					@Override
 					public void success(String result, Response arg1) {
 						try {
-							if (!"Y".equals(new JSONObject(result)
-									.getString("sc"))) {
+							if (!getString(R.string.Y).equals(
+									new JSONObject(result).getString("sc"))) {
 								Utils.displayToad(Notifications.this,
 										getString(R.string.notifc_failure_msg));
 							}
@@ -124,10 +121,8 @@ public class Notifications extends ActionBarActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			Intent tabsIntent = new Intent(Notifications.this,
-					TabsActivity.class);
-			tabsIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(tabsIntent);
+			startActivity(new Intent(Notifications.this, TabsActivity.class)
+					.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 		default:
 			return super.onOptionsItemSelected(item);
 		}

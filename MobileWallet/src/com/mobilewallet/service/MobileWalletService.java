@@ -178,4 +178,7 @@ public interface MobileWalletService {
 			@Query("answerA") String answerA, @Query("answerB") String answerB,
 			@Query("answerC") String answerC, @Query("answerD") String answerD,
 			@Query("answer") String answer, Callback<String> callback);
+
+	@GET("/getQuestion")
+	void getQuestion(@Query("userId") String userId, Callback<String> callback);
 }
