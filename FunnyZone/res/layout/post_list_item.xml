@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/offerbg"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/post_list_item_layout_padding_bottom"
+    android:paddingLeft="@dimen/post_layout_padding"
+    android:paddingRight="@dimen/post_layout_padding"
+    android:paddingTop="@dimen/post_layout_padding" >
+
+    <ImageView
+        android:id="@+id/post_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/post_title"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/default_offer_detail" />
+
+    <com.funnyzone.textview.HelveticaBold
+        android:id="@+id/post_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingTop="@dimen/post_title_padding_top"
+        android:text="Funny person"
+        android:textColor="@color/post_title_color"
+        android:textSize="@dimen/post_title_text_size"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/share_post"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/post_image"
+        android:text="Share"
+        android:textColor="@color/brown"
+        android:textSize="@dimen/post_comment_count_text_size"
+        android:visibility="visible" />
+
+</RelativeLayout>
