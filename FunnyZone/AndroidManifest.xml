@@ -71,6 +71,10 @@
             android:name=".TabsActivity"
             android:label="@string/title_activity_tabs" >
         </activity>
+        <activity
+            android:name=".CategoryPostsFragment"
+            android:label="@string/title_activity_category_posts_fragment" >
+        </activity>
     </application>
 
 </manifest>

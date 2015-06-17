@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="items_per_row">2</integer>
+    <integer name="post_des_text_size">14</integer>
+    <integer name="top_news">120</integer>
+    <integer name="best_vides_ever">174</integer>
+
+</resources>
