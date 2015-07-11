@@ -2,19 +2,46 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="cp_title_style">
+        <item name="android:textSize">@dimen/cp_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/cp_title_color</item>
+    </style>
+
+    <style name="cp_text_joke_style">
+        <item name="android:textSize">@dimen/cp_text_joke_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/joke_text_color</item>
+    </style>
+
+    <style name="like_text_style">
+        <item name="android:textSize">@dimen/likes_text_size</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textColor">@color/likes_text_color</item>
+    </style>
+    
+    <style name="share_button_text_style">
+        <item name="android:background">@color/white</item>
+        
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/share_button_text_size</item>
+        <item name="android:textColor">@color/share_text_color</item>
     </style>
 
 </resources>
