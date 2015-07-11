@@ -57,18 +57,6 @@ public class PostRowItem implements Serializable {
 		if (content.contains("<img")) {
 			content = content.replace("<img", "<img1");
 		}
-		if (content.contains("<iframe")) {
-			content = content.replace("<iframe", "<iframe1");
-		}
-		if (content.contains("width")) {
-			content = content.replace("width", "with");
-		}
-		if (content.contains("height")) {
-			content = content.replace("height", "high");
-		}
-		if (content.contains("justify")) {
-			content = content.replace("justify", "");
-		}
 		return content;
 	}
 

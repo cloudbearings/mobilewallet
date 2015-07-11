@@ -1,12 +1,17 @@
 package com.funnyzone;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -20,12 +25,15 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.funnyzone.adapters.CategoryPostsAdapter;
 import com.funnyzone.beans.NavDrawerItem;
 import com.funnyzone.beans.PostRowItem;
 import com.funnyzone.dao.PostsDAO;
+import com.funnyzone.gcm.Config;
 import com.funnyzone.google.adcontroller.AdController;
+import com.funnyzone.googleanalytics.FunnyZoneGoogleAnalytics;
 import com.funnyzone.googleanalytics.FunnyZoneGoogleAnalytics.TrackerName;
-import com.funnyzone.service.BuildService;
 import com.funnyzone.utils.Utils;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
@@ -42,11 +50,14 @@ public class CategoryPostsFragment extends Fragment {
 	private PostsDAO postsDAO;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.category_posts_fragment, container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.category_posts_fragment,
+				container, false);
 
 		try {
-			RelativeLayout bannerLayout = (RelativeLayout) view.findViewById(R.id.bannerAd);
+			RelativeLayout bannerLayout = (RelativeLayout) view
+					.findViewById(R.id.bannerAd);
 			AdController.bannerAd(getActivity(), bannerLayout,
 					getString(R.string.category_posts_banner_unit_id));
 		} catch (Exception e) {
@@ -56,8 +67,8 @@ public class CategoryPostsFragment extends Fragment {
 		if (bundle.getSerializable("category") != null) {
 			categoryItem = (NavDrawerItem) bundle.getSerializable("category");
 			try {
-				Tracker t = ((WordlyPostGoogleAnalytics) getActivity().getApplication())
-						.getTracker(TrackerName.APP_TRACKER);
+				Tracker t = ((FunnyZoneGoogleAnalytics) getActivity()
+						.getApplication()).getTracker(TrackerName.APP_TRACKER);
 				t.setScreenName(categoryItem.getTitle());
 				t.send(new HitBuilders.AppViewBuilder().build());
 
@@ -65,30 +76,35 @@ public class CategoryPostsFragment extends Fragment {
 				Log.d("TAG", getString(R.string.google_analytics_error));
 			}
 
-			TextView categoryTitle = (TextView) view.findViewById(R.id.category_title);
+			TextView categoryTitle = (TextView) view
+					.findViewById(R.id.category_title);
 			categoryTitle.setText(Html.fromHtml(categoryItem.getTitle()));
 
 			rowItems = new ArrayList<PostRowItem>();
-			categoryPostsList = (ListView) view.findViewById(R.id.categoryPostsList);
-			progressBar = (ProgressBar) view.findViewById(R.id.categoryPostsProgressBar);
-			adapter = new CategoryPostsAdapter(getActivity(), R.layout.category_posts_list_item,
-					rowItems);
+			categoryPostsList = (ListView) view
+					.findViewById(R.id.categoryPostsList);
+			progressBar = (ProgressBar) view
+					.findViewById(R.id.categoryPostsProgressBar);
+			adapter = new CategoryPostsAdapter(getActivity(),
+					R.layout.category_posts_list_item, rowItems);
 
 			int spacing = (int) getResources().getDimension(R.dimen.spacing);
-			int itemsPerRow = getResources().getInteger(R.integer.items_per_row);
-			MultiItemRowListAdapter wrapperAdapter = new MultiItemRowListAdapter(getActivity(),
-					adapter, itemsPerRow, spacing);
+			int itemsPerRow = getResources()
+					.getInteger(R.integer.items_per_row);
+			MultiItemRowListAdapter wrapperAdapter = new MultiItemRowListAdapter(
+					getActivity(), adapter, itemsPerRow, spacing);
 			categoryPostsList.setAdapter(wrapperAdapter);
 
 			categoryPostsList.setOnScrollListener(new OnScrollListener() {
 
 				@Override
-				public void onScrollStateChanged(AbsListView view, int scrollState) {
+				public void onScrollStateChanged(AbsListView view,
+						int scrollState) {
 				}
 
 				@Override
-				public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
-						int totalItemCount) {
+				public void onScroll(AbsListView view, int firstVisibleItem,
+						int visibleItemCount, int totalItemCount) {
 
 					int lastInScreen = firstVisibleItem + visibleItemCount;
 					if ((lastInScreen == totalItemCount) && !(loadingMore)) {
@@ -108,99 +124,85 @@ public class CategoryPostsFragment extends Fragment {
 		loadingMore = true;
 		progressBar.setVisibility(View.VISIBLE);
 
-		BuildService.build.getCategoriesPosts(categoryItem.getId(), categoryItem.getSlug(), page,
-				new Callback<String>() {
+		new AsyncTask<String, String, String>() {
+			@Override
+			protected String doInBackground(String... urls) {
+				String response = "";
 
-					@Override
-					public void failure(RetrofitError retofitError) {
-						retofitError.printStackTrace();
+				try {
+
+					URL url = new URL(urls[0]);
+					HttpURLConnection conn = (HttpURLConnection) url
+							.openConnection();
+					BufferedReader br = new BufferedReader(
+							new InputStreamReader((conn.getInputStream())));
+					StringBuffer sb = new StringBuffer("");
+					String output;
+					while ((output = br.readLine()) != null) {
+						sb.append(output);
 					}
+					response = sb.toString();
+					conn.disconnect();
 
-					@Override
-					public void success(String output, Response arg1) {
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return response;
+			}
 
-						try {
-							Log.i("CategoriesPosts", arg1.getUrl());
-							Log.i("CategoriesPosts", output);
+			@Override
+			protected void onPostExecute(String output) {
+				try {
+					Log.i("CategoriesPosts", output);
 
-							JSONObject obj = new JSONObject(output);
+					JSONObject obj = new JSONObject(output);
 
-							if (obj.getJSONArray("posts").length() > 0) {
-								JSONArray categotyPosts = obj.getJSONArray("posts");
-								String currentMilliSeconds = Calendar.getInstance()
-										.getTimeInMillis() + "";
+					if (obj.getJSONArray("posts").length() > 0) {
+						JSONArray categotyPosts = obj.getJSONArray("posts");
+						for (int i = 0; i < categotyPosts.length(); i++) {
+							JSONObject categotyPost = categotyPosts
+									.getJSONObject(i);
 
-								for (int i = 0; i < categotyPosts.length(); i++) {
-									JSONObject categotyPost = categotyPosts.getJSONObject(i);
+							PostRowItem item = new PostRowItem();
 
-									PostRowItem item = new PostRowItem();
+							item.setPost_id(categotyPost.getInt("ID"));
+							item.setTitle(categotyPost.getString("title"));
+							item.setDate(categotyPost.getString("date"));
 
-									item.setPost_id(categotyPost.getInt("id"));
-									item.setTitle(categotyPost.getString("title"));
-									item.setDate(categotyPost.getString("date"));
-									item.setPost_icon_url(categotyPost.getString("thumbnail"));
-									item.setAuthor(categotyPost.getJSONObject("author").getString(
-											"name"));
-									item.setContent(categotyPost.getString("content"));
-									item.setPost_banner(categotyPost
-											.getJSONObject("thumbnail_images")
-											.getJSONObject("full").getString("url"));
-									item.setComment_count(categotyPost.getInt("comment_count"));
-									item.setPost_url(categotyPost.getString("url"));
-
-									if (categotyPost.getInt("comment_count") > 0) {
-										item.setCommentsArray(categotyPost.getJSONArray("comments")
-												.toString());
-									}
-									item.setTagsArray(categotyPost.getJSONArray("tags").toString());
-
-									rowItems.add(item);
-
-									if (page == 1) {
-										postsDAO = new PostsDAO(getActivity());
-										postsDAO.insertPosts(categotyPost.getInt("id"),
-												categotyPost.getString("title"), categotyPost
-														.getString("date"), categotyPost
-														.getString("thumbnail"), categotyPost
-														.getJSONObject("author").getString("name"),
-												categotyPost.getString("content"), categotyPost
-														.getJSONObject("thumbnail_images")
-														.getJSONObject("full").getString("url"),
-												categotyPost.getInt("comment_count"), categotyPost
-														.getString("url"), currentMilliSeconds,
-												categoryItem.getId(), categoryItem.getSlug(),
-												categotyPost.getJSONArray("comments").toString(),
-												categotyPost.getJSONArray("tags").toString());
-									}
-								}
-
-								if (page == 1) {
-									long deleted = postsDAO.deletePosts(categoryItem.getId(),
-											categoryItem.getSlug(), currentMilliSeconds);
-									Log.i("Deleted records: ", deleted + "");
-								}
-
-								adapter.notifyDataSetChanged();
-								loadingMore = false;
-
-								if (page == obj.getInt("pages")) {
-									Log.i("loadingmore", "true");
-									loadingMore = true;
-								} else {
-									page = page + 1;
-								}
-							} else {
-								Utils.displayToad(getActivity(),
-										getString(R.string.no_posts_error_msg));
+							JSONObject thumbnill = categotyPost
+									.getJSONObject("attachments");
+							
+							for (int j = 0; j < thumbnill.length(); j++) {
+								//JSONObject image = thumbnill.get;
 							}
-							progressBar.setVisibility(View.GONE);
 
-						} catch (Exception e) {
-							progressBar.setVisibility(View.GONE);
-							e.printStackTrace();
+							/*item.setPost_icon_url(categotyPost
+									.getJSONObject("attachments"));*/
+							item.setAuthor(categotyPost.getJSONObject("author")
+									.getString("name"));
+							item.setContent(categotyPost.getString("content"));
+
+							rowItems.add(item);
 						}
+
+						adapter.notifyDataSetChanged();
+						loadingMore = true;
+					} else {
+						Utils.displayToad(getActivity(),
+								getString(R.string.no_posts_error_msg));
 					}
-				});
+					progressBar.setVisibility(View.GONE);
+
+				} catch (Exception e) {
+					progressBar.setVisibility(View.GONE);
+					e.printStackTrace();
+				}
+			}
+		}.execute(Config.POSTS + "?category=" + categoryItem.getSlug());
 	}
 
 	private void getDataFromSqlite() {
@@ -208,19 +210,23 @@ public class CategoryPostsFragment extends Fragment {
 		progressBar.setVisibility(View.VISIBLE);
 		postsDAO = new PostsDAO(getActivity());
 
-		if (postsDAO.getPostsCount(categoryItem.getId(), categoryItem.getSlug()) > 0) {
-			rowItems = postsDAO.getPosts(categoryItem.getId(), categoryItem.getSlug());
-			adapter = new CategoryPostsAdapter(getActivity(), R.layout.category_posts_list_item,
-					rowItems);
+		if (postsDAO
+				.getPostsCount(categoryItem.getId(), categoryItem.getSlug()) > 0) {
+			rowItems = postsDAO.getPosts(categoryItem.getId(),
+					categoryItem.getSlug());
+			adapter = new CategoryPostsAdapter(getActivity(),
+					R.layout.category_posts_list_item, rowItems);
 
 			int spacing = (int) getResources().getDimension(R.dimen.spacing);
-			int itemsPerRow = getResources().getInteger(R.integer.items_per_row);
-			MultiItemRowListAdapter wrapperAdapter = new MultiItemRowListAdapter(getActivity(),
-					adapter, itemsPerRow, spacing);
+			int itemsPerRow = getResources()
+					.getInteger(R.integer.items_per_row);
+			MultiItemRowListAdapter wrapperAdapter = new MultiItemRowListAdapter(
+					getActivity(), adapter, itemsPerRow, spacing);
 			categoryPostsList.setAdapter(wrapperAdapter);
 			adapter.notifyDataSetChanged();
 		} else {
-			Utils.displayToad(getActivity(), getString(R.string.no_posts_error_msg));
+			Utils.displayToad(getActivity(),
+					getString(R.string.no_posts_error_msg));
 		}
 		progressBar.setVisibility(View.GONE);
 	}

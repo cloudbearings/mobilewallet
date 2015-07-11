@@ -31,8 +31,7 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 
 	/* private view holder class */
 	private class ViewHolder {
-
-		TextView title, des, commentCount, date, author;
+		TextView title;
 		ImageView post_image;
 	}
 
@@ -50,34 +49,18 @@ public class PostAdapter extends ArrayAdapter<PostRowItem> {
 			holder = new ViewHolder();
 
 			holder.title = (TextView) postView.findViewById(R.id.post_title);
-			holder.des = (TextView) postView.findViewById(R.id.post_des);
 			holder.post_image = (ImageView) postView
-					.findViewById(R.id.post_icon);
-			holder.date = (TextView) postView.findViewById(R.id.post_date);
-			holder.author = (TextView) postView.findViewById(R.id.author);
-			holder.commentCount = (TextView) postView
-					.findViewById(R.id.comment_count);
+					.findViewById(R.id.post_image);
 
 			postView.setTag(holder);
 		} else
 			holder = (ViewHolder) postView.getTag();
 
 		holder.title.setText(Html.fromHtml(rowItem.getTitle()));
-		holder.des.setText(Html.fromHtml(rowItem.getPost_des()));
-		holder.date.setText(Html.fromHtml(rowItem.getDate()));
-		holder.author.setText(Html.fromHtml(rowItem.getAuthor()));
 
 		int loader = R.drawable.app_default_icon;
 		imgLoader.DisplayImage(rowItem.getPost_icon_url(), loader,
 				holder.post_image);
-
-		if (rowItem.getComment_count() > 0) {
-			holder.commentCount.setVisibility(View.VISIBLE);
-			holder.commentCount.setText(Html.fromHtml(rowItem
-					.getComment_count() + ""));
-		} else {
-			holder.commentCount.setVisibility(View.INVISIBLE);
-		}
 
 		return postView;
 	}

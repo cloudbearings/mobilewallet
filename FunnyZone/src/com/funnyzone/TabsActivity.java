@@ -36,7 +36,7 @@ public class TabsActivity extends ActionBarActivity {
 	protected void onResume() {
 
 		super.onResume();
-		Utils.googleAnalaticsTracking(TabsActivity.this, getString(R.string.tabs_screen_name));
+		Utils.googleAnalaticsTracking(TabsActivity.this, getString(R.string.tabs_activity_screen_name));
 	}
 
 	@Override
