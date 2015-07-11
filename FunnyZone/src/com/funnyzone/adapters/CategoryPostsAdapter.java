@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.funnyzone.PostViewSwipeActivity;
 import com.funnyzone.R;
 import com.funnyzone.beans.PostRowItem;
 import com.funnyzone.utils.ImageLoader;

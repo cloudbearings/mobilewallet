@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.funnyzone.adapters.PostAdapter;
 import com.funnyzone.beans.PostRowItem;
 import com.funnyzone.dao.TagPostsDAO;
 import com.funnyzone.googleanalytics.FunnyZoneGoogleAnalytics;
