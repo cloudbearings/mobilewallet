@@ -5,6 +5,7 @@
     <color name="brown">#bd3141</color>
     <color name="horizental_view_color">#ededed</color>
     <color name="textlines_border_color">#e4e4e4</color>
+    <color name="like_comment_border_color">#e6e6e6</color>
 
     <!-- drawer_list_item.xml colors -->
     <color name="list_divider">#272727</color>
@@ -23,5 +24,16 @@
 
     <!-- comment_list_item.xml -->
     <color name="comment_color">#717171</color>
+
+    <!-- category_posts_list_item.xml -->
+    <color name="category_posts_heading_color">#505050</color>
+    <color name="category_posts_des_color">#a3a3a3</color>
+    <color name="post_corner_color">#d8d8d8</color>
+    <color name="cp_title_color">#535353</color>
+    <color name="view_border_color">#e2e2e2</color>
+    <color name="likes_text_color">#b5b5b5</color>
+    <color name="share_text_color">#e02f2f</color>
+    <color name="share_background_color">#e02f2f</color>
+    <color name="joke_text_color">#393939</color>
 
 </resources>

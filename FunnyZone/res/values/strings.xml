@@ -19,6 +19,8 @@
     <string name="tags"><![CDATA[<b>Tags :&#160;</b>]]></string>
     <string name="pst_comments">comments</string>
     <string name="pst_id">postId</string>
+    <string name="no_posts_error_msg">No Posts are available.</string>
+    <string name="tagSlug">TagSlug</string>
 
     <!-- custom_fonts xml strings -->
     <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
@@ -81,5 +83,7 @@
     <string name="title_activity_post_view_swipe"></string>
     <string name="comments">&#160;comments</string>
     <string name="pv_comment">&#160;comment</string>
+    
+    <string name="contentDescription"></string>
 
 </resources>

@@ -85,14 +85,37 @@
     <dimen name="comments_margin_top">5dp</dimen>
 
     <!-- category_posts_list_item.xml -->
-    <dimen name="category_posts_list_item_layout_padding_top">10dp</dimen>
-    <dimen name="category_posts_list_item_layout_padding_bottom">10dp</dimen>
-    <dimen name="category_posts_list_item_appName_margin_top">10dp</dimen>
-    <dimen name="category_posts_list_item_appName_textsize">14sp</dimen>
-    <dimen name="category_posts_list_item_friend_count_margin_top">8dp</dimen>
-    <dimen name="category_posts_list_item_friend_count_textsize">12sp</dimen>
-    <dimen name="category_posts_icon_dimes">130dp</dimen>
-    <dimen name="spacing">5dp</dimen>
+    <dimen name="cp_padding_bottom">11dp</dimen>
+    <dimen name="cp_padding_left">1dp</dimen>
+    <dimen name="cp_padding_right">1dp</dimen>
+    <dimen name="cp_title_text_size">18sp</dimen>
+    <dimen name="cp_title_padding_bottom">11dp</dimen>
+    <dimen name="cp_title_padding_left">11dp</dimen>
+    <dimen name="cp_title_padding_right">11dp</dimen>
+    <dimen name="cp_title_padding_top">11dp</dimen>
+    <dimen name="cp_text_joke_padding_bottom">11dp</dimen>
+    <dimen name="cp_text_joke_padding_left">11dp</dimen>
+    <dimen name="cp_text_joke_padding_right">11dp</dimen>
+    <dimen name="cp_text_joke_text_size">20sp</dimen>
+    <dimen name="cp_joke_image_margin_bottom">11dp</dimen>
+    <dimen name="cp_view_margin_left">11dp</dimen>
+    <dimen name="cp_view_margin_right">11dp</dimen>
+    <dimen name="cp_likes_layout_margin_left">11dp</dimen>
+    <dimen name="cp_likes_layout_margin_right">11dp</dimen>
+    <dimen name="heart_icon_padding_left">8dp</dimen>
+    <dimen name="likes_text_size">20sp</dimen>
+    <dimen name="likes_padding_right">11dp</dimen>
+    <dimen name="reply_margin_right">5dp</dimen>
+    <dimen name="reply_icon_padding_left">8dp</dimen>
+    <dimen name="reply_text_padding_bottom">3dp</dimen>
+    <dimen name="reply_text_padding_right">11dp</dimen>
+    <dimen name="share_button_text_size">16sp</dimen>
+    <dimen name="share_button_margin_bottom">0dp</dimen>
+    <dimen name="share_button_margin_right">11dp</dimen>
+    <dimen name="share_button_margin_top">0dp</dimen>
+    <dimen name="share_button_padding">4dp</dimen>
+    <dimen name="cp_view5_margin_left">11dp</dimen>
+    <dimen name="cp_view5_margin_right">11dp</dimen>
     <dimen name="category_posts_heading_padding">10dp</dimen>
     <dimen name="category_posts_heading_textsize">16sp</dimen>
 
