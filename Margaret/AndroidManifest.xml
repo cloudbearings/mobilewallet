@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.margaret.parking"
+    android:installLocation="auto"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <uses-feature android:name="android.hardware.Camera" />
+    <uses-permission android:name="android.permission.camera" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.margaret.parking.SignInActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.margaret.parking.OperatorMainActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.ComplaintVerification"
+            android:label="@string/title_activity_complaint_verification"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.Clamp"
+            android:label="@string/title_activity_clamp"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.Tow"
+            android:label="@string/title_activity_tow"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.Payment"
+            android:label="@string/title_activity_payment"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".activity.ComplaintRegistration"
+            android:label="@string/title_activity_complaint_registration"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.margaret.parking.ForgotPassword"
+            android:label="@string/title_activity_forgot_password"
+            android:screenOrientation="portrait" >
+        </activity>
+        <!-- Customer activities -->
+        <activity android:name="com.margaret.parking.CustomerMainActivity"></activity>
+        <activity android:name="com.margaret.parking.customer.CustComplaintRegistration"></activity>
+    </application>
+
+</manifest>
