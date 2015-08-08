@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="list_item_title">#fff</color>
+    <color name="list_background">#303030</color>
+    <color name="list_background_pressed">#992416</color>
+    <color name="list_divider">#272727</color>
+    <color name="counter_text_bg">#626262</color>
+    <color name="counter_text_color">#c5c4c4</color>
+    <color name="fc_text_light_green">#ff61c4bb</color>
+    <color name="white">#fff</color>
+    <color name="background_green">#ff4d9891</color>
+    <color name="background_signin">#ffe9745d</color>
+    <color name="fc_card_border_gray">#ffbbbbbb</color>
+    <color name="grey">#F5F5F5</color>
+    <color name="grey_light">#EEEEEE</color>
+    <color name="pink">#FF4081</color>
+    <color name="green">#4CAF50</color>
+    <color name="red">#F44336</color>
+    <color name="blue">#2196F3</color>
+    <color name="edittext_border_color">#e6e6e6</color>
+    
+
+</resources>
