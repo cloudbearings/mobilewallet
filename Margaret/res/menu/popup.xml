@@ -1,21 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:margaret="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity" >
+
     <item
         android:id="@+id/action_verify"
-        android:title="Verify" />
+        android:title="@string/verify"/>
     <item
         android:id="@+id/action_clamp"
-        android:title="Clamp" />
-
+        android:title="@string/clamp"/>
     <item
         android:id="@+id/action_tow"
-        android:title="Tow"
-        />
-
+        android:title="@string/tow"/>
     <item
         android:id="@+id/action_payment"
-        android:title="Payment" />
+        android:title="@string/payment"/>
 
 </menu>
