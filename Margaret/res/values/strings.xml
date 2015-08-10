@@ -14,7 +14,23 @@
     <string name="create_job">CREATE</string>
     <string name="cancel">CANCEL</string>
     <string name="fyp"><u>Forgot Password</u>.</string>
-    <string name="title_activity_complaint_verification">ComplaintVerification</string>
+    <string name="title_activity_complaint_verification">Complaint Verification</string>
+    
+    <!--Global Strings -->
+    <string name="no_internet">No network connection enabled.</string>
+    
+    <!--Menu Strings -->
+    <string name="new_complaint">New Complaint</string>
+    <string name="verified_only">Verified Only</string>
+    <string name="new_only">New Only</string>
+    <string name="paid_complaints">Paid Complaints</string>
+    <string name="search">Search</string>
+    <string name="refresh">Refresh</string>
+    
+    <string name="verify">Verify</string>
+    <string name="clamp">Clamp</string>
+    <string name="tow">Tow</string>
+    <string name="payment">Payment</string>
 
     <string name="title_activity_clamp">Clamp</string>
     <string name="title_activity_tow">Tow</string>
@@ -69,12 +85,12 @@
         <item >Clamp</item>
         <item >Tow</item>
         <item >Payment</item>
-        <item >Complaints Closed</item>
+        <item >Closed</item>
     </string-array>
     
       <string-array name="nav_drawer_customer_items">
-        <item >My Complaints</item>
-        <item >Closed Complaints</item>
+        <item >Complaints</item>
+        <item >Closed</item>
        <!--  <item >What\'s Hot</item> -->
     </string-array>
     <array name="nav_drawer_customer_icons">
