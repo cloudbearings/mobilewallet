@@ -16,7 +16,7 @@ import com.margaret.parking.db.DBOpenHelper;
 import com.margaret.parking.pojo.ComplaintRecord;
 
 public class TowedComplaintsFragment extends Fragment{
-    List<ComplaintRecord> mClosedComplaintsList;
+    List<ComplaintRecord> mTowedComplaintsList;
     ListView mComplaintsListView;
     GenericComplaintsAdapter mComplaintsAdapter;
     
@@ -25,9 +25,9 @@ public class TowedComplaintsFragment extends Fragment{
     }
     
     public static TowedComplaintsFragment getInstance(){
-        TowedComplaintsFragment closedComplaintsFragment = new TowedComplaintsFragment();
+        TowedComplaintsFragment towedComplaintsFragment = new TowedComplaintsFragment();
         
-        return closedComplaintsFragment;
+		return towedComplaintsFragment;
     }
     
     
@@ -35,7 +35,7 @@ public class TowedComplaintsFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Fetch records from DB.
-        mClosedComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchTowRecords();
+        mTowedComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchTowRecords();
     }
     
     @Override
@@ -48,7 +48,7 @@ public class TowedComplaintsFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mComplaintsListView = (ListView) getActivity().findViewById(R.id.complaintsListView);
-        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mClosedComplaintsList);
+        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mTowedComplaintsList);
         mComplaintsListView.setAdapter(mComplaintsAdapter);
 
         mComplaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,9 +61,9 @@ public class TowedComplaintsFragment extends Fragment{
     }
     
     public void refreshUI(){
-        mClosedComplaintsList.clear();
-        mClosedComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchTowRecords();
-        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mClosedComplaintsList);
+        mTowedComplaintsList.clear();
+        mTowedComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchTowRecords();
+        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mTowedComplaintsList);
         mComplaintsListView.setAdapter(mComplaintsAdapter);
     }
 
