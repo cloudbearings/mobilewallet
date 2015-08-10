@@ -1,11 +1,11 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:margaret="http://schemas.android.com/apk/res-auto" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
         android:id="@+id/action_logout"
         android:icon="@drawable/ic_action_logout"
         android:orderInCategory="100"
-        android:title="@string/action_logout"
-        margaret:showAsAction="always|withText"/>
+        android:showAsAction="always|withText"
+        android:title="@string/action_logout"/>
+    
 
 </menu>
