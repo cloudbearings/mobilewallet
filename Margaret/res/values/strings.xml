@@ -19,6 +19,9 @@
     <!--Global Strings -->
     <string name="no_internet">No network connection enabled.</string>
     
+    <!--Custom font Strings -->
+    <string name="Helvetica">fonts/HelveticaNeueLTStd-Lt_0.ttf</string>
+    
     <!--Menu Strings -->
     <string name="new_complaint">New Complaint</string>
     <string name="verified_only">Verified Only</string>
@@ -114,5 +117,13 @@
     
     <!-- Content Description -->    
     <string name="title_activity_forgot_password">Forgot Password</string>
+    
+    <!-- Error messages --> 
+    <string name="no_towed_complaints">You don\'t have Towed Complaints</string>
+    <string name="no_clamped_complaints">You don\'t have Clamp Complaints</string>
+    <string name="no_paid_complaints">You don\'t have Paid Complaints</string>
+    <string name="no_verified_complaints">You don\'t have Verified Complaints</string>
+    <string name="no_new_complaints">You don\'t have New Complaints</string>
+    <string name="no_closed_complaints">You don\'t have Closed Complaints</string>
 
 </resources>
