@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="60dp" android:layout_height="50dp"
-    android:background="@color/grey">
+    android:layout_width="60dp"
+    android:layout_height="50dp"
+    android:background="@color/grey" >
+
     <TextView
         android:id="@+id/dateNumber"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:padding="5dip"
         android:layout_marginBottom="10dp"
         android:fontFamily="sans-serif-condensed"
+        android:gravity="center"
+        android:padding="5dip"
         android:text="25 "
-        android:textColor="#000"/>
+        android:textColor="#000" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="20dip"
         android:layout_gravity="bottom"
         android:layout_margin="2dip"
-        android:background="@color/fc_text_light_green"
-        android:orientation="horizontal"
-        >
+        android:background="@drawable/textlines"
+        android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/dateMonth"
@@ -28,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
             android:gravity="center"
             android:text="May 2015"
             android:textColor="@color/white" />
