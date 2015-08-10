@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical" >
+    android:layout_height="wrap_content"
+    android:background="@drawable/offerbg"
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/refNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
         android:fontFamily="sans-serif-condensed"
         android:text="REF : 112121212121212"
+        android:layout_marginLeft="5dp"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -22,8 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/refNumber"
-        android:background="@color/fc_card_border_gray" >
-    </View>
+        android:background="@color/fc_card_border_gray"></View>
 
     <LinearLayout
         android:id="@+id/informationLayout"
@@ -32,23 +32,21 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@id/divider"
-        android:background="@color/white"
         android:orientation="horizontal"
-        android:weightSum="1" >
+        android:weightSum="1">
 
         <include
+            layout="@layout/layout_calendar"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
-            layout="@layout/layout_calendar" >
-        </include>
+            android:layout_margin="5dp"></include>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="0.95"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/bayNumber"
@@ -60,7 +58,7 @@
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="left|center"
                 android:text="CT123456798"
-                android:textColor="@android:color/black"
+                android:textColor="@color/light_white"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
@@ -76,7 +74,7 @@
                 android:gravity="center|left"
                 android:singleLine="true"
                 android:text="CT123456798"
-                android:textColor="@android:color/black"
+                android:textColor="@color/light_white"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
@@ -91,10 +89,11 @@
                 android:fontFamily="sans-serif-condensed"
                 android:gravity="center|left"
                 android:text="CT123456798"
-                android:textColor="@android:color/black"
+                android:textColor="@color/light_white"
                 android:textSize="12sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
+
         </LinearLayout>
 
         <TextView
@@ -115,12 +114,14 @@
             android:id="@+id/popupImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top"
+            android:layout_gravity="center"
             android:background="@android:color/transparent"
             android:baselineAlignBottom="true"
             android:contentDescription="popup"
             android:scaleType="fitEnd"
             android:src="@drawable/ic_action_popup_more" />
+
+
     </LinearLayout>
 
     <View
@@ -128,20 +129,18 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/informationLayout"
-        android:background="#ffbdbdbd" >
-    </View>
+        android:background="#ffbdbdbd"></View>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dottedLine"
-        android:background="@color/white"
-        android:weightSum="1" >
+        android:weightSum="1">
 
         <ImageView
             android:id="@+id/verifiedIcon"
-            android:layout_width="40dp"
-            android:layout_height="61dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="0.06"
             android:padding="4dp"
             android:src="@drawable/ic_verified"
@@ -149,8 +148,8 @@
 
         <ImageView
             android:id="@+id/clampIcon"
-            android:layout_width="40dp"
-            android:layout_height="61dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="0.06"
             android:padding="4dp"
             android:src="@drawable/ic_clamp"
@@ -158,17 +157,16 @@
 
         <ImageView
             android:id="@+id/truckIcon"
-            android:layout_width="40dp"
-            android:layout_height="61dp"
-            android:layout_weight="0.06"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:padding="4dp"
             android:src="@drawable/ic_truck"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/paymentIcon"
-            android:layout_width="40dp"
-            android:layout_height="61dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="0.06"
             android:padding="4dp"
             android:src="@drawable/ic_payment"
@@ -181,8 +179,8 @@
             android:gravity="center"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/red"
+            android:layout_marginLeft="5dp"
             android:textStyle="italic"
             android:visibility="gone" />
     </LinearLayout>
-
 </RelativeLayout>
