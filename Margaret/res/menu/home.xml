@@ -1,16 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:margaret="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".HomeActivity" >
-
+    tools:context=".HomeActivity">
     <item
         android:id="@+id/action_example"
-        android:title=""
-        margaret:showAsAction="withText|ifRoom"/>
+        android:showAsAction="withText|ifRoom"
+        android:title="" />
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
-        margaret:showAsAction="never"/>
-
+        android:showAsAction="never" 
+       />
 </menu>
