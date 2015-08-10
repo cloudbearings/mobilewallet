@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.margaret.parking.R;
 import com.margaret.parking.adapters.GenericComplaintsAdapter;
@@ -16,16 +17,17 @@ import com.margaret.parking.db.DBOpenHelper;
 import com.margaret.parking.pojo.ComplaintRecord;
 
 public class PaidComplaintsFragment extends Fragment{
-    List<ComplaintRecord> mClosedComplaintsList;
+    List<ComplaintRecord> mPaidComplaintsList;
     ListView mComplaintsListView;
     GenericComplaintsAdapter mComplaintsAdapter;
+    TextView mNoComplaintsTextView;
     
     public PaidComplaintsFragment() {
     }
     
     public static PaidComplaintsFragment getInstance(){
-            PaidComplaintsFragment closedComplaintsFragment = new PaidComplaintsFragment();
-            return closedComplaintsFragment;
+            PaidComplaintsFragment paidComplaintsFragment = new PaidComplaintsFragment();
+		return paidComplaintsFragment;
     }
     
     
@@ -33,7 +35,7 @@ public class PaidComplaintsFragment extends Fragment{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Fetch records from DB.
-        mClosedComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchPaidComplaints();
+        mPaidComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchPaidComplaints();
     }
     
     @Override
@@ -46,7 +48,13 @@ public class PaidComplaintsFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mComplaintsListView = (ListView) getActivity().findViewById(R.id.complaintsListView);
-        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mClosedComplaintsList);
+        if (mPaidComplaintsList.isEmpty()) {
+			mNoComplaintsTextView.setText(getString(R.string.no_paid_complaints));
+			mNoComplaintsTextView.setVisibility(View.VISIBLE);
+		} else {
+			mNoComplaintsTextView.setVisibility(View.GONE);
+		}
+        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mPaidComplaintsList);
         mComplaintsListView.setAdapter(mComplaintsAdapter);
 
         mComplaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,9 +67,9 @@ public class PaidComplaintsFragment extends Fragment{
     }
 
     public void refreshUI(){
-        mClosedComplaintsList.clear();
-        mClosedComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchPaidComplaints();
-        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mClosedComplaintsList);
+        mPaidComplaintsList.clear();
+        mPaidComplaintsList = DBOpenHelper.getInstance(getActivity()).fetchPaidComplaints();
+        mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mPaidComplaintsList);
         mComplaintsListView.setAdapter(mComplaintsAdapter);
     }
 

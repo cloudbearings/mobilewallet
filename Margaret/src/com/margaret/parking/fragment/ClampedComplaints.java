@@ -12,7 +12,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.margaret.parking.R;
-import com.margaret.parking.adapters.ComplaintsAdapter;
 import com.margaret.parking.adapters.GenericComplaintsAdapter;
 import com.margaret.parking.db.DBOpenHelper;
 import com.margaret.parking.pojo.ComplaintRecord;
@@ -52,6 +51,7 @@ public class ClampedComplaints extends Fragment{
         mComplaintsListView = (ListView) getActivity().findViewById(R.id.complaintsListView);
         mNoComplaintsTextView = (TextView)getActivity().findViewById(R.id.noComplaintsView);
         if(mClosedComplaintsList.isEmpty()){
+        	mNoComplaintsTextView.setText(getString(R.string.no_clamped_complaints));
             mNoComplaintsTextView.setVisibility(View.VISIBLE);
         }else{
             mNoComplaintsTextView.setVisibility(View.GONE);

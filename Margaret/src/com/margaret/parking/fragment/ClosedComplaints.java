@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.margaret.parking.R;
 import com.margaret.parking.adapters.GenericComplaintsAdapter;
@@ -19,6 +20,8 @@ public class ClosedComplaints extends Fragment{
     List<ComplaintRecord> mClosedComplaintsList;
     ListView mComplaintsListView;
     GenericComplaintsAdapter mComplaintsAdapter;
+    TextView mNoComplaintsTextView;
+    
     
     public ClosedComplaints() {
         // TODO Auto-generated constructor stub
@@ -47,6 +50,12 @@ public class ClosedComplaints extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mComplaintsListView = (ListView) getActivity().findViewById(R.id.complaintsListView);
+        if (mClosedComplaintsList.isEmpty()) {
+			mNoComplaintsTextView.setText(getString(R.string.no_closed_complaints));
+			mNoComplaintsTextView.setVisibility(View.VISIBLE);
+		} else {
+			mNoComplaintsTextView.setVisibility(View.GONE);
+		}
         mComplaintsAdapter = new GenericComplaintsAdapter(getActivity(), R.layout.item_complaints_list, 0, mClosedComplaintsList);
         mComplaintsListView.setAdapter(mComplaintsAdapter);
 
