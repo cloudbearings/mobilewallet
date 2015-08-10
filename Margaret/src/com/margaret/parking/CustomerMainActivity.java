@@ -24,12 +24,6 @@ import com.margaret.parking.adapters.NavDrawerItem;
 import com.margaret.parking.adapters.NavDrawerListAdapter;
 import com.margaret.parking.customer.CustClosedComplaints;
 import com.margaret.parking.customer.CustComplaintsFragment;
-import com.margaret.parking.fragment.ClampedComplaints;
-import com.margaret.parking.fragment.ClosedComplaints;
-import com.margaret.parking.fragment.ComplaintsFragment;
-import com.margaret.parking.fragment.PaidComplaintsFragment;
-import com.margaret.parking.fragment.TowedComplaintsFragment;
-import com.margaret.parking.fragment.WhatsHotFragment;
 import com.margaret.parking.util.PreferenceStore;
 
 public class CustomerMainActivity extends Activity {

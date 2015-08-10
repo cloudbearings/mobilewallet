@@ -1,9 +1,16 @@
 package com.margaret.parking;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -14,7 +21,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonParser;
 import com.margaret.parking.db.DBOpenHelper;
+import com.margaret.parking.gcm.GcmRegistration;
 import com.margaret.parking.pojo.ComplaintRecord;
+import com.margaret.parking.service.BuildService;
 import com.margaret.parking.util.PreferenceStore;
 import com.margaret.parking.util.Utils;
 
@@ -22,8 +31,10 @@ import com.margaret.parking.util.Utils;
  * Created by varmu02 on 6/17/2015.
  */
 public class SignInActivity extends Activity {
+	private static final String TAG = "SignInActivity";
 	EditText mUserName, mPassword;
 	ProgressBar mProgressBar;
+	boolean isSignInAllowed = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,7 @@ public class SignInActivity extends Activity {
 
 		if (PreferenceStore.getLoggedInStatus(this)) {
 			// Logged in already
+			new GcmRegistration(SignInActivity.this).register();
 			if (PreferenceStore.getOperatorLogged(this)) {
 				final Intent intent = new Intent(this,
 						OperatorMainActivity.class);
@@ -58,7 +70,6 @@ public class SignInActivity extends Activity {
 
 	public void signIn(View view) {
 		mProgressBar.setVisibility(View.VISIBLE);
-		boolean isSignInAllowed = true;
 		if (mUserName.getText().toString().trim().isEmpty()) {
 			mUserName.setError("Enter Username");
 			isSignInAllowed = false;
@@ -69,14 +80,38 @@ public class SignInActivity extends Activity {
 			isSignInAllowed = false;
 		}
 
+		BuildService.build.authenticateUser(mUserName.getText().toString(),
+				mPassword.getText().toString(), new Callback<String>() {
+
+					@Override
+					public void success(String output, Response arg1) {
+						try {
+							Log.i("Logged In status :", output);
+							JSONObject obj = new JSONObject(output);
+							if (!obj.getBoolean("statusCode")) {
+								isSignInAllowed = false;
+							}
+						} catch (JSONException je) {
+							Log.d(TAG,
+									"Exception raised in authenticateUser service"
+											+ je.getMessage());
+							je.printStackTrace();
+						}
+					}
+
+					@Override
+					public void failure(RetrofitError retrofitError) {
+						retrofitError.printStackTrace();
+					}
+				});
+
 		if (isSignInAllowed) {
 			final DownloadComplaintTask downloadTask = new DownloadComplaintTask();
 			if (isOperator()) {
 				// Download
 				if (!PreferenceStore.getComplaintsDownloadStatus(this)) {
 					// downloadComplaints("complaints.json", true);
-					downloadTask.execute("complaints.json",
-							String.valueOf(true));
+					downloadTask.execute("complaints.json", String.valueOf(true));
 				} else {
 					PreferenceStore.saveLoggedIn(SignInActivity.this, true);
 					PreferenceStore.saveOperatorLogged(SignInActivity.this,
