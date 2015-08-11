@@ -2,15 +2,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/mymediabkg" >
+    android:background="@drawable/mymediabkg">
 
     <GridView
         android:id="@+id/photoGrid"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:cacheColorHint="#00000000"
-        android:columnWidth="100dip"
+        android:cacheColorHint="@color/cache_color_hint"
+        android:columnWidth="@dimen/pg_cloumn_width"
         android:gravity="center"
         android:numColumns="auto_fit"
         android:scrollbars="none"

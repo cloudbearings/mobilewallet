@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fc_text_light_green" >
+    android:background="@color/fc_text_light_green">
 
     <RelativeLayout
         android:id="@+id/linearLayout1"
@@ -11,8 +11,8 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:paddingLeft="23dp"
-        android:paddingRight="23dp" >
+        android:paddingLeft="@dimen/ls_rl_padding_left"
+        android:paddingRight="@dimen/ls_rl_padding_right">
 
         <EditText
             android:id="@+id/userName"
@@ -24,7 +24,7 @@
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:textColor="@color/fc_text_light_green"
-            android:textColorHint="@color/fc_text_light_green" >
+            android:textColorHint="@color/fc_text_light_green">
 
             <requestFocus />
         </EditText>
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/userName"
             android:layout_below="@+id/userName"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/ls_rl_pwd_margin_top"
             android:background="@drawable/edit_text_rounded_corners"
             android:ems="10"
             android:hint="@string/password"
@@ -53,12 +53,12 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/password"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/ls_rl_button_margin_top"
             android:background="@drawable/fc_rect_border_sign_in"
             android:onClick="signIn"
             android:text="SignIn"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="@dimen/ls_rl_button_textsize"
             android:textStyle="bold" />
     </RelativeLayout>
 
@@ -68,9 +68,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/ls_rl_fp_margin_top"
         android:onClick="forgotPassword"
         android:text="@string/fyp"
-        android:textColor="#0091EA" />
+        android:textColor="@color/fp_text_color" />
 
 </RelativeLayout>
