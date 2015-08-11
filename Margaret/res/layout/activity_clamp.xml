@@ -2,21 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0FFF"
+    android:background="@color/clamp_rl_bg_color"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.parkingdubai.partkit.activity.Clamp" >
+    tools:context="com.parkingdubai.partkit.activity.Clamp">
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent" >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:id="@+id/referenceLayout"
@@ -25,7 +25,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:orientation="horizontal"
-                android:weightSum="2" >
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -52,7 +52,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/referenceLayout"
                 android:orientation="horizontal"
-                android:weightSum="2" >
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -79,7 +79,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/wronglyParkedVehicle"
                 android:background="@color/green"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/clampintBeforeTv"
@@ -89,7 +89,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/clampint_before_tv_margin_left"
                     android:gravity="center"
                     android:text="@string/clamping_before"
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -109,13 +109,12 @@
 
             <include
                 android:id="@+id/photoGridLayout"
+                layout="@layout/photogrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/beforeClampingLayout"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                layout="@layout/photogrid" >
-            </include>
+                android:layout_marginBottom="@dimen/photo_grid_layout_margin_bottom"
+                android:layout_marginTop="@dimen/photo_grid_layout_margin_top"></include>
 
             <RelativeLayout
                 android:id="@+id/afterClampingLayout"
@@ -125,7 +124,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/photoGridLayout"
                 android:background="@color/green"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/clampintAfterTv"
@@ -135,7 +134,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/clampint_before_tv_margin_left"
                     android:gravity="center"
                     android:text="@string/clamping_after"
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -155,19 +154,18 @@
 
             <include
                 android:id="@+id/afterClampGrid"
+                layout="@layout/photogrid_after_clamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/afterClampingLayout"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                layout="@layout/photogrid_after_clamp" >
-            </include>
+                android:layout_marginBottom="@dimen/photo_grid_layout_margin_bottom"
+                android:layout_marginTop="@dimen/photo_grid_layout_margin_top"></include>
         </RelativeLayout>
     </ScrollView>
 
     <Button
         android:id="@+id/submitJobButton"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/clamp_button_width"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -179,14 +177,14 @@
 
     <Button
         android:id="@+id/closeJobButton"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/clamp_button_width"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/submitJobButton"
         android:layout_below="@id/scrollView"
-        android:layout_marginLeft="4dp"
+        android:layout_marginLeft="@dimen/cancel_job_button_margin_left"
         android:background="@drawable/fc_rect_border_sign_in"
         android:text="CANCEL"
         android:textColor="@color/white" />

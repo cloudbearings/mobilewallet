@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp" >
+    android:padding="@dimen/lc_rl_padding" >
 
     <ListView
         android:id="@+id/complaintsListView"
@@ -10,8 +10,7 @@
         android:layout_height="match_parent"
         android:divider="@null"
         android:dividerHeight="0dp"
-        android:scrollbars="none"
-        android:visibility="gone" >
+        android:scrollbars="none" >
     </ListView>
 
     <com.margaret.parking.textview.HelveticaBold
@@ -20,15 +19,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:drawableLeft="@drawable/information"
         android:background="@drawable/offerbg"
+        android:drawableLeft="@drawable/information"
         android:gravity="center"
-        android:lineSpacingExtra="2dp"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:text="@string/no_clamped_complaints"
+        android:lineSpacingExtra="@dimen/lc_no_complaints_lineSpacingExtra"
+        android:padding="@dimen/lc_no_complaints_padding_bottom"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Medium"
         android:textColor="@color/blue"
-        android:textStyle="bold" />
+        android:textSize="@dimen/lc_no_complaints_textsize"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

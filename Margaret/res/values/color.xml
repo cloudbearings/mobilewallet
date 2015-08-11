@@ -20,6 +20,21 @@
     <color name="blue">#2196F3</color>
     <color name="edittext_border_color">#e6e6e6</color>
     <color name="light_white">#717171</color>
-    
+
+    <!--activity_clamp colors -->
+    <color name="clamp_rl_bg_color">#0FFF</color>
+
+    <!--item_complaints colors -->
+    <color name="dotted_line_color">#ffbdbdbd</color>
+
+    <!-- layout_calender xml colors -->
+    <color name="date_no_text_color">#000</color>
+
+    <!-- layout_signin xml colors -->
+    <color name="fp_text_color">#0091EA</color>
+
+    <!-- photogrid xml colors -->
+    <color name="cache_color_hint">#00000000</color>
+
 
 </resources>
