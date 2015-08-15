@@ -69,18 +69,18 @@ public class GenericComplaintsAdapter extends ArrayAdapter {
         ComplaintRecord compRec = listOfComplaints.get(position);
         JsonObject locationArray = compRec.getLocation();
 
-        String cluster = locationArray.getAsJsonObject().get("cluster").getAsString();
+        String cluster = locationArray.getAsJsonObject().get("cluster").getAsString().replace("Cluster", "");
         String buildingName = locationArray.getAsJsonObject().get("name").getAsString();
         String bay_number = locationArray.getAsJsonObject().get("bay").getAsString();
         String levelNumber = locationArray.getAsJsonObject().get("level").getAsString();
 
-        String date = compRec.getComplaint().get("date").getAsString();
+        String date = compRec.getComplaints().get("date").getAsString();
         if(date.contains(" ")){
             String[] dateAfterSplit = date.split(" ");
             String dateMonthYear[] = dateAfterSplit[0].split("/");
-            viewHolder.dateNumber.setText(dateMonthYear[0]);
+            viewHolder.dateNumber.setText(dateMonthYear[1]);
             String[] monthNames = mContext.getResources().getStringArray(R.array.month_names);
-            String month = monthNames[Integer.parseInt(dateMonthYear[1]) - 1];
+            String month = monthNames[Integer.parseInt(dateMonthYear[0]) - 1];
             String year = dateMonthYear[2];
             viewHolder.dateMonth.setText(month + " "+ year);
 
@@ -94,14 +94,14 @@ public class GenericComplaintsAdapter extends ArrayAdapter {
         viewHolder.level.setText(levelNumber);
 
         final ComplaintRecord record = listOfComplaints.get(position);
-        String verifiedStatus = record.getComplaint().get("v_status").getAsString();
-        String clampStatus = record.getComplaint().get("c_status").getAsString();
-        String towingStatus = record.getComplaint().get("t_status").getAsString();
-        final String paymentStatus = record.getComplaint().get("p_status").getAsString();
-        final String livingStatus = record.getComplaint().get("l_status").getAsString();
+        String verifiedStatus = record.getComplaints().get("v_status").getAsString();
+        String clampStatus = record.getComplaints().get("c_status").getAsString();
+        String towingStatus = record.getComplaints().get("t_status").getAsString();
+        final String paymentStatus = record.getComplaints().get("p_status").getAsString();
+        final String livingStatus = record.getComplaints().get("l_status").getAsString();
         String dateString = "";
-        if(record.getComplaint().get("v_date") != null){
-            dateString = record.getComplaint().get("v_date").getAsString();
+        if(record.getComplaints().get("v_date") != null){
+            dateString = record.getComplaints().get("v_date").getAsString();
         }
                 
         
@@ -136,7 +136,7 @@ public class GenericComplaintsAdapter extends ArrayAdapter {
         popupMenu = new PopupMenu(mContext, ((ViewHolder) viewHolder).poupupImage);
         popupMenu.getMenuInflater().inflate(R.menu.popup, popupMenu.getMenu());
         final ComplaintRecord selectedRecord = listOfComplaints.get(position);
-        final JsonObject complaintData = selectedRecord.getComplaint().getAsJsonObject();
+        final JsonObject complaintData = selectedRecord.getComplaints().getAsJsonObject();
         String verificationStatus = complaintData.get("v_status").getAsString();
         String livingStatus = complaintData.get("l_status").getAsString();
         String paymentStatus = complaintData.get("p_status").getAsString();

@@ -101,7 +101,7 @@ public class ComplaintRegistration extends Activity implements View.OnClickListe
                 String complainerContactNumber = getEditTextString(mComplainerContactNumber);
                 //import com.google.gson.JsonObject;
                 JsonObject complaint = new JsonObject();
-                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
                 Date date = new Date();
                 complaint.addProperty("date", dateFormat.format(date));
                 complaint.addProperty("v_status", "false");
@@ -109,7 +109,7 @@ public class ComplaintRegistration extends Activity implements View.OnClickListe
                 complaint.addProperty("t_status", "false");
                 complaint.addProperty("p_status", "false");
                 complaint.addProperty("v_date", "");
-                complaint.addProperty("temp_location", "");
+                complaint.addProperty("temp_Location", "");
                 complaint.addProperty("comments", "");
 
 
@@ -132,7 +132,7 @@ public class ComplaintRegistration extends Activity implements View.OnClickListe
                 vehicle.addProperty("number", vehicleNumber);
 
 
-                ComplaintRecord record = new ComplaintRecord(String.valueOf(new Date().getTime()), complaint, location, reportedBy, vehicle);
+                ComplaintRecord record = new ComplaintRecord("",String.valueOf(new Date().getTime()), complaint, location, reportedBy, vehicle);
 
                 DBOpenHelper dbOpenHelper = DBOpenHelper.getInstance(this);
                 long rowID = dbOpenHelper.insertNewComplaint(getApplicationContext(), record);

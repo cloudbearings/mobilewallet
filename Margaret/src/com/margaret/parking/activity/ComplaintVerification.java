@@ -75,10 +75,10 @@ public class ComplaintVerification extends Activity implements View.OnClickListe
             mLevel.setText(complaintRecord.getLocation().get("level").getAsString());
             mZone.setText(complaintRecord.getLocation().get("zone").getAsString());
 
-            mVehicleMake.setText(complaintRecord.getWronglyParkedDetails().get("make").getAsString());
-            mVehicleColor.setText(complaintRecord.getWronglyParkedDetails().get("color").getAsString());
-            mVehicleModel.setText(complaintRecord.getWronglyParkedDetails().get("model").getAsString());
-            mVehicleNumber.setText(complaintRecord.getWronglyParkedDetails().get("number").getAsString());
+            mVehicleMake.setText(complaintRecord.getWrongparkeddetails().get("make").getAsString());
+            mVehicleColor.setText(complaintRecord.getWrongparkeddetails().get("color").getAsString());
+            mVehicleModel.setText(complaintRecord.getWrongparkeddetails().get("model").getAsString());
+            mVehicleNumber.setText(complaintRecord.getWrongparkeddetails().get("number").getAsString());
 
         }
 
@@ -131,7 +131,7 @@ public class ComplaintVerification extends Activity implements View.OnClickListe
                     JsonObject complaint = new JsonObject();
                     DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
                     Date date = new Date();
-                    complaint.addProperty("date", complaintRecord.getComplaint().get("date").getAsString());
+                    complaint.addProperty("date", complaintRecord.getComplaints().get("date").getAsString());
 
                     complaint.addProperty("v_status", "true");
                     complaint.addProperty("c_status", "false");
@@ -151,9 +151,9 @@ public class ComplaintVerification extends Activity implements View.OnClickListe
                     complaint.addProperty("temp_location", mTempLocation = (TextUtils.isEmpty(mTempLocation) ? "" : mTempLocation));
                     complaint.addProperty("comments", mComments);
 
-                    complaintRecord.setComplaint(complaint);
+                    complaintRecord.setComplaints(complaint);
                     complaintRecord.setLocation(location);
-                    complaintRecord.setWronglyParkedDetails(vehicle);
+                    complaintRecord.setWrongparkeddetails(vehicle);
 
                     long status = DBOpenHelper.getInstance(ComplaintVerification.this).updateJobVerificationStatus(ComplaintVerification.this, complaintRecord);
                     //Toast.makeText(ComplaintVerification.this, "status" + status, Toast.LENGTH_LONG).show();

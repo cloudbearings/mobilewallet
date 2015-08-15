@@ -132,7 +132,7 @@ public class CustComplaintRegistration extends Activity implements View.OnClickL
                 vehicle.addProperty("number", vehicleNumber);
 
 
-                ComplaintRecord record = new ComplaintRecord(String.valueOf(new Date().getTime()), complaint, location, reportedBy, vehicle);
+                ComplaintRecord record = new ComplaintRecord("",String.valueOf(new Date().getTime()), complaint, location, reportedBy, vehicle);
 
                 DBOpenHelper dbOpenHelper = DBOpenHelper.getInstance(this);
                 long rowID = dbOpenHelper.insertNewCustComplaint(getApplicationContext(), record);

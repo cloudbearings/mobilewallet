@@ -7,18 +7,29 @@ import com.google.gson.JsonObject;
  * Created by varmu02 on 6/17/2015.
  */
 public class ComplaintRecord {
-    private String referenceId;
-    private JsonObject complaint;
-    private JsonObject location;
-    private JsonObject reportedBy;
-    private JsonObject wronglyParkedDetails;
 
-    public ComplaintRecord(String referenceId, JsonObject complaint, JsonObject location, JsonObject reportedBy, JsonObject wronglyParkedDetails){
+    private String complaintID;
+    private String referenceId;
+    private JsonObject complaints;
+    private JsonObject location;
+    private JsonObject reportedby;
+    private JsonObject wrongparkeddetails;
+
+    public ComplaintRecord(String complaintID, String referenceId, JsonObject complaints, JsonObject location, JsonObject reportedby, JsonObject wrongparkeddetails) {
+        this.complaintID = complaintID;
         this.referenceId = referenceId;
-        this.complaint = complaint;
+        this.complaints = complaints;
         this.location = location;
-        this.reportedBy = reportedBy;
-        this.wronglyParkedDetails = wronglyParkedDetails;
+        this.reportedby = reportedby;
+        this.wrongparkeddetails = wrongparkeddetails;
+    }
+
+    public String getComplaintID() {
+        return complaintID;
+    }
+
+    public void setComplaintID(String complaintID) {
+        this.complaintID = complaintID;
     }
 
     public String getReferenceId() {
@@ -29,14 +40,6 @@ public class ComplaintRecord {
         this.referenceId = referenceId;
     }
 
-    public JsonObject getComplaint() {
-        return complaint;
-    }
-
-    public void setComplaint(JsonObject complaint) {
-        this.complaint = complaint;
-    }
-
     public JsonObject getLocation() {
         return location;
     }
@@ -45,19 +48,27 @@ public class ComplaintRecord {
         this.location = location;
     }
 
-    public JsonObject getReportedBy() {
-        return reportedBy;
+    public JsonObject getComplaints() {
+        return complaints;
     }
 
-    public void setReportedBy(JsonObject reportedBy) {
-        this.reportedBy = reportedBy;
+    public void setComplaints(JsonObject complaints) {
+        this.complaints = complaints;
     }
 
-    public JsonObject getWronglyParkedDetails() {
-        return wronglyParkedDetails;
+    public JsonObject getReportedby() {
+        return reportedby;
     }
 
-    public void setWronglyParkedDetails(JsonObject wronglyParkedDetails) {
-        this.wronglyParkedDetails = wronglyParkedDetails;
+    public void setReportedby(JsonObject reportedby) {
+        this.reportedby = reportedby;
+    }
+
+    public JsonObject getWrongparkeddetails() {
+        return wrongparkeddetails;
+    }
+
+    public void setWrongparkeddetails(JsonObject wrongparkeddetails) {
+        this.wrongparkeddetails = wrongparkeddetails;
     }
 }

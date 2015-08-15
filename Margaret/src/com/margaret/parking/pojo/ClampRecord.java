@@ -6,14 +6,15 @@ import android.graphics.Bitmap;
  * Created by varmu02 on 7/5/2015.
  */
 public class ClampRecord {
+
+    String complaintID;
     String referenceId;
     String plateDetails;
     Bitmap beforeClampPhoto;
     Bitmap afterClampPhoto;
     String clampDate;
 
-
-    public ClampRecord(){
+    public ClampRecord() {
 
     }
 
@@ -23,6 +24,14 @@ public class ClampRecord {
         this.plateDetails = plateDetails;
         this.afterClampPhoto = afterClampPhoto;
         this.clampDate = clampDate;
+    }
+
+    public String getComplaintID() {
+        return complaintID;
+    }
+
+    public void setComplaintID(String complaintID) {
+        this.complaintID = complaintID;
     }
 
     public String getReferenceId() {
