@@ -15,8 +15,8 @@ public class DBContract {
     public static abstract class ComplaintColumns implements BaseColumns {
         public static final String TABLE_NAME = "complaint";
         public static final String CUST_TABLE_NAME = "custcomplaint";
-        
-        
+
+        public static final String COMPLAINT_ID = "complaintID";
         public static final String BUILDING_NAME = "building";
         public static final String CLUSTER = "cluster";
         public static final String LEVEL = "level";

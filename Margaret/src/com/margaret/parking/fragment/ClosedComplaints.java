@@ -50,6 +50,8 @@ public class ClosedComplaints extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mComplaintsListView = (ListView) getActivity().findViewById(R.id.complaintsListView);
+        mNoComplaintsTextView = (TextView) getActivity().findViewById(
+                R.id.noComplaintsView);
         if (mClosedComplaintsList.isEmpty()) {
 			mNoComplaintsTextView.setText(getString(R.string.no_closed_complaints));
 			mNoComplaintsTextView.setVisibility(View.VISIBLE);
