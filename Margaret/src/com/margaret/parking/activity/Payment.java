@@ -67,9 +67,7 @@ public class Payment extends Activity {
 	public void sendAmount(View v) {
 		Double amount = null;
 		try {
-			EditText tbAmount = (EditText) this
-					.findViewById(R.id.amountToBePaid);
-			amount = Double.parseDouble(tbAmount.getText().toString());
+			amount = Double.parseDouble(mAmountEditText.getText().toString());
 			Intent i = new Intent("com.globalblue.mpa.PAYMENT_SEND");
 			i.putExtra("amount", amount);
 			i.putExtra("receiptno", mReferenceNumber);

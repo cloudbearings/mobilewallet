@@ -8,5 +8,7 @@ public interface Config {
 	String SERVER_URL = "http://margaretwebapi.inspireinfotech.com/api/";
 	String MESSAGE_KEY = "message";
 	String USER_ID = "userId";
-	
+	String USER_EMAIL = "Email";
+	String ROLE = "role";
+	int PAGE_SIZE = 4;
 }
