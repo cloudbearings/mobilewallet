@@ -4,14 +4,14 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!--clamp dimes -->
+    <!-- clamp dimes -->
     <dimen name="clampint_before_tv_margin_left">5dp</dimen>
     <dimen name="photo_grid_layout_margin_bottom">4dp</dimen>
     <dimen name="photo_grid_layout_margin_top">4dp</dimen>
     <dimen name="clamp_button_width">150dp</dimen>
     <dimen name="cancel_job_button_margin_left">4dp</dimen>
 
-    <!--complaint_verification dimes -->
+    <!-- complaint_verification dimes -->
     <dimen name="wrongly_parked_heading_padding_bottom">8dp</dimen>
     <dimen name="wrongly_parked_heading_padding_top">8dp</dimen>
     <dimen name="wrongly_parked_heading_textsize">17sp</dimen>
@@ -22,7 +22,7 @@
     <dimen name="cv_button_width">150dp</dimen>
     <dimen name="cv_close_button_margin_left">4dp</dimen>
 
-    <!--activity_main dimes -->
+    <!-- activity_main dimes -->
     <dimen name="list_slidermenu_width">240dp</dimen>
 
     <!-- drawer_list_item xml dimes -->
@@ -63,6 +63,10 @@
     <dimen name="lc_no_complaints_lineSpacingExtra">2dp</dimen>
     <dimen name="lc_no_complaints_padding_top">20dp</dimen>
     <dimen name="lc_no_complaints_padding_bottom">20dp</dimen>
+    <dimen name="lc_no_complaints_lp_margin_left">10dp</dimen>
+    <dimen name="lc_no_complaints_lp_margin_right">10dp</dimen>
+    <dimen name="lc_no_complaints_lp_margin_top">12dp</dimen>
+    <dimen name="lc_no_complaints_lp_view_height">50dp</dimen>
 
     <!-- layout_payment xml dimes -->
     <dimen name="lc_rl_margin_top">25dp</dimen>
@@ -87,6 +91,4 @@
     <!-- photogrid_item xml dimes -->
     <dimen name="thumbnill_padding">4dp</dimen>
 
-
 </resources>
-
