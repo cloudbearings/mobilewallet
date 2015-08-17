@@ -43,6 +43,8 @@
     <string name="towing_after">AFTER TOWING</string>
     <string name="clamping_before">BEFORE CLAMPING</string>
     <string name="clamping_after">AFTER CLAMPING</string>
+    <string name="customer_name_prompt">Select customer name</string>
+    <string name="customer_name_error">No names are available</string>
 
     <!-- COMPLAINT VERIFICATION SCREEN-->
     <string name="reference">REFERENCE</string>

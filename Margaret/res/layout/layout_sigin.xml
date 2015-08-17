@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fc_text_light_green">
+    android:background="@color/fc_text_light_green" >
 
     <RelativeLayout
         android:id="@+id/linearLayout1"
@@ -12,7 +12,7 @@
         android:layout_centerVertical="true"
         android:orientation="vertical"
         android:paddingLeft="@dimen/ls_rl_padding_left"
-        android:paddingRight="@dimen/ls_rl_padding_right">
+        android:paddingRight="@dimen/ls_rl_padding_right" >
 
         <EditText
             android:id="@+id/userName"
@@ -24,7 +24,7 @@
             android:imeOptions="actionNext"
             android:singleLine="true"
             android:textColor="@color/fc_text_light_green"
-            android:textColorHint="@color/fc_text_light_green">
+            android:textColorHint="@color/fc_text_light_green" >
 
             <requestFocus />
         </EditText>
@@ -71,6 +71,7 @@
         android:layout_marginTop="@dimen/ls_rl_fp_margin_top"
         android:onClick="forgotPassword"
         android:text="@string/fyp"
-        android:textColor="@color/fp_text_color" />
+        android:textColor="@color/fp_text_color"
+        android:visibility="gone" />
 
 </RelativeLayout>
