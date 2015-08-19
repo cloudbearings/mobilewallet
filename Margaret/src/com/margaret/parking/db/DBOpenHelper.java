@@ -13,8 +13,11 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 import com.margaret.parking.db.DBContract.ComplaintColumns;
+import com.margaret.parking.pojo.BuildingRecord;
 import com.margaret.parking.pojo.ClampRecord;
 import com.margaret.parking.pojo.ComplaintRecord;
+import com.margaret.parking.pojo.LevelRecord;
+import com.margaret.parking.pojo.TowerRecord;
 import com.margaret.parking.pojo.TowingRecord;
 import com.margaret.parking.util.Utils;
 
@@ -114,6 +117,35 @@ public class DBOpenHelper extends SQLiteOpenHelper {
             + DBContract.TowingDataColumns.TOWING_AFTER_PHOTO + " BLOB, "
             + DBContract.TowingDataColumns.TOWING_DATE + " TEXT" + ")";
 
+    private static final String BUILDING_TABLE_CREATE = "CREATE TABLE "
+            + DBContract.BuildingsDataColumns.BUILDINGS_TABLE + "("
+            + DBContract.BuildingsDataColumns.BUILDING_ID
+            + " INTEGER PRIMARY KEY, "
+            + DBContract.BuildingsDataColumns.BUILDING_NAME + " TEXT NOT NULL, "
+            + DBContract.BuildingsDataColumns.BUILDING_STATUS + " TEXT" + ")";
+
+    private static final String LEVEL_TABLE_CREATE = "CREATE TABLE "
+            + DBContract.LevelsDataColumns.LEVELS_TABLE + "("
+            + DBContract.LevelsDataColumns.LEVEL_ID
+            + " INTEGER PRIMARY KEY, "
+            + DBContract.LevelsDataColumns.LEVEL_BUILDING_ID + " INTEGER, "
+            + DBContract.LevelsDataColumns.LEVEL_NAME + " TEXT, "
+            + DBContract.LevelsDataColumns.LEVEL_ALIAS_NAME + " TEXT, "
+            + DBContract.LevelsDataColumns.LEVEL_DES + " TEXT, "
+            + DBContract.LevelsDataColumns.LEVEL_IMAGE_URL + " TEXT, "
+            + DBContract.LevelsDataColumns.LEVEL_STATUS + " TEXT" + ")";
+
+    private static final String TOWER_TABLE_CREATE = "CREATE TABLE "
+            + DBContract.TowersDataColumns.TOWERS_TABLE + "("
+            + DBContract.TowersDataColumns.TOWER_ID
+            + " INTEGER PRIMARY KEY, "
+            + DBContract.TowersDataColumns.TOWER_LEVEL_ID + " INTEGER, "
+            + DBContract.TowersDataColumns.TOWER_NAME + " TEXT, "
+            + DBContract.TowersDataColumns.TOWER_ALIAS_NAME + " TEXT, "
+            + DBContract.TowersDataColumns.TOWER_PLACES + " TEXT, "
+            + DBContract.TowersDataColumns.TOWER_EXTRA_PACES + " TEXT, "
+            + DBContract.TowersDataColumns.TOWER_STATUS + " TEXT" + ")";
+
     private DBOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -137,11 +169,245 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CLAMPING_TABLE_CREATE);
         db.execSQL(TOWING_TABLE_CREATE);
         db.execSQL(CUST_COMPLAINT_TABLE_CREATE);
+        db.execSQL(BUILDING_TABLE_CREATE);
+        db.execSQL(LEVEL_TABLE_CREATE);
+        db.execSQL(TOWER_TABLE_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public long insertBuildingData(Context context, BuildingRecord record) {
+        Log.i("insertBuildingData", "insertBuildingData");
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DBContract.BuildingsDataColumns.BUILDING_ID,
+                record.getBuildingId());
+        contentValues.put(DBContract.BuildingsDataColumns.BUILDING_NAME,
+                record.getBuildingName());
+        contentValues.put(DBContract.BuildingsDataColumns.BUILDING_STATUS,
+                record.getStatus());
+
+
+        return getWritableDatabase().insert(
+                DBContract.BuildingsDataColumns.BUILDINGS_TABLE, null, contentValues);
+
+    }
+
+    public List<BuildingRecord> fetchBuildings(Context context) {
+        List<BuildingRecord> record = new ArrayList<>();
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.BuildingsDataColumns.BUILDINGS_TABLE, null,
+                null, null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+
+                BuildingRecord buildingRecord = new BuildingRecord(cursor.getInt(1), cursor.getString(2), cursor.getString(3));
+
+                record.add(buildingRecord);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return record;
+    }
+
+    public List<String> fetchSpinnerBuildings() {
+        List<String> record = new ArrayList<>();
+        String buildingName;
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.BuildingsDataColumns.BUILDINGS_TABLE, null,
+                null, null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                buildingName = cursor.getString(1);
+
+                record.add(buildingName);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return record;
+    }
+
+    public int getBuildingId(String buildingName) {
+
+        int buildingId = 1;
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.BuildingsDataColumns.BUILDINGS_TABLE, null,
+                DBContract.BuildingsDataColumns.BUILDING_NAME + "='" + buildingName + "'", null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                buildingId = cursor.getInt(0);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return buildingId;
+    }
+
+    public long insertLevelData(Context context, LevelRecord record) {
+        Log.i("insertLevelData", "insertLevelData");
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_ID,
+                record.getLevelId());
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_BUILDING_ID,
+                record.getBuildingId());
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_NAME,
+                record.getLevelName());
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_ALIAS_NAME,
+                record.getLevelAliasName());
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_DES,
+                record.getLevelDesc());
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_IMAGE_URL,
+                record.getImageUrl());
+        contentValues.put(DBContract.LevelsDataColumns.LEVEL_STATUS,
+                record.getStatus());
+
+
+        return getWritableDatabase().insert(
+                DBContract.LevelsDataColumns.LEVELS_TABLE, null, contentValues);
+
+    }
+
+    public List<LevelRecord> fetchLevels(int buildingId) {
+        List<LevelRecord> record = new ArrayList<>();
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.LevelsDataColumns.LEVELS_TABLE, null,
+                DBContract.LevelsDataColumns.LEVEL_BUILDING_ID + "=" + buildingId, null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+
+                LevelRecord levelRecord = new LevelRecord(cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getString(6), cursor.getString(7));
+
+                record.add(levelRecord);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return record;
+    }
+
+    public int getLevelId(String levelName) {
+
+        int buildingId = 1;
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.LevelsDataColumns.LEVELS_TABLE, null,
+                DBContract.LevelsDataColumns.LEVEL_NAME + "='" + levelName + "'", null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                buildingId = cursor.getInt(0);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return buildingId;
+    }
+
+    public List<String> fetchSpinnerLevels(String bName) {
+        List<String> record = new ArrayList<>();
+        String buildingName;
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.LevelsDataColumns.LEVELS_TABLE, null,
+                DBContract.LevelsDataColumns.LEVEL_BUILDING_ID + "=" + getBuildingId(bName), null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                buildingName = cursor.getString(2);
+
+                record.add(buildingName);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return record;
+    }
+
+    public long insertTowerData(Context context, TowerRecord record) {
+        Log.i("insertLevelData", "insertLevelData");
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(DBContract.TowersDataColumns.TOWER_ID,
+                record.getTowerId());
+        contentValues.put(DBContract.TowersDataColumns.TOWER_LEVEL_ID,
+                record.getLevelId());
+        contentValues.put(DBContract.TowersDataColumns.TOWER_NAME,
+                record.getTowerName());
+        contentValues.put(DBContract.TowersDataColumns.TOWER_ALIAS_NAME,
+                record.getTowerlAliasName());
+        contentValues.put(DBContract.TowersDataColumns.TOWER_PLACES,
+                record.getPlaces());
+        contentValues.put(DBContract.TowersDataColumns.TOWER_EXTRA_PACES,
+                record.getExtraPlaces());
+        contentValues.put(DBContract.TowersDataColumns.TOWER_STATUS,
+                record.getStatus());
+
+
+        return getWritableDatabase().insert(
+                DBContract.TowersDataColumns.TOWERS_TABLE, null, contentValues);
+
+    }
+
+    public List<TowerRecord> fetchTowers(int levelId) {
+        List<TowerRecord> record = new ArrayList<>();
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.TowersDataColumns.TOWERS_TABLE, null,
+                DBContract.TowersDataColumns.TOWER_LEVEL_ID + "=" + levelId, null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+
+                TowerRecord towerRecord = new TowerRecord(cursor.getInt(1), cursor.getInt(2), cursor.getString(3), cursor.getString(4), cursor.getInt(5), cursor.getInt(6), cursor.getString(7));
+
+                record.add(towerRecord);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return record;
+    }
+
+    public List<String> fetchSpinnerTowers(String lName) {
+        List<String> record = new ArrayList<>();
+        String towerName;
+        Cursor cursor = getReadableDatabase().query(
+                DBContract.TowersDataColumns.TOWERS_TABLE, null,
+                DBContract.TowersDataColumns.TOWER_LEVEL_ID + "=" + getLevelId(lName), null,
+                null, null, null, null);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                towerName = cursor.getString(2);
+
+                record.add(towerName);
+
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        return record;
     }
 
     /**
@@ -800,7 +1066,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 DBContract.ComplaintColumns.LIVING_STATUS + "='true' AND "
                         + DBContract.ComplaintColumns.C_STATUS + "='true' AND "
                         + ComplaintColumns.T_STATUS + "='false' AND "
-                        + ComplaintColumns.P_STATUS + "='false'", null, null,
+                        + ComplaintColumns.C_STATUS + "='true'", null, null,
                 null, null, null);
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
