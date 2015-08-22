@@ -51,6 +51,10 @@ public class ComplaintsAdapter extends ArrayAdapter {
 
     }
 
+    public void add(ComplaintRecord complaint){
+        this.listOfComplaints.add(complaint);
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final ViewHolder viewHolder;
@@ -118,6 +122,8 @@ public class ComplaintsAdapter extends ArrayAdapter {
         if (!TextUtils.isEmpty(dateString) && dateString.contains(" ") && !Boolean.valueOf(livingStatus)) {
             viewHolder.complaintClosedDate.setVisibility(View.VISIBLE);
             viewHolder.complaintClosedDate.setText(mContext.getString(R.string.complaint_closed_on).toString().concat(dateString.split(" ")[0]));
+        } else {
+            viewHolder.complaintClosedDate.setVisibility(View.GONE);
         }
 
         if (Boolean.valueOf(verifiedStatus) && Boolean.valueOf(livingStatus)) {
