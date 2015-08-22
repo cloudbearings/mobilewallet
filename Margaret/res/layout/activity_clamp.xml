@@ -7,16 +7,16 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.parkingdubai.partkit.activity.Clamp">
+    tools:context="com.parkingdubai.partkit.activity.Clamp" >
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" >
 
             <LinearLayout
                 android:id="@+id/referenceLayout"
@@ -25,7 +25,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2" >
 
                 <TextView
                     android:layout_width="0dp"
@@ -52,7 +52,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/referenceLayout"
                 android:orientation="horizontal"
-                android:weightSum="2">
+                android:weightSum="2" >
 
                 <TextView
                     android:layout_width="0dp"
@@ -71,15 +71,41 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/comments_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/clamp_comments_height"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/wronglyParkedVehicle"
+                android:layout_marginBottom="@dimen/clamp_comments_margin_bottom"
+                android:layout_marginTop="@dimen/clamp_comments_margin_top"
+                android:orientation="horizontal"
+                android:weightSum="2" >
+
+                <EditText
+                    android:id="@+id/clamping_commetns"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/clamp_comments_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_rounded_corners"
+                    android:ems="10"
+                    android:gravity="start"
+                    android:hint="@string/clamping_comments"
+                    android:textSize="@dimen/clamp_comments_textsize"
+                    android:inputType="textPostalAddress" >
+                </EditText>
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/beforeClampingLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@id/wronglyParkedVehicle"
+                android:layout_below="@id/comments_layout"
                 android:background="@color/green"
-                android:orientation="horizontal">
+                android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/clampintBeforeTv"
@@ -109,12 +135,13 @@
 
             <include
                 android:id="@+id/photoGridLayout"
-                layout="@layout/photogrid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/beforeClampingLayout"
                 android:layout_marginBottom="@dimen/photo_grid_layout_margin_bottom"
-                android:layout_marginTop="@dimen/photo_grid_layout_margin_top"></include>
+                android:layout_marginTop="@dimen/photo_grid_layout_margin_top"
+                layout="@layout/photogrid" >
+            </include>
 
             <RelativeLayout
                 android:id="@+id/afterClampingLayout"
@@ -124,7 +151,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@id/photoGridLayout"
                 android:background="@color/green"
-                android:orientation="horizontal">
+                android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/clampintAfterTv"
@@ -154,12 +181,13 @@
 
             <include
                 android:id="@+id/afterClampGrid"
-                layout="@layout/photogrid_after_clamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/afterClampingLayout"
                 android:layout_marginBottom="@dimen/photo_grid_layout_margin_bottom"
-                android:layout_marginTop="@dimen/photo_grid_layout_margin_top"></include>
+                android:layout_marginTop="@dimen/photo_grid_layout_margin_top"
+                layout="@layout/photogrid_after_clamp" >
+            </include>
         </RelativeLayout>
     </ScrollView>
 
