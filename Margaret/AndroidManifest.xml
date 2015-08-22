@@ -44,11 +44,11 @@
                 <category android:name="com.margaret.parking" />
             </intent-filter>
         </receiver>
-        
+
         <service android:name=".gcm.GCMNotificationIntentService" />
 
         <activity
-            android:name="com.margaret.parking.SignInActivity"
+            android:name=".SignInActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -58,7 +58,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.margaret.parking.OperatorMainActivity"
+            android:name=".OperatorMainActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -87,14 +87,18 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.margaret.parking.ForgotPassword"
+            android:name=".ForgotPassword"
             android:label="@string/title_activity_forgot_password"
             android:screenOrientation="portrait" >
         </activity>
         <!-- Customer activities -->
-        <activity android:name="com.margaret.parking.CustomerMainActivity" >
+        <activity android:name=".CustomerMainActivity" >
         </activity>
-        <activity android:name="com.margaret.parking.customer.CustComplaintRegistration" >
+        <activity android:name=".customer.CustComplaintRegistration" >
+        </activity>
+        <activity
+            android:name=".SearchComplaint"
+            android:label="@string/title_activity_search_complaint" >
         </activity>
     </application>
 
